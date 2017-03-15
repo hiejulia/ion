@@ -8,7 +8,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 import { Storage } from '@ionic/storage';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage} from '../pages/signup/signup';
-import { TechEventsProvider } from '../providers/todos';
+import { TechEventsProvider } from '../providers/tech-events';
 import { AuthProvider } from '../providers/auth';
 
 
