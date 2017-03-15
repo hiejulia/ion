@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <ion-title>Tech Events</ion-title>
   </ion-navbar>
 
@@ -15,55 +15,30 @@
 
 <ion-content padding>
   <ion-list>
+
+    <ion-item-sliding *ngFor="let techevent of techevents">
+
   
     <ion-item>
     <ion-thumbnail item-left>
       <img src="img/thumbnail-totoro.png">
     </ion-thumbnail>
-    <h2>My Neighbor Totoro</h2>
+    <h2>{{techevent.title}}</h2>
     <p>Hayao Miyazaki • 1988</p>
     <button ion-button clear item-right>View</button>
   </ion-item>
-  <ion-item>
-    <ion-thumbnail item-left>
-      <img src="img/thumbnail-totoro.png">
-    </ion-thumbnail>
-    <h2>My Neighbor Totoro</h2>
-    <p>Hayao Miyazaki • 1988</p>
-    <button ion-button clear item-right>View</button>
-  </ion-item>
-  <ion-item>
-    <ion-thumbnail item-left>
-      <img src="img/thumbnail-totoro.png">
-    </ion-thumbnail>
-    <h2>My Neighbor Totoro</h2>
-    <p>Hayao Miyazaki • 1988</p>
-    <button ion-button clear item-right>View</button>
-  </ion-item>
-  <ion-item>
-    <ion-thumbnail item-left>
-      <img src="img/thumbnail-totoro.png">
-    </ion-thumbnail>
-    <h2>My Neighbor Totoro</h2>
-    <p>Hayao Miyazaki • 1988</p>
-    <button ion-button clear item-right>View</button>
-  </ion-item>
-  <ion-item>
-    <ion-thumbnail item-left>
-      <img src="img/thumbnail-totoro.png">
-    </ion-thumbnail>
-    <h2>My Neighbor Totoro</h2>
-    <p>Hayao Miyazaki • 1988</p>
-    <button ion-button clear item-right>View</button>
-  </ion-item>
-  <ion-item>
-    <ion-thumbnail item-left>
-      <img src="img/thumbnail-totoro.png">
-    </ion-thumbnail>
-    <h2>My Neighbor Totoro</h2>
-    <p>Hayao Miyazaki • 1988</p>
-    <button ion-button clear item-right>View</button>
-  </ion-item>
+
+  <ion-item-options>
+        <button ion-button color="danger" (click)="deleteTechEvent(techevent)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+  </ion-item-options>
+
+
+    </ion-item-sliding>
+  
+  
   
 </ion-list>
 

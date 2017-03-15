@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,LoadingController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { TabsPage } from '../tabs/tabs';
-import { UserData } from '../../providers/user-data';
+import {TechEvents} from '../techevents/techevents';
+import { AuthProvider } from '../../providers/auth';
+//import { UserData } from '../../providers/user-data';
 
 /*
   Generated class for the Signup page.
@@ -15,24 +17,44 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  signup:{username?:string,password?:string} = {};
-  submitted = false;
+  role: string;
+  email: string;
+  password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public userData: UserData) {}
+    loading:any;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+  constructor(public navCtrl: NavController, public authService: AuthProvider, public loadingCtrl: LoadingController) {
+ 
   }
-
-  //onsignup
-  onSignup(form:NgForm) {
-    this.submitted = true;
-    if(form.valid) {
-      this.userData.signup(this.signup.username);
-      this.navCtrl.push(TabsPage);
-    }
+ 
+  register(){
+ 
+    this.showLoader();
+ 
+    let details = {
+        email: this.email,
+        password: this.password,
+        role: this.role
+    };
+ 
+    this.authService.createAccount(details).then((result) => {
+      this.loading.dismiss();
+      console.log(result);
+      this.navCtrl.setRoot(TechEvents);
+    }, (err) => {
+        this.loading.dismiss();
+    });
+ 
   }
-
-
-
+ 
+  showLoader(){
+ 
+    this.loading = this.loadingCtrl.create({
+      content: 'Authenticating...'
+    });
+ 
+    this.loading.present();
+ 
+  }
+ 
 }
