@@ -5,6 +5,12 @@ import { MyEvents } from '../pages/myevents/myevents';
 import { TechEvents } from '../pages/techevents/techevents';
 import { AddEvent } from '../pages/addevent/addevent';
 import {TabsPage} from '../pages/tabs/tabs';
+import { Storage } from '@ionic/storage';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage} from '../pages/signup/signup';
+import { TechEventsProvider } from '../providers/todos';
+import { AuthProvider } from '../providers/auth';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +18,9 @@ import {TabsPage} from '../pages/tabs/tabs';
     MyEvents,
     TechEvents,
     AddEvent,
-    TabsPage
+    TabsPage,
+    LoginPage,
+    SignupPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -23,8 +31,10 @@ import {TabsPage} from '../pages/tabs/tabs';
     MyEvents,
     TechEvents,
     AddEvent,
-    TabsPage
+    TabsPage,
+    LoginPage,
+    SignupPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage , TechEventsProvider, AuthProvider]
 })
 export class AppModule {}
