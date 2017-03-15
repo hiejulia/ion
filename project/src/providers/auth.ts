@@ -57,9 +57,31 @@ export class AuthProvider {
   }
 
   //login
-
-
-
-
-
+  login(credentials) {
+    return new Promise((resolve, reject) => {
+ 
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+ 
+        this.http.post('localhost/api/auth/login', JSON.stringify(credentials), {headers: headers})
+          .subscribe(res => {
+ 
+            let data = res.json();
+            this.token = data.token;
+            this.storage.set('token', data.token);
+            resolve(data);
+ 
+            resolve(res.json());
+          }, (err) => {
+            reject(err);
+          });
+ 
+    });
+ 
+  }
+ //logout
+  logout(){
+    this.storage.set('token', '');//clear jwt token
+  }
+ 
 }
