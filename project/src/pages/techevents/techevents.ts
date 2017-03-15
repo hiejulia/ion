@@ -8,10 +8,10 @@ import { NavController, NavParams } from 'ionic-angular';
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-techevents',
+  selector: 'TechEvents',
   templateUrl: 'techevents.html'
 })
-export class TecheventsPage {
+export class TechEvents {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
