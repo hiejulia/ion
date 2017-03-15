@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
-import { UserData } from '../../providers/user-data';
+//import { UserData } from '../../providers/user-data';
 import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
+import { AuthProvider } from '../../providers/auth';
 
 
 
@@ -19,30 +20,13 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  login:{username?:string, password?:string} ={};
-  submitted = false;
+  email:string;
+  password:string;
+  loading:any;
 
-
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,public userData:userData) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
-  onLogin(form: NgForm) {
-    this.submitted = true;
-    if(form.valid){
-      this.userData.login(this.login.username);
-      this.navCtrl.push(TabsPage);
+  constructor(public navCtrl: NavController, public authService: AuthProvider) {
+ 
     }
-  }
-
-
-  onSignup() {
-    this.navCtrl.push(SignupPage);
-  }
-
 
 
 }
