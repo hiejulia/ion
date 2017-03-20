@@ -10,6 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage} from '../pages/signup/signup';
 import { TechEventsProvider } from '../providers/tech-events';
 import { AuthProvider } from '../providers/auth';
+//import service to provider concerning with data from server call
 
 
 @NgModule({

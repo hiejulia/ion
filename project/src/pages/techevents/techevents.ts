@@ -3,6 +3,7 @@ import { NavController, NavParams,ModalController, AlertController, LoadingContr
 import {AuthProvider} from '../../providers/auth';
 import {LoginPage} from '../login/login';
 import {TechEventsProvider} from '../../providers/tech-events';
+import {Data} from '../../providers/mockdata';
 
 
 
@@ -17,13 +18,21 @@ import {TechEventsProvider} from '../../providers/tech-events';
   templateUrl: 'techevents.html'
 })
 export class TechEvents {
-  techevents: any;
+  techevents: any= [];
   loading: any;
+  
  
 
   constructor(public navCtrl: NavController, public techeventService: TechEventsProvider, public modalCtrl: ModalController, 
-    public alertCtrl: AlertController, public authService: AuthProvider, public loadingCtrl: LoadingController) {
+    public alertCtrl: AlertController, public authService: AuthProvider, public loadingCtrl: LoadingController,public _data:Data) {
  
+      //subscribe from server call 
+      this._data.techevents.subscribe((t => {
+        this.techevents.push(t);
+      }))
+
+
+
   }
 
   ionViewDidLoad() {

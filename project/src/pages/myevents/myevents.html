@@ -14,32 +14,17 @@
 
 
 <ion-content padding>
-    <ion-list>
+    <ion-list *ngFor="let myevent of myevent">
   
     <ion-item>
     <ion-thumbnail item-left>
       <img src="img/thumbnail-totoro.png">
     </ion-thumbnail>
-    <h2>My Neighbor Totoro</h2>
-    <p>Hayao Miyazaki • 1988</p>
+    <h2>{{myevent.name}}</h2>
+    <p>{myevent.id}</p>
     <button ion-button clear item-right>View</button>
   </ion-item>
-  <ion-item>
-    <ion-thumbnail item-left>
-      <img src="img/thumbnail-totoro.png">
-    </ion-thumbnail>
-    <h2>My Neighbor Totoro</h2>
-    <p>Hayao Miyazaki • 1988</p>
-    <button ion-button clear item-right>View</button>
-  </ion-item>
-  <ion-item>
-    <ion-thumbnail item-left>
-      <img src="img/thumbnail-totoro.png">
-    </ion-thumbnail>
-    <h2>My Neighbor Totoro</h2>
-    <p>Hayao Miyazaki • 1988</p>
-    <button ion-button clear item-right>View</button>
-  </ion-item>
+  
   
 </ion-list>
 </ion-content>

@@ -36,8 +36,14 @@ name:'hien3'
   templateUrl: 'myevents.html'
 })
 export class MyEvents {
+  myevents: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.myevents = data;
+
+
+
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyeventsPage');
