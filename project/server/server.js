@@ -1,25 +1,46 @@
-var express  = require('express');
-var app      = express();
-var mongoose = require('mongoose');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var cors = require('cors');
+'use strict';
 
-var databaseConfig = require('./config/database');
-var router = require('./app/routes');
+// Get environment or set default environment to development
+const ENV = process.env.NODE_ENV || 'development';
+const DEFAULT_PORT = 3000;
+const DEFAULT_HOSTNAME = '127.0.0.1';
 
-var port = process.env.PORT || 3000;
-//connect to mongodb
-//mongoose.connnect(databaseConfig.url);
+const http = require('http');
+const express = require('express');
+const config = require('./config');
+const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
-app.use(bodyParser.json()); // Send JSON responses
-app.use(logger('dev')); // Log requests to API using morgan
-app.use(cors());
- 
-//router(app);
+var server;
 
+// Set express variables
+app.set('config', config);
+app.set('root', __dirname);
+app.set('env', ENV);
 
-app.listen(port);
-console.log('Running on port '+port);
+require('./config/mongoose').init(app);
+require('./config/models').init(app);
+require('./config/passport').init(app);
+require('./config/express').init(app);
+require('./config/routes').init(app);
 
+//Set global error handler
+app.use(function(err, req, res, next) {
+  console.log(err);
+  res.status(500).json(err);
+});
+
+// Start the app if not loaded by another module
+if (!module.parent) {
+  server = http.createServer(app);
+  server.listen(
+    config.port || DEFAULT_PORT,
+    config.hostname || DEFAULT_HOSTNAME,
+    () => {
+      console.log(`${config.app.name} is running`);
+      console.log(`   listening on port: ${config.port}`);
+      console.log(`   environment: ${ENV.toLowerCase()}`);
+    }
+  );
+}
+
+module.exports = app;

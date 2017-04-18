@@ -6,15 +6,15 @@ import { NavController, NavParams } from 'ionic-angular';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
-class TechEvent {
-  // title:string;
-  // description:string;
-  // place:string;
+// class TechEvent {
+//   // title:string;
+//   // description:string;
+//   // place:string;
 
-  constructor(){}
+//   constructor(){}
 
 
-}
+// }
 
 
 
@@ -25,7 +25,7 @@ class TechEvent {
   templateUrl: 'addevent.html'
 })
 export class AddEvent {
-  techEvents:TechEvent = new TechEvent();
+  // techEvents:TechEvent = new TechEvent();
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 

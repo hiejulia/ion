@@ -6,7 +6,7 @@ import { NavController, NavParams,LoadingController } from 'ionic-angular';
 // import { SignupPage } from '../signup/signup';
 // import { AuthProvider } from '../../providers/auth';
 // import {TechEvents} from '../techevents/techevents';
-
+import {SignupPage} from '../signup/signup';
 import {TabsPage} from '../tabs/tabs';
 
 
@@ -81,6 +81,10 @@ ionViewDidLoad() {
 
     login(){
       this.navCtrl.push(TabsPage);
+    }
+
+    createAccount(){
+      this.navCtrl.push(SignupPage);
     }
  
 }

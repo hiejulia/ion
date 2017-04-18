@@ -16,7 +16,7 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'myevents.html'
 })
 export class MyEvents {
-  myevents: any;
+  // myevents: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // this.myevents = data;
