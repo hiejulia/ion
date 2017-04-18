@@ -4,6 +4,7 @@ import {AuthProvider} from '../../providers/auth';
 import {LoginPage} from '../login/login';
 import {TechEventsProvider} from '../../providers/tech-events';
 import {Data} from '../../providers/mockdata';
+import {EventdetailPage} from '../eventdetail/eventdetail';
 
 
 
@@ -20,13 +21,13 @@ import {Data} from '../../providers/mockdata';
 export class TechEvents {
   techevents: any= [];
   loading: any;
-  
- 
 
-  constructor(public navCtrl: NavController, public techeventService: TechEventsProvider, public modalCtrl: ModalController, 
+
+
+  constructor(public navCtrl: NavController, public techeventService: TechEventsProvider, public modalCtrl: ModalController,
     public alertCtrl: AlertController, public authService: AuthProvider, public loadingCtrl: LoadingController,public _data:Data) {
- 
-      //subscribe from server call 
+
+      //subscribe from server call
       this._data.techevents.subscribe((t => {
         this.techevents.push(t);
       }))
@@ -44,9 +45,9 @@ export class TechEvents {
     });
   }
 //addTechEvent
-/** 
+/**
   addTechEvent(){
- 
+
     let prompt = this.alertCtrl.create({
       title: 'Add Tech Event',
       message: 'Describe your todo below:',
@@ -62,11 +63,11 @@ export class TechEvents {
         {
           text: 'Save',
           handler: todo => {
- 
+
                 if(todo){
- 
+
                     this.showLoader();
- 
+
                     this.techeventService.createTodo(todo).then((result) => {
                         this.loading.dismiss();
                         this.techevents = result;
@@ -75,57 +76,61 @@ export class TechEvents {
                         this.loading.dismiss();
                         console.log("not allowed");
                     });
- 
+
                 }
- 
- 
+
+
           }
         }
       ]
     });
- 
+
     prompt.present();
- 
+
   }
- 
+
   deleteTodo(todo){
- 
+
     this.showLoader();
- 
+
     //Remove from database
     this.techeventService.deleteTodo(todo._id).then((result) => {
- 
+
       this.loading.dismiss();
- 
+
       //Remove locally
         let index = this.techevents.indexOf(todo);
- 
+
         if(index > -1){
             this.techevents.splice(index, 1);
-        }   
- 
+        }
+
     }, (err) => {
       this.loading.dismiss();
         console.log("not allowed");
     });
   }
   */
- 
+
   showLoader(){
- 
+
     this.loading = this.loadingCtrl.create({
       content: 'Authenticating...'
     });
- 
+
     this.loading.present();
- 
+
   }
- 
+
   logout(){
- 
+
     this.authService.logout();
     this.navCtrl.setRoot(LoginPage);
- 
+
   }
- 
+
+  view(){
+    this.navCtrl.push(EventdetailPage);
+  }
+
 }

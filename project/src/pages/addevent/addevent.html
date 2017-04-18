@@ -31,7 +31,7 @@
     <ion-input type="text" [(ngModel)]="techEvent.type"></ion-input>
   </ion-item>
 
-  
+
 
   <ion-item>
   <ion-label>Date</ion-label>
@@ -50,6 +50,6 @@
 
 </ion-list>
 
-<button ion-button (click)="onSubmit()">Add Event</button>
+<button ion-button (click)="onSubmit(techevent.name, techevent.description, techevent.type)">Add Event</button>
 
 </ion-content>

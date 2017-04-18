@@ -1,0 +1,61 @@
+<ion-header>
+ <ion-navbar transparent>
+  <ion-title>
+    Review King
+  </ion-title>
+  <ion-buttons end>
+    <button ion-button icon-only (click)="addReview()"><ion-icon name="add"></ion-icon></button>
+  </ion-buttons>
+ </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list no-lines>
+
+    <ion-item-sliding *ngFor="let company of companies">
+
+      <ion-item>
+
+        
+
+        <h2>{{company.name}}</h2>
+       
+
+
+
+
+
+      </ion-item>
+
+     
+    </ion-item-sliding>
+
+  </ion-list>
+
+
+  <ion-list no-lines>
+
+    <ion-item-sliding *ngFor="let user of users">
+
+      <ion-item>
+
+        
+
+        <h2>{{user.name}}</h2>
+        <p>{{user.email}}</p>
+        <span>{{user.roles}}</span>
+       
+
+
+       
+
+
+      </ion-item>
+
+     
+    </ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>
