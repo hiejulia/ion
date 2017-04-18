@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports.init = initRoutes;
 
 function initRoutes(app) {

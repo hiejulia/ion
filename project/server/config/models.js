@@ -1,6 +1,5 @@
 'use strict';
 
-
 module.exports.init = initModels;
 
 function initModels(app) {
