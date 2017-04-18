@@ -5,6 +5,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
 
+
 @Component({
     selector: 'MyApp',
 

@@ -10,6 +10,13 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage} from '../pages/signup/signup';
 import { TechEventsProvider } from '../providers/tech-events';
 import { AuthProvider } from '../providers/auth';
+import {RegisterPage} from '../pages/register/register';
+import {SigninPage} from '../pages/signin/signin';
+
+import {AuthHttp} from '../providers/auth-http';
+import {AuthService} from '../providers/auth.service';
+
+
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
 
@@ -29,7 +36,9 @@ import { AuthProvider } from '../providers/auth';
     AddEvent,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    RegisterPage,
+    SigninPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -43,8 +52,14 @@ import { AuthProvider } from '../providers/auth';
     AddEvent,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    RegisterPage,
+    SigninPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage , TechEventsProvider, AuthProvider]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage , TechEventsProvider,
+   AuthProvider,
+   AuthHttp,
+   AuthService
+   ]
 })
 export class AppModule {}
