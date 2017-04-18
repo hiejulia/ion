@@ -17,59 +17,59 @@ export class TechEventsProvider {
     console.log('Hello this is tech event provider');
 
   }
-getTechEvents(){
+// getTechEvents(){
  
-    return new Promise((resolve, reject) => {
+//     return new Promise((resolve, reject) => {
  
-      let headers = new Headers();
-      headers.append('Authorization', this.authService.token);
+//       let headers = new Headers();
+//       headers.append('Authorization', this.authService.token);
  
-      this.http.get('localhost/api/techevents', {headers: headers})
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, (err) => {
-          reject(err);
-        });
-    });
+//       this.http.get('localhost/api/techevents', {headers: headers})
+//         .map(res => res.json())
+//         .subscribe(data => {
+//           resolve(data);
+//         }, (err) => {
+//           reject(err);
+//         });
+//     });
  
-  }
+//   }
  
-  createTechEvent(techevent){
+//   createTechEvent(techevent){
  
-    return new Promise((resolve, reject) => {
+//     return new Promise((resolve, reject) => {
  
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      headers.append('Authorization', this.authService.token);
+//       let headers = new Headers();
+//       headers.append('Content-Type', 'application/json');
+//       headers.append('Authorization', this.authService.token);
  
-      this.http.post('localhost/api/techevents', JSON.stringify(techevent), {headers: headers})
-        .map(res => res.json())
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
+//       this.http.post('localhost/api/techevents', JSON.stringify(techevent), {headers: headers})
+//         .map(res => res.json())
+//         .subscribe(res => {
+//           resolve(res);
+//         }, (err) => {
+//           reject(err);
+//         });
  
-    });
+//     });
  
-  }
+//   }
  
-  deleteTechEvent(id){
+//   deleteTechEvent(id){
  
-    return new Promise((resolve, reject) => {
+//     return new Promise((resolve, reject) => {
  
-        let headers = new Headers();
-        headers.append('Authorization', this.authService.token);
+//         let headers = new Headers();
+//         headers.append('Authorization', this.authService.token);
  
-        this.http.delete('localhost/api/techevents/' + id, {headers: headers}).subscribe((res) => {
-            resolve(res);
-        }, (err) => {
-            reject(err);
-        });    
+//         this.http.delete('http://localhost/api/techevents/' + id, {headers: headers}).subscribe((res) => {
+//             resolve(res);
+//         }, (err) => {
+//             reject(err);
+//         });    
  
-    });
+//     });
  
-  }
+//   }
  
 }

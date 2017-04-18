@@ -15,13 +15,13 @@ export class Data {
         console.log('Heelo this is mock data provider');
     }
 
-    //getTechEvents
-    getTechEvents(){
-        return this.techevents;
-    }
-    //addTechEvents
-    addTechEvents(t){
-        this.techevents.next(t);
-    }
+    // //getTechEvents
+    // getTechEvents(){
+    //     return this.techevents;
+    // }
+    // //addTechEvents
+    // addTechEvents(t){
+    //     this.techevents.next(t);
+    // }
 
 }

@@ -27,22 +27,22 @@ export class TechEvents {
   constructor(public navCtrl: NavController, public techeventService: TechEventsProvider, public modalCtrl: ModalController,
     public alertCtrl: AlertController, public authService: AuthProvider, public loadingCtrl: LoadingController,public _data:Data) {
 
-      //subscribe from server call
-      this._data.techevents.subscribe((t => {
-        this.techevents.push(t);
-      }))
+      // //subscribe from server call
+      // this._data.techevents.subscribe((t => {
+      //   this.techevents.push(t);
+      // }))
 
 
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TecheventsPage');
-    this.techeventService.getTechEvents().then((data) => {
-          this.techevents = data;
-    }, (err) => {//error
-        console.log("You are not allowed to get tech events");
-    });
+    // console.log('ionViewDidLoad TecheventsPage');
+    // this.techeventService.getTechEvents().then((data) => {
+    //       this.techevents = data;
+    // }, (err) => {//error
+    //     console.log("You are not allowed to get tech events");
+    // });
   }
 //addTechEvent
 /**
@@ -112,25 +112,25 @@ export class TechEvents {
   }
   */
 
-  showLoader(){
+  // showLoader(){
 
-    this.loading = this.loadingCtrl.create({
-      content: 'Authenticating...'
-    });
+  //   this.loading = this.loadingCtrl.create({
+  //     content: 'Authenticating...'
+  //   });
 
-    this.loading.present();
+  //   this.loading.present();
 
-  }
+  // }
 
-  logout(){
+  // logout(){
 
-    this.authService.logout();
-    this.navCtrl.setRoot(LoginPage);
+  //   this.authService.logout();
+  //   this.navCtrl.setRoot(LoginPage);
 
-  }
+  // }
 
-  view(){
-    this.navCtrl.push(EventdetailPage);
-  }
+  // view(){
+  //   this.navCtrl.push(EventdetailPage);
+  // }
 
 }

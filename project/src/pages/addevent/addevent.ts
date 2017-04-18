@@ -37,9 +37,9 @@ export class AddEvent {
 
   //onSubmit
   onSubmit(name, description, type) {
-    this._data.addTechEvents(this.techEvents);
-    this.techEvents = new TechEvent();
-    this.navCtrl.parent.select(0);//navigate to TechEvents page 1 parent : 0
+    // this._data.addTechEvents(this.techEvents);
+    // this.techEvents = new TechEvent();
+    // this.navCtrl.parent.select(0);//navigate to TechEvents page 1 parent : 0
   }
 
 }

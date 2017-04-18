@@ -27,34 +27,34 @@ export class SignupPage {
  
   }
  
-  register(){
+  // register(){
  
-    this.showLoader();
+  //   this.showLoader();
  
-    let details = {
-        email: this.email,
-        password: this.password,
-        role: this.role
-    };
+  //   let details = {
+  //       email: this.email,
+  //       password: this.password,
+  //       role: this.role
+  //   };
  
-    this.authService.createAccount(details).then((result) => {
-      this.loading.dismiss();
-      console.log(result);
-      this.navCtrl.setRoot(TechEvents);
-    }, (err) => {
-        this.loading.dismiss();
-    });
+  //   this.authService.createAccount(details).then((result) => {
+  //     this.loading.dismiss();
+  //     console.log(result);
+  //     this.navCtrl.setRoot(TechEvents);
+  //   }, (err) => {
+  //       this.loading.dismiss();
+  //   });
  
-  }
+  // }
  
-  showLoader(){
+  // showLoader(){
  
-    this.loading = this.loadingCtrl.create({
-      content: 'Authenticating...'
-    });
+  //   this.loading = this.loadingCtrl.create({
+  //     content: 'Authenticating...'
+  //   });
  
-    this.loading.present();
+  //   this.loading.present();
  
-  }
+  // }
  
 }
