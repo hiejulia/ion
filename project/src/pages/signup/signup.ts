@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,LoadingController } from 'ionic-angular';
-import { NgForm } from '@angular/forms';
-import { TabsPage } from '../tabs/tabs';
-import {TechEvents} from '../techevents/techevents';
-import { AuthProvider } from '../../providers/auth';
+// import { NgForm } from '@angular/forms';
+// import { TabsPage } from '../tabs/tabs';
+// import {TechEvents} from '../techevents/techevents';
+// import { AuthProvider } from '../../providers/auth';
 //import { UserData } from '../../providers/user-data';
 
 /*
@@ -17,13 +17,13 @@ import { AuthProvider } from '../../providers/auth';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  role: string;
-  email: string;
-  password: string;
+  // role: string;
+  // email: string;
+  // password: string;
 
-    loading:any;
+  //   loading:any;
 
-  constructor(public navCtrl: NavController, public authService: AuthProvider, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController) {
  
   }
  

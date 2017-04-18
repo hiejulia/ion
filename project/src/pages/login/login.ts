@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,LoadingController } from 'ionic-angular';
-import { NgForm } from '@angular/forms';
-//import { UserData } from '../../providers/user-data';
-import { TabsPage } from '../tabs/tabs';
-import { SignupPage } from '../signup/signup';
-import { AuthProvider } from '../../providers/auth';
-import {TechEvents} from '../techevents/techevents';
+// import { NgForm } from '@angular/forms';
+// //import { UserData } from '../../providers/user-data';
+// import { TabsPage } from '../tabs/tabs';
+// import { SignupPage } from '../signup/signup';
+// import { AuthProvider } from '../../providers/auth';
+// import {TechEvents} from '../techevents/techevents';
 
+import {TabsPage} from '../tabs/tabs';
 
 
 
@@ -21,11 +22,11 @@ import {TechEvents} from '../techevents/techevents';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  email:string;
-  password:string;
-  loading:any;
+  // email:string;
+  // password:string;
+  // loading:any;
 
-  constructor(public navCtrl: NavController, public authService: AuthProvider,public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController,public loadingCtrl: LoadingController) {
  
     }
 ionViewDidLoad() {
@@ -77,5 +78,9 @@ ionViewDidLoad() {
     //     this.loading.present();
  
     // }
+
+    login(){
+      this.navCtrl.push(TabsPage);
+    }
  
 }

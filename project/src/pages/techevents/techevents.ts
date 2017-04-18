@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,ModalController, AlertController, LoadingController } from 'ionic-angular';
-import {AuthProvider} from '../../providers/auth';
-import {LoginPage} from '../login/login';
-import {TechEventsProvider} from '../../providers/tech-events';
-import {Data} from '../../providers/mockdata';
-import {EventdetailPage} from '../eventdetail/eventdetail';
+// import {AuthProvider} from '../../providers/auth';
+// import {LoginPage} from '../login/login';
+// import {TechEventsProvider} from '../../providers/tech-events';
+// import {Data} from '../../providers/mockdata';
+// import {EventdetailPage} from '../eventdetail/eventdetail';
 
 
 
@@ -19,13 +19,12 @@ import {EventdetailPage} from '../eventdetail/eventdetail';
   templateUrl: 'techevents.html'
 })
 export class TechEvents {
-  techevents: any= [];
-  loading: any;
+  // techevents: any= [];
+  // loading: any;
 
 
 
-  constructor(public navCtrl: NavController, public techeventService: TechEventsProvider, public modalCtrl: ModalController,
-    public alertCtrl: AlertController, public authService: AuthProvider, public loadingCtrl: LoadingController,public _data:Data) {
+  constructor(public navCtrl: NavController) {
 
       // //subscribe from server call
       // this._data.techevents.subscribe((t => {

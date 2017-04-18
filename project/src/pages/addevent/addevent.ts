@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {Data} from '../../providers/mockdata';
 /*
   Generated class for the Addevent page.
 
@@ -8,9 +7,9 @@ import {Data} from '../../providers/mockdata';
   Ionic pages and navigation.
 */
 class TechEvent {
-  title:string;
-  description:string;
-  place:string;
+  // title:string;
+  // description:string;
+  // place:string;
 
   constructor(){}
 
@@ -28,7 +27,7 @@ class TechEvent {
 export class AddEvent {
   techEvents:TechEvent = new TechEvent();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public _data:Data) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddeventPage');
@@ -36,10 +35,10 @@ export class AddEvent {
 
 
   //onSubmit
-  onSubmit(name, description, type) {
-    // this._data.addTechEvents(this.techEvents);
-    // this.techEvents = new TechEvent();
-    // this.navCtrl.parent.select(0);//navigate to TechEvents page 1 parent : 0
-  }
+  // onSubmit(name, description, type) {
+  //   // this._data.addTechEvents(this.techEvents);
+  //   // this.techEvents = new TechEvent();
+  //   // this.navCtrl.parent.select(0);//navigate to TechEvents page 1 parent : 0
+  // }
 
 }
