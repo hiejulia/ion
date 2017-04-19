@@ -3,11 +3,12 @@ import { NavController, NavParams,LoadingController } from 'ionic-angular';
 // import { NgForm } from '@angular/forms';
 // //import { UserData } from '../../providers/user-data';
 // import { TabsPage } from '../tabs/tabs';
-// import { SignupPage } from '../signup/signup';
 // import { AuthProvider } from '../../providers/auth';
 // import {TechEvents} from '../techevents/techevents';
-import {SignupPage} from '../signup/signup';
+import {RegisterPage} from '../register/register';
 import {TabsPage} from '../tabs/tabs';
+
+import { AuthService } from '../../providers/auth-service';
 
 
 
@@ -25,8 +26,12 @@ export class LoginPage {
   // email:string;
   // password:string;
   // loading:any;
+private _authService: AuthService;
 
-  constructor(public navCtrl: NavController,public loadingCtrl: LoadingController) {
+  private _navCtrl: NavController;
+  constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,authService: AuthService) {
+      this._authService = authService;
+    this._navCtrl = navCtrl;
  
     }
 ionViewDidLoad() {
@@ -44,6 +49,17 @@ ionViewDidLoad() {
         // });
  
     }
+    signin(event, email, password) {
+    event.preventDefault();
+
+    let data = { email, password };
+
+    this._authService
+    .signin(data)
+    .subscribe((user) => {
+      this.navCtrl.push(TabsPage);
+    }, err => console.error(err));
+  }
  
     // login(){
  
@@ -84,7 +100,7 @@ ionViewDidLoad() {
     }
 
     createAccount(){
-      this.navCtrl.push(SignupPage);
+      this.navCtrl.push(RegisterPage);
     }
  
 }

@@ -7,12 +7,12 @@ import { TechEvents } from '../pages/techevents/techevents';
 import { AddEvent } from '../pages/addevent/addevent';
 import {TabsPage} from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage} from '../pages/signup/signup';
 import {EventdetailPage} from '../pages/eventdetail/eventdetail';
 import {RegisterPage} from '../pages/register/register';
-import {SigninPage} from '../pages/signin/signin';
 
+import {AuthHttp} from '../providers/auth-http';
 
+import {AuthService} from '../providers/auth-service';
 
 
 //import service to provider concerning with data from server call
@@ -34,9 +34,9 @@ import {SigninPage} from '../pages/signin/signin';
     AddEvent,
     TabsPage,
     LoginPage,
-    SignupPage,
+    
     RegisterPage,
-    SigninPage,
+    
     EventdetailPage
   ],
   imports: [
@@ -51,12 +51,13 @@ import {SigninPage} from '../pages/signin/signin';
     AddEvent,
     TabsPage,
     LoginPage,
-    SignupPage,
+    
     RegisterPage,
-    SigninPage,
+    
     EventdetailPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage 
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage ,AuthService,AuthHttp
+
   
    ]
 })
