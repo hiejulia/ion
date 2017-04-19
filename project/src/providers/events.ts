@@ -35,7 +35,7 @@ export class Events {
  
   }
  
-  createTodo(todo){
+  createEvent(event){
  
     return new Promise((resolve, reject) => {
  
@@ -43,7 +43,7 @@ export class Events {
       headers.append('Content-Type', 'application/json');
       headers.append('Authorization', this.authService.token);
  
-      this.http.post('https://YOUR_HEROKU_APP.herokuapp.com/api/todos', JSON.stringify(todo), {headers: headers})
+      this.http.post('https://YOUR_HEROKU_APP.herokuapp.com/api/todos', JSON.stringify(event), {headers: headers})
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -55,7 +55,7 @@ export class Events {
  
   }
  
-  deleteTodo(id){
+  deleteEvent(id){
  
     return new Promise((resolve, reject) => {
  
