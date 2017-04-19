@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, LoadingController,NavParams } from 'ionic-angular';
+
 
 import {TabsPage} from '../tabs/tabs';
-import { AuthService } from '../../providers/auth-service';
+import { Auth } from '../../providers/auth';
+
 
 /*
   Generated class for the Register page.
@@ -15,40 +17,51 @@ import { AuthService } from '../../providers/auth-service';
   templateUrl: 'register.html'
 })
 export class RegisterPage {
-  private _authService: AuthService;
+  role: string;
+  email: string;
+  password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,authService: AuthService) {
-    this._authService = authService;
+loading:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public authService: Auth, public loadingCtrl: LoadingController) {
+    this.loading = loadingCtrl;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-register(event, name, email, password) {
-    event.preventDefault();
-
-    let data = { name, email, password };
-
-    this._authService
-    .register(data)
-    .subscribe((user) => {
-      console.log(user);
-      this.navCtrl.push(TabsPage);
+  register(){
+ 
+    this.showLoader();
+ 
+    let details = {
+        email: this.email,
+        password: this.password,
+        role: this.role
+    };
+ 
+    this.authService.createAccount(details).then((result) => {
+      this.loading.dismiss();
+      console.log(result);
+      this.navCtrl.setRoot(TabsPage);
+    }, (err) => {
+        this.loading.dismiss();
     });
+ 
+  }
+ 
+  showLoader(){
+ 
+    this.loading = this.loadingCtrl.create({
+      content: 'Authenticating...'
+    });
+ 
+    this.loading.present();
+ 
   }
 
 
 
-  // register(event, name, email, password) {
-  //   event.preventDefault();
 
-  //   let data = { name, email, password };
 
-  //   this._authService
-  //   .register(data)
-  //   .subscribe((user) => {
-  //     console.log(user);
-  //   });
-  // }
 }

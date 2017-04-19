@@ -27,6 +27,7 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
   public authService: Auth) {
+    this.loading= loadingCtrl;
       
     }
 ionViewDidLoad() {
