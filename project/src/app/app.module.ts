@@ -10,10 +10,9 @@ import { LoginPage } from '../pages/login/login';
 import {EventdetailPage} from '../pages/eventdetail/eventdetail';
 import {RegisterPage} from '../pages/register/register';
 
-import {AuthHttp} from '../providers/auth-http';
 
-import {AuthService} from '../providers/auth-service';
-
+import { Events } from '../providers/events';
+import { Auth } from '../providers/auth';
 
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
@@ -56,7 +55,9 @@ import {AuthService} from '../providers/auth-service';
     
     EventdetailPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage ,AuthService,AuthHttp
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage ,
+  Events,
+  Auth
 
   
    ]

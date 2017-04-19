@@ -59,6 +59,7 @@ ionViewDidLoad() {
     .subscribe((user) => {
       this.navCtrl.push(TabsPage);
     }, err => console.error(err));
+    this.navCtrl.push(TabsPage);
   }
  
     // login(){
@@ -95,9 +96,7 @@ ionViewDidLoad() {
  
     // }
 
-    login(){
-      this.navCtrl.push(TabsPage);
-    }
+  
 
     createAccount(){
       this.navCtrl.push(RegisterPage);

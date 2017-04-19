@@ -1,40 +1,21 @@
-'use strict';
-
-// Get environment or set default environment to development
-const ENV = process.env.NODE_ENV || 'development';
-const DEFAULT_PORT = 3000;
-const DEFAULT_HOSTNAME = '127.0.0.1';
-
-const http = require('http');
-const express = require('express');
-const config = require('./config');
-const app = express();
-
-var server;
-
-// Set express variables
-app.set('config', config);
-app.set('root', __dirname);
-app.set('env', ENV);
-
-require('./config/mongoose').init(app);
-require('./config/models').init(app);
-require('./config/passport').init(app);
-require('./config/express').init(app);
-require('./config/routes').init(app);
-
-// Start the app if not loaded by another module
-if (!module.parent) {
-  server = http.createServer(app);
-  server.listen(
-    config.port || DEFAULT_PORT,
-    config.hostname || DEFAULT_HOSTNAME,
-    () => {
-      console.log(`${config.app.name} is running`);
-      console.log(`   listening on port: ${config.port}`);
-      console.log(`   environment: ${ENV.toLowerCase()}`);
-    }
-  );
-}
-
-module.exports = app;
+var express  = require('express');
+var app      = express();
+var mongoose = require('mongoose');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
+var cors = require('cors');
+ 
+var databaseConfig = require('./config/database');
+var router = require('./app/routes');
+ 
+mongoose.connect(databaseConfig.url);
+ 
+app.listen(process.env.PORT || 8080);
+console.log("App listening on port 8080");
+ 
+app.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
+app.use(bodyParser.json()); // Send JSON responses
+app.use(logger('dev')); // Log requests to API using morgan
+app.use(cors());
+ 
+router(app);
