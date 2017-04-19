@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams,ModalController, AlertController, LoadingController } from 'ionic-angular';
 // import {AuthProvider} from '../../providers/auth';
 // import {LoginPage} from '../login/login';
-// import {TechEventsProvider} from '../../providers/tech-events';
 // import {Data} from '../../providers/mockdata';
 // import {EventdetailPage} from '../eventdetail/eventdetail';
 
-
+import {EventdetailPage} from '../eventdetail/eventdetail';
 
 /*
   Generated class for the Techevents page.
@@ -19,15 +18,15 @@ import { NavController, NavParams,ModalController, AlertController, LoadingContr
   templateUrl: 'techevents.html'
 })
 export class TechEvents {
-  // techevents: any= [];
+  techevents: any= [];
   // loading: any;
 
 
 
   constructor(public navCtrl: NavController) {
 
-      // //subscribe from server call
-      // this._data.techevents.subscribe((t => {
+      //subscribe from server call
+      // this.techevents.subscribe((t => {
       //   this.techevents.push(t);
       // }))
 
@@ -37,11 +36,14 @@ export class TechEvents {
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad TecheventsPage');
-    // this.techeventService.getTechEvents().then((data) => {
+    // this.techeventProvider.getTechEvents().then((data) => {
     //       this.techevents = data;
     // }, (err) => {//error
     //     console.log("You are not allowed to get tech events");
     // });
+  }
+  view(){
+    this.navCtrl.push(EventdetailPage);
   }
 //addTechEvent
 /**

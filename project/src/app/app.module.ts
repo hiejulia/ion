@@ -8,13 +8,11 @@ import { AddEvent } from '../pages/addevent/addevent';
 import {TabsPage} from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage} from '../pages/signup/signup';
-import { TechEventsProvider } from '../providers/tech-events';
-import { AuthProvider } from '../providers/auth';
+import {EventdetailPage} from '../pages/eventdetail/eventdetail';
 import {RegisterPage} from '../pages/register/register';
 import {SigninPage} from '../pages/signin/signin';
 
-import {AuthHttp} from '../providers/auth-http';
-import {AuthService} from '../providers/auth.service';
+
 
 
 //import service to provider concerning with data from server call
@@ -38,7 +36,8 @@ import {AuthService} from '../providers/auth.service';
     LoginPage,
     SignupPage,
     RegisterPage,
-    SigninPage
+    SigninPage,
+    EventdetailPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -54,12 +53,11 @@ import {AuthService} from '../providers/auth.service';
     LoginPage,
     SignupPage,
     RegisterPage,
-    SigninPage
+    SigninPage,
+    EventdetailPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage , TechEventsProvider,
-   AuthProvider,
-   AuthHttp,
-   AuthService
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage 
+  
    ]
 })
 export class AppModule {}

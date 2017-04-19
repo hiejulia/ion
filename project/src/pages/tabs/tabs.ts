@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { TechEvents } from '../techevents/techevents';
 import { AddEvent } from '../addevent/addevent';
 import { MyEvents } from '../myevents/myevents';
+import {RegisterPage} from '../register/register';
 
 @Component({
   selector:'Tabspage',

@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 
 
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../providers/auth.service';
 /*
   Generated class for the Register page.
 
@@ -15,10 +14,8 @@ import { AuthService } from '../../providers/auth.service';
   templateUrl: 'register.html'
 })
 export class RegisterPage {
-  private _authService: AuthService;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,authService: AuthService) {
-    this._authService = authService;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -28,15 +25,15 @@ export class RegisterPage {
 
 
 
-  register(event, name, email, password) {
-    event.preventDefault();
+  // register(event, name, email, password) {
+  //   event.preventDefault();
 
-    let data = { name, email, password };
+  //   let data = { name, email, password };
 
-    this._authService
-    .register(data)
-    .subscribe((user) => {
-      console.log(user);
-    });
-  }
+  //   this._authService
+  //   .register(data)
+  //   .subscribe((user) => {
+  //     console.log(user);
+  //   });
+  // }
 }
