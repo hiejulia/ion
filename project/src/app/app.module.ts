@@ -13,6 +13,9 @@ import {RegisterPage} from '../pages/register/register';
 
 import { Events } from '../providers/events';
 import { Auth } from '../providers/auth';
+import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
@@ -39,7 +42,8 @@ import { Auth } from '../providers/auth';
     EventdetailPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
     // AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
@@ -55,7 +59,8 @@ import { Auth } from '../providers/auth';
     
     EventdetailPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage ,
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
+  
   Events,
   Auth
 

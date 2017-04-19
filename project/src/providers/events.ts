@@ -24,7 +24,7 @@ export class Events {
       let headers = new Headers();
       headers.append('Authorization', this.authService.token);
  
-      this.http.get('https://YOUR_HEROKU_APP.herokuapp.com/api/todos', {headers: headers})
+      this.http.get('http://localhost:8080/api/events', {headers: headers})
         .map(res => res.json())
         .subscribe(data => {
           resolve(data);
@@ -43,7 +43,7 @@ export class Events {
       headers.append('Content-Type', 'application/json');
       headers.append('Authorization', this.authService.token);
  
-      this.http.post('https://YOUR_HEROKU_APP.herokuapp.com/api/todos', JSON.stringify(event), {headers: headers})
+      this.http.post('https://localhost:8080/api/events', JSON.stringify(event), {headers: headers})
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -62,7 +62,7 @@ export class Events {
         let headers = new Headers();
         headers.append('Authorization', this.authService.token);
  
-        this.http.delete('https://YOUR_HEROKU_APP.herokuapp.com/api/todos/' + id, {headers: headers}).subscribe((res) => {
+        this.http.delete('https://localhost:8080/api/events/' + id, {headers: headers}).subscribe((res) => {
             resolve(res);
         }, (err) => {
             reject(err);

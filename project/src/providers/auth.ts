@@ -14,6 +14,8 @@ export class Auth {
 
   constructor(public http: Http, public storage: Storage) {
     console.log('Hello Auth Provider');
+        this.storage = new Storage();
+
   }
 
 
