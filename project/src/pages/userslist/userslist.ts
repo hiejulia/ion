@@ -27,7 +27,7 @@ import {AddEvent} from '../addevent/addevent';
 })
 export class UsersListPage {
   users: any;
- 
+
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
   public authService: Auth,public usersProvider:UsersProvider) {
  
@@ -38,12 +38,19 @@ export class UsersListPage {
     this.usersProvider.getUsers().then((data) => {
       console.log(data);
       this.users = data;
+      
     });
  
   }
 
   goToDetail(){
       console.log('go to user profile');
+  }
+
+  //follow user
+  follow(user){
+      console.log(user);
+      alert(user);
   }
  
   

@@ -15,8 +15,8 @@ export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   tab1Root: any = MyEvents;
-  tab2Root: any = EventdetailPage;
-  tab3Root: any = UsersListPage;
+  tab2Root: any = UsersListPage;
+  tab3Root: any = EventdetailPage;
 
   constructor() {
 

@@ -10,6 +10,11 @@
 </ion-header>
  
 <ion-content>
+    <ion-searchbar
+  
+  [showCancelButton]="shouldShowCancel"
+ >
+</ion-searchbar>
  
   <ion-list no-lines>
  
@@ -23,7 +28,11 @@
  
         <h2>{{user.email}}</h2>
         <p>{{user.role}}</p>
- 
+        <button ion-button round (click)="follow(user.email)">
+
+            <ion-icon name="person-add">Follow</ion-icon>
+        </button>
+
        
 
       </ion-item>

@@ -23,7 +23,7 @@ import {AddEvent} from '../addevent/addevent';
   templateUrl: 'myevents.html'
 })
 export class MyEvents {
-  reviews: any;
+  reviews: Array<Object>;
  
   constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
   public authService: Auth) {
@@ -57,11 +57,11 @@ export class MyEvents {
   deleteReview(review){
  
     //Remove locally
-      let index = this.reviews.indexOf(review);
+      // let index = this.reviews.indexOf(review);
  
-      if(index > -1){
-        this.reviews.splice(index, 1);
-      }   
+      // if(index > -1){
+      //   this.reviews.splice(index, 1);
+      // }   
  
     //Remove from database
     this.reviewService.deleteReview(review._id);
@@ -75,9 +75,16 @@ export class MyEvents {
  
   }
 
-  goToDetail(){
+  goToDetail(review){
     console.log('go to the detail page');
-    this.navCtrl.push(EventdetailPage);
-  }
+    // this.navCtrl.push(EventdetailPage);
+       this.navCtrl.push(EventdetailPage, {review: review._id}); 
+       console.log(review);
 
+
+  // speakerDetail(speaker) { 
+  //   this.nav.push(SpeakerDetail, {speaker: speaker}); 
+  // } 
+
+}
 }

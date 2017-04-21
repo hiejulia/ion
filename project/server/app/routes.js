@@ -92,6 +92,21 @@ module.exports = function(app){
 
 
 
+     app.get('/api/reviews/:review_id', function(req, res) {
+ 
+        
+ Review.findById({
+            _id : req.params.review_id
+        }, function(err, review) {
+            if(err) {
+                res.send(err);
+            }
+
+            res.json(review);
+ 
+        });
+    });
+
 
 
     //get list of current users
