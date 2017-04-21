@@ -22,7 +22,7 @@ export class Events {
     return new Promise((resolve, reject) => {
  
       let headers = new Headers();
-      headers.append('Authorization', this.authService.token);
+      // headers.append('Authorization', this.authService.token);
  
       this.http.get('http://localhost:8080/api/events', {headers: headers})
         .map(res => res.json())
@@ -41,7 +41,7 @@ export class Events {
  
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      headers.append('Authorization', this.authService.token);
+      // headers.append('Authorization', this.authService.token);
  
       this.http.post('https://localhost:8080/api/events', JSON.stringify(event), {headers: headers})
         .map(res => res.json())

@@ -19,9 +19,8 @@ exports.getEvents = function(req, res, next){
 exports.createEvent = function(req, res, next){
  
     Event.create({
-        title : req.body.title,
-        description:req.body.description,
-        location:req.body.location
+        title : req.body.title
+        
 
     }, function(err, event) {
  

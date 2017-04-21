@@ -27,8 +27,8 @@ module.exports = function(app){
     // Todo Routes
     apiRoutes.use('/events', eventRoutes);
  
-    eventRoutes.get('/', requireAuth, AuthenticationController.roleAuthorization(['member','admin']), EventController.getEvents);
-    eventRoutes.post('/', requireAuth, AuthenticationController.roleAuthorization(['admin']), EventController.createEvent);
+    eventRoutes.get('/', requireAuth,  EventController.getEvents);
+    eventRoutes.post('/', requireAuth, EventController.createEvent);
     eventRoutes.delete('/:event_id', requireAuth, AuthenticationController.roleAuthorization(['admin']), EventController.deleteEvent);
  
     // Set up routes

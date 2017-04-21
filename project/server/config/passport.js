@@ -16,11 +16,11 @@ var localLogin = new LocalStrategy(localOptions, function(email, password, done)
         email: email
     }, function(err, user){
  
-        if(err){
+        if(err){//if err
             return done(err);
         }
  
-        if(!user){
+        if(!user){//if not user 
             return done(null, false, {error: 'Login failed. Please try again.'});
         }
  

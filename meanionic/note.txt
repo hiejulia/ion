@@ -1,3 +1,0 @@
-http://thejackalofjavascript.com/an-end-to-end-hybrid-app/
-http://www.gajotres.net/ionic-2-tutorial-lets-create-our-first-application/2/
-https://www.joshmorony.com/building-a-review-app-with-ionic-2-mongodb-node/
