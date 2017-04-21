@@ -1,0 +1,40 @@
+<ion-header>
+ <ion-navbar transparent>
+  <ion-title>
+    Review King
+  </ion-title>
+  <ion-buttons end>
+    
+  </ion-buttons>
+ </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+ 
+  <ion-list no-lines>
+ 
+    <ion-item-sliding *ngFor="let user of users">
+ 
+      <ion-item (click)="goToDetail()">
+ 
+        <ion-avatar item-left>
+          <img src="http://img06.deviantart.net/2d85/i/2013/261/9/c/rwby_ruby_rose_ah_avatar_by_swedishx25-d6msfsz.png">
+        </ion-avatar>
+ 
+        <h2>{{user.email}}</h2>
+        <p>{{user.role}}</p>
+ 
+       
+
+      </ion-item>
+ 
+      
+      
+         
+      
+    </ion-item-sliding>
+ 
+  </ion-list>
+ 
+ 
+</ion-content>

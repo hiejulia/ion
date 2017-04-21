@@ -11,7 +11,7 @@ export class UsersProvider {
     this.data = null;
   }
  
-  getReviews(){
+  getUsers(){
  
     if (this.data) {
       return Promise.resolve(this.data);
@@ -19,7 +19,7 @@ export class UsersProvider {
  
     return new Promise(resolve => {
  
-      this.http.get('http://localhost:8080/api/reviews')
+      this.http.get('http://localhost:8080/api/users')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -29,24 +29,6 @@ export class UsersProvider {
  
   }
  
-  createReview(review){
- 
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
- 
-    this.http.post('http://localhost:8080/api/reviews', JSON.stringify(review), {headers: headers})
-      .subscribe(res => {
-        console.log(res.json());
-      });
- 
-  }
- 
-  deleteReview(id){
- 
-    this.http.delete('http://localhost:8080/api/reviews/' + id).subscribe((res) => {
-      console.log(res.json());
-    });    
- 
-  }
+  
  
 }

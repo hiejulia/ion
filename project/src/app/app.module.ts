@@ -18,6 +18,11 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import {ReviewsProvider} from '../providers/reviews';
 
+import {UsersProvider} from '../providers/users';
+import {UsersListPage} from '../pages/userslist/userslist';
+
+
+
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
 
@@ -39,7 +44,7 @@ import {ReviewsProvider} from '../providers/reviews';
     LoginPage,
     
     RegisterPage,
-    
+    UsersListPage,
     EventdetailPage
   ],
   imports: [
@@ -55,7 +60,7 @@ import {ReviewsProvider} from '../providers/reviews';
     AddEvent,
     TabsPage,
     LoginPage,
-    
+    UsersListPage,
     RegisterPage,
     
     EventdetailPage
@@ -64,8 +69,8 @@ import {ReviewsProvider} from '../providers/reviews';
   
   Events,
   ReviewsProvider,
-  Auth
-
+  Auth,
+  UsersProvider
   
    ]
 })
