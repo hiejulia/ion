@@ -14,7 +14,7 @@ export class Auth {
 
   constructor(public http: Http, public storage: Storage) {
     console.log('Hello Auth Provider');
-        this.storage = new Storage();
+      console.log('storage init');
 
   }
 
@@ -34,6 +34,7 @@ export class Auth {
             this.http.get('http://localhost:8080/api/auth/protected', {headers: headers})
                 .subscribe(res => {
                     resolve(res);
+                    console.log('authorized');
                 }, (err) => {
                     reject(err);
                 }); 
@@ -66,7 +67,10 @@ export class Auth {
     });
  
   }
- 
+
+
+ ///login with credentials 
+
   login(credentials){
  
     return new Promise((resolve, reject) => {
@@ -90,7 +94,7 @@ export class Auth {
     });
  
   }
- 
+ //log out set the token = ''
   logout(){
     this.storage.set('token', '');
   }

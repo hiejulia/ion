@@ -7,6 +7,11 @@ var AuthenticationController = require('./controllers/authentication'),
  
 var requireAuth = passport.authenticate('jwt', {session: false}),
     requireLogin = passport.authenticate('local', {session: false});
+
+
+var Review= require('./models/review');
+var User= require('./models/user');
+
  
 module.exports = function(app){
  
@@ -27,11 +32,84 @@ module.exports = function(app){
     // Todo Routes
     apiRoutes.use('/events', eventRoutes);
  
-    eventRoutes.get('/', requireAuth,  EventController.getEvents);
-    eventRoutes.post('/', requireAuth, EventController.createEvent);
-    eventRoutes.delete('/:event_id', requireAuth, AuthenticationController.roleAuthorization(['admin']), EventController.deleteEvent);
+    eventRoutes.get('/', EventController.getEvents);
+    eventRoutes.post('/', EventController.createEvent);
+    eventRoutes.delete('/:event_id',  EventController.deleteEvent);
  
     // Set up routes
     app.use('/api', apiRoutes);
+
+
+
+    app.get('/api/reviews', function(req, res) {
+ 
+        console.log("fetching reviews");
+ 
+        // use mongoose to get all reviews in the database
+        Review.find(function(err, reviews) {
+ 
+            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+            if (err)
+                res.send(err)
+ 
+            res.json(reviews); // return all reviews in JSON format
+        });
+    });
+ 
+    // create review and send back all reviews after creation
+    app.post('/api/reviews', function(req, res) {
+ 
+        console.log("creating review");
+ 
+        // create a review, information comes from request from Ionic
+        Review.create({
+            title : req.body.title,
+            description : req.body.description,
+            rating: req.body.rating,
+            done : false
+        }, function(err, review) {
+            if (err)
+                res.send(err);
+ 
+            // get and return all the reviews after you create another
+            Review.find(function(err, reviews) {
+                if (err)
+                    res.send(err)
+                res.json(reviews);
+            });
+        });
+ 
+    });
+ 
+    // delete a review
+    app.delete('/api/reviews/:review_id', function(req, res) {
+        Review.remove({
+            _id : req.params.review_id
+        }, function(err, review) {
+ 
+        });
+    });
+
+
+
+
+
+    //get list of current users
+    app.get('/api/users', function(req, res) {
+ 
+        console.log("fetching users");
+ 
+        // use mongoose to get all reviews in the database
+        User.find(function(err, users) {
+ 
+            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+            if (err)
+                res.send(err)
+ 
+            res.json(users); // return all reviews in JSON format
+        });
+    });
  
 }
+
+

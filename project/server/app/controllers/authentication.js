@@ -94,6 +94,7 @@ exports.roleAuthorization = function(roles){
             }
  
             if(roles.indexOf(foundUser.role) > -1){
+                console.log('Authorized!!!');
                 return next();
             }
  

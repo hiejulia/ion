@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+
+
+
+import { ViewController } from 'ionic-angular';
 /*
   Generated class for the Addevent page.
 
@@ -25,20 +29,28 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'addevent.html'
 })
 export class AddEvent {
-  // techEvents:TechEvent = new TechEvent();
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddeventPage');
+  title: any;
+  description: any;
+  rating: any;
+ 
+  constructor(public viewCtrl: ViewController) {
+ 
   }
-
-
-  //onSubmit
-  // onSubmit(name, description, type) {
-  //   // this._data.addTechEvents(this.techEvents);
-  //   // this.techEvents = new TechEvent();
-  //   // this.navCtrl.parent.select(0);//navigate to TechEvents page 1 parent : 0
-  // }
+ 
+  save(): void {
+ 
+    let review = {
+      title: this.title,
+      description: this.description,
+      rating: this.rating
+    };
+ 
+    this.viewCtrl.dismiss(review);
+ 
+  }
+ 
+  close(): void {
+    this.viewCtrl.dismiss();
+  }
 
 }

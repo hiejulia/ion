@@ -1,55 +1,35 @@
-<!--
-  Generated template for the Addevent page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Add Event</ion-title>
-  </ion-navbar>
-
+ <ion-toolbar transparent>
+  <ion-title>Add Review</ion-title>
+  <ion-buttons end>
+    <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+  </ion-buttons>
+ </ion-toolbar>
 </ion-header>
-
-
-<ion-content padding>
-  <ion-list>
-
-  <ion-item>
-    <ion-label floating>Event Name</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>Description</ion-label>
-    <ion-input type="text" ></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>Type of event</ion-label>
-    <ion-input type="text" ></ion-input>
-  </ion-item>
-
-
-
-  <ion-item>
-  <ion-label>Date</ion-label>
-  <ion-datetime displayFormat="MM/DD/YYYY" ></ion-datetime>
-</ion-item>
-
-<ion-item>
-    <ion-label floating>Place</ion-label>
-    <ion-input type="text" ></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>Host</ion-label>
-    <ion-input type="text" ></ion-input>
-  </ion-item>
-
-</ion-list>
-
-<button ion-button>Add Event</button>
-
+ 
+<ion-content>
+ 
+  <ion-list no-lines>
+ 
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input [(ngModel)]="title" type="text"></ion-input>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label floating>Review</ion-label>
+      <ion-textarea [(ngModel)]="description"></ion-textarea>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="rating">
+        <ion-icon range-left name="sad"></ion-icon>
+        <ion-icon range-right name="happy"></ion-icon>
+      </ion-range>
+    </ion-item>
+ 
+  </ion-list>
+ 
+  <button ion-button full color="secondary" (click)="save()">Save</button>
+ 
 </ion-content>

@@ -4,6 +4,7 @@ import { TechEvents } from '../techevents/techevents';
 import { AddEvent } from '../addevent/addevent';
 import { MyEvents } from '../myevents/myevents';
 import {RegisterPage} from '../register/register';
+import {EventdetailPage} from '../eventdetail/eventdetail';
 
 @Component({
   selector:'Tabspage',
@@ -12,9 +13,9 @@ import {RegisterPage} from '../register/register';
 export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
-  tab1Root: any = TechEvents;
-  tab2Root: any = AddEvent;
-  tab3Root: any = MyEvents;
+  tab3Root: any = TechEvents;
+  tab2Root: any = EventdetailPage;
+  tab1Root: any = MyEvents;
 
   constructor() {
 

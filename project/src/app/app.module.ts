@@ -16,6 +16,7 @@ import { Auth } from '../providers/auth';
 import { Storage } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage';
 
+import {ReviewsProvider} from '../providers/reviews';
 
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
@@ -62,6 +63,7 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
   
   Events,
+  ReviewsProvider,
   Auth
 
   

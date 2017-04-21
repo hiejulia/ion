@@ -60,7 +60,9 @@ login(){
         this.authService.login(credentials).then((result) => {
             this.loading.dismiss();
             console.log(result);
+            console.log('token is'+this.authService.token);
             this.navCtrl.setRoot(TabsPage);
+            
         }, (err) => {
             this.loading.dismiss();
             console.log(err);

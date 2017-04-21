@@ -30,10 +30,8 @@ export class TechEvents {
   public eventService: Events, public modalCtrl: ModalController, 
     public alertCtrl: AlertController, public authService: Auth, public loadingCtrl: LoadingController) {
 
-      //subscribe from server call
-      // this.techevents.subscribe((t => {
-      //   this.techevents.push(t);
-      // }))
+     console.log('Start with Tech event');
+
 
 
 
@@ -48,45 +46,61 @@ export class TechEvents {
   }
   
 addEvent(){
+
+  let eventInput = prompt('Put the event');
+  if(eventInput) {
+    this.showLoader();
+    this.eventService.createEvent(eventInput).then((result) => {
+      this.loading.dismiss();
+      this.events = result;
+      console.log('event created');
+    },(err) => {
+      this.loading.dismiss();
+      console.log('Cannot create new event');
+      console.dir(err);
+    })
+  }
  
-    let prompt = this.alertCtrl.create({
-      title: 'Add Event',
-      message: 'Describe your todo below:',
-      inputs: [
-        {
-          name: 'title'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel'
-        },
-        {
-          text: 'Save',
-          handler: todo => {
+    // let prompt = this.alertCtrl.create({
+    //   title: 'Add Event',
+    //   message: 'Describe your event below:',
+    //   inputs: [
+    //     {
+    //       name: 'title'
+    //     }
+    //   ],
+    //   buttons: [
+    //     {
+    //       text: 'Cancel'
+    //     },
+    //     {
+    //       text: 'Save',
+    //       handler: event => {
  
-                if(todo){
+    //             if(event){
  
-                    this.showLoader();
+    //                 this.showLoader();
  
-                    this.eventService.createEvent(event).then((result) => {
-                        this.loading.dismiss();
-                        this.events = result;
-                        console.log("todo created");
-                    }, (err) => {
-                        this.loading.dismiss();
-                        console.log("not allowed");
-                    });
+    //                 this.eventService.createEvent(event).then((result) => {
+    //                     this.loading.dismiss();
+    //                     this.events = result;
+    //                     console.log("event created");
+    //                 }, (err) => {
+    //                     this.loading.dismiss();
+    //                     console.log(err);
+    //                     console.dir(err);
+    //                     console.log("not allowed");
+    //                 });
  
-                }
+    //             }
  
  
-          }
-        }
-      ]
-    });
+    //       }
+    //     }
+    //   ]
+    // });
  
-    prompt.present();
+    // prompt.present();
  
   }
  

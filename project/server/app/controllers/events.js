@@ -11,6 +11,7 @@ exports.getEvents = function(req, res, next){
         }
  
         res.json(events);
+        
  
     });
  
