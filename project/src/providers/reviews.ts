@@ -83,4 +83,26 @@ export class ReviewsProvider {
 
   
     }
+
+
+    updateReviewById(id,nOp){
+ 
+//  return new Promise(resolve => {
+ 
+//       this.http.get('http://localhost:8080/api/reviews/'+id)
+//         .map(res => res.json())
+//         .subscribe(data => {
+//           this.data = data;
+//           resolve(Array.of(this.data));
+//         });
+//     });
+
+  return this.http.patch('http://localhost:8080/api/reviews/'+id,nOp)
+                 .map(res => res.json())
+                 .catch(this.handleError);
+ 
+    
+
+  
+    }
 }

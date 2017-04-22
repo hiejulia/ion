@@ -73,9 +73,19 @@ goBack() {
 
   //participant
   participant(n){
+
+  // n.numberOfParticipants++;
   console.log(n.numberOfParticipants ); 
-  n.numberOfParticipants++;
-  console.log(n.numberOfParticipants ); 
+  var reviewId = n._id;
+  var numberOfParticipants = n.numberOfParticipants;
+
+
+  // this.reviewService.getReviewById(reviewId).subscribe((data) => {
+  //     this.review = data;
+    this.reviewService.updateReviewById(reviewId,numberOfParticipants).subscribe((result) => {
+      this.review.numberOfParticipants = result.numberOfParticipants;
+    })
+
 }
 
   // ionViewWillEnter(){
