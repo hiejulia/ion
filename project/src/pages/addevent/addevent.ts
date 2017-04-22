@@ -37,6 +37,8 @@ export class AddEvent {
   organization:any;
   isActive:boolean;
   numberOfParticipants:number;
+  startDate:any;
+  endDate:any;
 
  
   constructor(public viewCtrl: ViewController) {
@@ -53,7 +55,9 @@ export class AddEvent {
       location:this.location,
       organization:this.organization,
       isActive:this.isActive,
-      numberOfParticipants: this.numberOfParticipants
+      numberOfParticipants: this.numberOfParticipants,
+      startDate:this.startDate,
+      endDate:this.endDate
     };
  
     this.viewCtrl.dismiss(review);

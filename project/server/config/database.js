@@ -2,5 +2,5 @@
 
 
 module.exports = {
-    'url': 'mongodb://localhost/ion15'
+    'url': 'mongodb://localhost/ion18'
 }

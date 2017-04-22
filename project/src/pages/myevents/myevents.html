@@ -13,9 +13,9 @@
  
   <ion-list no-lines>
  
-    <ion-item-sliding *ngFor="let review of reviews">
+    <ion-item-sliding *ngFor="let review of reviews ">
  
-      <ion-item>
+      <ion-item class="card">
  
         <ion-avatar item-left>
           <img src="https://api.adorable.io/avatars/75/{{review.title}}">
@@ -23,7 +23,13 @@
  
         <h2>{{review.title}}</h2>
         <p>{{review.description}}</p>
- 
+        <p>{{review.content}}</p>
+        <p>{{review.location}}</p>
+        <p>{{review.startDate}}</p>
+        <p>{{review.endDate}}</p>
+        <p>{{review.isActive}}</p>
+        <p>{{review.numberOfParticipants}}</p>
+
         <ion-icon *ngIf="review.rating < 50" danger name="sad"></ion-icon>
         <ion-icon *ngIf="review.rating >= 50" secondary name="happy"></ion-icon> 
         {{review.rating}}

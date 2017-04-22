@@ -13,9 +13,11 @@
  
     <ion-item>
       <ion-label floating>Title</ion-label>
-      <ion-input [(ngModel)]="title" type="text"></ion-input>
+      <ion-input [(ngModel)]="title" type="text" name="title" required ></ion-input>
     </ion-item>
- 
+ <div [hidden]="title && (title.valid || (title.pristine && !isSubmitted))" class="note danger">
+        Title is required
+      </div>
     <ion-item>
       <ion-label floating>Description</ion-label>
       <ion-textarea [(ngModel)]="description"></ion-textarea>
@@ -36,6 +38,19 @@
       <ion-label floating>Organization</ion-label>
       <ion-textarea [(ngModel)]="organization"></ion-textarea>
     </ion-item>
+
+
+       <ion-item>
+      <ion-label floating>Start Date</ion-label>
+  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="startDate"></ion-datetime>
+    </ion-item>
+
+
+   <ion-item>
+      <ion-label floating>End Date</ion-label>
+  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="endDate"></ion-datetime>
+    </ion-item>
+
 
 
 
@@ -64,3 +79,43 @@
   <button ion-button full color="secondary" (click)="save()">Save</button>
  
 </ion-content>
+
+
+
+<!--
+<div *ngIf="(isSubmitted && f.controls.comment && f.controls.comment.pristine) || ((f.controls.comment) && (f.controls.comment.dirty && f.controls.comment.errors))" class="note danger">
+        Please enter {{ 4 - (f.controls.comment.errors.minlength ? f.controls.comment.errors.minlength.actualLength : 0) }} more characters
+      </div>-->
+
+
+<!--
+
+      <div [hidden]="(!isSubmitted) || (f.controls.tos && data.tos)" class="note danger">
+        Please check Agree!
+      </div>-->
+
+
+
+<!--<div *ngIf="(isSubmitted && f.controls.comment && f.controls.comment.pristine) || ((f.controls.comment) && (f.controls.comment.dirty && f.controls.comment.errors))" class="note danger">
+  Please enter {{ 4 - (f.controls.comment.errors.minlength ? f.controls.comment.errors.minlength.actualLength : 0) }} more characters
+</div>-->
+
+
+
+<!--getQuotes() {
+    this.http.get("http://localhost:8080/test.json")
+      .subscribe(res => {
+        this.data = res.json();
+        console.log(this.data);
+      }, error => {
+        console.log(error);
+      });
+  }-->
+
+
+  <!--import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';-->
+
+
+
+<!--this.data = JSON.parse(res._body);-->

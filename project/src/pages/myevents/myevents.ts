@@ -31,9 +31,13 @@ export class MyEvents {
   }
  
   ionViewDidLoad(){
+    // this.todoService.load()
+    //     .subscribe(data => {
+    //       this.todos = data;
+    //     })
  
-    this.reviewService.getReviews().then((data) => {
-      this.reviews = data;
+    this.reviewService.getReviews().subscribe(data => {
+        this.reviews = data;
     });
  
   }
@@ -77,8 +81,7 @@ export class MyEvents {
   goToDetail(review){
     console.log('go to the detail page');
     // this.navCtrl.push(EventdetailPage);
-       this.navCtrl.push(EventdetailPage, {review: review._id}); 
-       console.log(review._id);
+        this.navCtrl.push(EventdetailPage, {reviewId: review._id}); 
 
 
   // speakerDetail(speaker) { 

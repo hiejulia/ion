@@ -35,7 +35,7 @@ export class UsersListPage {
  
   ionViewDidLoad(){
  
-    this.usersProvider.getUsers().then((data) => {
+    this.usersProvider.getUsers().subscribe((data) => {
       console.log(data);
       this.users = data;
       

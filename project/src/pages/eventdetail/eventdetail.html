@@ -13,17 +13,31 @@
 
    <ion-item>
  
-        <ion-avatar item-left>
+        <!--<ion-avatar item-left>
           <img src="https://api.adorable.io/avatars/75/{{review.title}}">
-        </ion-avatar>
+        </ion-avatar-->
  
-        <h2>{{review.title}}</h2>
-        <p>{{review.description}}</p>
+      
+        <!--<p>{{review["description"]}}</p>
+        <p>{{review.content}}</p>
+        <p>{{review.location}}</p>
+        <p>{{review.organization}}</p>
+        <p>{{review.startDate}}</p>
+        <p>{{review.endDate}}</p>
+        <p>{{review.numberOfParticipants}}</p>
+        <p>{{review.isActive}}</p>-->
  
-        <ion-icon *ngIf="review.rating < 50" danger name="sad"></ion-icon>
-        <ion-icon *ngIf="review.rating >= 50" secondary name="happy"></ion-icon> 
-        {{review.rating}}
+        
+        <button ion-button round outline (click)="showMap(review)">Show Map</button>
+        <button ion-button round outline (click) ="participant(review)">Participate !!!</button>
+
+
   
       </ion-item>
+
+      <button ion-button block (click)="goBack()">
+    goBack
+  </button>
+
  
 </ion-content>

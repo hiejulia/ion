@@ -16,7 +16,10 @@ function setUserInfo(request){
     return {
         _id: request._id,
         email: request.email,
-        role: request.role
+        role: request.role,
+        firstname:request.firstname,
+        lastname:request.lastname
+        
     };
 }
  

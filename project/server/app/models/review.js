@@ -39,10 +39,10 @@ var ReviewSchema = new mongoose.Schema({
         required:'Location cannot be blank'
     },
     startDate: {
-		type: Date
+		type: String
 	},
 	endDate: {
-		type: Date
+		type: String
 	},
     organization: {
 		type: String,

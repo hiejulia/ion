@@ -66,8 +66,13 @@ module.exports = function(app){
             title : req.body.title,
             description : req.body.description,
             rating: req.body.rating,
-            creator:req.user,
-            done : false
+            content:req.body.content,
+            location:req.body.location,
+            organization:req.body.organization,
+            isActive:req.body.isActive,
+            numberOfParticipants:req.body.numberOfParticipants,
+            startDate:req.body.startDate,
+            endDate:req.body.endDate
         }, function(err, review) {
             if (err)
                 res.send(err);
@@ -87,6 +92,12 @@ module.exports = function(app){
         Review.remove({
             _id : req.params.review_id
         }, function(err, review) {
+            if(err) {
+                res.send(err);
+            }
+
+            //else
+            res.json(review);
  
         });
     });

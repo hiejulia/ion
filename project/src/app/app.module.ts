@@ -9,7 +9,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import {EventdetailPage} from '../pages/eventdetail/eventdetail';
 import {RegisterPage} from '../pages/register/register';
-
+import {GeolocationPage } from '../pages/geolocation/geolocation';
 
 import { Events } from '../providers/events';
 import { Auth } from '../providers/auth';
@@ -20,6 +20,8 @@ import {ReviewsProvider} from '../providers/reviews';
 
 import {UsersProvider} from '../providers/users';
 import {UsersListPage} from '../pages/userslist/userslist';
+
+
 
 
 
@@ -45,11 +47,19 @@ import {UsersListPage} from '../pages/userslist/userslist';
     
     RegisterPage,
     UsersListPage,
-    EventdetailPage
+    EventdetailPage,
+    GeolocationPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: 'Go Back',
+      iconMode: 'md',
+      modalEnter: 'modal-slide-in',
+      modalLeave: 'modal-slide-out',
+      tabbarPlacement: 'bottom',
+      pageTransition: 'ios',
+    })
     // AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
@@ -62,6 +72,7 @@ import {UsersListPage} from '../pages/userslist/userslist';
     LoginPage,
     UsersListPage,
     RegisterPage,
+    GeolocationPage,
     
     EventdetailPage
   ],

@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 
-
+import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/Rx';
+ 
 
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {ReviewsProvider} from '../../providers/reviews';
@@ -10,7 +13,7 @@ import { Events } from '../../providers/events';
 import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
-
+import {GeolocationPage} from '../geolocation/geolocation';
 
 
 /*
@@ -27,21 +30,64 @@ export class EventdetailPage {
 
   
  
- review:any;
+ review:object;
   constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
   public authService: Auth, public params:NavParams) {
 
     //  this.review = this.params.get('review'); 
-    let reviewId = this.params.get('review');   
+    var reviewId = this.params.get('reviewId'); 
+     console.log(reviewId);  
 
-    this.review = this.reviewService.getReviewById(reviewId).then((data) => {
+    this.reviewService.getReviewById(reviewId).subscribe((data) => {
       this.review = data;
-      // console.log(this.review);
+      console.log(typeof(this.review));
+      console.log(this.review["location"]);
 
     });
   }
-       
+
+  // ionViewWillEnter(){
+   
  
+  //    var reviewId = this.params.get('reviewId'); 
+  //    console.log(reviewId);  
+
+  //   this.reviewService.getReviewById(reviewId).subscribe((data) => {
+  //     this.review = data;
+  //     console.log(this.review);
+
+  //   });
+ 
+  // }
+
+  //show map
+
+  showMap(l){
+    console.log(l.location);
+    this.navCtrl.push(GeolocationPage);
+  }
+goBack() {
+    this.navCtrl.pop();
+  }
+
+
+  //participant
+  participant(n){
+  console.log(n.numberOfParticipants );     
+}
+
+  // ionViewWillEnter(){
+    
+  // let reviewId = this.params.get('reviewId');   
+
+  //   this.reviewService.getReviewById(reviewId).subscribe((data) => {
+  //     this.review = data;
+  //     // console.log(this.review);
+
+  //   });
+
+  // }
+
   }
  
   // ionViewDidLoad(){
@@ -55,10 +101,6 @@ export class EventdetailPage {
  
   // }
 
-  // ionViewWillEnter(){
-  //    this.getReviewById();
-
-  // }
 
 
   // getReviewById(){
