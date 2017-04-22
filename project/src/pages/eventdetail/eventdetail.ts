@@ -73,7 +73,9 @@ goBack() {
 
   //participant
   participant(n){
-  console.log(n.numberOfParticipants );     
+  console.log(n.numberOfParticipants ); 
+  n.numberOfParticipants++;
+  console.log(n.numberOfParticipants ); 
 }
 
   // ionViewWillEnter(){
