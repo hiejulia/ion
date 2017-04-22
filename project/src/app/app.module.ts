@@ -24,7 +24,7 @@ import {UsersListPage} from '../pages/userslist/userslist';
 
 import {Geolocation} from '@ionic-native/geolocation'
 
-
+import {ProfilePage} from '../pages/profile/profile';
 
 
 
@@ -52,7 +52,8 @@ import {Geolocation} from '@ionic-native/geolocation'
     RegisterPage,
     UsersListPage,
     EventdetailPage,
-    GeolocationPage
+    GeolocationPage,
+    ProfilePage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -77,7 +78,7 @@ import {Geolocation} from '@ionic-native/geolocation'
     UsersListPage,
     RegisterPage,
     GeolocationPage,
-    
+    ProfilePage,
     EventdetailPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
