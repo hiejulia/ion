@@ -32,6 +32,12 @@ export class AddEvent {
   title: any;
   description: any;
   rating: any;
+  content:any;
+  location:any;
+  organization:any;
+  isActive:boolean;
+  numberOfParticipants:number;
+
  
   constructor(public viewCtrl: ViewController) {
  
@@ -42,7 +48,12 @@ export class AddEvent {
     let review = {
       title: this.title,
       description: this.description,
-      rating: this.rating
+      rating: this.rating,
+      content:this.content,
+      location:this.location,
+      organization:this.organization,
+      isActive:this.isActive,
+      numberOfParticipants: this.numberOfParticipants
     };
  
     this.viewCtrl.dismiss(review);

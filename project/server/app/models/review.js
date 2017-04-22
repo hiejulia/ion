@@ -57,6 +57,7 @@ var ReviewSchema = new mongoose.Schema({
     participants: [
 		{user: Schema.ObjectId}
 	],
+	numberOfParticipants:Number,
     createdBy: {
 		type: Schema.ObjectId,
 		ref: 'User'
