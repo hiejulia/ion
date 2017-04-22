@@ -20,6 +20,8 @@ export class RegisterPage {
   role: string;
   email: string;
   password: string;
+  firstname:string;
+  lastname:string;
 
 loading:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public authService: Auth, public loadingCtrl: LoadingController) {
@@ -37,7 +39,9 @@ loading:any;
     let details = {
         email: this.email,
         password: this.password,
-        role: this.role
+        role: this.role,
+        firstname:this.firstname,
+        lastname:this.lastname
     };
  
     this.authService.createAccount(details).then((result) => {
