@@ -66,6 +66,7 @@ module.exports = function(app){
             title : req.body.title,
             description : req.body.description,
             rating: req.body.rating,
+            creator:req.user,
             done : false
         }, function(err, review) {
             if (err)

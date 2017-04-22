@@ -33,7 +33,6 @@ export class MyEvents {
   ionViewDidLoad(){
  
     this.reviewService.getReviews().then((data) => {
-      console.log(data);
       this.reviews = data;
     });
  
@@ -57,11 +56,11 @@ export class MyEvents {
   deleteReview(review){
  
     //Remove locally
-      // let index = this.reviews.indexOf(review);
+      let index = this.reviews.indexOf(review);
  
-      // if(index > -1){
-      //   this.reviews.splice(index, 1);
-      // }   
+      if(index > -1){
+        this.reviews.splice(index, 1);
+      }   
  
     //Remove from database
     this.reviewService.deleteReview(review._id);
@@ -79,7 +78,7 @@ export class MyEvents {
     console.log('go to the detail page');
     // this.navCtrl.push(EventdetailPage);
        this.navCtrl.push(EventdetailPage, {review: review._id}); 
-       console.log(review);
+       console.log(review._id);
 
 
   // speakerDetail(speaker) { 

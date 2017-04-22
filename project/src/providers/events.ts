@@ -62,7 +62,7 @@ export class Events {
     return new Promise((resolve, reject) => {
  
         let headers = new Headers();
-        //headers.append('Authorization', this.authService.token);
+       // headers.append('Authorization', this.authService.token);
  
         this.http.delete('https://localhost:8080/api/events' + id, {headers: headers}).subscribe((res) => {
             resolve(res);

@@ -23,7 +23,7 @@ export class ReviewsProvider {
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
-          resolve(this.data);
+          resolve(Array.of(this.data));
         });
     });
  
@@ -58,7 +58,7 @@ export class ReviewsProvider {
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
-          resolve(this.data);
+          resolve(Array.of(this.data));
         });
     });
  
