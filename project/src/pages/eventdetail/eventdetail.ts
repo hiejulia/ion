@@ -30,7 +30,7 @@ export class EventdetailPage {
 
   
  
- review:object;
+ review:any;
   constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
   public authService: Auth, public params:NavParams) {
 

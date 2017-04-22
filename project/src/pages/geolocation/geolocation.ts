@@ -1,68 +1,69 @@
-import { Component } from '@angular/core';
+import { Component,NgZone } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng, GoogleMapsMarkerOptions, GoogleMapsMarker, CameraPosition } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Platform} from 'ionic-angular';
+import {GoogleMap, GoogleMapsEvent, GoogleMapsLatLng, GoogleMapsMarkerOptions} from 'ionic-native';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the Geolocation page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-geolocation',
   templateUrl: 'geolocation.html'
 })
 export class GeolocationPage {
-  public map: GoogleMap;
-  public mapRendered: Boolean = false; 
+    private map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
 
-    this.showMap();
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  private geolocation: Geolocation,private platform: Platform,private _zone: NgZone) {
+    this.platform.ready().then(() => this.onPlatformReady());
+   
+
+
+  }
+  private onPlatformReady(): void {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GeolocationPage');
-  }
+  ngAfterViewInit() {
+    GoogleMap.isAvailable().then(() => {
 
-  showMap(){
-    let location = new GoogleMapsLatLng(47.6062, -122.3321);
-    this.map = new GoogleMap('map', {
-      'camera': {
-        'latLng': location,
-        'tilt': 30,
-        'zoom': 15,
-        'bearing': 50
-      }
-    });
+      this.map = new GoogleMap('map_canvas');
 
-    this.map.on(GoogleMapsEvent.MAP_READY).subscribe(()=> {
-      console.log('Map is ready!');
-      this.mapRendered = true;
-    });
-  }
-getMyLocation() {
-    this.map.getMyLocation().then((location) => {
-      var msg = ["I am here:\n",
-        "latitude:" + location.latLng.lat,
-        "longitude:" + location.latLng.lng].join("\n");
+      // this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
+      //   () => this.onMapReady(),
+      //   () => alert("Error: onMapReady")
+      // );
 
-      let position: CameraPosition = {
-        target: location.latLng,
-        zoom: 15
-      };
-      this.map.moveCamera(position);    
+      // this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
+      //   (data: any) => {
+      //     alert("GoogleMap.onMapReady(): ");
+      //   },
+      //   () => alert("Error: GoogleMapsEvent.MAP_READY")
+      // );
 
-      let markerOptions: GoogleMapsMarkerOptions = {
-        'position': location.latLng,
-        'title': msg
-      };
-      this.map.addMarker(markerOptions).then((marker: GoogleMapsMarker) => {
-        marker.showInfoWindow();
+      this.map.one(GoogleMapsEvent.MAP_READY).then((data: any) => {
+        alert("GoogleMap.onMapReady(): " + JSON.stringify(data));
+
+        this._zone.run(() => {
+          let myPosition = new GoogleMapsLatLng(38.9072, -77.0369);
+          console.log("My position is", myPosition);
+          this.map.animateCamera({ target: myPosition, zoom: 10 });
+        });
+
       });
-
     });
-
   }
 
+  private onMapReady(): void {
+    alert('Map ready');
+    //this.map.setOptions(mapConfig);
+  }
+  /*
+    pushPage(){
+      this._navController.push(SomeImportedPage, { userId: "12345"});
+    }
+  */
 }

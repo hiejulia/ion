@@ -22,6 +22,10 @@ import {UsersProvider} from '../providers/users';
 import {UsersListPage} from '../pages/userslist/userslist';
 
 
+import {Geolocation} from '@ionic-native/geolocation'
+
+
+
 
 
 
@@ -81,7 +85,8 @@ import {UsersListPage} from '../pages/userslist/userslist';
   Events,
   ReviewsProvider,
   Auth,
-  UsersProvider
+  UsersProvider,
+  Geolocation
   
    ]
 })
