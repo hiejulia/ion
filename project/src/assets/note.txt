@@ -1,2 +1,13 @@
 AIzaSyBcIrdqtdQDAoq1uVkkaRDd6spVTlv3JKc 
 api key 
+
+
+
+
+Cordova plugin to use:
++ social sharing
++ google maps
++ firebase
++ date picker
++ camera
++ calendar

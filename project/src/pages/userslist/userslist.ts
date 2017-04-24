@@ -10,6 +10,7 @@ import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
 
+import {UserProfilePage} from '../userprofile/userprofile';
 
 /*
   Generated class for the Myevents page.
@@ -43,8 +44,9 @@ export class UsersListPage {
  
   }
 
-  goToDetail(){
+  goToUserProfile(u){
       console.log('go to user profile');
+      this.navCtrl.push(UserProfilePage,{userId:u._id});
   }
 
   //follow user

@@ -5,7 +5,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var morgan = require('morgan');
- 
+var LocalStorage = require('node-localstorage').LocalStorage;
+
 var databaseConfig = require('./config/database');
 var router = require('./app/routes');
  
@@ -26,6 +27,16 @@ app.use(function(req, res, next) {
 });
  
 router(app);
+
+
+// router.use(function(req,res,next) {
+//     res.locals.currentUser = req.user;
+//     res.locals.errors = req.flash('errors');
+//     res.locals.infos = req.flash('info');
+//     next();
+// })
+//this req.user is populated by passport 
+
 
 app.listen(process.env.PORT || 8080);//listen on port 8080
 console.log("App listening on port 8080");

@@ -5,7 +5,7 @@
 var jwt = require('jsonwebtoken');  
 var User = require('../models/user');
 var authConfig = require('../../config/auth');
- 
+var userInfoId; 
 function generateToken(user){
     return jwt.sign(user, authConfig.secret, {
         expiresIn: 10080
@@ -31,6 +31,10 @@ exports.login = function(req, res, next){
         token: 'JWT ' + generateToken(userInfo),
         user: userInfo
     });
+
+    // return userInfo;
+    req.user = userInfo;
+
  
 }
  
@@ -113,3 +117,6 @@ exports.roleAuthorization = function(roles){
     }
  
 }
+
+
+exports.userInfoId = userInfoId;

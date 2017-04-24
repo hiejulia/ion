@@ -20,15 +20,15 @@
  
     <ion-item-sliding *ngFor="let user of users">
  
-      <ion-item (click)="goToDetail()">
+      <ion-item (click)="goToUserProfile(user)">
  
         <ion-avatar item-left>
           <img src="http://img06.deviantart.net/2d85/i/2013/261/9/c/rwby_ruby_rose_ah_avatar_by_swedishx25-d6msfsz.png">
         </ion-avatar>
  
-        <h2>{{user.firstname}} {{user.lastname}}</h2>
-        <span>{{user.email}}</span>
-        <p>{{user.role}}</p>
+        <h2>{{user?.firstname}} {{user?.lastname}}</h2>
+        <span>{{user?.email}}</span>
+        <p>{{user?.role}}</p>
         
         
         <button ion-button round (click)="follow(user.email)">
