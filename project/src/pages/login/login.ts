@@ -7,6 +7,7 @@ import {TabsPage} from '../tabs/tabs';
 
 import { Auth } from '../../providers/auth';
 
+import { AuthServiceProvider } from '../../providers/authService';
 
 
 /*
@@ -20,13 +21,18 @@ import { Auth } from '../../providers/auth';
   templateUrl: 'login.html'
 })
 export class LoginPage {
+
+    private _authServiceProvider: AuthServiceProvider;
   email: string;
     password: string;
     loading: any;
 
+
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
-  public authService: Auth) {
+  public authService: Auth,
+  authServiceProvider: AuthServiceProvider) {
     this.loading= loadingCtrl;
+    this._authServiceProvider = authServiceProvider;
       
     }
 ionViewDidLoad() {
@@ -57,16 +63,21 @@ login(){
             password: this.password
         };
  
-        this.authService.login(credentials).then((result) => {
-            this.loading.dismiss();
-            console.log(result);
-            console.log('token is'+this.authService.token);
-            this.navCtrl.setRoot(TabsPage);
+        // this.authService.login(credentials).then((result) => {
+        //     this.loading.dismiss();
+        //     console.log(result);
+        //     console.log('token is'+this.authService.token);
+        //     this.navCtrl.setRoot(TabsPage);
             
-        }, (err) => {
-            this.loading.dismiss();
-            console.log(err);
-        });
+        // }, (err) => {
+        //     this.loading.dismiss();
+        //     console.log(err);
+        // });
+        this._authServiceProvider  
+            .login(credentials)
+            .subscribe((user) => {
+                this._authServiceProvider.setCurrentUser(user);
+            })
 
 }
   
@@ -76,7 +87,7 @@ login(){
     }
  
     showLoader(){
- 
+
         this.loading = this.loadingCtrl.create({
             content: 'Authenticating...'
         });
