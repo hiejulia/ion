@@ -1,0 +1,45 @@
+<ion-header>
+ <ion-navbar transparent>
+  <ion-title>
+    Organisations list 
+  </ion-title>
+  <ion-buttons end>
+    <button ion-button icon-only (click)="addOrganisation()"><ion-icon name="add"></ion-icon></button>
+  </ion-buttons>
+ </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+ 
+  <ion-list no-lines>
+ 
+    <ion-item-sliding *ngFor="let organisation of organisations ">
+ 
+      <ion-item class="card">
+ 
+        <ion-avatar item-left>
+          <img src="https://api.adorable.io/avatars/75/{{organisation?.title}}">
+        </ion-avatar>
+ 
+        <h2>{{organisation?.title}}</h2>
+       
+
+  
+
+        <button ion-button (click)="goToDetail(organisation)" ion-button round outline>
+      <ion-icon name="md-navigate"></ion-icon>
+          View
+        </button>
+
+      </ion-item>
+ 
+      
+      
+         
+      
+    </ion-item-sliding>
+ 
+  </ion-list>
+  
+ 
+</ion-content>

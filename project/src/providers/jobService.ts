@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
-import { AuthHttp } from '../auth/index';
+import { AuthHttpProvider } from './auth-http';
 import { contentHeaders, serializeQuery } from '../common/index';
-import { Job } from './job.model';
+import { JobModel } from './job.model';
 
 @Injectable()
 export class JobServiceProvider {
   private _http: Http;
-  private _authHttp: AuthHttp;
+  private _authHttpProvider: AuthHttpProvider;
 
-  constructor(http: Http, authHttp: AuthHttp) {
+  constructor(http: Http, authHttpProvider: AuthHttpProvider) {
     this._http = http;
-    this._authHttp = authHttp;
+    this._authHttpProvider = authHttpProvider;
   }
 //get all
   getAll(criteria) {
@@ -36,7 +36,7 @@ export class JobServiceProvider {
   create(job) {
     let body = JSON.stringify(job);
 
-    return this._authHttp
+    return this._authHttpProvider
     .post('/api/jobs', body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }

@@ -19,12 +19,12 @@ import { BehaviorSubject } from "rxjs";
 @Injectable()
 export class AuthHttpProvider {
   
-   public unauthorized: Subject<Response>;
+   public unauthorized: Subject<Response>;//unauthorized
   private _http: Http;
 
 
   constructor(public http: Http) {
-      this._http = http;
+      this._http = http;//http 
     this.unauthorized = new BehaviorSubject<Response>(null);
     
   }
@@ -47,22 +47,24 @@ export class AuthHttpProvider {
       return Observable.throw(err);
     });
   }
-
+//get the user token 
 private getToken() {
-    return localStorage.getItem('token');
+    return localStorage.getItem('token');//save the user token in the localstorage
   }
+
+  //get 
 public get(url: string, opts?: RequestOptionsArgs) {
     return this.request({ url: url, method: RequestMethod.Get}, opts);
   }
-
+//post
   public post(url: string, body?: string, opts?: RequestOptionsArgs) {
     return this.request({ url: url, method: RequestMethod.Post, body: body}, opts);
   }
-
+//put
   public put(url: string, body?: string, opts?: RequestOptionsArgs) {
     return this.request({ url: url, method: RequestMethod.Put, body: body}, opts);
   }
-
+//delete
   public delete(url: string, body?: string, opts?: RequestOptionsArgs) {
     return this.request({ url: url, method: RequestMethod.Delete, body: body}, opts);
   }

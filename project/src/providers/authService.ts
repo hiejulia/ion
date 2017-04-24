@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
-// import {BehaviorSubject} from 'rxjs/subject/BehaviorSubject';
-import { contentHeaders } from '../../common/index';
+import { contentHeaders } from '../common/headers';
 import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable()
@@ -22,7 +21,7 @@ export class AuthServiceProvider {
     headers.append('Authorization', `Basic ${basic}`)
 
     return this._http
-    .post('/auth/signin', body, { headers: headers })
+    .post('/auth/login', body, { headers: headers })
     .map((res: Response) => res.json());
   }
 
