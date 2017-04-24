@@ -12,7 +12,7 @@
   <ion-list no-lines>
  
     <ion-item>
-      <ion-label floating>Title</ion-label>
+      <ion-label floating class="item item-input">Title</ion-label>
       <ion-input [(ngModel)]="title" type="text" name="title" required ></ion-input>
     </ion-item>
  <div [hidden]="title && (title.valid || (title.pristine && !isSubmitted))" class="note danger">

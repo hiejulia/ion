@@ -255,3 +255,20 @@ module.exports = function (app) {
 //     response.end(JSON.stringify      
 //     (contacts.get_members(request.params.name))); 
 // });  
+
+
+
+//========================
+/**
+ * List of participants the user has participated/created
+ * user = new User()
+ * event = new Event()
+ * user.eventsParticipated.push(event);
+ * user.save(cb);
+ * 
+ * === execute
+ * User.findById({}).populate('eventsParticipated).exec(function(err,event){
+ * if(err)...
+ * res.send(event);
+ * })
+ */

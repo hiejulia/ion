@@ -3,6 +3,7 @@ import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {ReviewsProvider} from '../../providers/reviews';
 import {EventdetailPage} from '../eventdetail/eventdetail';
 
+import {Pipe} from 'angular2/core';
 
 import { UsersProvider } from '../../providers/users';
 
@@ -28,7 +29,7 @@ import {UserProfilePage} from '../userprofile/userprofile';
 })
 export class UsersListPage {
   users: any;
-
+//users= []
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
   public authService: Auth,public usersProvider:UsersProvider) {
  
@@ -56,6 +57,21 @@ export class UsersListPage {
   }
  
   
-  
+  doInfinite(infiniteScroll){
+    // console.log(infiniteScroll);
+    console.log('begin the async operation');
+    setTimeout(() => {
+      for(let i =0;i<5;i++){
+        this.users.push(this.users.length);
+      }
+      console.log('async operation has ended');
+
+
+      infiniteScroll.complete();
+    },500)
+
+  }
 
 }
+
+

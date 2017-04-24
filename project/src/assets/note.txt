@@ -18,3 +18,37 @@ Cordova plugin to use:
 ## Add more to the project 
 + theming in ionic
 + validation for the form
+
+
+
+
+## API component
++ Add ActionSheetController
++ spinner
++ modal controller
++ popover => show list of events that user participated or user created
++ infinitive scroll
++ ionic loading
++ ion-item-sliding (search for this : https://ionicframework.com/docs/api/components/item/ItemSliding/)
++ ion-slide-box ----- ion-slide
++ charts/highcharts
+## How to test app in real device:
+
+
+## Other back end service 
++ Check with Firebase and Parse.com
+
+## stylesheet
++ add scss 
++ add theming from ionic 2
+
+
+## Error of this point of time
++ install ios-deploy 
+
+
+import { Chart } from 'chart.js';
+
+
+
+= check sort in the server?

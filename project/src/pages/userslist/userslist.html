@@ -10,6 +10,7 @@
 </ion-header>
  
 <ion-content>
+  <ion-spinner icon="spiral spinner-calm"></ion-spinner>
     <ion-searchbar
   
   [showCancelButton]="shouldShowCancel"
@@ -18,16 +19,16 @@
  
   <ion-list no-lines>
  
-    <ion-item-sliding *ngFor="let user of users">
+    <ion-item-sliding *ngFor="let user of users | orderBy: 'firstname' ">
  
-      <ion-item (click)="goToUserProfile(user)">
+      <ion-item (click)="goToUserProfile(user)" class="item-thumbnail-left">
  
         <ion-avatar item-left>
           <img src="http://img06.deviantart.net/2d85/i/2013/261/9/c/rwby_ruby_rose_ah_avatar_by_swedishx25-d6msfsz.png">
         </ion-avatar>
  
         <h2>{{user?.firstname}} {{user?.lastname}}</h2>
-        <span>{{user?.email}}</span>
+        <span class="badge badge-stable">{{user?.email}}</span>
         <p>{{user?.role}}</p>
         
         
@@ -47,6 +48,11 @@
     </ion-item-sliding>
  
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+
  
  
 </ion-content>
