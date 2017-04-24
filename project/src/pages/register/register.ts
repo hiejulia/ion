@@ -4,6 +4,8 @@ import { NavController, LoadingController,NavParams } from 'ionic-angular';
 
 import {TabsPage} from '../tabs/tabs';
 import { Auth } from '../../providers/auth';
+import { AuthServiceProvider } from '../../providers/authService';
+
 
 
 /*
@@ -24,6 +26,11 @@ export class RegisterPage {
   lastname:string;
 
 loading:any;
+  private _authServiceProvider: AuthServiceProvider;
+
+
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public authService: Auth, public loadingCtrl: LoadingController) {
     this.loading = loadingCtrl;
   }
@@ -36,21 +43,27 @@ loading:any;
  
     this.showLoader();
  
-    let details = {
+    let credentials = {
         email: this.email,
         password: this.password,
-        role: this.role,
+        // role: this.role,
         firstname:this.firstname,
         lastname:this.lastname
     };
  
-    this.authService.createAccount(details).then((result) => {
-      this.loading.dismiss();
-      console.log(result);
-      this.navCtrl.setRoot(TabsPage);
-    }, (err) => {
-        this.loading.dismiss();
-    });
+    // this.authService.createAccount(details).then((result) => {
+    //   this.loading.dismiss();
+    //   console.log(result);
+    //   this.navCtrl.setRoot(TabsPage);
+    // }, (err) => {
+    //     this.loading.dismiss();
+    // });
+
+    this._authServiceProvider
+    .register(credentials)
+    .subscribe((user) => {
+      console.log('the registered user is / the current user is '+user);
+    })
  
   }
  
