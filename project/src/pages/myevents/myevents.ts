@@ -35,7 +35,7 @@ export class MyEvents {
     //     .subscribe(data => {
     //       this.todos = data;
     //     })
- 
+ //get all
     this.reviewService.getReviews().subscribe(data => {
         this.reviews = data;
     });

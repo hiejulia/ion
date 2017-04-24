@@ -14,7 +14,9 @@ import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
 import {GeolocationPage} from '../geolocation/geolocation';
+import { JobServiceProvider } from '../../providers/jobService';
 
+import { JobModel } from '../../providers/job.model';
 
 /*
   Generated class for the Eventdetail page.
@@ -28,19 +30,20 @@ import {GeolocationPage} from '../geolocation/geolocation';
 })
 export class EventdetailPage {
 
-  
+  public event:JobModel;
+  private _jobServiceProvider:JobServiceProvider;
  
  review:any;
   constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
-  public authService: Auth, public params:NavParams) {
-
+  public authService: Auth, public params:NavParams,
+  jobServiceProvider:JobServiceProvider) {
+    this._jobServiceProvider= jobServiceProvider;
     //  this.review = this.params.get('review'); 
+
     var reviewId = this.params.get('reviewId'); 
      console.log(reviewId);  
-
-    this.reviewService.getReviewById(reviewId).subscribe((data) => {
-      this.review = data;
-      console.log(typeof(this.review));
+     this.event = new JobModel();
+ console.log(typeof(this.review));
       console.log(this.review["location"]);
 
     });
