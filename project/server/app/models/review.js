@@ -6,7 +6,8 @@ var mongoose = require('mongoose');
 
 var	Schema = mongoose.Schema;
 
-
+// var mongoosePaginate = require('mongoose-paginate'),  
+//       expressPaginate = require('express-paginate');
 
 
 
@@ -68,4 +69,6 @@ var ReviewSchema = new mongoose.Schema({
 	}
 });
 
+
+// ReviewSchema.plugin(mongoosePaginate)
 module.exports = mongoose.model('Review', ReviewSchema);

@@ -4,15 +4,21 @@ var mongoose = require('mongoose');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var mongoosePaginate = require('mongoose-paginate'),  
+      expressPaginate = require('express-paginate'); 
 var morgan = require('morgan');
 var LocalStorage = require('node-localstorage').LocalStorage;
-
+var request = require('request');
 var databaseConfig = require('./config/database');
 var router = require('./app/routes');
+
+var flash = require('connect-flash'); 
+
+
  
 mongoose.connect(databaseConfig.url);
  
-
+// app.use(expressPaginate.middleware(limit, maxLimit)); 
 app.use(morgan('dev'));  
 app.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
 app.use(bodyParser.json()); // Send JSON responses

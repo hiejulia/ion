@@ -52,3 +52,4 @@ import { Chart } from 'chart.js';
 
 
 = check sort in the server?
+= check pagination in the server : http://ezproxy.haaga-helia.fi:2188/book/web-design-and-development/9781786469137/firstchapter#X2ludGVybmFsX0h0bWxWaWV3P3htbGlkPTk3ODE3ODY0NjkxMzclMkZjaDA1czA0X2h0bWwmcXVlcnk9
