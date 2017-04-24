@@ -5,7 +5,7 @@ RequestOptionsArgs,RequestMethod } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import {BehaviorSubject} from 'rxjs/subject/BehaviorSubject';
+import { BehaviorSubject } from "rxjs";
 
 
 
@@ -17,7 +17,7 @@ import {BehaviorSubject} from 'rxjs/subject/BehaviorSubject';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class AuthHttp {
+export class AuthHttpProvider {
   
    public unauthorized: Subject<Response>;
   private _http: Http;
