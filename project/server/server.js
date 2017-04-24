@@ -1,19 +1,23 @@
-var express  = require('express');
-var app      = express();
-var mongoose = require('mongoose');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var mongoosePaginate = require('mongoose-paginate'),  
+const express  = require('express');
+const app      = express();
+const mongoose = require('mongoose');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoosePaginate = require('mongoose-paginate'),  
       expressPaginate = require('express-paginate'); 
-var morgan = require('morgan');
-var LocalStorage = require('node-localstorage').LocalStorage;
-var request = require('request');
-var databaseConfig = require('./config/database');
-var router = require('./app/routes');
+const morgan = require('morgan');
+const LocalStorage = require('node-localstorage').LocalStorage;
+const request = require('request');
+const databaseConfig = require('./config/database');
+const router = require('./app/routes');
 
-var flash = require('connect-flash'); 
-
+const flash = require('connect-flash'); 
+// Get environment or set default environment to development
+const ENV = process.env.NODE_ENV || 'development';
+const DEFAULT_PORT = 8080;
+const DEFAULT_HOSTNAME = '127.0.0.1';
+const config = require('./config');
 
  
 mongoose.connect(databaseConfig.url);
