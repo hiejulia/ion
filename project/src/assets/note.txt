@@ -11,3 +11,10 @@ Cordova plugin to use:
 + date picker
 + camera
 + calendar
++ weather
+
+
+
+## Add more to the project 
++ theming in ionic
++ validation for the form
