@@ -59,9 +59,7 @@ module.exports = function (app) {
     // create review and send back all reviews after creation
     app.post('/api/reviews', function (req, res) {
 
-        console.log("creating review");
-
-        // create a review, information comes from request from Ionic
+       
         Review.create({
             title: req.body.title,
             description: req.body.description,
