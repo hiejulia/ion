@@ -25,18 +25,16 @@ System.register(['angular2/core', 'angular2/router', '../services/auth.service']
             }],
         execute: function() {
             RegisterComponent = (function () {
-                function RegisterComponent(authService, router) {
-                    this._router = router;
+                function RegisterComponent(authService) {
                     this._authService = authService;
                 }
                 RegisterComponent.prototype.register = function (event, name, email, password) {
-                    var _this = this;
                     event.preventDefault();
                     var data = { name: name, email: email, password: password };
                     this._authService
                         .register(data)
                         .subscribe(function (user) {
-                        _this._router.navigateByUrl('/');
+                        console.log(user);
                     });
                 };
                 RegisterComponent = __decorate([
@@ -47,7 +45,7 @@ System.register(['angular2/core', 'angular2/router', '../services/auth.service']
                         ],
                         template: "\n      <div class=\"login jumbotron center-block\">\n        <h1>Register</h1>\n        <form role=\"form\" (submit)=\"register($event, name.value, email.value, password.value)\">\n          <div class=\"form-group\">\n            <label for=\"name\">Full name</label>\n            <input type=\"text\" #name class=\"form-control\" id=\"email\" placeholder=\"please enter your name\">\n          </div>\n          <div class=\"form-group\">\n            <label for=\"email\">E-mail</label>\n            <input type=\"text\" #email class=\"form-control\" id=\"email\" placeholder=\"enter valid e-mail\">\n          </div>\n          <div class=\"form-group\">\n            <label for=\"password\">Password</label>\n            <input type=\"password\" #password class=\"form-control\" id=\"password\" placeholder=\"now your password\">\n          </div>\n          <button type=\"submit\" class=\"button\">Submit</button>\n        </form>\n      </div>\n    "
                     }), 
-                    __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
+                    __metadata('design:paramtypes', [auth_service_1.AuthService])
                 ], RegisterComponent);
                 return RegisterComponent;
             }());

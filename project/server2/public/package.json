@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "mean-blueprints-expensetracker-client",
+  "name": "mean-blueprints-ecommerce-admin",
   "dependencies": {
     "systemjs": "^0.19.25",
     "es6-shim": "^0.35.0",

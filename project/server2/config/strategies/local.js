@@ -7,20 +7,23 @@ const User = require('mongoose').model('User');
 module.exports.init = initLocalStrategy;
 
 function initLocalStrategy() {
-  passport.use('local', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password'
-  }, (email, password, done) => {
-    User.authenticate(email, password, function(err, user) {
-      if (err) {
-        return done(err);
-      }
+  passport.use('local', new LocalStrategy(
+    {
+      usernameField: 'email',
+      passwordField: 'password'
+    },
+    (email, password, done) => {
+      User.authenticate(email, password, (err, user) => {
+        if (err) {
+          return done(err);
+        }
 
-      if (!user) {
-        return done(null, false, { message: 'Invalid email or password.' });
-      }
+        if (!user) {
+          return done(null, false, { message: 'Invalid email or password.' });
+        }
 
-      return done(null, user);
-    });
-  }));
-}
+        return done(null, user);
+      });
+    }
+  ));
+};

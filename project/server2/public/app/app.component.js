@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './auth/index', './expense/index', './category/index'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './auth/index', './company/index', './job/index', './user/index'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './auth/index', './expense/
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, router_2, index_1, index_2, index_3;
+    var core_1, router_1, router_2, index_1, index_2, index_3, index_4;
     var AppComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'angular2/router', './auth/index', './expense/
             },
             function (index_3_1) {
                 index_3 = index_3_1;
+            },
+            function (index_4_1) {
+                index_4 = index_4_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -51,19 +54,18 @@ System.register(['angular2/core', 'angular2/router', './auth/index', './expense/
                 };
                 AppComponent = __decorate([
                     router_1.RouteConfig([
-                        { path: '/', redirectTo: ['/Expenses'], useAsDefault: true },
-                        { path: '/expenses', as: 'Expenses', component: index_2.ExpensesComponent },
-                        { path: '/categories', as: 'Categories', component: index_3.CategoriesComponent },
+                        { path: '/jobs/...', as: 'Jobs', component: index_3.JobBaseComponent, useAsDefault: true },
+                        { path: '/companies/...', as: 'Companies', component: index_2.CompanyBaseComponent },
                         { path: '/signin', as: 'Signin', component: index_1.SigninComponent },
-                        { path: '/register', as: 'Register', component: index_1.RegisterComponent }
+                        { path: '/profile/edit', as: 'ProfileEdit', component: index_4.ProfileEditComponent }
                     ]),
                     core_1.Component({
-                        selector: 'expense-tracker',
+                        selector: 'job-board',
                         directives: [
                             router_1.RouterOutlet,
                             router_1.RouterLink
                         ],
-                        template: "\n      <div class=\"app-wrapper card whiteframe-z2\">\n        <div class=\"row\">\n          <div class=\"col\">\n            <a href=\"#\">Expense tracker</a>\n            <a href=\"#\" [routerLink]=\"['Expenses']\">Expenses</a>\n            <a href=\"#\" [routerLink]=\"['Categories']\">Categories</a>\n          </div>\n        </div>\n        <div class=\"row\">\n          <router-outlet></router-outlet>\n        </div>\n      </div>\n    "
+                        template: "\n      <div class=\"app-wrapper card whiteframe-z2\">\n        <div class=\"row\">\n          <div class=\"col\">\n            <a href=\"#\">Job board</a>\n            <a href=\"#\" [routerLink]=\"['Jobs']\">Jobs</a>\n            <a href=\"#\" [routerLink]=\"['Companies']\">Companies</a>\n          </div>\n        </div>\n        <div class=\"row\">\n          <router-outlet></router-outlet>\n        </div>\n      </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [index_1.AuthHttp, index_1.AuthService, router_2.Router])
                 ], AppComponent);

@@ -30,7 +30,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Subject/BehaviorSubject
             AuthService = (function () {
                 function AuthService(http) {
                     this._http = http;
-                    this._initSession();
+                    this.currentUser = new BehaviorSubject_1.BehaviorSubject(null);
                 }
                 AuthService.prototype.signin = function (user) {
                     var body = this._serialize(user);
@@ -38,27 +38,17 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Subject/BehaviorSubject
                     var headers = new http_1.Headers(index_1.contentHeaders);
                     headers.append('Authorization', "Basic " + basic);
                     return this._http
-                        .post('/auth/basic', '', { headers: headers })
+                        .post('/auth/signin', body, { headers: headers })
                         .map(function (res) { return res.json(); });
                 };
                 AuthService.prototype.register = function (user) {
                     var body = this._serialize(user);
                     return this._http
-                        .post('/api/users', body, { headers: index_1.contentHeaders })
+                        .post('/auth/register', body, { headers: index_1.contentHeaders })
                         .map(function (res) { return res.json(); });
                 };
                 AuthService.prototype.setCurrentUser = function (user) {
                     this.currentUser.next(user);
-                };
-                AuthService.prototype._initSession = function () {
-                    var _this = this;
-                    var user = this._deserialize(localStorage.getItem('currentUser'));
-                    this.currentUser = new BehaviorSubject_1.BehaviorSubject(user);
-                    // persist the user to the local storage
-                    this.currentUser.subscribe(function (user) {
-                        localStorage.setItem('currentUser', _this._serialize(user));
-                        localStorage.setItem('token', user.token.hash || '');
-                    });
                 };
                 AuthService.prototype._serialize = function (data) {
                     return JSON.stringify(data);

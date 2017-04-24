@@ -8,29 +8,29 @@ process.env.NODE_ENV = 'test';
 var http = require('http');
 var request = require('request');
 var chai = require('chai');
-var mongoose = require('mongoose');
-
-var app = require('../../server');
 var userFixture = require('../fixtures/user');
-
 var should = chai.should();
-var config = app.get('config');
-var baseUrl = config.baseUrl + '/api';
-var User = mongoose.model('User');
-var Token = mongoose.model('Token');
-var appServer;
 
 describe('Authentication', function() {
-  var _user;
+  var mongoose;
+  var app;
+  var appServer;
+  var config;
+  var baseUrl;
+  var User;
 
   before(function(done) {
+    app = require('../../server');
+    config = app.get('config');
+    baseUrl = config.baseUrl;
     appServer = http.createServer(app);
 
     appServer.on('listening', function() {
+      mongoose = app.get('mongoose');
+      User = mongoose.model('User');
       User.create(userFixture, function(err, user) {
         if (err) throw err;
 
-        _user = user;
         done();
       });
     });
@@ -40,107 +40,53 @@ describe('Authentication', function() {
 
   after(function(done) {
     appServer.on('close', function() {
-      done();
+      setTimeout(function() { done(); }, 1000);
     });
 
-    mongoose.connection.db.dropDatabase(function(err) {
+    User.remove({}).exec(function(err) {
       if (err) throw err;
 
-      appServer.close();
-    });
-  });
-
-  describe('Basic authentication', function() {
-    it('should authenticate a user and return a new token', function(done) {
-      request({
-        method: 'POST',
-        url: baseUrl + '/auth',
-        auth: {
-          username: userFixture.email,
-          password: 'P@ssw0rd!'
-        },
-        json:true
-      }, function(err, res, body) {
-        if (err) throw err;
-
-        res.statusCode.should.equal(200);
-        body.email.should.equal(_user.email);
-        should.not.exist(body.password);
-        should.not.exist(body.passwordSalt);
-        should.exist(body.token);
-        should.exist(body.token.value);
-        should.exist(body.token.expiresAt);
-        done();
-      });
-    });
-
-    it('should not authenticate a user with invalid credentials', function(done) {
-      request({
-        method: 'POST',
-        url: baseUrl + '/auth',
-        auth: {
-          username: userFixture.email,
-          password: 'incorrectpassword'
-        },
-        json:true
-      }, function(err, res, body) {
-        if (err) throw err;
-
-        res.statusCode.should.equal(400);
-        body.message.should.equal('Invalid email or password.');
-        done();
+      mongoose.connection.close(function() {
+        appServer.close();
       });
     });
   });
 
-  describe('Bearer authentication', function() {
-    var _token;
+  it('should sign in a user with valid credentials', function(done) {
+    request({
+      method: 'POST',
+      url: baseUrl + '/auth/signin',
+      form: {
+        'email': userFixture.email,
+        'password': 'P@ssw0rd!'
+      },
+      json:true
+    }, function(err, res, body) {
+      if (err) throw err;
 
-    before(function() {
-      Token.generate({
-        user: _user.id
-      }, function(err, token) {
-        if (err) throw err;
-
-        _token = token;
-        done();
-      });
+      res.statusCode.should.equal(200);
+      body.email.should.equal(userFixture.email);
+      should.not.exist(body.password);
+      should.not.exist(body.passwordSalt);
+      done();
     });
+  });
 
-    it('should authenticate a user using an access token', function(done) {
-      request({
-        method: 'GET',
-        url: baseUrl + '/auth',
-        auth: {
-          bearer: _token.value
-        },
-        json:true
-      }, function(err, res, body) {
-        if (err) throw err;
+  it('should not sign in a user with invalid credentials', function(done) {
+    request({
+      method: 'POST',
+      url: baseUrl + '/auth/signin',
+      form: {
+        'email': userFixture.email,
+        'password': 'incorrectpassword'
+      },
+      json:true
+    }, function(err, res, body) {
+      if (err) throw err;
 
-        res.statusCode.should.equal(200);
-        body.email.should.equal(userFixture.email);
-        should.not.exist(body.password);
-        should.not.exist(body.passwordSalt);
-        done();
-      });
-    });
-
-    it('should not authenticate a user with an invalid access token', function(done) {
-      request({
-        method: 'GET',
-        url: baseUrl + '/auth',
-        auth: {
-          bearer: _token.value + 'a1e'
-        },
-        json:true
-      }, function(err, res, body) {
-        if (err) throw err;
-
-        res.statusCode.should.equal(401);
-        body.should.equal('Unauthorized');
-        done();
-      });
+      res.statusCode.should.equal(400);
+      body.message.should.equal('Invalid email or password.');
+      done();
     });
   });
 

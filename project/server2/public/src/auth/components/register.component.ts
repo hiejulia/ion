@@ -30,10 +30,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterComponent {
   private _authService: AuthService;
-  private _router: Router;
 
-  constructor(authService: AuthService, router: Router) {
-    this._router = router;
+  constructor(authService: AuthService) {
     this._authService = authService;
   }
 
@@ -45,7 +43,7 @@ export class RegisterComponent {
     this._authService
     .register(data)
     .subscribe((user) => {
-      this._router.navigateByUrl('/');
+      console.log(user);
     });
   }
 }

@@ -1,0 +1,55 @@
+AIzaSyBcIrdqtdQDAoq1uVkkaRDd6spVTlv3JKc 
+api key 
+
+
+
+
+Cordova plugin to use:
++ social sharing
++ google maps
++ firebase
++ date picker
++ camera
++ calendar
++ weather
+
+
+
+## Add more to the project 
++ theming in ionic
++ validation for the form
+
+
+
+
+## API component
++ Add ActionSheetController
++ spinner
++ modal controller
++ popover => show list of events that user participated or user created
++ infinitive scroll
++ ionic loading
++ ion-item-sliding (search for this : https://ionicframework.com/docs/api/components/item/ItemSliding/)
++ ion-slide-box ----- ion-slide
++ charts/highcharts
+## How to test app in real device:
+
+
+## Other back end service 
++ Check with Firebase and Parse.com
+
+## stylesheet
++ add scss 
++ add theming from ionic 2
+
+
+## Error of this point of time
++ install ios-deploy 
+
+
+import { Chart } from 'chart.js';
+
+
+
+= check sort in the server?
+= check pagination in the server : http://ezproxy.haaga-helia.fi:2188/book/web-design-and-development/9781786469137/firstchapter#X2ludGVybmFsX0h0bWxWaWV3P3htbGlkPTk3ODE3ODY0NjkxMzclMkZjaDA1czA0X2h0bWwmcXVlcnk9

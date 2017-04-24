@@ -5,7 +5,7 @@ module.exports.init = initModels;
 function initModels(app) {
   const modelsPath = app.get('root') + '/app/models/';
 
-  ['user', 'token', 'category', 'expense'].forEach((model) => {
+  ['profile-block', 'user', 'company', 'job', 'application'].forEach(function(model) {
     require(modelsPath + model);
   });
-}
+};

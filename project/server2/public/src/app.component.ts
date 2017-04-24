@@ -1,19 +1,19 @@
 import { Component, OnInit } from 'angular2/core';
 import { RouteConfig, RouterOutlet, RouterLink } from 'angular2/router';
 import { Router } from 'angular2/router';
-import { AuthHttp, AuthService, SigninComponent, RegisterComponent } from './auth/index';
-import { ExpensesComponent } from './expense/index';
-import { CategoriesComponent } from './category/index';
+import { AuthHttp, AuthService, SigninComponent } from './auth/index';
+import { CompanyBaseComponent } from './company/index';
+import { JobBaseComponent } from './job/index';
+import { ProfileEditComponent } from './user/index';
 
 @RouteConfig([
-  { path: '/', redirectTo: ['/Expenses'], useAsDefault: true },
-  { path: '/expenses', as: 'Expenses', component: ExpensesComponent },
-  { path: '/categories', as: 'Categories', component: CategoriesComponent },
+  { path: '/jobs/...', as: 'Jobs', component: JobBaseComponent, useAsDefault: true },
+  { path: '/companies/...', as: 'Companies', component: CompanyBaseComponent },
   { path: '/signin', as: 'Signin', component: SigninComponent },
-  { path: '/register', as: 'Register', component: RegisterComponent }
+  { path: '/profile/edit', as: 'ProfileEdit', component: ProfileEditComponent}
 ])
 @Component({
-    selector: 'expense-tracker',
+    selector: 'job-board',
     directives: [
       RouterOutlet,
       RouterLink
@@ -22,9 +22,9 @@ import { CategoriesComponent } from './category/index';
       <div class="app-wrapper card whiteframe-z2">
         <div class="row">
           <div class="col">
-            <a href="#">Expense tracker</a>
-            <a href="#" [routerLink]="['Expenses']">Expenses</a>
-            <a href="#" [routerLink]="['Categories']">Categories</a>
+            <a href="#">Job board</a>
+            <a href="#" [routerLink]="['Jobs']">Jobs</a>
+            <a href="#" [routerLink]="['Companies']">Companies</a>
           </div>
         </div>
         <div class="row">

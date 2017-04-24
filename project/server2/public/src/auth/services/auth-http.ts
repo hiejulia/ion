@@ -23,14 +23,6 @@ export class AuthHttp {
 
     let req:Request = new Request(opts);
 
-    if (!req.headers) {
-      req.headers = new Headers();
-    }
-
-    if (!req.headers.has('Authorization')) {
-      req.headers.append('Authorization', `Bearer ${this.getToken()}`);
-    }
-
     return this._http.request(req).catch((err: any) => {
       if (err.status === 401) {
         this.unauthorized.next(err);

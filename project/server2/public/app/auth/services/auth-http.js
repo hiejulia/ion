@@ -39,12 +39,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', 'rxjs/Subj
                         opts = opts.merge(additionalArgs);
                     }
                     var req = new http_1.Request(opts);
-                    if (!req.headers) {
-                        req.headers = new http_1.Headers();
-                    }
-                    if (!req.headers.has('Authorization')) {
-                        req.headers.append('Authorization', "Bearer " + this.getToken());
-                    }
                     return this._http.request(req).catch(function (err) {
                         if (err.status === 401) {
                             _this.unauthorized.next(err);

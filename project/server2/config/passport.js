@@ -16,6 +16,5 @@ function initPassport(app) {
   });
 
   // load strategies
-  require('./strategies/basic').init();
-  require('./strategies/bearer').init();
-}
+  require('./strategies/local').init();
+};

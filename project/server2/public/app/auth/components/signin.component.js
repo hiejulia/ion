@@ -25,9 +25,8 @@ System.register(['angular2/core', 'angular2/router', '../services/auth.service']
             }],
         execute: function() {
             SigninComponent = (function () {
-                function SigninComponent(authService, router) {
+                function SigninComponent(authService) {
                     this._authService = authService;
-                    this._router = router;
                 }
                 SigninComponent.prototype.signin = function (event, email, password) {
                     var _this = this;
@@ -37,7 +36,6 @@ System.register(['angular2/core', 'angular2/router', '../services/auth.service']
                         .signin(data)
                         .subscribe(function (user) {
                         _this._authService.setCurrentUser(user);
-                        _this._router.navigateByUrl('/');
                     });
                 };
                 SigninComponent = __decorate([
@@ -48,7 +46,7 @@ System.register(['angular2/core', 'angular2/router', '../services/auth.service']
                         ],
                         template: "\n      <div class=\"login jumbotron center-block\">\n        <h1>Login</h1>\n        <form role=\"form\" (submit)=\"signin($event, email.value, password.value)\">\n          <div class=\"form-group\">\n            <label for=\"email\">E-mail</label>\n            <input type=\"text\" #email class=\"form-control\" id=\"email\" placeholder=\"enter your e-mail\">\n          </div>\n          <div class=\"form-group\">\n            <label for=\"password\">Password</label>\n            <input type=\"password\" #password class=\"form-control\" id=\"password\" placeholder=\"now your password\">\n          </div>\n          <button type=\"submit\" class=\"button\">Submit</button>\n        </form>\n      </div>\n    "
                     }), 
-                    __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
+                    __metadata('design:paramtypes', [auth_service_1.AuthService])
                 ], SigninComponent);
                 return SigninComponent;
             }());

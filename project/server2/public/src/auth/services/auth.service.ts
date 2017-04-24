@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(http: Http) {
     this._http = http;
-    this._initSession();
+    this.currentUser = new BehaviorSubject<Response>(null);
   }
 
   public signin(user: any) {
@@ -21,7 +21,7 @@ export class AuthService {
     headers.append('Authorization', `Basic ${basic}`)
 
     return this._http
-    .post('/auth/basic', '', { headers: headers })
+    .post('/auth/signin', body, { headers: headers })
     .map((res: Response) => res.json());
   }
 
@@ -30,22 +30,12 @@ export class AuthService {
     let body = this._serialize(user);
 
     return this._http
-    .post('/api/users', body, { headers: contentHeaders })
+    .post('/auth/register', body, { headers: contentHeaders })
     .map((res: Response) => res.json());
   }
 
   public setCurrentUser(user: any) {
     this.currentUser.next(user);
-  }
-
-  private _initSession() {
-    let user = this._deserialize(localStorage.getItem('currentUser'));
-    this.currentUser = new BehaviorSubject<Response>(user);
-    // persist the user to the local storage
-    this.currentUser.subscribe((user) => {
-      localStorage.setItem('currentUser', this._serialize(user));
-      localStorage.setItem('token', user.token.hash || '');
-    });
   }
 
   private _serialize(data) {

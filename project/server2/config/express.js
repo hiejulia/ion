@@ -5,14 +5,13 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const serveStatic = require('serve-static');
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
+const MongoStore = require('connect-mongo')(session);
 const config = require('./index');
 
 module.exports.init = initExpress;
 
 function initExpress(app) {
-  const env = app.get('env');
   const root = app.get('root');
   const sessionOpts = {
     secret: config.session.secret,
@@ -21,16 +20,10 @@ function initExpress(app) {
     saveUninitialized: config.session.saveUninitialized
   };
 
+  //common express configs
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(methodOverride());
-  app.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*");
-   res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
-   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-   next();
-});
- 
   app.disable('x-powered-by');
 
   if (config.session.type === 'mongo') {
@@ -43,7 +36,17 @@ function initExpress(app) {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  app.use(function(req, res, next) {
+    req.resources = req.resources || {};
+    res.locals.app = config.app;
+    res.locals.currentUser = req.user;
+
+    next();
+  });
+
+  // always load static files if dev env
   if (config.serveStatic) {
     app.use(serveStatic(path.join(root, 'public')));
+    app.use('/v1', serveStatic(path.join(root, 'public_old')));
   }
-}
+};

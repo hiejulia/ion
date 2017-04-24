@@ -18,11 +18,11 @@ function initMongoose(app) {
   }
 
   return mongoose;
-}
+};
 
 function cleanup() {
-  mongoose.connection.close(function () {
-    console.log('Closing DB connections and stopping the app. Bye bye.');
+  mongoose.connection.close(() => {
+    // console.log('Closing DB connections and stopping the app. Bye bye.');
     process.exit(0);
   });
 }

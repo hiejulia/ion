@@ -26,11 +26,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class SigninComponent {
   private _authService: AuthService;
-  private _router: Router;
 
-  constructor(authService: AuthService, router: Router) {
+  constructor(authService: AuthService) {
     this._authService = authService;
-    this._router = router;
   }
 
   signin(event, email, password) {
@@ -42,7 +40,6 @@ export class SigninComponent {
     .signin(data)
     .subscribe((user) => {
       this._authService.setCurrentUser(user);
-      this._router.navigateByUrl('/');
     });
   }
 }

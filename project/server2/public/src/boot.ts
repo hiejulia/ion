@@ -3,9 +3,10 @@ import { provide } from 'angular2/core';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
 import { AuthHttp, AuthService }  from './auth/index';
+import { JobService } from './job/index';
+import { CompanyService } from './company/index';
+import { ProfileService } from './user/index';
 import { AppComponent } from './app.component';
-import { ExpenseService } from './expense/index';
-import { CategoryService } from './category/index';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
@@ -19,7 +20,8 @@ bootstrap(AppComponent, [
   HTTP_PROVIDERS, ROUTER_PROVIDERS,
   AuthHttp,
   AuthService,
-  ExpenseService,
-  CategoryService,
+  JobService,
+  CompanyService,
+  ProfileService,
   provide(LocationStrategy, {useClass: HashLocationStrategy})
 ]);
