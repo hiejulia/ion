@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 const cntEnum = Countries.map(item => item.code);
 
-let CompanySchema = new Schema({
+let OrganisationSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -15,6 +15,10 @@ let CompanySchema = new Schema({
   },
   slug: {
     type: String
+  },
+  location: {
+    type: String,
+    required:true
   },
   owner: {
     type: ObjectId,
@@ -25,9 +29,10 @@ let CompanySchema = new Schema({
     type: Array,
     default: []
   },
-  summary: {
+  description: {
     type: String
   },
+
   country: {
     type: String,
     required: true,
@@ -40,13 +45,23 @@ let CompanySchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  numberOfEmployees:{
+    type:Number,
+    required:true
+  },
+  eventsCreated:{
+    type: ObjectId,
+    required: true,
+    ref: 'Event'
+
   }
 });
 
-CompanySchema.pre('save', function(next) {
+OrganisationSchema.pre('save', function(next) {
   this.slug = commonHelper.createSlug(this.name);
   next();
 });
 
 // compile Company model
-module.exports = mongoose.model('Company', CompanySchema);
+module.exports = mongoose.model('Organisation', OrganisationSchema);

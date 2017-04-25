@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const serveStatic = require('serve-static');
 const session = require('express-session');
 const passport = require('passport');
+const cors = require('cors');
 const MongoStore = require('connect-mongo')(session);
 const config = require('./index');
 
@@ -23,6 +24,7 @@ function initExpress(app) {
   //common express configs
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+  app.use(cors())
   app.use(methodOverride());
   app.disable('x-powered-by');
 

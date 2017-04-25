@@ -5,10 +5,10 @@ module.exports = {
   hostname: '127.0.0.1',
   baseUrl: 'http://localhost:3000',
   mongodb: {
-    uri: 'mongodb://localhost/jobboard_dev_db'
+    uri: 'mongodb://localhost/servermeetup'
   },
   app: {
-    name: 'Job board'
+    name: 'Meet up'
   },
   serveStatic: true,
   session: {

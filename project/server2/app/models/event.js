@@ -2,16 +2,19 @@
 
 const mongoose = require('mongoose');
 const commonHelper = require('../helpers/common');
+
 const Industries = require('../../config/variables/industries');
 const Countries = require('../../config/variables/countries');
-const Jobtypes = require('../../config/variables/jobtypes');
+const Eventtypes = require('../../config/variables/eventtypes');
+
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
+
 const indEnum = Industries.map(item => item.slug);
 const cntEnum = Countries.map(item => item.code);
-const jobEnum = Jobtypes.map(item => item.slug);
+const eventEnum = Eventtypes.map(item => item.slug);
 
-let JobSchema = new Schema({
+let EventSchema = new Schema({
   title: {
     type: String,
     required: true
@@ -19,22 +22,53 @@ let JobSchema = new Schema({
   slug: {
     type: String
   },
-  summary: {
-    type: String,
-    maxlength: 250
-  },
+ location:{
+   type:String,
+   required:true
+ },
   description: {
-    type: String
+    type: String,
+    maxlength:500
   },
-  type: {
+  office:{
+    type:String
+  },
+  address:{
+    type:String
+  },
+  typeOfEvent: {
     type: String,
     required: true,
-    enum: jobEnum
+    enum: eventEnum
   },
-  company: {
+  numberOfParticipantsEstimated:{
+    type:Number,
+    required:true
+  },
+  comments:{
+    type:ObjectId,
+    ref:'Comment'
+  },
+  isActive: {
+    type:Boolean,
+    required:true
+  },
+  userCreated:{
+    type:ObjectId,
+    ref:'User'
+  },
+  timeStart:{
+    type:String,
+    required:true
+  },
+  timeEnd:{
+    type:String,
+    required:true
+  },
+  organisation: {
     type: ObjectId,
     required: true,
-    ref: 'Company'
+    ref: 'Organisation'
   },
   industry: {
     type: String,
@@ -52,10 +86,10 @@ let JobSchema = new Schema({
   }
 });
 
-JobSchema.pre('save', function(next) {
+EventSchema.pre('save', function(next) {
   this.slug = commonHelper.createSlug(this.title);
   next();
 });
 
 // compile Job model
-module.exports = mongoose.model('Job', JobSchema);
+module.exports = mongoose.model('Event', EventSchema);
