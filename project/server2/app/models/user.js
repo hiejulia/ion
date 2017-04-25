@@ -36,7 +36,7 @@ let UserSchema = new Schema({
     type: [
       {
         type: String,
-        enum: ['user', 'participant', 'member', 'owner']
+        enum: ['user', 'member', 'owner']
       }
     ],
     default: ['user']

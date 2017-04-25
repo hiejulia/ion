@@ -27,8 +27,7 @@ let EventSchema = new Schema({
    required:true
  },
   description: {
-    type: String,
-    maxlength:500
+    type: String
   },
   office:{
     type:String,
@@ -46,10 +45,6 @@ let EventSchema = new Schema({
   numberOfParticipantsEstimated:{
     type:Number,
     required:true
-  },
-  comments:{
-    type:ObjectId,
-    ref:'Comment'
   },
   isActive: {
     type:Boolean,

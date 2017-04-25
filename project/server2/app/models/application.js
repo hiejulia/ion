@@ -7,12 +7,12 @@ const ObjectId = Schema.ObjectId;
 let ApplicationSchema = new Schema({
   user: {
     type: ObjectId,
-    required: true,
+    
     ref: 'User'
   },
   event: {
     type: ObjectId,
-    required: true,
+    
     ref: 'Event'
   },
   status: {

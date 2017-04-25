@@ -15,7 +15,7 @@
       </div>
       {% endif %}
       
-      <form action='{{ base_url }}/auth/signin' method='post' id="js-form">
+      <form action='{{ base_url }}/auth/login' method='post' id="js-form">
         <div class="form-group">
           <input class="form-control" type='text' name='email' placeholder='{{ _t("Email address") }}' />
         </div>
@@ -23,7 +23,7 @@
           <input class="form-control" type='password' name='password' placeholder='{{ _t("Password") }}' />
         </div>
         <div class="form-group">
-          <button class="button primary block" type="submit">{{ _t("Sign in") }}</button>
+          <button class="button primary block" type="submit">{{ _t("Log in") }}</button>
         </div>
         <!-- <div class="form-group text-center">
           <a href="{{ base_url }}/forgot/password">{{ _t("Forgot your password?") }}</a>

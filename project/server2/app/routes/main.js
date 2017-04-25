@@ -8,6 +8,3 @@ router.get('/', mainCtrl.showPage('home'));
 
 module.exports = router;
 
-/**
- * main
- */

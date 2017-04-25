@@ -55,7 +55,7 @@ describe('Authentication', function() {
   it('should sign in a user with valid credentials', function(done) {
     request({
       method: 'POST',
-      url: baseUrl + '/auth/signin',
+      url: baseUrl + '/auth/login',
       form: {
         'email': userFixture.email,
         'password': 'P@ssw0rd!'
@@ -75,7 +75,7 @@ describe('Authentication', function() {
   it('should not sign in a user with invalid credentials', function(done) {
     request({
       method: 'POST',
-      url: baseUrl + '/auth/signin',
+      url: baseUrl + '/auth/login',
       form: {
         'email': userFixture.email,
         'password': 'incorrectpassword'

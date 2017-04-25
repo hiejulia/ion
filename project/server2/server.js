@@ -24,10 +24,10 @@ require('./config/express').init(app);
 require('./config/routes').init(app);
 
 //Set global error handler
-app.use(function(err, req, res, next) {
-  console.log(err);
-  res.status(500).json(err);
-});
+// app.use(function(err, req, res, next) {
+//   console.log(err);
+//   res.status(500).json(err);
+// });
 
 // Start the app if not loaded by another module
 if (!module.parent) {

@@ -10,9 +10,8 @@ const cntEnum = Countries.map(item => item.code);
 let OrganisationSchema = new Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
-  },
+    required: true
+   },
   slug: {
     type: String
   },
@@ -36,7 +35,6 @@ let OrganisationSchema = new Schema({
 
   country: {
     type: String,
-    required: true,
     enum: cntEnum
   },
   address: {
@@ -48,9 +46,8 @@ let OrganisationSchema = new Schema({
     default: Date.now
   },
   numberOfEmployees:{
-    type:Number,
-    required:true
-  }
+    type:Number
+    }
 });
 
 OrganisationSchema.pre('save', function(next) {
