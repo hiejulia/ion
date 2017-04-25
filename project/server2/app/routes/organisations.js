@@ -13,19 +13,19 @@ router.post(
   organisationCtrl.checkUserOrganisation,
   organisationCtrl.create
 );
-
+//get
 router.get(
   '/organisations',
   organisationCtrl.getAll,
   response.toJSON('organisations')
 );
-
+//get one organisation
 router.get(
   '/organisations/:organisationId',
   organisationCtrl.findById,
   response.toJSON('organisation')
 );
-
+//edit one organisation
 router.put(
   '/organisations/:organisationId',
   auth.ensured,
@@ -34,7 +34,7 @@ router.put(
   organisationCtrl.update,
   response.toJSON('organisation')
 );
-
+//create new members of one organisation
 router.post(
   '/organisations/:organisationId/members',
   auth.ensured,
@@ -43,7 +43,7 @@ router.post(
   organisationCtrl.addMember,
   response.toJSON('organisation')
 );
-
+//delete one members
 router.delete(
   '/organisations/:organisationId/members',
   auth.ensured,

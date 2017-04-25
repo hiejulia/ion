@@ -31,10 +31,12 @@ let EventSchema = new Schema({
     maxlength:500
   },
   office:{
-    type:String
+    type:String,
+    required:true
   },
   address:{
-    type:String
+    type:String,
+    required:true
   },
   typeOfEvent: {
     type: String,

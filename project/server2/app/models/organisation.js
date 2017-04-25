@@ -30,7 +30,8 @@ let OrganisationSchema = new Schema({
     default: []
   },
   description: {
-    type: String
+    type: String,
+    required:true
   },
 
   country: {
@@ -49,12 +50,6 @@ let OrganisationSchema = new Schema({
   numberOfEmployees:{
     type:Number,
     required:true
-  },
-  eventsCreated:{
-    type: ObjectId,
-    required: true,
-    ref: 'Event'
-
   }
 });
 

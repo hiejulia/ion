@@ -14,7 +14,8 @@ let UserSchema = new Schema({
   },
   name: {
     type: String,
-    required:true
+    required:true,
+    default:''
   },
   password: {
     type: String,
@@ -59,7 +60,7 @@ UserSchema.methods.changePassword = changeUserPassword;
  */
 function authenticateUser(email, password, callback) {
   this
-  .findOne({ email: email })
+  .findOne({ email: email })//find with email
   .select('+password +passwordSalt')
   .exec((err, user) => {
     if (err) {
