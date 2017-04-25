@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-
+import { JobServiceProvider } from '../../providers/jobService';
+import { JobModel } from '../../providers/job.model';
 
 import { ViewController } from 'ionic-angular';
 /*
@@ -40,14 +41,19 @@ export class AddEvent {
   startDate:any;
   endDate:any;
 
+ public event: JobModel;
+  
+  private _jobServiceProvider: JobServiceProvider;
+
  
-  constructor(public viewCtrl: ViewController) {
- 
+  constructor(public viewCtrl: ViewController,jobServiceProvider: JobServiceProvider ) {
+ this._jobServiceProvider = jobServiceProvider;
+ this.event= new JobModel();
   }
  
   save(): void {
  
-    let review = {
+    let event = {
       title: this.title,
       description: this.description,
       rating: this.rating,
@@ -60,7 +66,7 @@ export class AddEvent {
       endDate:this.endDate
     };
  
-    this.viewCtrl.dismiss(review);
+    this.viewCtrl.dismiss(event);
  
   }
  

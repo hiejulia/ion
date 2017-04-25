@@ -33,18 +33,23 @@ export class EventdetailPage {
   public event:JobModel;
   private _jobServiceProvider:JobServiceProvider;
  
- review:any;
+//  review:any;
   constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
   public authService: Auth, public params:NavParams,
   jobServiceProvider:JobServiceProvider) {
     this._jobServiceProvider= jobServiceProvider;
     //  this.review = this.params.get('review'); 
 
-    var reviewId = this.params.get('reviewId'); 
-     console.log(reviewId);  
+    var eventId = this.params.get('eventId'); 
+    
+     console.log(eventId);  
      this.event = new JobModel();
- console.log(typeof(this.review));
-      console.log(this.review["location"]);
+//  console.log(typeof(this.review));
+//       console.log(this.review["location"]);
+
+      this._jobServiceProvider.findById(eventId).subscribe((event) => {
+        this.event = event;
+      })
 
   
   }
@@ -63,21 +68,21 @@ goBack() {
 
 
   //participant
-  participant(n){
+//   participant(n){
 
-  // n.numberOfParticipants++;
-  console.log(n.numberOfParticipants ); 
-  var reviewId = n._id;
-  var numberOfParticipants = n.numberOfParticipants;
+//   // n.numberOfParticipants++;
+//   console.log(n.numberOfParticipants ); 
+//   var reviewId = n._id;
+//   var numberOfParticipants = n.numberOfParticipants;
 
 
-  // this.reviewService.getReviewById(reviewId).subscribe((data) => {
-  //     this.review = data;
-    this.reviewService.updateReviewById(reviewId,numberOfParticipants).subscribe((result) => {
-      this.review.numberOfParticipants = result.numberOfParticipants;
-    })
+//   // this.reviewService.getReviewById(reviewId).subscribe((data) => {
+//   //     this.review = data;
+//     this.reviewService.updateReviewById(reviewId,numberOfParticipants).subscribe((result) => {
+//       this.review.numberOfParticipants = result.numberOfParticipants;
+//     })
 
-}
+// }
 
   // ionViewWillEnter(){
     

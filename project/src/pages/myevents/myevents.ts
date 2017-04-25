@@ -33,6 +33,13 @@ export class MyEvents {
   constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
   public authService: Auth,jobsServiceProvider: JobServiceProvider) {
     this._jobsServiceProvider = jobsServiceProvider;
+     let query :any ={};
+    if(this.organisation){
+      query.organisation = this.organisation;
+    }
+    this._jobsServiceProvider.getAll(query).subscribe((events) => {
+      this.events = events;
+    })
  
   }
  
@@ -59,20 +66,24 @@ export class MyEvents {
     })
   }
  
-  // addReview(){
+  addReview(){
  
-  //   let modal = this.modalCtrl.create(AddEvent);
+    let modal = this.modalCtrl.create(AddEvent);
  
-  //   modal.onDidDismiss(review => {
-  //     if(review){
-  //       this.reviews.push(review);
-  //       this.reviewService.createReview(review);        
-  //     }
-  //   });
+    modal.onDidDismiss(event => {
+      if(event){
+        this.events.push(event);
+        // this.reviewService.createReview(event);    
+            this._jobsServiceProvider.create(event).subscribe((event) => {
+              console.log(event);
+               this.events.push(event);
+            })
+      }
+    });
  
-  //   modal.present();
+    modal.present();
  
-  // }
+  }
  
   // deleteReview(review){
  

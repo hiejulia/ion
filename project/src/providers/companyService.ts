@@ -16,13 +16,13 @@ export class CompanyServiceProvider {
 //get all
   getAll() {
     return this._http
-    .get('/api/companies', { headers: contentHeaders })
+    .get('http://localhost:3000/api/companies', { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 //get one
   findById(id) {
     return this._http
-    .get(`/api/companies/${id}`, { headers: contentHeaders })
+    .get(`http://localhost:3000/api/companies/${id}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 //create new 
@@ -30,7 +30,7 @@ export class CompanyServiceProvider {
     let body = JSON.stringify(company);
 
     return this._authHttpProvider
-    .post('/api/companies', body, { headers: contentHeaders })
+    .post('http://localhost:3000/api/companies', body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 //update
@@ -38,7 +38,7 @@ export class CompanyServiceProvider {
     let body = JSON.stringify(company);
 
     return this._authHttpProvider
-    .put(`/api/companies/${company._id}`, body, { headers: contentHeaders })
+    .put(`http://localhost:3000/api/companies/${company._id}`, body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 }

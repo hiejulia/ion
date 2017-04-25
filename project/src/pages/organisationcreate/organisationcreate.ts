@@ -30,13 +30,18 @@ import { CompanyModel } from '../../providers/company.model';
   selector: 'OrganisationCreate',
   templateUrl: 'organisationcreate.html'
 })
-export class OrganisationCreate {
+export class OrganisationCreatePage {
 
 
     public organisation: CompanyModel;
   private _companyServiceProvider: CompanyServiceProvider;
 
 name:any;
+location:any;
+description:any;
+country:any;
+address:any;
+numberOfEmployees:any;
  
   constructor(public viewCtrl: ViewController,companyServiceProvider: CompanyServiceProvider) {
       this._companyServiceProvider = companyServiceProvider;
@@ -67,14 +72,21 @@ name:any;
 //     this._router.navigate(['CompanyDetail', { id: id, slug: slug}]);
 //   }
  
-save():void {
+save(): void {
+ 
     let organisation = {
-        name:this.name
+        name:this.name,
+        location:this.location,
+        description:this.description,
+        country:this.country,
+        address:this.address,
+        numberOfEmployees:this.numberOfEmployees
+      
     };
-
+ 
     this.viewCtrl.dismiss(organisation);
-
-}  
+ 
+  } 
 close():void {
     this.viewCtrl.dismiss();
 }

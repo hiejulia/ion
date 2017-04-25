@@ -11,9 +11,9 @@
  
 <ion-content>
  
-  <ion-list no-lines>
+  <ion-list no-lines *ngFor="let review of reviews ">
  
-    <ion-item-sliding *ngFor="let review of reviews ">
+    <ion-item-sliding >
  
       <ion-item class="card">
          <ion-card>
@@ -49,12 +49,13 @@
 
         <button ion-button (click)="goToDetail(review)" ion-button round outline>
       <ion-icon name="md-navigate"></ion-icon>
+        </button>
 
 
              <button ion-button (click)="goToDetailOrganisation(review)" ion-button round outline>
-      <ion-icon name="md-navigate"></ion-icon>
-          View Organisation 
-        </button>
+             <ion-icon name="md-navigate"></ion-icon>
+              View Organisation 
+          </button>
 
       </ion-item>
  

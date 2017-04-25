@@ -26,9 +26,14 @@ import {Geolocation} from '@ionic-native/geolocation'
 
 import {ProfilePage} from '../pages/profile/profile';
 import {UserProfilePage} from '../pages/userprofile/userprofile';
+import {OrganisationsListPage} from '../pages/organisationlist/organisationlist';
+import {OrganisationdetailPage} from '../pages/organisationdetail/organisationdetail';
+import {OrganisationCreatePage} from '../pages/organisationcreate/organisationcreate';
 
-
-
+import {AuthHttpProvider} from '../providers/auth-http';
+import {AuthServiceProvider} from '../providers/authService';
+import {CompanyServiceProvider} from '../providers/companyService';
+import {JobServiceProvider} from '../providers/jobService';
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
 
@@ -54,7 +59,10 @@ import {UserProfilePage} from '../pages/userprofile/userprofile';
     EventdetailPage,
     GeolocationPage,
     ProfilePage,
-    UserProfilePage
+    UserProfilePage,
+    OrganisationsListPage,
+    OrganisationdetailPage,
+    OrganisationCreatePage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -81,7 +89,10 @@ import {UserProfilePage} from '../pages/userprofile/userprofile';
     GeolocationPage,
     ProfilePage,
     EventdetailPage,
-    UserProfilePage
+    UserProfilePage,
+    OrganisationsListPage,
+    OrganisationdetailPage,
+    OrganisationCreatePage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
   
@@ -89,6 +100,10 @@ import {UserProfilePage} from '../pages/userprofile/userprofile';
   ReviewsProvider,
   Auth,
   UsersProvider,
+  JobServiceProvider,
+  CompanyServiceProvider,
+  AuthHttpProvider,
+  AuthServiceProvider,
   Geolocation
   
    ]

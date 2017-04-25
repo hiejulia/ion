@@ -19,45 +19,34 @@
         Title is required
       </div>
     <ion-item>
-      <ion-label floating>Description</ion-label>
-      <ion-textarea [(ngModel)]="description"></ion-textarea>
-    </ion-item>
-
-
-     <ion-item>
-      <ion-label floating>Content</ion-label>
-      <ion-textarea [(ngModel)]="content"></ion-textarea>
-    </ion-item>
-
-     <ion-item>
       <ion-label floating>Location</ion-label>
       <ion-textarea [(ngModel)]="location"></ion-textarea>
     </ion-item>
 
 
-       <ion-item>
-      <ion-label floating>Start Date</ion-label>
-  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="startDate"></ion-datetime>
+     <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea [(ngModel)]="description"></ion-textarea>
+    </ion-item>
+
+     <ion-item>
+      <ion-label floating>Country</ion-label>
+      <ion-textarea [(ngModel)]="country"></ion-textarea>
+    </ion-item>
+
+     <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-textarea [(ngModel)]="address"></ion-textarea>
     </ion-item>
 
 
-   <ion-item>
-      <ion-label floating>End Date</ion-label>
-  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="endDate"></ion-datetime>
-    </ion-item>
-
+       
 
 
 
  <ion-item>
-      <ion-label floating>Is Active</ion-label>
-       <ion-toggle [(ngModel)]="isActive" (change)="onChange()" item-right></ion-toggle>
-
-    </ion-item>
-   
- <ion-item>
-      <ion-label floating>Number of participants</ion-label>
-      <ion-input type="number" placeholder="Number of participants" [(ngModel)]="numberOfParticipants"></ion-input>
+      <ion-label floating>Number of employees</ion-label>
+      <ion-input type="number" placeholder="Number of employees" [(ngModel)]="numberOfEmployees"></ion-input>
     </ion-item>
  
 

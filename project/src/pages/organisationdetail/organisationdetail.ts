@@ -35,17 +35,24 @@ export class OrganisationdetailPage {
   public authService: Auth, public params:NavParams,companyServiceProvider: CompanyServiceProvider,
   public navParams:NavParams) {
  this._companyServiceProvider = companyServiceProvider;
+
+ this.organisation = new CompanyModel();
+      const organisationId = this.navParams.get('organisationId');
+      this._companyServiceProvider.findById(organisationId)
+        .subscribe((organisation) => {
+            this.organisation= organisation;
+        })
     
   }
 
   ionViewDidLoad(){
-      console.log('did load');
-      this.organisation = new CompanyModel();
-      const id: string = this.navParams.get('id');
-      this._companyServiceProvider.findById(id)
-        .subscribe((organisation) => {
-            this.organisation= organisation;
-        })
+      // console.log('did load');
+      // this.organisation = new CompanyModel();
+      // const id: string = this.navParams.get('id');
+      // this._companyServiceProvider.findById(id)
+      //   .subscribe((organisation) => {
+      //       this.organisation= organisation;
+      //   })
   }
 
   

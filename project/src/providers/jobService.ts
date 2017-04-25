@@ -23,13 +23,13 @@ export class JobServiceProvider {
     }
 
     return this._http
-    .get(`/api/jobs${query}`, { headers: contentHeaders })
+    .get(`http://localhost:3000/api/jobs${query}`, { headers: contentHeaders })
     .map((res: Response) => res.json())//get the list of jobs json
   }
 //get one by id
   findById(id) {
     return this._http
-    .get(`/api/jobs/${id}`, { headers: contentHeaders })
+    .get(`http://localhost:3000/api/jobs/${id}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 //create new 
@@ -37,7 +37,7 @@ export class JobServiceProvider {
     let body = JSON.stringify(job);
 
     return this._authHttpProvider
-    .post('/api/jobs', body, { headers: contentHeaders })
+    .post('http://localhost:3000/api/jobs', body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 }

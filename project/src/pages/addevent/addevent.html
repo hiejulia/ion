@@ -20,18 +20,13 @@
       </div>
     <ion-item>
       <ion-label floating>Description</ion-label>
-      <ion-textarea [(ngModel)]="description"></ion-textarea>
+      <ion-textarea [(ngModel)]="description" required></ion-textarea>
     </ion-item>
 
-
-     <ion-item>
-      <ion-label floating>Content</ion-label>
-      <ion-textarea [(ngModel)]="content"></ion-textarea>
-    </ion-item>
 
      <ion-item>
       <ion-label floating>Location</ion-label>
-      <ion-textarea [(ngModel)]="location"></ion-textarea>
+      <ion-textarea [(ngModel)]="location" required></ion-textarea>
     </ion-item>
 
      <ion-item>
@@ -39,6 +34,20 @@
       <ion-textarea [(ngModel)]="organization"></ion-textarea>
     </ion-item>
 
+      <ion-item>
+      <ion-label floating>Office</ion-label>
+      <ion-textarea [(ngModel)]="office"></ion-textarea>
+    </ion-item>
+
+      <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-textarea [(ngModel)]="address"></ion-textarea>
+    </ion-item>
+
+  <ion-item>
+      <ion-label floating>Type of Event</ion-label>
+      <ion-textarea [(ngModel)]="eventType"></ion-textarea>
+    </ion-item>
 
        <ion-item>
       <ion-label floating>Start Date</ion-label>
@@ -61,11 +70,19 @@
     </ion-item>
    
  <ion-item>
-      <ion-label floating>Number of participants</ion-label>
-      <ion-input type="number" placeholder="Number of participants" [(ngModel)]="numberOfParticipants"></ion-input>
+      <ion-label floating>Number of participants Estimated</ion-label>
+      <ion-input type="number" placeholder="Number of participants" [(ngModel)]="numberOfParticipantsEstimated"></ion-input>
     </ion-item>
  
+  <ion-item>
+      <ion-label floating>Comments</ion-label>
+      <ion-textarea [(ngModel)]="comments"></ion-textarea>
+    </ion-item>
 
+  <ion-item>
+      <ion-label floating>Picture of event</ion-label>
+      <ion-textarea [(ngModel)]="picture"></ion-textarea>
+    </ion-item>
 
     <ion-item>
       <ion-range min="0" max="100" pin="true" [(ngModel)]="rating">

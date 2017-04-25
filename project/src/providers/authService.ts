@@ -21,7 +21,7 @@ export class AuthServiceProvider {
     headers.append('Authorization', `Basic ${basic}`)
 
     return this._http
-    .post('/auth/login', body, { headers: headers })
+    .post('http://localhost:3000/auth/login', body, { headers: headers })
     .map((res: Response) => res.json());
   }
 
@@ -30,7 +30,7 @@ export class AuthServiceProvider {
     let body = this._serialize(user);
 
     return this._http
-    .post('/auth/register', body, { headers: contentHeaders })
+    .post('http://localhost:3000/auth/register', body, { headers: contentHeaders })
     .map((res: Response) => res.json());//return json of user
   }
 //get the current user 

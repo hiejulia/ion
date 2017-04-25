@@ -8,7 +8,8 @@ import { Auth } from '../../providers/auth';
 import {AddEvent} from '../addevent/addevent';
 import { CompanyModel } from '../../providers/company.model';
 import { CompanyServiceProvider } from '../../providers/companyService';
-
+import {OrganisationdetailPage} from '../organisationdetail/organisationdetail';
+import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 /*
   Generated class for the Myevents page.
 
@@ -21,9 +22,9 @@ import { CompanyServiceProvider } from '../../providers/companyService';
 
 @Component({
   selector: 'OrganisationsList',
-  templateUrl: 'organisationslist.html'
+  templateUrl: 'organisationlist.html'
 })
-export class MyEvents {
+export class OrganisationsListPage {
 //   reviews: Array<Object>;
 
   public organisations: Array<CompanyModel>;
@@ -33,6 +34,10 @@ export class MyEvents {
   public authService: Auth,
   companyServiceProdiver: CompanyServiceProvider) {
        this._companyServiceProvider = companyServiceProdiver;
+        this._companyServiceProvider.getAll()
+        .subscribe((organisations) => {
+            this.organisations = organisations;
+        });
  
   }
  
@@ -55,10 +60,30 @@ export class MyEvents {
  
   
   goToDetail(organisation){
-    // console.log('go to the organisation page');
-    // // this.navCtrl.push(EventdetailPage);
-    //     this.navCtrl.push(EventdetailPage, {organisationId: organisation._id}); 
+    console.log('go to the organisation page');
+    // this.navCtrl.push(EventdetailPage);
+        this.navCtrl.push(OrganisationdetailPage, {organisationId: organisation._id}); 
 
 
 }
+addOrganisation(){
+  let modal = this.modalCtrl.create(OrganisationCreatePage);
+ 
+    modal.onDidDismiss(organisation => {
+      if(organisation){
+        this.organisations.push(organisation);
+        // this.reviewService.createReview(event);    
+            this._companyServiceProvider.create(organisation).subscribe((organisation) => {
+               this.organisations.push(organisation);
+              
+              console.log(event);
+            },(err) => {
+              console.log(err);
+            })
+      }
+    });
+ 
+    modal.present();
+}
+
 }
