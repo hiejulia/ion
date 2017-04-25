@@ -46,22 +46,10 @@ export class EventdetailPage {
  console.log(typeof(this.review));
       console.log(this.review["location"]);
 
-    });
+  
   }
 
-  // ionViewWillEnter(){
-   
- 
-  //    var reviewId = this.params.get('reviewId'); 
-  //    console.log(reviewId);  
-
-  //   this.reviewService.getReviewById(reviewId).subscribe((data) => {
-  //     this.review = data;
-  //     console.log(this.review);
-
-  //   });
- 
-  // }
+  
 
   //show map
 

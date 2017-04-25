@@ -19,7 +19,7 @@ import { AuthServiceProvider } from '../../providers/authService';
   templateUrl: 'register.html'
 })
 export class RegisterPage {
-  role: string;
+  // role: string;
   email: string;
   password: string;
   firstname:string;
@@ -31,8 +31,10 @@ loading:any;
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public authService: Auth, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public authService: Auth, public loadingCtrl: LoadingController,
+  authServiceProvider:AuthServiceProvider) {
     this.loading = loadingCtrl;
+    this._authServiceProvider = authServiceProvider;
   }
 
   ionViewDidLoad() {
@@ -62,7 +64,13 @@ loading:any;
     this._authServiceProvider
     .register(credentials)
     .subscribe((user) => {
+      this.loading.dismiss();
       console.log('the registered user is / the current user is '+user);
+      this.navCtrl.setRoot(TabsPage);
+      
+    },(err) => {
+      console.log('error while register');
+      this.loading.dismiss();
     })
  
   }

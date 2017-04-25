@@ -1,14 +1,22 @@
 <!-- template /app/pages/account/account.html --> 
 <ion-header> 
   <ion-navbar primary> 
+      <button menuToggle> 
+      <ion-icon name="menu"></ion-icon> 
+    </button>
     <ion-title> 
-      Edit My Profile 
+      Edit My Profile
     </ion-title> 
   </ion-navbar> 
 </ion-header> 
  
 <ion-content> 
-  
+<h1>Hi {{user.name}}</h1>
+<span>Your public email is {{user.email}} and this is your profile</span>
+
+
+
+
 </ion-content> 
 
 

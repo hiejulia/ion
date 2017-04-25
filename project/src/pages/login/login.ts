@@ -35,22 +35,22 @@ export class LoginPage {
     this._authServiceProvider = authServiceProvider;
       
     }
-ionViewDidLoad() {
-   this.showLoader();
+// ionViewDidLoad() {
+//    this.showLoader();
  
-        //Check if already authenticated
-        this.authService.checkAuthentication().then((res) => {
-            console.log("Already authorized");
-            this.loading.dismiss();
-            this.navCtrl.setRoot(TabsPage);
-        }, (err) => {
-            console.log("Not already authorized");
-            this.loading.dismiss();
-        });
+//         //Check if already authenticated
+//         this.authService.checkAuthentication().then((res) => {
+//             console.log("Already authorized");
+//             this.loading.dismiss();
+//             this.navCtrl.setRoot(TabsPage);
+//         }, (err) => {
+//             console.log("Not already authorized");
+//             this.loading.dismiss();
+//         });
  
        
  
-    }
+//     }
 
  
    
@@ -76,7 +76,13 @@ login(){
         this._authServiceProvider  
             .login(credentials)
             .subscribe((user) => {
+                this.loading.dismiss();
+                
                 this._authServiceProvider.setCurrentUser(user);
+                this.navCtrl.setRoot(TabsPage);
+            },(err) => {
+                console.log('not authenticated');
+                this.loading.dismiss();
             })
 
 }

@@ -7,6 +7,8 @@ import { Events } from '../../providers/events';
 import { Auth } from '../../providers/auth';
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
+import { JobServiceProvider } from '../../providers/jobService';
+import { JobModel } from '../../providers/job.model';
 
 /*
   Generated class for the Myevents page.
@@ -23,10 +25,14 @@ import {AddEvent} from '../addevent/addevent';
   templateUrl: 'myevents.html'
 })
 export class MyEvents {
-  reviews: Array<Object>;
- 
+  // reviews: Array<Object>;
+    public organisation: any;
+
+ public events: Array<JobModel>;
+  private _jobsServiceProvider: JobServiceProvider;
   constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
-  public authService: Auth) {
+  public authService: Auth,jobsServiceProvider: JobServiceProvider) {
+    this._jobsServiceProvider = jobsServiceProvider;
  
   }
  
@@ -36,39 +42,50 @@ export class MyEvents {
     //       this.todos = data;
     //     })
  //get all
-    this.reviewService.getReviews().subscribe(data => {
-        this.reviews = data;
-    });
+    // this.reviewService.getReviews().subscribe(data => {
+    //     this.reviews = data;
+    // });
+
  
   }
- 
-  addReview(){
- 
-    let modal = this.modalCtrl.create(AddEvent);
- 
-    modal.onDidDismiss(review => {
-      if(review){
-        this.reviews.push(review);
-        this.reviewService.createReview(review);        
-      }
-    });
- 
-    modal.present();
- 
+
+  ionViewWillEnter() {
+    let query :any ={};
+    if(this.organisation){
+      query.organisation = this.organisation;
+    }
+    this._jobsServiceProvider.getAll(query).subscribe((events) => {
+      this.events = events;
+    })
   }
  
-  deleteReview(review){
+  // addReview(){
  
-    //Remove locally
-      let index = this.reviews.indexOf(review);
+  //   let modal = this.modalCtrl.create(AddEvent);
  
-      if(index > -1){
-        this.reviews.splice(index, 1);
-      }   
+  //   modal.onDidDismiss(review => {
+  //     if(review){
+  //       this.reviews.push(review);
+  //       this.reviewService.createReview(review);        
+  //     }
+  //   });
  
-    //Remove from database
-    this.reviewService.deleteReview(review._id);
-  }
+  //   modal.present();
+ 
+  // }
+ 
+  // deleteReview(review){
+ 
+  //   //Remove locally
+  //     let index = this.reviews.indexOf(review);
+ 
+  //     if(index > -1){
+  //       this.reviews.splice(index, 1);
+  //     }   
+ 
+  //   //Remove from database
+  //   this.reviewService.deleteReview(review._id);
+  // }
 
 
   logout(){
@@ -78,10 +95,10 @@ export class MyEvents {
  
   }
 
-  goToDetail(review){
+  goToDetail(event){
     console.log('go to the detail page');
     // this.navCtrl.push(EventdetailPage);
-        this.navCtrl.push(EventdetailPage, {reviewId: review._id}); 
+        this.navCtrl.push(EventdetailPage, {eventId: event._id}); 
 
 
   // speakerDetail(speaker) { 
@@ -89,4 +106,6 @@ export class MyEvents {
   // } 
 
 }
+
+
 }
