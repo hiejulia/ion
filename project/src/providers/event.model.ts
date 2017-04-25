@@ -23,17 +23,17 @@ export class EventModel {
     slug?: string,
     location?:string,
     description?: string,
-    office?:string;
-  address?:string;
-  typeOfEvent?: string;
-  numberOfParticipantsEstimated?:number;
-  isActive?:boolean;
-  timeStart?:string;
-  timeEnd?:string;
-  organisation?: string;
-  industry?: string;
-  country?: string;
-  createdAt?: string;
+    office?:string,
+  address?:string,
+  typeOfEvent?: string,
+  numberOfParticipantsEstimated?:number,
+  isActive?:boolean,
+  timeStart?:string,
+  timeEnd?:string,
+  organisation?: string,
+  industry?: string,
+  country?: string,
+  createdAt?: string
   ) {
     this._id = _id;
     this.title = title;

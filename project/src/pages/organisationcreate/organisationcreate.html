@@ -15,9 +15,7 @@
       <ion-label floating class="item item-input">Organisation Name</ion-label>
       <ion-input [(ngModel)]="name" type="text" name="title" required ></ion-input>
     </ion-item>
- <div [hidden]="title && (title.valid || (title.pristine && !isSubmitted))" class="note danger">
-        Title is required
-      </div>
+
     <ion-item>
       <ion-label floating>Location</ion-label>
       <ion-textarea [(ngModel)]="location"></ion-textarea>

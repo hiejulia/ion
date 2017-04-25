@@ -11,14 +11,13 @@ import {EventdetailPage} from '../pages/eventdetail/eventdetail';
 import {RegisterPage} from '../pages/register/register';
 import {GeolocationPage } from '../pages/geolocation/geolocation';
 
-import { Events } from '../providers/events';
-import { Auth } from '../providers/auth';
+
 import { Storage } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage';
 
-import {ReviewsProvider} from '../providers/reviews';
 
-import {UsersProvider} from '../providers/users';
+
+// import {UsersProvider} from '../providers/users';
 import {UsersListPage} from '../pages/userslist/userslist';
 
 
@@ -32,8 +31,8 @@ import {OrganisationCreatePage} from '../pages/organisationcreate/organisationcr
 
 import {AuthHttpProvider} from '../providers/auth-http';
 import {AuthServiceProvider} from '../providers/authService';
-import {CompanyServiceProvider} from '../providers/companyService';
-import {JobServiceProvider} from '../providers/jobService';
+import {OrganisationServiceProvider} from '../providers/organisationService';
+import {EventServiceProvider} from '../providers/eventService';
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
 
@@ -96,12 +95,10 @@ import {JobServiceProvider} from '../providers/jobService';
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
   
-  Events,
-  ReviewsProvider,
-  Auth,
-  UsersProvider,
-  JobServiceProvider,
-  CompanyServiceProvider,
+  
+  // UsersProvider,
+  EventServiceProvider,
+  OrganisationServiceProvider,
   AuthHttpProvider,
   AuthServiceProvider,
   Geolocation

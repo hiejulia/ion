@@ -5,7 +5,6 @@ import {RegisterPage} from '../register/register';
 import {TabsPage} from '../tabs/tabs';
 
 
-import { Auth } from '../../providers/auth';
 
 import { AuthServiceProvider } from '../../providers/authService';
 
@@ -29,7 +28,7 @@ export class LoginPage {
 
 
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
-  public authService: Auth,
+  
   authServiceProvider: AuthServiceProvider) {
     this.loading= loadingCtrl;
     this._authServiceProvider = authServiceProvider;
@@ -78,7 +77,7 @@ login(){
             .subscribe((user) => {
                 this.loading.dismiss();
                 
-                this._authServiceProvider.setCurrentUser(user);
+                this._authServiceProvider.setCurrentUser(user);//set current user 
                 this.navCtrl.setRoot(TabsPage);
             },(err) => {
                 console.log('not authenticated');
@@ -89,7 +88,7 @@ login(){
   
 
    launchSignup(){
-        this.navCtrl.push(RegisterPage);
+        this.navCtrl.push(RegisterPage);//go to register page 
     }
  
     showLoader(){

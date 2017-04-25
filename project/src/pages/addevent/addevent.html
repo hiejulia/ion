@@ -1,6 +1,6 @@
 <ion-header>
  <ion-toolbar transparent>
-  <ion-title>Add Review</ion-title>
+  <ion-title>Add Event</ion-title>
   <ion-buttons end>
     <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
   </ion-buttons>
@@ -15,9 +15,7 @@
       <ion-label floating class="item item-input">Title</ion-label>
       <ion-input [(ngModel)]="title" type="text" name="title" required ></ion-input>
     </ion-item>
- <div [hidden]="title && (title.valid || (title.pristine && !isSubmitted))" class="note danger">
-        Title is required
-      </div>
+ 
     <ion-item>
       <ion-label floating>Description</ion-label>
       <ion-textarea [(ngModel)]="description" required></ion-textarea>
@@ -31,33 +29,33 @@
 
      <ion-item>
       <ion-label floating>Organization</ion-label>
-      <ion-textarea [(ngModel)]="organization"></ion-textarea>
+      <ion-textarea [(ngModel)]="organization" required></ion-textarea>
     </ion-item>
 
       <ion-item>
       <ion-label floating>Office</ion-label>
-      <ion-textarea [(ngModel)]="office"></ion-textarea>
+      <ion-textarea [(ngModel)]="office" required></ion-textarea>
     </ion-item>
 
       <ion-item>
       <ion-label floating>Address</ion-label>
-      <ion-textarea [(ngModel)]="address"></ion-textarea>
+      <ion-textarea [(ngModel)]="address" required></ion-textarea>
     </ion-item>
 
   <ion-item>
       <ion-label floating>Type of Event</ion-label>
-      <ion-textarea [(ngModel)]="eventType"></ion-textarea>
+      <ion-textarea [(ngModel)]="typeOfEvent" required></ion-textarea>
     </ion-item>
 
        <ion-item>
       <ion-label floating>Start Date</ion-label>
-  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="startDate"></ion-datetime>
+  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="startDate" required></ion-datetime>
     </ion-item>
 
 
    <ion-item>
       <ion-label floating>End Date</ion-label>
-  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="endDate"></ion-datetime>
+  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="endDate" required></ion-datetime>
     </ion-item>
 
 
@@ -65,31 +63,18 @@
 
  <ion-item>
       <ion-label floating>Is Active</ion-label>
-       <ion-toggle [(ngModel)]="isActive" (change)="onChange()" item-right></ion-toggle>
+       <ion-toggle [(ngModel)]="isActive" (change)="onChange()" item-right required></ion-toggle>
 
     </ion-item>
    
  <ion-item>
       <ion-label floating>Number of participants Estimated</ion-label>
-      <ion-input type="number" placeholder="Number of participants" [(ngModel)]="numberOfParticipantsEstimated"></ion-input>
+      <ion-input type="number" placeholder="Number of participants" [(ngModel)]="numberOfParticipantsEstimated" required></ion-input>
     </ion-item>
  
-  <ion-item>
-      <ion-label floating>Comments</ion-label>
-      <ion-textarea [(ngModel)]="comments"></ion-textarea>
-    </ion-item>
 
-  <ion-item>
-      <ion-label floating>Picture of event</ion-label>
-      <ion-textarea [(ngModel)]="picture"></ion-textarea>
-    </ion-item>
 
-    <ion-item>
-      <ion-range min="0" max="100" pin="true" [(ngModel)]="rating">
-        <ion-icon range-left name="sad"></ion-icon>
-        <ion-icon range-right name="happy"></ion-icon>
-      </ion-range>
-    </ion-item>
+
  
   </ion-list>
  

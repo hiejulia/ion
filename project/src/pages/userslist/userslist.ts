@@ -5,9 +5,9 @@ import {EventdetailPage} from '../eventdetail/eventdetail';
 
 import {Pipe} from 'angular2/core';
 
-import { UsersProvider } from '../../providers/users';
+// import { UsersProvider } from '../../providers/users';
 
-import { Auth } from '../../providers/auth';
+
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
 
@@ -30,47 +30,46 @@ import {UserProfilePage} from '../userprofile/userprofile';
 export class UsersListPage {
   users: any;
 //users= []
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
-  public authService: Auth,public usersProvider:UsersProvider) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
  
   }
  
-  ionViewDidLoad(){
+  // ionViewDidLoad(){
  
-    this.usersProvider.getUsers().subscribe((data) => {
-      console.log(data);
-      this.users = data;
+  //   this.usersProvider.getUsers().subscribe((data) => {
+  //     console.log(data);
+  //     this.users = data;
       
-    });
+  //   });
  
-  }
+  // }
 
-  goToUserProfile(u){
-      console.log('go to user profile');
-      this.navCtrl.push(UserProfilePage,{userId:u._id});
-  }
+  // goToUserProfile(u){
+  //     console.log('go to user profile');
+  //     this.navCtrl.push(UserProfilePage,{userId:u._id});
+  // }
 
-  //follow user
-  follow(user){
-      console.log(user);
-      alert(user);
-  }
+  // //follow user
+  // follow(user){
+  //     console.log(user);
+  //     alert(user);
+  // }
  
   
-  doInfinite(infiniteScroll){
-    // console.log(infiniteScroll);
-    console.log('begin the async operation');
-    setTimeout(() => {
-      for(let i =0;i<5;i++){
-        this.users.push(this.users.length);
-      }
-      console.log('async operation has ended');
+  // doInfinite(infiniteScroll){
+  //   // console.log(infiniteScroll);
+  //   console.log('begin the async operation');
+  //   setTimeout(() => {
+  //     for(let i =0;i<5;i++){
+  //       this.users.push(this.users.length);
+  //     }
+  //     console.log('async operation has ended');
 
 
-      infiniteScroll.complete();
-    },500)
+  //     infiniteScroll.complete();
+  //   },500)
 
-  }
+  // }
 
 }
 

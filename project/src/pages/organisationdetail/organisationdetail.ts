@@ -7,15 +7,13 @@ import 'rxjs/Rx';
  
 
 import { NavController, NavParams,ModalController } from 'ionic-angular';
-import {ReviewsProvider} from '../../providers/reviews';
 
-import { Events } from '../../providers/events';
-import { Auth } from '../../providers/auth';
+
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
 import {GeolocationPage} from '../geolocation/geolocation';
-import { CompanyModel } from '../../providers/company.model';
-import { CompanyServiceProvider } from '../../providers/companyService';
+import { OrganisationModel } from '../../providers/organisation.model';
+import { OrganisationServiceProvider } from '../../providers/organisationService';
 
 /*
   Generated class for the Eventdetail page.
@@ -29,16 +27,16 @@ import { CompanyServiceProvider } from '../../providers/companyService';
 })
 export class OrganisationdetailPage {
 
- public organisation: CompanyModel;
-  private _companyServiceProvider: CompanyServiceProvider;
-  constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
-  public authService: Auth, public params:NavParams,companyServiceProvider: CompanyServiceProvider,
+ public organisation: OrganisationModel;
+  private _organisationServiceProvider: OrganisationServiceProvider;
+  constructor(public navCtrl: NavController,  public modalCtrl: ModalController,
+   public params:NavParams,organisationServiceProvider: OrganisationServiceProvider,
   public navParams:NavParams) {
- this._companyServiceProvider = companyServiceProvider;
+ this._organisationServiceProvider = organisationServiceProvider;
 
- this.organisation = new CompanyModel();
+ this.organisation = new OrganisationModel();
       const organisationId = this.navParams.get('organisationId');
-      this._companyServiceProvider.findById(organisationId)
+      this._organisationServiceProvider.findById(organisationId)
         .subscribe((organisation) => {
             this.organisation= organisation;
         })

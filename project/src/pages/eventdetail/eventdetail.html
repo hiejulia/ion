@@ -1,6 +1,6 @@
 <ion-header>
  <ion-toolbar transparent>
-  <ion-title>Add Review</ion-title>
+  <ion-title>Event Detail</ion-title>
   <ion-buttons end>
     <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
   </ion-buttons>
@@ -14,23 +14,23 @@
    <ion-item>
  
         <ion-avatar item-left>
-          <img src="https://api.adorable.io/avatars/75/{{review?.title}}">
+          <img src="https://api.adorable.io/avatars/75/{{event?.title}}">
         </ion-avatar>
  
       
-        <p>{{review?.description}}</p>
-        <p>{{review?.content}}</p>
-        <p>{{review?.location}}</p>
-        <p>{{review?.organization}}</p>
-        <p>{{review?.startDate}}</p>
-        <p>{{review?.endDate}}</p>
-        <p>{{review?.numberOfParticipants}}</p>
-        <p>{{review?.isActive}}</p>
-        <p>created by : {{review?.createdBy}} </p>
+        <p>{{event?.description}}</p>
+    
+        <p>{{event?.location}}</p>
+        <p>{{event?.organization}}</p>
+        <p>{{event?.startDate}}</p>
+        <p>{{event?.endDate}}</p>
+        <p>{{event?.numberOfParticipants}}</p>
+        <p>{{event?.isActive}}</p>
+        <p>created by : {{event?.createdBy}} </p>
  
         
-        <button ion-button round outline (click)="showMap(review)">Show Map</button>
-        <button ion-button round outline (click) ="participant(review)">Participate !!!</button>
+        <button ion-button round outline (click)="showMap(event)">Show Map</button>
+        <button ion-button round outline (click) ="participant(event)">Participate !!!</button>
         
 
 

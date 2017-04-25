@@ -7,8 +7,7 @@ import { NavController, NavParams,ModalController, AlertController, LoadingContr
 
 import {EventdetailPage} from '../eventdetail/eventdetail';
 
-import { Events } from '../../providers/events';
-import { Auth } from '../../providers/auth';
+
 import { LoginPage } from '../login/login';
 
 /*
@@ -27,8 +26,8 @@ export class TechEvents {
 
 
   constructor(public navCtrl: NavController,
-  public eventService: Events, public modalCtrl: ModalController, 
-    public alertCtrl: AlertController, public authService: Auth, public loadingCtrl: LoadingController) {
+  public modalCtrl: ModalController, 
+    public alertCtrl: AlertController,  public loadingCtrl: LoadingController) {
 
      console.log('Start with Tech event');
 
@@ -37,109 +36,109 @@ export class TechEvents {
 
   }
 
-  ionViewDidLoad() {
-    this.eventService.getEvents().then((data) => {
-          this.events = data;
-    }, (err) => {
-        console.log("not allowed");
-    });
-  }
+//   ionViewDidLoad() {
+//     this.eventService.getEvents().then((data) => {
+//           this.events = data;
+//     }, (err) => {
+//         console.log("not allowed");
+//     });
+//   }
   
-addEvent(){
+// addEvent(){
 
-  let eventInput = prompt('Put the event');
-  if(eventInput) {
-    this.showLoader();
-    this.eventService.createEvent(eventInput).then((result) => {
-      this.loading.dismiss();
-      this.events = result;
-      console.log('event created');
-    },(err) => {
-      this.loading.dismiss();
-      console.log('Cannot create new event');
-      console.dir(err);
-    })
-  }
+//   let eventInput = prompt('Put the event');
+//   if(eventInput) {
+//     this.showLoader();
+//     this.eventService.createEvent(eventInput).then((result) => {
+//       this.loading.dismiss();
+//       this.events = result;
+//       console.log('event created');
+//     },(err) => {
+//       this.loading.dismiss();
+//       console.log('Cannot create new event');
+//       console.dir(err);
+//     })
+//   }
  
-    // let prompt = this.alertCtrl.create({
-    //   title: 'Add Event',
-    //   message: 'Describe your event below:',
-    //   inputs: [
-    //     {
-    //       name: 'title'
-    //     }
-    //   ],
-    //   buttons: [
-    //     {
-    //       text: 'Cancel'
-    //     },
-    //     {
-    //       text: 'Save',
-    //       handler: event => {
+//     // let prompt = this.alertCtrl.create({
+//     //   title: 'Add Event',
+//     //   message: 'Describe your event below:',
+//     //   inputs: [
+//     //     {
+//     //       name: 'title'
+//     //     }
+//     //   ],
+//     //   buttons: [
+//     //     {
+//     //       text: 'Cancel'
+//     //     },
+//     //     {
+//     //       text: 'Save',
+//     //       handler: event => {
  
-    //             if(event){
+//     //             if(event){
  
-    //                 this.showLoader();
+//     //                 this.showLoader();
  
-    //                 this.eventService.createEvent(event).then((result) => {
-    //                     this.loading.dismiss();
-    //                     this.events = result;
-    //                     console.log("event created");
-    //                 }, (err) => {
-    //                     this.loading.dismiss();
-    //                     console.log(err);
-    //                     console.dir(err);
-    //                     console.log("not allowed");
-    //                 });
+//     //                 this.eventService.createEvent(event).then((result) => {
+//     //                     this.loading.dismiss();
+//     //                     this.events = result;
+//     //                     console.log("event created");
+//     //                 }, (err) => {
+//     //                     this.loading.dismiss();
+//     //                     console.log(err);
+//     //                     console.dir(err);
+//     //                     console.log("not allowed");
+//     //                 });
  
-    //             }
+//     //             }
  
  
-    //       }
-    //     }
-    //   ]
-    // });
+//     //       }
+//     //     }
+//     //   ]
+//     // });
  
-    // prompt.present();
+//     // prompt.present();
  
-  }
+//   }
  
-  deleteEvent(event){
+//   deleteEvent(event){
  
-    this.showLoader();
+//     this.showLoader();
  
-    //Remove from database
-    this.eventService.deleteEvent(event._id).then((result) => {
+//     //Remove from database
+//     this.eventService.deleteEvent(event._id).then((result) => {
  
-      this.loading.dismiss();
+//       this.loading.dismiss();
  
-      //Remove locally
-        let index = this.events.indexOf(event);
+//       //Remove locally
+//         let index = this.events.indexOf(event);
  
-        if(index > -1){
-            this.events.splice(index, 1);
-        }   
+//         if(index > -1){
+//             this.events.splice(index, 1);
+//         }   
  
-    }, (err) => {
-      this.loading.dismiss();
-        console.log("not allowed");
-    });
-  }
+//     }, (err) => {
+//       this.loading.dismiss();
+//         console.log("not allowed");
+//     });
+//   }
  
-  showLoader(){
+//   showLoader(){
  
-    this.loading = this.loadingCtrl.create({
-      content: 'Authenticating...'
-    });
+//     this.loading = this.loadingCtrl.create({
+//       content: 'Authenticating...'
+//     });
  
-    this.loading.present();
+//     this.loading.present();
  
-  }
+//   }
  
-  logout(){
+//   logout(){
  
-    this.authService.logout();
-    this.navCtrl.setRoot(LoginPage);
+//     this.authService.logout();
+//     this.navCtrl.setRoot(LoginPage);
  
-  }
+//   }
 }

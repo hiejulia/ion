@@ -3,12 +3,11 @@ import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {ReviewsProvider} from '../../providers/reviews';
 import {EventdetailPage} from '../eventdetail/eventdetail';
 
-import { Events } from '../../providers/events';
-import { Auth } from '../../providers/auth';
+
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
-import { JobServiceProvider } from '../../providers/jobService';
-import { JobModel } from '../../providers/job.model';
+import { EventServiceProvider } from '../../providers/eventService';
+import { EventModel } from '../../providers/event.model';
 
 /*
   Generated class for the Myevents page.
@@ -28,16 +27,16 @@ export class MyEvents {
   // reviews: Array<Object>;
     public organisation: any;
 
- public events: Array<JobModel>;
-  private _jobsServiceProvider: JobServiceProvider;
-  constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
-  public authService: Auth,jobsServiceProvider: JobServiceProvider) {
-    this._jobsServiceProvider = jobsServiceProvider;
+ public events: Array<EventModel>;
+  private _eventsServiceProvider: EventServiceProvider;
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
+eventsServiceProvider: EventServiceProvider) {
+    this._eventsServiceProvider = eventsServiceProvider;
      let query :any ={};
     if(this.organisation){
       query.organisation = this.organisation;
     }
-    this._jobsServiceProvider.getAll(query).subscribe((events) => {
+    this._eventsServiceProvider.getAll(query).subscribe((events) => {
       this.events = events;
     })
  
@@ -61,12 +60,12 @@ export class MyEvents {
     if(this.organisation){
       query.organisation = this.organisation;
     }
-    this._jobsServiceProvider.getAll(query).subscribe((events) => {
+    this._eventsServiceProvider.getAll(query).subscribe((events) => {
       this.events = events;
     })
   }
  
-  addReview(){
+  addEvent(){
  
     let modal = this.modalCtrl.create(AddEvent);
  
@@ -74,7 +73,7 @@ export class MyEvents {
       if(event){
         this.events.push(event);
         // this.reviewService.createReview(event);    
-            this._jobsServiceProvider.create(event).subscribe((event) => {
+            this._eventsServiceProvider.create(event).subscribe((event) => {
               console.log(event);
                this.events.push(event);
             })

@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { AuthHttpProvider } from './auth-http';
 import { contentHeaders, serializeQuery } from '../common/index';
-import { JobModel } from './job.model';
+import { EventModel } from './event.model';
 
 @Injectable()
-export class JobServiceProvider {
+export class EventServiceProvider {
   private _http: Http;
   private _authHttpProvider: AuthHttpProvider;
 
@@ -13,7 +13,7 @@ export class JobServiceProvider {
     this._http = http;
     this._authHttpProvider = authHttpProvider;
   }
-//get all
+//get all events
   getAll(criteria) {
     let query = '';
     let str = serializeQuery(criteria);
@@ -23,21 +23,21 @@ export class JobServiceProvider {
     }
 
     return this._http
-    .get(`http://localhost:3000/api/jobs${query}`, { headers: contentHeaders })
-    .map((res: Response) => res.json())//get the list of jobs json
+    .get(`http://localhost:3000/api/events${query}`, { headers: contentHeaders })
+    .map((res: Response) => res.json())//get the list of events json
   }
-//get one by id
+//get one by id get one event by the id 
   findById(id) {
     return this._http
-    .get(`http://localhost:3000/api/jobs/${id}`, { headers: contentHeaders })
+    .get(`http://localhost:3000/api/events/${id}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 //create new 
-  create(job) {
-    let body = JSON.stringify(job);
+  create(event) {
+    let body = JSON.stringify(event);
 
     return this._authHttpProvider
-    .post('http://localhost:3000/api/jobs', body, { headers: contentHeaders })
+    .post('http://localhost:3000/api/events', body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 }

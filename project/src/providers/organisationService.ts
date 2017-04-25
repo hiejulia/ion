@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { AuthHttpProvider } from './auth-http';
 import { contentHeaders } from '../common/index';
-import { CompanyModel } from './company.model';
+import { OrganisationModel } from './organisation.model';
 
 @Injectable()
-export class CompanyServiceProvider {
+export class OrganisationServiceProvider {
   private _http: Http;
   private _authHttpProvider: AuthHttpProvider;
 
@@ -13,32 +13,32 @@ export class CompanyServiceProvider {
     this._http = http;
     this._authHttpProvider = authHttpProvider;
   }
-//get all
+//get all organisations
   getAll() {
     return this._http
-    .get('http://localhost:3000/api/companies', { headers: contentHeaders })
+    .get('http://localhost:3000/api/organisations', { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 //get one
   findById(id) {
     return this._http
-    .get(`http://localhost:3000/api/companies/${id}`, { headers: contentHeaders })
+    .get(`http://localhost:3000/api/organisations/${id}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 //create new 
-  create(company) {
-    let body = JSON.stringify(company);
+  create(organisation) {
+    let body = JSON.stringify(organisation);
 
     return this._authHttpProvider
-    .post('http://localhost:3000/api/companies', body, { headers: contentHeaders })
+    .post('http://localhost:3000/api/organisations', body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 //update
-  update(company) {
-    let body = JSON.stringify(company);
+  update(organisation) {
+    let body = JSON.stringify(organisation);
 
     return this._authHttpProvider
-    .put(`http://localhost:3000/api/companies/${company._id}`, body, { headers: contentHeaders })
+    .put(`http://localhost:3000/api/organisations/${organisation._id}`, body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 }

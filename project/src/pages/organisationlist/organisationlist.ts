@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,ModalController } from 'ionic-angular';
-import {ReviewsProvider} from '../../providers/reviews';
 import {EventdetailPage} from '../eventdetail/eventdetail';
 
-import { Events } from '../../providers/events';
-import { Auth } from '../../providers/auth';
 import {AddEvent} from '../addevent/addevent';
-import { CompanyModel } from '../../providers/company.model';
-import { CompanyServiceProvider } from '../../providers/companyService';
+import { OrganisationModel } from '../../providers/organisation.model';
+import { OrganisationServiceProvider } from '../../providers/organisationService';
 import {OrganisationdetailPage} from '../organisationdetail/organisationdetail';
 import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 /*
@@ -27,14 +24,14 @@ import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 export class OrganisationsListPage {
 //   reviews: Array<Object>;
 
-  public organisations: Array<CompanyModel>;
-    private _companyServiceProvider: CompanyServiceProvider;
+  public organisations: Array<OrganisationModel>;
+    private _organisationServiceProvider: OrganisationServiceProvider;
 
-  constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
-  public authService: Auth,
-  companyServiceProdiver: CompanyServiceProvider) {
-       this._companyServiceProvider = companyServiceProdiver;
-        this._companyServiceProvider.getAll()
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
+
+  organisationServiceProdiver: OrganisationServiceProvider) {
+       this._organisationServiceProvider = organisationServiceProdiver;
+        this._organisationServiceProvider.getAll()
         .subscribe((organisations) => {
             this.organisations = organisations;
         });
@@ -51,7 +48,7 @@ export class OrganisationsListPage {
     //     this.reviews = data;
     // });
 
-    this._companyServiceProvider.getAll()
+    this._organisationServiceProvider.getAll()
         .subscribe((organisations) => {
             this.organisations = organisations;
         });
@@ -73,10 +70,10 @@ addOrganisation(){
       if(organisation){
         this.organisations.push(organisation);
         // this.reviewService.createReview(event);    
-            this._companyServiceProvider.create(organisation).subscribe((organisation) => {
+            this._organisationServiceProvider.create(organisation).subscribe((organisation) => {
                this.organisations.push(organisation);
               
-              console.log(event);
+              console.log(organisation);
             },(err) => {
               console.log(err);
             })

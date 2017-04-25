@@ -4,23 +4,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 
 import { ViewController } from 'ionic-angular';
-import { CompanyServiceProvider } from '../../providers/companyService';
-import { CompanyModel } from '../../providers/company.model';
-/*
-  Generated class for the Addevent page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
-// class TechEvent {
-//   // title:string;
-//   // description:string;
-//   // place:string;
-
-//   constructor(){}
-
-
-// }
+import { OrganisationServiceProvider } from '../../providers/organisationService';
+import { OrganisationModel } from '../../providers/organisation.model';
 
 
 
@@ -33,8 +18,8 @@ import { CompanyModel } from '../../providers/company.model';
 export class OrganisationCreatePage {
 
 
-    public organisation: CompanyModel;
-  private _companyServiceProvider: CompanyServiceProvider;
+    public organisation: OrganisationModel;
+  private _organisationServiceProvider: OrganisationServiceProvider;
 
 name:any;
 location:any;
@@ -44,8 +29,8 @@ address:any;
 numberOfEmployees:any;
  
   constructor(public viewCtrl: ViewController,companyServiceProvider: CompanyServiceProvider) {
-      this._companyServiceProvider = companyServiceProvider;
-      this.organisation= new CompanyModel();
+      this._organisationServiceProvider = organisationServiceProvider;
+      this.organisation= new OrganisationModel();
  
   }
  

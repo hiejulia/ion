@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { JobServiceProvider } from '../../providers/jobService';
-import { JobModel } from '../../providers/job.model';
+import { EventServiceProvider } from '../../providers/eventService';
+import { EventModel } from '../../providers/event.model';
 
 import { ViewController } from 'ionic-angular';
 /*
@@ -32,23 +32,24 @@ import { ViewController } from 'ionic-angular';
 export class AddEvent {
   title: any;
   description: any;
-  rating: any;
-  content:any;
   location:any;
   organization:any;
+  office:any;
+  address:any;
+  typeOfEvent:any;
   isActive:boolean;
-  numberOfParticipants:number;
+  numberOfParticipantsEstimated:number;
   startDate:any;
   endDate:any;
 
- public event: JobModel;
+ public event: EventModel;
   
-  private _jobServiceProvider: JobServiceProvider;
+  private _eventServiceProvider: EventServiceProvider;
 
  
-  constructor(public viewCtrl: ViewController,jobServiceProvider: JobServiceProvider ) {
- this._jobServiceProvider = jobServiceProvider;
- this.event= new JobModel();
+  constructor(public viewCtrl: ViewController,eventServiceProvider: EventServiceProvider ) {
+ this._eventServiceProvider = eventServiceProvider;
+ this.event= new EventModel();
   }
  
   save(): void {
@@ -56,12 +57,14 @@ export class AddEvent {
     let event = {
       title: this.title,
       description: this.description,
-      rating: this.rating,
-      content:this.content,
+      
+      office:this.office,
+      address:this.address,
+      typeOfEvent:this.typeOfEvent,
       location:this.location,
-      organization:this.organization,
+    
       isActive:this.isActive,
-      numberOfParticipants: this.numberOfParticipants,
+      numberOfParticipantsEstimated: this.numberOfParticipantsEstimated,
       startDate:this.startDate,
       endDate:this.endDate
     };

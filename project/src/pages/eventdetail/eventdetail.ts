@@ -7,16 +7,14 @@ import 'rxjs/Rx';
  
 
 import { NavController, NavParams,ModalController } from 'ionic-angular';
-import {ReviewsProvider} from '../../providers/reviews';
 
-import { Events } from '../../providers/events';
-import { Auth } from '../../providers/auth';
+
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
 import {GeolocationPage} from '../geolocation/geolocation';
-import { JobServiceProvider } from '../../providers/jobService';
+import { EventServiceProvider } from '../../providers/eventService';
 
-import { JobModel } from '../../providers/job.model';
+import { EventModel } from '../../providers/event.model';
 
 /*
   Generated class for the Eventdetail page.
@@ -31,13 +29,13 @@ import { JobModel } from '../../providers/job.model';
 export class EventdetailPage {
 
   public event:JobModel;
-  private _jobServiceProvider:JobServiceProvider;
+  private _eventServiceProvider:EventServiceProvider;
  
 //  review:any;
-  constructor(public navCtrl: NavController, public reviewService: ReviewsProvider, public modalCtrl: ModalController,
-  public authService: Auth, public params:NavParams,
-  jobServiceProvider:JobServiceProvider) {
-    this._jobServiceProvider= jobServiceProvider;
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
+   public params:NavParams,
+  eventServiceProvider:EventServiceProvider) {
+    this._eventServiceProvider= eventServiceProvider;
     //  this.review = this.params.get('review'); 
 
     var eventId = this.params.get('eventId'); 

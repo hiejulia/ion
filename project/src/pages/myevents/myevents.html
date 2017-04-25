@@ -1,17 +1,17 @@
 <ion-header>
  <ion-navbar transparent>
   <ion-title>
-    Review King
+    Events List
   </ion-title>
   <ion-buttons end>
-    <button ion-button icon-only (click)="addReview()"><ion-icon name="add"></ion-icon></button>
+    <button ion-button icon-only (click)="addEvent()"><ion-icon name="add"></ion-icon></button>
   </ion-buttons>
  </ion-navbar>
 </ion-header>
  
 <ion-content>
  
-  <ion-list no-lines *ngFor="let review of reviews ">
+  <ion-list no-lines *ngFor="let event of events ">
  
     <ion-item-sliding >
  
@@ -26,33 +26,37 @@
   </ion-card>
  
         <ion-avatar item-left>
-          <img src="https://api.adorable.io/avatars/75/{{review?.title}}">
+          <img src="https://api.adorable.io/avatars/75/{{event?.title}}">
         </ion-avatar>
  
-        <h2>{{review?.title}}</h2>
-        <p>{{review?.description}}</p>
-        <p>{{review?.content}}</p>
-        <p>{{review?.location}}</p>
-        <p>{{review?.startDate}}</p>
-        <p>{{review?.endDate}}</p>
-        <p>{{review?.isActive}}</p>
-        <p>{{review?.numberOfParticipants}}</p>
-        <p>{{review?.createdBy}}</p>
+        <h2>{{event?.title}}</h2>
+        <p>{{event?.description}}</p>
+        
+        <p>{{event?.location}}</p>
+        <p>{{event?.startDate}}</p>
+        <p>{{event?.endDate}}</p>
+        <p>{{event?.isActive}}</p>
+        <p>{{event?.numberOfParticipants}}</p>
+        <p>{{event?.createdBy}}</p>
+        <p>{{event?.organisation.name}}</p>
+        <p>{{event?.industry}}</p>
+        <p>{{event?.eventType}}</p>
+        
 
-        <ion-icon *ngIf="review.rating < 50" danger name="sad"></ion-icon>
-        <ion-icon *ngIf="review.rating >= 50" secondary name="happy"></ion-icon> 
-        {{review?.rating}}
-   <button ion-button color="danger" (click)="deleteReview(review)">
+        <ion-icon *ngIf="event.rating < 50" danger name="sad"></ion-icon>
+        <ion-icon *ngIf="event.rating >= 50" secondary name="happy"></ion-icon> 
+        {{event?.rating}}
+   <button ion-button color="danger" (click)="deleteevent(event)">
       <ion-icon name="trash"></ion-icon>
           Delete
         </button>
 
-        <button ion-button (click)="goToDetail(review)" ion-button round outline>
+        <button ion-button (click)="goToDetail(event)" ion-button round outline>
       <ion-icon name="md-navigate"></ion-icon>
         </button>
 
 
-             <button ion-button (click)="goToDetailOrganisation(review)" ion-button round outline>
+             <button ion-button (click)="goToDetailOrganisation(event)" ion-button round outline>
              <ion-icon name="md-navigate"></ion-icon>
               View Organisation 
           </button>
