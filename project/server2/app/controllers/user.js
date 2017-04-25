@@ -6,7 +6,7 @@
 const _ = require('lodash');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-const Company = mongoose.model('Company');
+const Organisation = mongoose.model('Organisation');
 const ProfileBlock = mongoose.model('ProfileBlock');
 const ObjectId = mongoose.Types.ObjectId;
 
@@ -20,26 +20,29 @@ module.exports.delete = deleteUser;
 module.exports.getProfile = getUserProfile;
 module.exports.updateProfile = updateUserProfile;
 module.exports.createProfileBlock = createUserProfileBlock;
-module.exports.getUserCompanies = getUserCompanies;
+module.exports.getUserOrganisations = getUserOrganisations;
 module.exports.getAuthUser = getAuthUser;
 
+
+//find user by id
 function findUserById(req, res, next) {
   if (!ObjectId.isValid(req.params.userId)) {
-    return res.status(404).json({ message: '404 not found.'});
+    return res.status(404).json({ message: 'User not found '});
   }
 
   User.findById(req.params.userId, (err, user) => {
     if (err) {
       next(err);
     } else if (user) {
+      //set req.resources = user
       req.resources.user = user;
       next();
     } else {
-      next(new Error('failed to find user'));
+      next(new Error('User not found'));
     }
   });
 };
-
+//get all users
 function getAllUsers(req, res, next) {
   User.find((err, users) => {
     if (err) {
@@ -50,7 +53,7 @@ function getAllUsers(req, res, next) {
     next();
   });
 };
-
+//update user
 function updateUser(req, res, next) {
   var user = req.resources.user;
   _.assign(user, req.body);
@@ -64,7 +67,7 @@ function updateUser(req, res, next) {
     next();
   });
 };
-
+//delete user 
 function deleteUser(req, res, next) {
   req.resources.user.remove((err) => {
     if (err) {
@@ -74,7 +77,7 @@ function deleteUser(req, res, next) {
     res.status(204).json();
   });
 }
-
+//get user profile
 function getUserProfile(req, res, next) {
   User
   .findOne(req.params.userId)
@@ -135,17 +138,17 @@ function updateUserProfile(req, res, next) {
     next();
   });
 }
-
-function getUserCompanies(req, res, next) {
-  Company.find({ owner: req.user._id }, (err, companies) => {
+//get user organisations
+function getUserOrganisations(req, res, next) {
+  Organisation.find({ owner: req.user._id }, (err, organisations) => {
     if (err) {
       return next(err);
     }
 
-    req.resources.companies = companies;
+    req.resources.organisations = organisations;
   });
 }
-
+//get auth user 
 function getAuthUser(req, res, next) {
   console.log(req.user.roles);
   console.log(req.user.roles.indexOf('owner'));

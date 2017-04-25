@@ -20,7 +20,7 @@ module.exports.onlySelf = authorizeOnlySelf;
 //   }
 // };
 
-function authorizeOnlyToCompanyMembers(req, res, next) {
+function authorizeOnlyToOrganisationMembers(req, res, next) {
   // check if user is member of company
   const isMember = req.resources.company.members.find((member) => {
     return member.toString() === req.user._id.toString();

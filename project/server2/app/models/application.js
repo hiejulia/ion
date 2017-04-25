@@ -10,10 +10,10 @@ let ApplicationSchema = new Schema({
     required: true,
     ref: 'User'
   },
-  job: {
+  event: {
     type: ObjectId,
     required: true,
-    ref: 'Job'
+    ref: 'Event'
   },
   status: {
     type: String,

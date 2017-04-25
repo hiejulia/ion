@@ -7,3 +7,7 @@ const mainCtrl = require('../controllers/main');
 router.get('/', mainCtrl.showPage('home'));
 
 module.exports = router;
+
+/**
+ * main
+ */

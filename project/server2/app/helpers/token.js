@@ -21,7 +21,7 @@ module.exports.generate = generateToken;
  * @param {Number} randomBytes - random bytes to generate
  * @param {Function} callback
  */
-function generateToken(randomBytes, callback) {
+function generateToken(randomBytes, callback) {//generate token
   if (typeof randomBytes === 'function') {
     callback = randomBytes;
     randomBytes = LEN;
