@@ -22,8 +22,7 @@ export class RegisterPage {
   // role: string;
   email: string;
   password: string;
-  firstname:string;
-  lastname:string;
+  name:string;
 
 loading:any;
   private _authServiceProvider: AuthServiceProvider;
@@ -49,8 +48,7 @@ loading:any;
         email: this.email,
         password: this.password,
         // role: this.role,
-        firstname:this.firstname,
-        lastname:this.lastname
+        name:this.name
     };
  
     // this.authService.createAccount(details).then((result) => {
