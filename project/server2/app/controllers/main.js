@@ -16,6 +16,6 @@ function showPage(page, data) {
 
 function responseToJSON(prop) {
   return function(req, res, next) {
-    res.json(req.resources[prop]);
+    res.json(req.resources[prop]);//send back the json 
   }
 }

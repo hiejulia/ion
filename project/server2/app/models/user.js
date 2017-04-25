@@ -13,9 +13,7 @@ let UserSchema = new Schema({
     unique: true
   },
   name: {
-    type: String,
-    required:true,
-    default:''
+    type: String
   },
   password: {
     type: String,
@@ -27,7 +25,10 @@ let UserSchema = new Schema({
     required: true,
     select: false
   },
-  
+  active: {
+    type: Boolean,
+    default: true
+  },
   profile: {
     type: [ProfileBlockSchema],
     select: false
@@ -36,7 +37,7 @@ let UserSchema = new Schema({
     type: [
       {
         type: String,
-        enum: ['user', 'member', 'owner']
+        enum: ['user', 'participant', 'member', 'owner']
       }
     ],
     default: ['user']
@@ -52,7 +53,7 @@ UserSchema.statics.register = registerUser;
 UserSchema.methods.changePassword = changeUserPassword;
 
 /**
- * Find a user by it's email and checks the password againts the stored hash => findOne by email => check password 
+ * Find a user by it's email and checks the password againts the stored hash
  *
  * @param {String} email
  * @param {String password
@@ -60,7 +61,7 @@ UserSchema.methods.changePassword = changeUserPassword;
  */
 function authenticateUser(email, password, callback) {
   this
-  .findOne({ email: email })//find with email
+  .findOne({ email: email })
   .select('+password +passwordSalt')
   .exec((err, user) => {
     if (err) {
@@ -98,7 +99,7 @@ function authenticateUser(email, password, callback) {
 }
 
 /**
- * Create a new user with the specified properties REGISTER NEW USER 
+ * Create a new user with the specified properties
  *
  * @param {Object} opts - user data
  * @param {Function} callback
@@ -131,7 +132,7 @@ function authenticateUser(email, password, callback) {
  }
 
 /**
- * Create an instance method to change password CHANGE PASSWORD
+ * Create an instance method to change password
  *
  */
  function changeUserPassword(oldPassword, newPassword, callback) {

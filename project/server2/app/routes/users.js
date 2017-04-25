@@ -7,6 +7,7 @@ const mainCtrl = require('../controllers/main');
 const auth = require('../middlewares/authentication');
 const authorize = require('../middlewares/authorization');
 const response = require('../helpers/response');
+
 router.get(
   '/users',
   auth.ensured,
@@ -62,10 +63,10 @@ router.put(
 );
 
 router.get(
-  '/users/:userId/companies',
+  '/users/:userId/organisations',
   auth.ensured,
-  userCtrl.getUserCompanies,
-  response.toJSON('companies')
+  userCtrl.getUserOrganisations,
+  response.toJSON('organisations')
 );
 
 module.exports = router;
