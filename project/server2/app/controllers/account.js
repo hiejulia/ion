@@ -9,7 +9,7 @@ module.exports.register = registerUser;
 function registerUser(req, res, next) {
   var userData = _.pick(req.body, 'name', 'email', 'password');
 
-  if (req.body.type === 'company') {
+  if (req.body.type === 'organisation') {
     userData.roles = ['owner'];
   }
 

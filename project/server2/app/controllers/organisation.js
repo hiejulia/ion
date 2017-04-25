@@ -22,7 +22,7 @@ module.exports.addMember = addOrganisationMember;
 module.exports.removeMember = removeOrganisationMember;
 //create new organisation 
 function createOrganisation(req, res, next) {
-  let data = _.pick(req.body, ['name', 'country', 'address']);
+  let data = _.pick(req.body, ['name', 'country', 'address','location','description','numberOfEmployees']);
   data.owner = req.user._id;
   data.members = [req.user._id];
 
@@ -44,7 +44,7 @@ function checkUserOrganisation(req, res, next) {
     if (organisation) {
       return res.status(409).json({
         message: 'You already are the owner of ' + organisation.name,
-        type: 'user_has_company'
+        type: 'user_has_organisation'
       });
     }
 
@@ -87,15 +87,15 @@ function getAllOrganisations(req, res, next) {
 }
 //update organisation 
 function updateOrganisation(req, res, next) {
-  var data = _.pick(req.body, ['name', 'country', 'address']);
+  var data = _.pick(req.body, ['name', 'country', 'address','location','description','numberOfEmployees']);
   _.assign(req.resources.organisation, req.body);
 
-  req.resources.organisation.save((err, updatedOrganistion) => {
+  req.resources.organisation.save((err, updatedOrganisation) => {
     if (err) {
       return next(err);
     }
 
-    req.resources.organisation = updatedOrganistion;
+    req.resources.organisation = updatedOrganisation;
     next();
   });
 }

@@ -9,13 +9,13 @@ const mongoose = require('mongoose');
 /**
  *  Module exports
  */
-module.exports.signin = signinUser;
+module.exports.login = loginUser;
 module.exports.signout = signoutUser;
 
 /**
  *  Uses Passport's local strategy to sign in a user
  */
-function signinUser(req, res, next) {
+function loginUser(req, res, next) {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
       return next(err);

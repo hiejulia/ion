@@ -22,7 +22,7 @@ module.exports.remove = removeApplication;
 function createApplication(req, res, next) {
   Application.create({
     user: req.user._id,
-    job: req.params.jobId
+    event: req.params.eventId
   }, (err, application) => {
     if (err) {
       return next(err);
@@ -51,7 +51,7 @@ function getAllApplications(req, res, next) {
   const limit = +req.query.limit || MAX_LIMIT;
   const skip = +req.query.skip || 0;
   let query = {
-    job: req.params.jobId
+    event: req.params.eventId
   };
 
   if (req.query.status) {

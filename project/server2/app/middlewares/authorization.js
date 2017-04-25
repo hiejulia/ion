@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports.onlyOwner = authorizeOnlyToCompanyOwner;
-module.exports.onlyMembers = authorizeOnlyToCompanyMembers;
+module.exports.onlyOwner = authorizeOnlyToOrganisationOwner;
+module.exports.onlyMembers = authorizeOnlyToOrganisationMembers;
 module.exports.onlySelf = authorizeOnlySelf;
 
 // function authorizeOnlyOwner(entity) {
@@ -21,23 +21,23 @@ module.exports.onlySelf = authorizeOnlySelf;
 // };
 
 function authorizeOnlyToOrganisationMembers(req, res, next) {
-  // check if user is member of company
-  const isMember = req.resources.company.members.find((member) => {
+  // check if user is member of organisation
+  const isMember = req.resources.organisation.members.find((member) => {
     return member.toString() === req.user._id.toString();
   });
 
   if (!isMember) {
-    return res.status(403).json({ message: 'Unauthorized' });
+    return res.status(403).json({ message: 'Unauthorized for member of organisation' });
   }
 
   next();
 }
 
-function authorizeOnlyToCompanyOwner(req, res, next) {
-  const isOwner = req.resources.company.owner.toString() === req.user._id.toString();
+function authorizeOnlyToOrganisationOwner(req, res, next) {
+  const isOwner = req.resources.organisation.owner.toString() === req.user._id.toString();
 
   if (!isOwner) {
-    return res.status(403).json({ message: 'Unauthorized' });
+    return res.status(403).json({ message: 'Unauthorized for owner of organisation' });
   }
 
   next();

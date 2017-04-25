@@ -58,5 +58,5 @@ OrganisationSchema.pre('save', function(next) {
   next();
 });
 
-// compile Company model
+// compile organisation model
 module.exports = mongoose.model('Organisation', OrganisationSchema);

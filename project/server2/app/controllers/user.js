@@ -30,7 +30,7 @@ function findUserById(req, res, next) {
     return res.status(404).json({ message: 'User not found '});
   }
 
-  User.findById(req.params.userId, (err, user) => {
+  User.findById(req.params.userId, (err, user) => {//find by id 
     if (err) {
       next(err);
     } else if (user) {
@@ -155,14 +155,14 @@ function getAuthUser(req, res, next) {
   console.log(req.user.roles.indexOf('member'));
 
   if (req.user.roles.indexOf('owner') !== -1 || req.user.roles.indexOf('member') !== -1) {
-    return Company.findOne({ members: req.user._id }, (err, company) => {
-      console.log(company);
+    return Organisation.findOne({ members: req.user._id }, (err, organisation) => {
+      console.log(organisation);
       if (err) {
         return next(err);
       }
 
       var user = req.user.toObject();
-      user.company = company;
+      user.organisation = organisation;
       res.json(user);
     });
   }

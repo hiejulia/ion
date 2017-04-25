@@ -93,5 +93,5 @@ EventSchema.pre('save', function(next) {
   next();
 });
 
-// compile Job model
+// compile Event model
 module.exports = mongoose.model('Event', EventSchema);

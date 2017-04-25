@@ -1,7 +1,7 @@
 'use strict';
 
 const MAX_LIMIT = 50;
-const EVENT_FIELDS = ['title', 'summary', 'description', 'type', 'industry', 'country'];
+const EVENT_FIELDS = ['title','location', 'description','office','address', 'typeOfEvents', 'industry', 'country','numberOfParticipantsEstimated','isActive','timeEnd','timeStart'];
 
 /**
  *  Module dependencies
@@ -32,7 +32,7 @@ function createEvent(req, res, next) {
     res.status(201).json(event);
   });
 }
-//find event by Id 
+//find event by Id find one event
 function findEventById(req, res, next) {
   if (!ObjectId.isValid(req.params.eventId)) {
     res.status(404).send({ message: 'Event not found'});
@@ -51,7 +51,7 @@ function findEventById(req, res, next) {
 function getAllEvents(req, res, next) {
   const limit = +req.query.limit || MAX_LIMIT;
   const skip = +req.query.skip || 0;
-  let query = _.pick(req.query, ['type', 'country', 'industry', 'company']);
+  let query = _.pick(req.query, ['typeOfEvent', 'country', 'industry', 'organisation']);
 
   if (req.params.organisationId) {
     query.organisation = req.params.organisationId;
@@ -73,7 +73,7 @@ function getAllEvents(req, res, next) {
 }
 //update event 
 function updateEvent(req, res, next) {
-  let data = _.pick(req.body, ['title', 'summary', 'description', 'type', 'industry', 'country']);
+  let data = _.pick(req.body, ['title', 'description', 'type', 'industry', 'country','location','office','address','typeOfEvent','numberOfParticipantsEstimated','isActive','timeStart','timeEnd']);
   _.assign(req.resources.event, data);
 
   req.resources.event.save((err, updatedEvent) => {

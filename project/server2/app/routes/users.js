@@ -30,12 +30,12 @@ router.put(
   userCtrl.update,
   mainCtrl.toJSON('user')
 );
-//delete one user 
-router.delete(
-  '/users/:userId',
-  auth.ensured,
-  userCtrl.delete
-);
+// //delete one user 
+// router.delete(
+//   '/users/:userId',
+//   auth.ensured,
+//   userCtrl.delete
+// );
 //get user profile
 router.get(
   '/users/:userId/profile',

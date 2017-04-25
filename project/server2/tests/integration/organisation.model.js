@@ -42,7 +42,7 @@ describe('Organisation model', function() {
 
       should.exist(organisation);
       should.exist(organisation.createdAt);
-      organisation.name.should.equal(newCompanyData.name);
+      organisation.name.should.equal(newOrganisationData.name);
       organisation.members[0].toString().should.equal(newOrganisationData.members[0].toString());
       organisation.owner.toString().should.equal(newOrganisationData.owner.toString());
       organisation.slug.should.equal('test-organisation');
