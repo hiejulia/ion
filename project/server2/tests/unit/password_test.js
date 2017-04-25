@@ -1,3 +1,7 @@
+/**
+ * test password from user 
+ */
+
 'use strict';
 
 var chai = require('chai');

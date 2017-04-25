@@ -35,7 +35,7 @@ describe('User model', function() {
     });
   });
 
-  it('should register a user', function(done) {
+  it('should register a user', function(done) {//register user 
     User.register(newUserData, function(err, user) {
       if (err) throw err;
 
@@ -50,7 +50,7 @@ describe('User model', function() {
       done();
     });
   });
-
+//not register if already exists
   it('should not register a user if already exists', function(done) {
     User.register(newUserData, function(err, user) {
       should.exist(err);
@@ -59,7 +59,7 @@ describe('User model', function() {
       done();
     });
   });
-
+//authen
   it('should authenticate a user with valid credentials', function(done) {
     User.authenticate(newUserData.email, 'user_password', function(err, user) {
       if (err) throw err;

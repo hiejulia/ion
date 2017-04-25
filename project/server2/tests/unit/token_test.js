@@ -1,3 +1,9 @@
+/**
+ * test token from user 
+ */
+
+
+
 'use strict';
 
 var chai = require('chai');
@@ -10,8 +16,8 @@ describe('Token Helper', function() {
       tokenHelper.generate(function(err, token) {
         if (err) throw err;
 
-        should.exist(token);
-        token.should.be.a('string');
+        should.exist(token);//should have token 
+        token.should.be.a('string');//string
         token.length.should.equal(16);
         done();
       });
