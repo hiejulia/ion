@@ -8,7 +8,7 @@ import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
 import { EventServiceProvider } from '../../providers/eventService';
 import { EventModel } from '../../providers/event.model';
-
+import {AuthServiceProvider} from '../../providers/authService';
 /*
   Generated class for the Myevents page.
 
@@ -30,7 +30,7 @@ export class MyEvents {
  public events: Array<EventModel>;
   private _eventsServiceProvider: EventServiceProvider;
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
-eventsServiceProvider: EventServiceProvider) {
+eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServiceProvider) {
     this._eventsServiceProvider = eventsServiceProvider;
      let query :any ={};
     if(this.organisation){
@@ -100,7 +100,7 @@ eventsServiceProvider: EventServiceProvider) {
 
   logout(){
  
-    this.authService.logout();
+    this.authServiceProvider.logout();
     this.navCtrl.setRoot(LoginPage);
  
   }

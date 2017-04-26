@@ -1,7 +1,7 @@
 'use strict';
 
 const MAX_LIMIT = 50;
-const EVENT_FIELDS = ['title','location', 'description','office','address', 'typeOfEvents', 'industry', 'country','numberOfParticipantsEstimated','isActive','timeEnd','timeStart'];
+const EVENT_FIELDS = ['title','location', 'description','office','address','numberOfParticipantsEstimated','isActive','timeEnd','timeStart'];
 
 /**
  *  Module dependencies
@@ -51,7 +51,7 @@ function findEventById(req, res, next) {
 function getAllEvents(req, res, next) {
   const limit = +req.query.limit || MAX_LIMIT;
   const skip = +req.query.skip || 0;
-  let query = _.pick(req.query, ['typeOfEvent', 'country', 'industry', 'organisation']);
+  let query = _.pick(req.query, ['title', 'description']);
 
   if (req.params.organisationId) {
     query.organisation = req.params.organisationId;
@@ -61,7 +61,7 @@ function getAllEvents(req, res, next) {
   .find(query)
   .limit(limit)
   .skip(skip)
-  .populate('organisation')
+  .populate('title')
   .exec((err, events) => {
     if (err) {
       return next(err);

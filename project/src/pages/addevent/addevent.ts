@@ -36,7 +36,6 @@ export class AddEvent {
   organization:any;
   office:any;
   address:any;
-  typeOfEvent:any;
   isActive:boolean;
   numberOfParticipantsEstimated:number;
   startDate:any;
@@ -60,7 +59,6 @@ export class AddEvent {
       
       office:this.office,
       address:this.address,
-      typeOfEvent:this.typeOfEvent,
       location:this.location,
     
       isActive:this.isActive,

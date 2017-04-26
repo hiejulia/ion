@@ -20,7 +20,7 @@ export class OrganisationCreatePage {
   address:any;
   numberOfEmployees:any;
  
-  constructor(public viewCtrl: ViewController, companyServiceProvider:CompanyServiceProvider) {
+  constructor(public viewCtrl: ViewController, organisationServiceProvider:OrganisationServiceProvider) {
       this._organisationServiceProvider = organisationServiceProvider;
       this.organisation= new OrganisationModel();
  

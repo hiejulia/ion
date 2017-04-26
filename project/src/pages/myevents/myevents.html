@@ -37,15 +37,10 @@
         <p>{{event?.endDate}}</p>
         <p>{{event?.isActive}}</p>
         <p>{{event?.numberOfParticipants}}</p>
-        <p>{{event?.createdBy}}</p>
-        <p>{{event?.organisation.name}}</p>
-        <p>{{event?.industry}}</p>
-        <p>{{event?.eventType}}</p>
+    
         
 
-        <ion-icon *ngIf="event.rating < 50" danger name="sad"></ion-icon>
-        <ion-icon *ngIf="event.rating >= 50" secondary name="happy"></ion-icon> 
-        {{event?.rating}}
+      
    <button ion-button color="danger" (click)="deleteevent(event)">
       <ion-icon name="trash"></ion-icon>
           Delete

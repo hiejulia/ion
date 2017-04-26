@@ -21,7 +21,7 @@ let OrganisationSchema = new Schema({
   },
   owner: {
     type: ObjectId,
-    required: true,
+    
     ref: 'User'
   },
   members: {
@@ -39,7 +39,7 @@ let OrganisationSchema = new Schema({
   },
   address: {
     type: String,
-    required: true
+    
   },
   createdAt: {
     type: Date,

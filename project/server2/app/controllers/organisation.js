@@ -22,7 +22,7 @@ module.exports.addMember = addOrganisationMember;
 module.exports.removeMember = removeOrganisationMember;
 //create new organisation 
 function createOrganisation(req, res, next) {
-  let data = _.pick(req.body, ['name', 'country', 'address','location','description','numberOfEmployees']);
+  let data = _.pick(req.body, ['name', 'address','location','description','numberOfEmployees']);
   data.owner = req.user._id;
   data.members = [req.user._id];
 
@@ -70,7 +70,7 @@ function findOrganisationById(req, res, next) {
 function getAllOrganisations(req, res, next) {
   const limit = +req.query.limit || MAX_LIMIT;
   const skip = +req.query.skip || 0;
-  let query = _.pick(req.query, ['country']);
+  let query = _.pick(req.query, ['name']);
 
   Organisation
   .find(query)

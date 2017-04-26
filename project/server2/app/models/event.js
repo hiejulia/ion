@@ -39,7 +39,7 @@ let EventSchema = new Schema({
   },
   typeOfEvent: {
     type: String,
-    required: true,
+    
     enum: eventEnum
   },
   numberOfParticipantsEstimated:{
@@ -64,17 +64,17 @@ let EventSchema = new Schema({
   },
   organisation: {
     type: ObjectId,
-    required: true,
+    
     ref: 'Organisation'
   },
   industry: {
     type: String,
-    required: true,
+    
     enum: indEnum
   },
   country: {
     type: String,
-    required: true,
+    
     enum: cntEnum
   },
   createdAt: {

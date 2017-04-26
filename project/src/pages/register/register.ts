@@ -19,7 +19,7 @@ import { AuthServiceProvider } from '../../providers/authService';
   templateUrl: 'register.html'
 })
 export class RegisterPage {
-  // role: string;
+  role: string;
   email: string;
   password: string;
   name:string;
@@ -47,7 +47,7 @@ loading:any;
     let credentials = {
         email: this.email,
         password: this.password,
-        // role: this.role,
+        role: this.role,
         name:this.name
     };
  

@@ -25,6 +25,10 @@ export class AuthServiceProvider {
     .map((res: Response) => res.json());
   }
 
+
+public logout(){
+  console.log('log out');
+}
 //register
   public register(user: any) {
     let body = this._serialize(user);
