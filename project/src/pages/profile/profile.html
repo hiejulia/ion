@@ -1,52 +1,26 @@
-<!-- template /app/pages/account/account.html --> 
-<ion-header> 
-  <ion-navbar primary> 
-    <ion-title> 
-      My profile 
-    </ion-title> 
-  </ion-navbar> 
-</ion-header> 
- 
-<ion-content> 
-  <!--<ion-card> 
-      <img *ngIf="user?.avatar" [src]="user?.avatar"> 
-      <img *ngIf="!user?.avatar" src="images/defaultAvatar.jpg"> 
-      <div padding> 
-        <button full primary (click)="updatePicture()">Update 
-         Picture</button> 
-      </div> 
-  </ion-card> 
-  <ion-card> 
-    <ion-item> 
-        <ion-label floating>Username</ion-label> 
-        <ion-input type="text" disabled=true [value]="user?.username">
-         </ion-input> 
-    </ion-item> 
- 
-    <ion-item> 
-        <ion-label floating>Name</ion-label> 
-        <ion-input type="text" [(ngModel)]="user.name"></ion-input> 
-    </ion-item> 
- 
-    <ion-item> 
-        <ion-label floating>About me</ion-label> 
-        <ion-textarea type="text" [(ngModel)]="user.about"></ion-
-         textarea> 
-    </ion-item> 
-    <div padding> 
-        <button full primary (click)="updateProfile()">Update 
-         Profile</button> 
-    </div> 
-  </ion-card> 
- 
-<div padding> 
-  <button full dark (click)="logout()">Logout</button> 
-</div> -->
-</ion-content> 
+<ion-header>
+  <ion-navbar class="profile--navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Profile</ion-title>
+  </ion-navbar>
+</ion-header>
 
 
-<!--<div class="bar bar-footer">
-  <button class="button">Home</button>
-  <div class="title">Title</div>
-  <button class="button">Login</button>
-</div>-->
+
+
+<ion-content class="outer-content">
+  <div padding-top text-center *ngIf="username">
+    <img src="http://www.gravatar.com/avatar?d=mm&s=140" alt="avatar">
+    <h2>{{username}}</h2>
+
+    <ion-list inset>
+      <button ion-item (click)="updatePicture()">Update Picture</button>
+      <button ion-item (click)="changeUsername()">Change Username</button>
+      <button ion-item (click)="changePassword()">Change Password</button>
+      <button ion-item (click)="support()">Support</button>
+      <button ion-item (click)="logout()">Logout</button>
+    </ion-list>
+  </div>
+</ion-content>

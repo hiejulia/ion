@@ -7,7 +7,7 @@ const User = mongoose.model('User');
 module.exports.register = registerUser;
 
 function registerUser(req, res, next) {
-  var userData = _.pick(req.body, 'name', 'email', 'password');
+  var userData = _.pick(req.body, 'name', 'email', 'password','role');
 
   if (req.body.type === 'organisation') {
     userData.roles = ['owner'];

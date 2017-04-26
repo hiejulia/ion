@@ -21,7 +21,7 @@ export class TabsPage {
   tab1Root: any = MyEvents;
   tab2Root: any = OrganisationsListPage;
   tab3Root: any = ProfilePage;
-
+ 
   constructor() {
 
   }

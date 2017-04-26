@@ -1,39 +1,44 @@
+
 <ion-header>
- 
-  <ion-navbar color="secondary">
-    <ion-title>Create Account</ion-title>
-  </ion-navbar>
- 
+	<ion-navbar meetup>
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Register</ion-title>
+	</ion-navbar>
 </ion-header>
  
  
 <ion-content padding>
- 
-    <ion-row class="account-form">
-        <ion-col>
-            <ion-list inset>
+    <div class="logo">
+		<img src="https://secure.meetupstatic.com/s/img/041003812446967856280/logo/svg/logo--script.svg" alt="Ionic logo">
+	</div>
+ 		
+
+    
+            <ion-list  no-lines>
  
                 <ion-item>
-                    <ion-label><ion-icon name="mail">Email</ion-icon></ion-label>
+                    <ion-label stacked color="primary">Email</ion-label>
                     <ion-input [(ngModel)]="email" placeholder="Enter valid email" type="email" required></ion-input>
                 </ion-item>
 
 
                 <ion-item>
-                    <ion-label><ion-icon name="person">Full Name</ion-icon></ion-label>
+                    <ion-label stacked color="primary">Full Name</ion-label>
                     <ion-input [(ngModel)]="name" placeholder="Please enter your name" type="text" required></ion-input>
                 </ion-item>
 
             
  
                 <ion-item>
-                    <ion-label><ion-icon name="lock">Password</ion-icon></ion-label>
+                    <ion-label stacked color="primary">Password</ion-label>
                     <ion-input [(ngModel)]="password" placeholder="Please enter password" type="password" required></ion-input>
                 </ion-item>
  
                 <ion-item>
-                    <ion-label>Role</ion-label>
-                    <ion-select [(ngModel)]="role">
+                    <ion-label stacked color="primary">Roles</ion-label>
+                    <ion-select [(ngModel)]="roles" placeholder="Please choose your roles">
                         <ion-option value="member">Member</ion-option>
                         <ion-option value="user">User</ion-option>
                         <ion-option value="owner">Owner</ion-option>
@@ -42,10 +47,12 @@
                 </ion-item>
  
             </ion-list>
+
+            <div padding>
+            <button ion-button (click)="register()" class="continue-button" block>Register</button>
+		</div>
  
-            <button ion-button (click)="register()" class="continue-button">Register</button>
  
-        </ion-col>
-    </ion-row>
+  
  
 </ion-content>

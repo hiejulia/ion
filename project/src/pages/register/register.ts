@@ -19,7 +19,7 @@ import { AuthServiceProvider } from '../../providers/authService';
   templateUrl: 'register.html'
 })
 export class RegisterPage {
-  role: string;
+  roles: Array<String>;
   email: string;
   password: string;
   name:string;
@@ -47,7 +47,7 @@ loading:any;
     let credentials = {
         email: this.email,
         password: this.password,
-        role: this.role,
+        roles: this.roles,
         name:this.name
     };
  
@@ -64,6 +64,7 @@ loading:any;
     .subscribe((user) => {
       this.loading.dismiss();
       console.log('the registered user is / the current user is '+user);
+      console.log(user);
       this.navCtrl.setRoot(TabsPage);
       
     },(err) => {

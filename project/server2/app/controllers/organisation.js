@@ -22,7 +22,7 @@ module.exports.addMember = addOrganisationMember;
 module.exports.removeMember = removeOrganisationMember;
 //create new organisation 
 function createOrganisation(req, res, next) {
-  let data = _.pick(req.body, ['name', 'address','location','description','numberOfEmployees']);
+  let data = _.pick(req.body, ['name', 'address','location','description','numberOfEmployees','members','owner']);
   data.owner = req.user._id;
   data.members = [req.user._id];
 
@@ -70,10 +70,12 @@ function findOrganisationById(req, res, next) {
 function getAllOrganisations(req, res, next) {
   const limit = +req.query.limit || MAX_LIMIT;
   const skip = +req.query.skip || 0;
-  let query = _.pick(req.query, ['name']);
-
+  // let query = _.pick(req.query, ['name']);
+/**
+ * THEM MUC TIM KIEM CONG TY THEO TEN 
+ */
   Organisation
-  .find(query)
+  .find()
   .limit(limit)
   .skip(skip)
   .exec((err, organisations) => {

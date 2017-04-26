@@ -68,10 +68,10 @@ addOrganisation(){
  
     modal.onDidDismiss(organisation => {
       if(organisation){
-        this.organisations.push(organisation);
+        //this.organisations.push(organisation);
         // this.reviewService.createReview(event);    
             this._organisationServiceProvider.create(organisation).subscribe((organisation) => {
-               this.organisations.push(organisation);
+              // this.organisations.push(organisation);
               
               console.log(organisation);
             },(err) => {

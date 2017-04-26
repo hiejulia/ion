@@ -10,7 +10,7 @@ const response = require('../helpers/response');
 router.post(
   '/organisations',
   auth.ensured,
-  // organisationCtrl.checkUserOrganisation,
+  organisationCtrl.checkUserOrganisation,
   organisationCtrl.create
 );
 //get

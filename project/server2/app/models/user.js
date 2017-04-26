@@ -39,8 +39,7 @@ let UserSchema = new Schema({
         type: String,
         enum: ['user', 'participant', 'member', 'owner']
       }
-    ],
-    default: ['user']
+    ]
   },
   createdAt: {
     type: Date,
@@ -115,6 +114,7 @@ function authenticateUser(email, password, callback) {
 
      data.password = hashedPassword;
      data.passwordSalt = salt;
+     
 
      //create the user
      this.model('User').create(data, (err, user) => {

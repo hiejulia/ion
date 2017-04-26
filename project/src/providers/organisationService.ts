@@ -29,7 +29,7 @@ export class OrganisationServiceProvider {
   create(organisation) {
     let body = JSON.stringify(organisation);
 
-    return this._authHttpProvider
+    return this._http
     .post('http://localhost:3000/api/organisations', body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
