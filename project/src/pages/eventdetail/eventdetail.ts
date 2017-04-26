@@ -28,7 +28,7 @@ import { EventModel } from '../../providers/event.model';
 })
 export class EventdetailPage {
 
-  public event:JobModel;
+  public event:EventModel;
   private _eventServiceProvider:EventServiceProvider;
  
 //  review:any;
@@ -41,11 +41,11 @@ export class EventdetailPage {
     var eventId = this.params.get('eventId'); 
     
      console.log(eventId);  
-     this.event = new JobModel();
+     this.event = new EventModel();
 //  console.log(typeof(this.review));
 //       console.log(this.review["location"]);
 
-      this._jobServiceProvider.findById(eventId).subscribe((event) => {
+      this._eventServiceProvider.findById(eventId).subscribe((event) => {
         this.event = event;
       })
 
