@@ -10,6 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import {EventdetailPage} from '../pages/eventdetail/eventdetail';
 import {RegisterPage} from '../pages/register/register';
 import {GeolocationPage } from '../pages/geolocation/geolocation';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import {TutorialPage} from '../pages/tutorial/tutorial';
 import { Storage } from '@ionic/storage';
@@ -106,6 +107,7 @@ import {EventServiceProvider} from '../providers/eventService';
   OrganisationServiceProvider,
   AuthHttpProvider,
   AuthServiceProvider,
+  InAppBrowser,
   Geolocation
   
    ]

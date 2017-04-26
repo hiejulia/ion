@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,ModalController } from 'ionic-angular';
-import {ReviewsProvider} from '../../providers/reviews';
 import {EventdetailPage} from '../eventdetail/eventdetail';
 
 
@@ -9,6 +8,10 @@ import {AddEvent} from '../addevent/addevent';
 import { EventServiceProvider } from '../../providers/eventService';
 import { EventModel } from '../../providers/event.model';
 import {AuthServiceProvider} from '../../providers/authService';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ActionSheet, ActionSheetController, Config } from 'ionic-angular';
+
+
 /*
   Generated class for the Myevents page.
 
@@ -20,17 +23,20 @@ import {AuthServiceProvider} from '../../providers/authService';
 
 
 @Component({
-  selector: 'MyEvents',
+  selector: 'my-events',
   templateUrl: 'myevents.html'
 })
 export class MyEvents {
   // reviews: Array<Object>;
     public organisation: any;
+    actionSheet: ActionSheet;
 
  public events: Array<EventModel>;
   private _eventsServiceProvider: EventServiceProvider;
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
-eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServiceProvider) {
+eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServiceProvider,
+ public actionSheetCtrl: ActionSheetController, public config: Config,
+    public inAppBrowser: InAppBrowser) {
     this._eventsServiceProvider = eventsServiceProvider;
      let query :any ={};
     if(this.organisation){
@@ -51,7 +57,13 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
     // this.reviewService.getReviews().subscribe(data => {
     //     this.reviews = data;
     // });
-
+    let query :any ={};
+    if(this.organisation){
+      query.organisation = this.organisation;
+    }
+  this._eventsServiceProvider.getAll(query).subscribe((events) => {
+      this.events = events;
+    })
  
   }
 
@@ -117,5 +129,62 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
 
 }
 
+ goToSpeakerTwitter(event: any) {
+    this.inAppBrowser.create(`https://google.com/${event}`, '_blank');
+  }
+
+
+
+// openSpeakerShare(speaker: any) {
+//     let actionSheet = this.actionSheetCtrl.create({
+//       title: 'Share ' + speaker.name,
+//       buttons: [
+//         {
+//           text: 'Copy Link',
+//           handler: ($event: Event) => {
+//             console.log('Copy link clicked on https://twitter.com/' + speaker.twitter);
+//             if ((window as any)['cordova'] && (window as any)['cordova'].plugins.clipboard) {
+//               (window as any)['cordova'].plugins.clipboard.copy('https://twitter.com/' + speaker.twitter);
+//             }
+//           }
+//         },
+//         {
+//           text: 'Share via ...'
+//         },
+//         {
+//           text: 'Cancel',
+//           role: 'cancel'
+//         }
+//       ]
+//     });
+
+//     actionSheet.present();
+//   }
+
+//   openContact(speaker: any) {
+//     let mode = this.config.get('mode');
+
+//     let actionSheet = this.actionSheetCtrl.create({
+//       title: 'Contact ' + speaker.name,
+//       buttons: [
+//         {
+//           text: `Email ( ${speaker.email} )`,
+//           icon: mode !== 'ios' ? 'mail' : null,
+//           handler: () => {
+//             window.open('mailto:' + speaker.email);
+//           }
+//         },
+//         {
+//           text: `Call ( ${speaker.phone} )`,
+//           icon: mode !== 'ios' ? 'call' : null,
+//           handler: () => {
+//             window.open('tel:' + speaker.phone);
+//           }
+//         }
+//       ]
+//     });
+
+//     actionSheet.present();
+//   }
 
 }
