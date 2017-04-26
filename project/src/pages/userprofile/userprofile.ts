@@ -6,6 +6,7 @@ import { MyEvents } from '../myevents/myevents';
 import {RegisterPage} from '../register/register';
 import {EventdetailPage} from '../eventdetail/eventdetail';
 import {UsersListPage} from '../userslist/userslist';
+import { AlertController } from 'ionic-angular';
 
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 

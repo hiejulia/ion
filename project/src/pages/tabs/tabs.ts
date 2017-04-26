@@ -8,8 +8,8 @@ import {EventdetailPage} from '../eventdetail/eventdetail';
 import {UsersListPage} from '../userslist/userslist';
 import {ProfilePage} from '../profile/profile';
 import {OrganisationsListPage} from '../organisationlist/organisationlist';
-
-
+import {AboutPage} from '../about/about';
+import {UserProfilePage} from '../userprofile/userprofile';
 
 @Component({
   selector:'Tabspage',
@@ -21,7 +21,7 @@ export class TabsPage {
   tab1Root: any = MyEvents;
   tab2Root: any = OrganisationsListPage;
   tab3Root: any = ProfilePage;
- 
+ tab4Root:any = AboutPage;
   constructor() {
 
   }

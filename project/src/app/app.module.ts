@@ -11,12 +11,12 @@ import {EventdetailPage} from '../pages/eventdetail/eventdetail';
 import {RegisterPage} from '../pages/register/register';
 import {GeolocationPage } from '../pages/geolocation/geolocation';
 
-
+import {TutorialPage} from '../pages/tutorial/tutorial';
 import { Storage } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage';
 
-
-
+import {AboutPage} from '../pages/about/about';
+import {PopoverPage} from '../pages/about-popover/about-popover';
 // import {UsersProvider} from '../providers/users';
 import {UsersListPage} from '../pages/userslist/userslist';
 
@@ -52,7 +52,7 @@ import {EventServiceProvider} from '../providers/eventService';
     AddEvent,
     TabsPage,
     LoginPage,
-    
+    TutorialPage,
     RegisterPage,
     UsersListPage,
     EventdetailPage,
@@ -61,7 +61,9 @@ import {EventServiceProvider} from '../providers/eventService';
     UserProfilePage,
     OrganisationsListPage,
     OrganisationdetailPage,
-    OrganisationCreatePage
+    OrganisationCreatePage,
+    AboutPage,
+    PopoverPage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -82,6 +84,7 @@ import {EventServiceProvider} from '../providers/eventService';
     TechEvents,
     AddEvent,
     TabsPage,
+    TutorialPage,
     LoginPage,
     UsersListPage,
     RegisterPage,
@@ -91,7 +94,9 @@ import {EventServiceProvider} from '../providers/eventService';
     UserProfilePage,
     OrganisationsListPage,
     OrganisationdetailPage,
-    OrganisationCreatePage
+    OrganisationCreatePage,
+    PopoverPage,
+    AboutPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
   
