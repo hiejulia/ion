@@ -20,7 +20,7 @@
 
   <div text-center>
    
-    <img src="https://api.adorable.io/avatars/75/react" [alt]="react"><br>
+    <img src="https://api.adorable.io/avatars/75/react" alt="react"><br>
 
     <button ion-button icon-only clear small color="twitter">
       <ion-icon name="logo-twitter"></ion-icon>
@@ -33,13 +33,18 @@
     </button>
   </div>
 
-  <p>ReactJSConf 2017</p>
+  <h1>ReactJSConf 2017</h1>
+  <p>This is the ReactJSConf 2017 hold in Helsinki Finland</p>
 
      <button ion-button round outline (click)="showMap(event)">Show Map</button>
         <button ion-button round outline (click) ="participant(event)">Participate !!!</button>
               <button ion-button block (click)="goBack()">
     goBack
   </button>
+
+  <!--<h4 *ngFor="let speaker of session.speakers">
+    {{speaker.name}}
+  </h4>-->
 
  
 </ion-content>
