@@ -6,35 +6,50 @@
   </ion-buttons>
  </ion-toolbar>
 </ion-header>
- 
-<ion-content>
- 
-  <h1>This is the Organisation detail Page</h1>
 
-   <ion-item>
- 
-        <ion-avatar item-left>
-          <img src="https://api.adorable.io/avatars/75/{{organisation?.title}}">
-        </ion-avatar>
- 
-      <h1>{{organisation?.name}}</h1>
-        <p>{{organisation?.description}}</p>
-        <p>{{organisation?.country}}</p>
-        <p>{{organisation?.address}}</p>
      <!--this is an array => find way to fetch it let organisation.event in ..events-->
        
-<!--        
-        <button ion-button round outline (click)="showMap(review)">Show Map</button>
-        <button ion-button round outline (click) ="participant(review)">Participate !!!</button>
-        -->
+   
+ 
 
 
-  
-      </ion-item>
+<ion-content class="broker">
+    <div *ngIf="broker" class="selection">
+        <ion-card>
+            <ion-card-content>
+             
+                <img src="../../assets/user.png"/>
+                <h2>Google </h2>
+                <h3>Google Corp</h3>
+            </ion-card-content>
 
-      <button ion-button block (click)="goBack()">
+            <ion-list>
+                <a href="tel:{{broker.Phone__c}}" ion-item>
+                    <ion-icon name="call" item-left></ion-icon>
+                    <p>Call Office</p>
+                    <h2>014 454 65654</h2>
+                </a>
+                <a href="tel:{{broker.phone}}" ion-item>
+                    <ion-icon name="call" item-left></ion-icon>
+                    <p>Call Mobile</p>
+                    <h2>+358 545345454</h2>
+                </a>
+                <a href="tel:{{broker.phone}}" ion-item>
+                    <ion-icon name="text" item-left></ion-icon>
+                    <p>Description</p>
+                    <h2>We hold tech events every year</h2>
+                </a>
+                <a href="mailto:{{broker.email}}" ion-item>
+                    <ion-icon name="mail" item-left></ion-icon>
+                    <p>Email</p>
+                    <h2>Google gmail</h2>
+                </a>
+            </ion-list>
+
+        </ion-card>
+    </div>
+       <button ion-button block (click)="goBack()">
     goBack
   </button>
 
- 
 </ion-content>

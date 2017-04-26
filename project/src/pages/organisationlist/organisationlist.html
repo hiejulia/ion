@@ -1,15 +1,40 @@
 <ion-header>
- <ion-navbar>
+ <ion-navbar no-border-bottom>
    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-  <ion-title>
-    Organisations list 
-  </ion-title>
-  <ion-buttons end>
+
+  <!--<ion-buttons end>
     <button ion-button icon-only (click)="addOrganisation()"><ion-icon name="add"></ion-icon></button>
-  </ion-buttons>
+  </ion-buttons>-->
+
+
+    <ion-segment >
+      <ion-segment-button value="all">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="favorites">
+        Favorites
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentFilter()">
+        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
+      </button>
+    </ion-buttons>
  </ion-navbar>
+
+
+
+
+
+  
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary" placeholder="Search">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 
@@ -17,15 +42,26 @@
  
   <ion-list no-lines>
  
-    <ion-item-sliding *ngFor="let organisation of organisations ">
+    <ion-item-group>
+      <ion-item-divider sticky>
+        <ion-label>
+          Technology
+        </ion-label>
+      </ion-item-divider>
  
-      <ion-item class="card">
+      <ion-item-sliding class="card">
  
-        <ion-avatar item-left>
-          <img src="https://api.adorable.io/avatars/75/{{organisation?.name}}">
+       
+ 
+       <button ion-item (click)="goToSessionDetail(session)">
+          <ion-avatar item-left>
+          <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
         </ion-avatar>
- 
-        <h2>{{organisation?.name}}</h2>
+          <h3>Google</h3>
+          <p>
+           Technology Company - We hold tech meetups and conference every year
+          </p>
+        </button>
        
 
   
@@ -35,15 +71,179 @@
           View
         </button>
 
-      </ion-item>
+        <ion-item-options>
+          <button ion-button color="favorite">
+            Favorite
+          </button>
+          <button ion-button color="danger">
+            Remove
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
+
+
+      <ion-item-sliding class="card">
+ 
+       
+ 
+       <button ion-item (click)="goToSessionDetail(session)">
+          <ion-avatar item-left>
+          <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
+        </ion-avatar>
+          <h3>Google</h3>
+          <p>
+           Technology Company - We hold tech meetups and conference every year
+          </p>
+        </button>
+       
+
+  
+
+        <button ion-button (click)="goToDetail(organisation)" ion-button round outline>
+      <ion-icon name="md-navigate"></ion-icon>
+          View
+        </button>
+
+        <ion-item-options>
+          <button ion-button color="favorite">
+            Favorite
+          </button>
+          <button ion-button color="danger">
+            Remove
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
+
+      <ion-item-sliding class="card">
+ 
+       
+ 
+       <button ion-item (click)="goToSessionDetail(session)">
+          <ion-avatar item-left>
+          <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
+        </ion-avatar>
+          <h3>Google</h3>
+          <p>
+           Technology Company - We hold tech meetups and conference every year
+          </p>
+        </button>
+       
+
+  
+
+        <button ion-button (click)="goToDetail(organisation)" ion-button round outline>
+      <ion-icon name="md-navigate"></ion-icon>
+          View
+        </button>
+
+        <ion-item-options>
+          <button ion-button color="favorite">
+            Favorite
+          </button>
+          <button ion-button color="danger">
+            Remove
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
  
       
       
          
       
-    </ion-item-sliding>
+    </ion-item-group>
+
+
+    <ion-item-group>
+      <ion-item-divider sticky>
+        <ion-label>
+          Science
+        </ion-label>
+      </ion-item-divider>
+ 
+      <ion-item-sliding class="card">
+ 
+       
+ 
+       <button ion-item>
+          <ion-avatar item-left>
+          <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
+        </ion-avatar>
+          <h3>Microsoft</h3>
+          <p>
+           Technology Company - We hold tech meetups and conference every year
+          </p>
+        </button>
+       
+
+  
+
+        <button ion-button ion-button round outline>
+      <ion-icon name="md-navigate"></ion-icon>
+          View
+        </button>
+
+        <ion-item-options>
+          <button ion-button color="favorite">
+            Favorite
+          </button>
+          <button ion-button color="danger">
+            Remove
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
+
+      <ion-item-sliding class="card">
+ 
+       
+ 
+       <button ion-item (click)="goToSessionDetail(session)">
+          <ion-avatar item-left>
+          <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
+        </ion-avatar>
+          <h3>Google</h3>
+          <p>
+           Technology Company - We hold tech meetups and conference every year
+          </p>
+        </button>
+       
+
+  
+
+        <button ion-button (click)="goToDetail(organisation)" ion-button round outline>
+      <ion-icon name="md-navigate"></ion-icon>
+          View
+        </button>
+
+        <ion-item-options>
+          <button ion-button color="favorite">
+            Favorite
+          </button>
+          <button ion-button color="danger">
+            Remove
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
+ 
+      
+      
+         
+      
+    </ion-item-group>
  
   </ion-list>
-  
+  <ion-fab bottom right #fab>
+    <button ion-fab><ion-icon name="share"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab color="vimeo" (click)="openSocial('Vimeo', fab)"><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab color="google" (click)="openSocial('Google+', fab)"><ion-icon name="logo-googleplus"></ion-icon></button>
+      <button ion-fab color="twitter" (click)="openSocial('Twitter', fab)"><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab color="facebook" (click)="openSocial('Facebook', fab)"><ion-icon name="logo-facebook"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
  
 </ion-content>

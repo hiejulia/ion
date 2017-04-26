@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+
+import { Component, ViewChild } from '@angular/core';
+
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {EventdetailPage} from '../eventdetail/eventdetail';
 
@@ -7,6 +9,8 @@ import { OrganisationModel } from '../../providers/organisation.model';
 import { OrganisationServiceProvider } from '../../providers/organisationService';
 import {OrganisationdetailPage} from '../organisationdetail/organisationdetail';
 import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
+import { AlertController, App, FabContainer, ItemSliding, List, ToastController, LoadingController, Refresher } from 'ionic-angular';
+import {OrganisationFilterPage} from '../organisation-filter/organisation-filter';
 /*
   Generated class for the Myevents page.
 
@@ -18,7 +22,7 @@ import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 
 
 @Component({
-  selector: 'OrganisationsList',
+  selector: 'organisations-list',
   templateUrl: 'organisationlist.html'
 })
 export class OrganisationsListPage {
@@ -29,7 +33,11 @@ export class OrganisationsListPage {
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
 
-  organisationServiceProdiver: OrganisationServiceProvider) {
+  organisationServiceProdiver: OrganisationServiceProvider,
+  public alertCtrl: AlertController,
+    public app: App,
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController) {
        this._organisationServiceProvider = organisationServiceProdiver;
         this._organisationServiceProvider.getAll()
         .subscribe((organisations) => {
@@ -82,5 +90,17 @@ addOrganisation(){
  
     modal.present();
 }
+
+//present filter
+presentFilter() {
+    let modal = this.modalCtrl.create(OrganisationFilterPage);
+    modal.present();
+
+    modal.onWillDismiss(() => {
+        console.log('present filter');
+      
+    });
+
+  }
 
 }
