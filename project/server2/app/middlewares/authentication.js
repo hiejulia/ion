@@ -22,7 +22,7 @@ function ensureAuthenticated(req, res, next) {
     text: function() {
       res.redirect('/login');
     },
-    json: function() {
+    json: function() {//send back json unauthorized user 
       res.status(401).json({ message: 'Unauthorized' });
     }
   });

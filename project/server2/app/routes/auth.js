@@ -8,7 +8,7 @@ const userCtrl = require('../controllers/user');
 const accountCtrl = require('../controllers/account');
 
 router.post('/login', authCtrl.login);
-router.get('/signout', authCtrl.signout);
+router.get('/logout', authCtrl.logout);
 
 router.post('/register', accountCtrl.register);
 router.get('/info', auth.ensured, userCtrl.getAuthUser);

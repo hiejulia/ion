@@ -34,7 +34,7 @@ function createOrganisation(req, res, next) {
     res.status(201).json(organisation);
   });
 }
-
+//check if owner of organisation
 function checkUserOrganisation(req, res, next) {
   Organisation.findOne({ owner: req.user._id }, (err, organisation) => {
     if (err) {
@@ -89,7 +89,7 @@ function getAllOrganisations(req, res, next) {
 }
 //update organisation 
 function updateOrganisation(req, res, next) {
-  var data = _.pick(req.body, ['name', 'country', 'address','location','description','numberOfEmployees']);
+  var data = _.pick(req.body, ['name', 'address','location','description']);
   _.assign(req.resources.organisation, req.body);
 
   req.resources.organisation.save((err, updatedOrganisation) => {
@@ -133,7 +133,7 @@ function removeOrganisationMember(req, res, next) {
     });
   }
 
-  _.pull(req.resources.organisation.members, req.body.member);
+  _.pull(req.resources.porganisation.members, req.body.member);
   req.resources.organisation.save((err, updatedOrganistion) => {
     if (err) {
       return next(err);

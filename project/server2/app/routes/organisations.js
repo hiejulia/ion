@@ -10,7 +10,7 @@ const response = require('../helpers/response');
 router.post(
   '/organisations',
   auth.ensured,
-  organisationCtrl.checkUserOrganisation,
+  // organisationCtrl.checkUserOrganisation,
   organisationCtrl.create
 );
 //get
@@ -30,7 +30,7 @@ router.put(
   '/organisations/:organisationId',
   auth.ensured,
   organisationCtrl.findById,
-  authorize.onlyOwner,
+  // authorize.onlyOwner,
   organisationCtrl.update,
   response.toJSON('organisation')
 );
@@ -39,7 +39,7 @@ router.post(
   '/organisations/:organisationId/members',
   auth.ensured,
   organisationCtrl.findById,
-  authorize.onlyOwner,
+  // authorize.onlyOwner,
   organisationCtrl.addMember,
   response.toJSON('organisation')
 );
@@ -48,7 +48,7 @@ router.delete(
   '/organisations/:organisationId/members',
   auth.ensured,
   organisationCtrl.findById,
-  authorize.onlyOwner,
+  // authorize.onlyOwner,
   organisationCtrl.removeMember,
   response.toJSON('organisation')
 );

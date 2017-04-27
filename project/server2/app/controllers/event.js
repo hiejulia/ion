@@ -43,7 +43,7 @@ function findEventById(req, res, next) {
       return next(err);
     }
 
-    req.resources.event = event;
+    req.resources.event = event;//req.resources.event
     next();
   });
 }
@@ -51,17 +51,17 @@ function findEventById(req, res, next) {
 function getAllEvents(req, res, next) {
   const limit = +req.query.limit || MAX_LIMIT;
   const skip = +req.query.skip || 0;
-  let query = _.pick(req.query, ['title', 'description']);
+  let query = _.pick(req.query, ['industry', 'typeOfEvent']);
 
   if (req.params.organisationId) {
     query.organisation = req.params.organisationId;
   }
 
   Event
-  .find(query)
+  .find()
   .limit(limit)
   .skip(skip)
-  .populate('title')
+  .populate('organisation')
   .exec((err, events) => {
     if (err) {
       return next(err);
@@ -73,7 +73,7 @@ function getAllEvents(req, res, next) {
 }
 //update event 
 function updateEvent(req, res, next) {
-  let data = _.pick(req.body, ['title', 'description', 'type', 'industry', 'country','location','office','address','typeOfEvent','numberOfParticipantsEstimated','isActive','timeStart','timeEnd']);
+  let data = _.pick(req.body, ['title', 'description','location','office','address','numberOfParticipantsEstimated','isActive','timeStart','timeEnd']);
   _.assign(req.resources.event, data);
 
   req.resources.event.save((err, updatedEvent) => {

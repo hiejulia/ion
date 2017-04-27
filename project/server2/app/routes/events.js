@@ -7,7 +7,7 @@ const eventCtrl = require('../controllers/event');
 const auth = require('../middlewares/authentication');
 const authorize = require('../middlewares/authorization');
 const response = require('../helpers/response');
-
+//get all events
 router.get(
   '/events',
   eventCtrl.getAll,

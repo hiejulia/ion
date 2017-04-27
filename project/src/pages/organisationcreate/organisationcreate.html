@@ -18,23 +18,23 @@
 
     <ion-item>
       <ion-label floating>Location</ion-label>
-      <ion-textarea [(ngModel)]="location"></ion-textarea>
+      <ion-input [(ngModel)]="location"  type="text" required></ion-input>
     </ion-item>
 
 
      <ion-item>
       <ion-label floating>Description</ion-label>
-      <ion-textarea [(ngModel)]="description"></ion-textarea>
+      <ion-input [(ngModel)]="description" type="text" required></ion-input>
     </ion-item>
 
      <ion-item>
       <ion-label floating>Country</ion-label>
-      <ion-textarea [(ngModel)]="country"></ion-textarea>
+      <ion-input [(ngModel)]="country" required type="text"></ion-input>
     </ion-item>
 
      <ion-item>
       <ion-label floating>Address</ion-label>
-      <ion-textarea [(ngModel)]="address"></ion-textarea>
+      <ion-input [(ngModel)]="address" required type="text"></ion-input>
     </ion-item>
 
 

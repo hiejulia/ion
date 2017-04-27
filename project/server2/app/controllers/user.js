@@ -167,5 +167,5 @@ function getAuthUser(req, res, next) {
     });
   }
 
-  res.json(req.user);
+  res.json(req.user);//send back user info 
 }

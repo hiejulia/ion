@@ -46,7 +46,8 @@ let OrganisationSchema = new Schema({
     default: Date.now
   },
   numberOfEmployees:{
-    type:Number
+    type:Number,
+    required:true
     }
 });
 

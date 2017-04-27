@@ -2,12 +2,12 @@
 
 const _ = require('lodash');
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
+const User = mongoose.model('User');//User schema
 
 module.exports.register = registerUser;
 
 function registerUser(req, res, next) {
-  var userData = _.pick(req.body, 'name', 'email', 'password','role');
+  var userData = _.pick(req.body, 'name', 'email', 'password','roles');
 
   if (req.body.type === 'organisation') {
     userData.roles = ['owner'];
@@ -24,11 +24,11 @@ function registerUser(req, res, next) {
 
     // we are going to need a session after the user signs up
     req.logIn(user, (err) => {
-      // just in case :)
+     
       delete user.password;
       delete user.passwordSalt;
 
-      res.json(user);
+      res.json(user);//send user json
     });
   });
 }

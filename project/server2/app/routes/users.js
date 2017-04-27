@@ -7,21 +7,21 @@ const mainCtrl = require('../controllers/main');
 const auth = require('../middlewares/authentication');
 const authorize = require('../middlewares/authorization');
 const response = require('../helpers/response');
-
+//get all users
 router.get(
   '/users',
   auth.ensured,
   userCtrl.getAll,
   mainCtrl.toJSON('users')
 );
-
+//get one user
 router.get(
   '/users/:userId',
   auth.ensured,
   userCtrl.findById,
   mainCtrl.toJSON('user')
 );
-
+//edit user
 router.put(
   '/users/:userId',
   auth.ensured,
@@ -61,6 +61,7 @@ router.put(
   userCtrl.updateProfile,
   response.toJSON('block')
 );
+//if user is owner => list of organisations show in user profile
 
 router.get(
   '/users/:userId/organisations',

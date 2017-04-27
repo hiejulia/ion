@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
  *  Module exports
  */
 module.exports.login = loginUser;
-module.exports.signout = signoutUser;
+module.exports.logout = logoutUser;
 
 /**
  *  Uses Passport's local strategy to sign in a user
@@ -30,12 +30,12 @@ function loginUser(req, res, next) {
         return next(err);
       }
 
-      res.status(200).json(user);
+      res.status(200).json(user);//send back user 
     });
   })(req, res, next);
 }
 
-function signoutUser(req, res, next) {
+function logoutUser(req, res, next) {//log out
   req.logout();
   res.redirect('/');
 }
