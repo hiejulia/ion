@@ -25,10 +25,7 @@ let UserSchema = new Schema({
     required: true,
     select: false
   },
-  active: {
-    type: Boolean,
-    default: true
-  },
+ 
   profile: {
     type: [ProfileBlockSchema],
     select: false

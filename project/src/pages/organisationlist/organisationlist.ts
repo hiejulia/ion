@@ -67,7 +67,8 @@ export class OrganisationsListPage {
   goToDetail(organisation){
     console.log('go to the organisation page');
     // this.navCtrl.push(EventdetailPage);
-        this.navCtrl.push(OrganisationdetailPage, {organisationId: organisation._id}); 
+        this.navCtrl.push(OrganisationdetailPage); 
+        //  this.navCtrl.push(OrganisationdetailPage, {organisationId: organisation._id}); 
 
 
 }

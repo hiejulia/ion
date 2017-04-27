@@ -8,22 +8,35 @@ import { MyEvents } from '../myevents/myevents';
 import {RegisterPage} from '../register/register';
 import {EventdetailPage} from '../eventdetail/eventdetail';
 import {UsersListPage} from '../userslist/userslist';
-
+import { MenuController } from 'ionic-angular';
+import {LoginPage} from '../login/login';
+import {AuthServiceProvider} from '../../providers/authService';
 @Component({
   selector:'profile',
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
 username:string;
+MENU = {
+    DEFAULT: "menu-components",
+    MATERIAL: "menu-material",
+    AVATAR: "menu-avatar",
+  }
 
-  constructor(public navCtrl: NavController,public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,public authServiceProvider:AuthServiceProvider,public alertCtrl: AlertController,public menuCtrl: MenuController) {
 
   }
 
   updatePicture(){
     console.log('update picture');
   }
+onViewWillEnter() {
+    this.menuCtrl.enable(true, "menu-right");
+  }
 
+    ionViewWillLeave() {
+    this.menuCtrl.enable(false, "menu-right");
+  }
   changeUsername(){
     console.log('change user name');   
     let alert = this.alertCtrl.create({
@@ -61,7 +74,8 @@ username:string;
   logout(){
     console.log('log out');
     // this.userData.logout();
-    this.navCtrl.setRoot('LoginPage');
+     this.authServiceProvider.logout();
+    this.navCtrl.setRoot(LoginPage);
 
   }
 
@@ -70,6 +84,13 @@ username:string;
     //   this.username = username;
     // });
   }
+changeMenu(menu) {
+    // Disables all other sidemenus
+    Object.keys(this.MENU).map(k => this.menuCtrl.enable(false, this.MENU[k]));
 
+    // Enables then open the selected menu
+    this.menuCtrl.enable(true, menu);
+    this.menuCtrl.open(menu);
+  }
 
 }

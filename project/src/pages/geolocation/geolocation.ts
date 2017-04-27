@@ -15,7 +15,7 @@ declare var google: any;
 export class GeolocationPage {
     private map: GoogleMap;
 
-  @ViewChild('mapCanvas') mapElement: ElementRef;
+  // @ViewChild('mapCanvas') mapElement: ElementRef;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   private geolocation: Geolocation,private platform: Platform,private _zone: NgZone) {
@@ -28,35 +28,35 @@ export class GeolocationPage {
 
   }
 
-  ngAfterViewInit() {
-    GoogleMap.isAvailable().then(() => {
+  // ngAfterViewInit() {
+  //   GoogleMap.isAvailable().then(() => {
 
-      this.map = new GoogleMap('map_canvas');
+  //     this.map = new GoogleMap('map_canvas');
 
-      // this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
-      //   () => this.onMapReady(),
-      //   () => alert("Error: onMapReady")
-      // );
+  //     // this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
+  //     //   () => this.onMapReady(),
+  //     //   () => alert("Error: onMapReady")
+  //     // );
 
-      // this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
-      //   (data: any) => {
-      //     alert("GoogleMap.onMapReady(): ");
-      //   },
-      //   () => alert("Error: GoogleMapsEvent.MAP_READY")
-      // );
+  //     // this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
+  //     //   (data: any) => {
+  //     //     alert("GoogleMap.onMapReady(): ");
+  //     //   },
+  //     //   () => alert("Error: GoogleMapsEvent.MAP_READY")
+  //     // );
 
-      this.map.one(GoogleMapsEvent.MAP_READY).then((data: any) => {
-        alert("GoogleMap.onMapReady(): " + JSON.stringify(data));
+  //     this.map.one(GoogleMapsEvent.MAP_READY).then((data: any) => {
+  //       alert("GoogleMap.onMapReady(): " + JSON.stringify(data));
 
-        this._zone.run(() => {
-          let myPosition = new GoogleMapsLatLng(38.9072, -77.0369);
-          console.log("My position is", myPosition);
-          this.map.animateCamera({ target: myPosition, zoom: 10 });
-        });
+  //       this._zone.run(() => {
+  //         let myPosition = new GoogleMapsLatLng(38.9072, -77.0369);
+  //         console.log("My position is", myPosition);
+  //         this.map.animateCamera({ target: myPosition, zoom: 10 });
+  //       });
 
-      });
-    });
-  }
+  //     });
+  //   });
+  // }
 
   private onMapReady(): void {
     alert('Map ready');

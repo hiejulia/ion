@@ -38,16 +38,16 @@ export class EventdetailPage {
     this._eventServiceProvider= eventServiceProvider;
     //  this.review = this.params.get('review'); 
 
-    var eventId = this.params.get('eventId'); 
+//     var eventId = this.params.get('eventId'); 
     
-     console.log(eventId);  
-     this.event = new EventModel();
-//  console.log(typeof(this.review));
-//       console.log(this.review["location"]);
+//      console.log(eventId);  
+//      this.event = new EventModel();
+// //  console.log(typeof(this.review));
+// //       console.log(this.review["location"]);
 
-      this._eventServiceProvider.findById(eventId).subscribe((event) => {
-        this.event = event;
-      })
+//       this._eventServiceProvider.findById(eventId).subscribe((event) => {
+//         this.event = event;
+//       })
 
   
   }
@@ -56,8 +56,8 @@ export class EventdetailPage {
 
   //show map
 
-  showMap(l){
-    console.log(l.location);
+  showMap(){
+    console.log();
     this.navCtrl.push(GeolocationPage);
   }
 goBack() {

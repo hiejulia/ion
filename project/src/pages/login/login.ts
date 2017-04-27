@@ -27,6 +27,7 @@ export class LoginPage {
     loading: any;
 
 
+
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
   
   authServiceProvider: AuthServiceProvider) {

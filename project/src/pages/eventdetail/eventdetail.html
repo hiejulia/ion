@@ -1,53 +1,121 @@
 <ion-header>
- <ion-toolbar transparent>
-  <ion-navbar>
-    <ion-title>ReactJSConf 2017</ion-title>
-  </ion-navbar>
-  <ion-buttons end>
-    <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
-  </ion-buttons>
- </ion-toolbar>
+  <ion-toolbar transparent>
+    <ion-navbar>
+      <ion-title>ReactJSConf 2017</ion-title>
+    </ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 
-  
-
- 
-<ion-content padding class="event-detail">
 
 
 
+      <!--<ion-row no-padding>
+        <ion-col>
+          <button clear small (click)="participant()">
+                        <ion-icon name="star"></ion-icon>
+                        Participate
+                    </button>
+        </ion-col>
+        <ion-col text-center>
+          <button clear small (click)="showMap()">
+                        <ion-icon name="thumbs-up"></ion-icon>
+                        Show map
+                    </button>
+        </ion-col>
+        <ion-col text-right>
+          <button clear small (click)="share()">
+                        <ion-icon name="share-alt"></ion-icon>
+                        Share
+                    </button>
+        </ion-col>
+      </ion-row>-->
 
-  <div text-center>
-   
-    <img src="https://api.adorable.io/avatars/75/react" alt="react"><br>
 
-    <button ion-button icon-only clear small color="twitter">
+<ion-content>
+  <ion-card>
+   <img src="https://cdn-images-1.medium.com/max/2000/1*85hMCrJk4GkAkR79iJUM2w.jpeg" />
+    <ion-row >
+        <button ion-button icon-only clear small color="twitter" text-center>
       <ion-icon name="logo-twitter"></ion-icon>
     </button>
-    <button ion-button icon-only clear small color="github">
+        <button ion-button icon-only clear small color="github" text-center>
       <ion-icon name="logo-github"></ion-icon>
     </button>
-    <button ion-button icon-only clear small color="instagram">
+        <button ion-button icon-only clear small color="instagram" text-center>
       <ion-icon name="logo-instagram"></ion-icon>
     </button>
-  </div>
+      </ion-row>
+    <ion-card-content text-center>
+      <h2 class="card-title">
+        ReactJSConf 2017
+      </h2>
+      <p>
+       Biggest conf of ReactJS community
+      </p>
+    </ion-card-content>
 
-  <h1>ReactJSConf 2017</h1>
-  <p>This is the ReactJSConf 2017 hold in Helsinki Finland</p>
 
-     <button ion-button round outline (click)="showMap(event)">Show Map</button>
-        <button ion-button round outline (click) ="participant(event)">Participate !!!</button>
-              <button ion-button block (click)="goBack()">
-    goBack
-  </button>
+    <ion-list>
+        <ion-item>
+          <ion-icon item-left name="md-navigate"></ion-icon>
+          <h3>Location</h3>
+          <ion-note item-right>Helsinki</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-icon item-left name="ios-time"></ion-icon>
+          <h3>Start</h3>
+          <ion-note item-right>9:00 - 3.5.2017</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-icon item-left name="md-send"></ion-icon>
+          <h3>End</h3>
+          <ion-note item-right>9:00 - 10.5.2017</ion-note>
+        </ion-item>
+        <button ion-item (click)="showBroker()">
+                    <ion-avatar item-left>
+                        <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png"/>
+                    </ion-avatar>
+                    <h2>Googel</h2>
+                    <p>ReactJS Conf 2017</p>
+                </button>
+      </ion-list>
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-left (click)="favorite()">
+          <ion-icon name='star'></ion-icon>
+          Participate
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-left (click)="showMap()">
+          <ion-icon name='musical-notes'></ion-icon>
+          Show map
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-left (click)="share()">
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
 
-  <!--<h4 *ngFor="let speaker of session.speakers">
+
+
+
+
+
+<!--<h4 *ngFor="let speaker of session.speakers">
     {{speaker.name}}
   </h4>-->
 
- 
-</ion-content>
+
 
 
 
@@ -116,4 +184,3 @@
 </ion-content>
 check link https://github.com/ccoenraets/ionic2-realty/blob/master/app/pages/property-details/property-details.scss
 -->
-

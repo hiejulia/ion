@@ -117,10 +117,11 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
  
   }
 
-  goToDetail(event){
+  goToDetail(){
     console.log('go to the detail page');
     // this.navCtrl.push(EventdetailPage);
-        this.navCtrl.push(EventdetailPage, {eventId: event._id}); 
+        this.navCtrl.push(EventdetailPage); 
+        //  this.navCtrl.push(EventdetailPage, {eventId: event._id}); 
 
 
   // speakerDetail(speaker) { 
