@@ -47,6 +47,7 @@ save(): void {
     };
  
     this.viewCtrl.dismiss(organisation);
+    console.log(organisation);
  
   } 
 close():void {
@@ -54,3 +55,11 @@ close():void {
 }
 
 }
+
+
+
+
+
+
+
+

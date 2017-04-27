@@ -10,36 +10,36 @@ const response = require('../helpers/response');
 //get all users
 router.get(
   '/users',
-  auth.ensured,
+  // auth.ensured,
   userCtrl.getAll,
   mainCtrl.toJSON('users')
 );
 //get one user
 router.get(
   '/users/:userId',
-  auth.ensured,
+  // auth.ensured,
   userCtrl.findById,
   mainCtrl.toJSON('user')
 );
 //edit user
 router.put(
   '/users/:userId',
-  auth.ensured,
+  // auth.ensured,
   userCtrl.findById,
-  authorize.onlySelf,
+  // authorize.onlySelf,
   userCtrl.update,
   mainCtrl.toJSON('user')
 );
 
 router.delete(
   '/users/:userId',
-  auth.ensured,
+  // auth.ensured,
   userCtrl.delete
 );
 
 router.get(
   '/users/:userId/profile',
-  auth.ensured,
+  // auth.ensured,
   userCtrl.getProfile,
   response.toJSON('user')
 );
@@ -48,7 +48,7 @@ router.post(
   '/users/:userId/profile/blocks',
   auth.ensured,
   userCtrl.getProfile,
-  authorize.onlySelf,
+  // authorize.onlySelf,
   userCtrl.createProfileBlock,
   response.toJSON('block')
 );
@@ -57,7 +57,7 @@ router.put(
   '/users/:userId/profile/blocks/:blockId',
   auth.ensured,
   userCtrl.getProfile,
-  authorize.onlySelf,
+  // authorize.onlySelf,
   userCtrl.updateProfile,
   response.toJSON('block')
 );
@@ -65,7 +65,7 @@ router.put(
 
 router.get(
   '/users/:userId/organisations',
-  auth.ensured,
+  // auth.ensured,
   userCtrl.getUserOrganisations,
   response.toJSON('organisations')
 );

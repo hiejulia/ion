@@ -11,6 +11,6 @@ router.post('/login', authCtrl.login);
 router.get('/logout', authCtrl.logout);
 
 router.post('/register', accountCtrl.register);
-router.get('/info', auth.ensured, userCtrl.getAuthUser);
+router.get('/info',  userCtrl.getAuthUser);
 
 module.exports = router;

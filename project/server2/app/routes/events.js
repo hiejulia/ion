@@ -30,7 +30,7 @@ router.post(
   '/organisations/:organisationId/events',
   auth.ensured,
   organisationCtrl.findById,
-  authorize.onlyMembers,
+  // authorize.onlyMembers,
   eventCtrl.create
 );
 
@@ -38,7 +38,7 @@ router.put(
   '/organisations/:organisationId/events/:eventId',
   auth.ensured,
   organisationCtrl.findById,
-  authorize.onlyMembers,
+  // authorize.onlyMembers,
   eventCtrl.findById,
   eventCtrl.update
 );
@@ -47,7 +47,7 @@ router.delete(
   '/organisations/:organisationId/events/:eventId',
   auth.ensured,
   organisationCtrl.findById,
-  authorize.onlyMembers,
+  // authorize.onlyMembers,
   eventCtrl.findById,
   eventCtrl.remove
 );

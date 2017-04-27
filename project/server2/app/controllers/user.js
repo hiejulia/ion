@@ -139,8 +139,17 @@ function updateUserProfile(req, res, next) {
   });
 }
 //get user organisations
+// function getUserOrganisations(req, res, next) {
+//   Organisation.find({ owner: req.user._id }, (err, organisations) => {
+//     if (err) {
+//       return next(err);
+//     }
+
+//     req.resources.organisations = organisations;
+//   });
+// }
 function getUserOrganisations(req, res, next) {
-  Organisation.find({ owner: req.user._id }, (err, organisations) => {
+  Organisation.find({ owner: req.params.userId}, (err, organisations) => {
     if (err) {
       return next(err);
     }

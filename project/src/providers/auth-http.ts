@@ -40,7 +40,7 @@ export class AuthHttpProvider {
     let req:Request = new Request(opts);
 
     return this._http.request(req).catch((err: any) => {
-      if (err.status === 401) {
+      if (err.status === 409) {
         this.unauthorized.next(err);//unauthorized 
       }
 

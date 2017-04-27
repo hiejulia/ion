@@ -12,7 +12,9 @@ module.exports.ensured = ensureAuthenticated
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
+    console.log('ensured auth');
   }
+
 
   res.format({
     html: function() {

@@ -77,12 +77,14 @@ addOrganisation(){
  
     modal.onDidDismiss(organisation => {
       if(organisation){
+        
         this.organisations.push(organisation);
+       
         // this.reviewService.createReview(event);    
             this._organisationServiceProvider.create(organisation).subscribe((organisation) => {
              
-              
-              console.log(organisation);
+              console.log('success'+organisation.name);
+             
             },(err) => {
               console.log('the error is '+err);
             })

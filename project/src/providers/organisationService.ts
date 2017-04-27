@@ -21,15 +21,16 @@ export class OrganisationServiceProvider {
   }
 //get one
   findById(id) {
+
     return this._http
     .get(`http://localhost:3000/api/organisations/${id}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 //create new 
   create(organisation) {
-    let body = JSON.stringify(organisation);
+       let body = JSON.stringify(organisation);
 
-    return this._http
+    return this._authHttpProvider
     .post('http://localhost:3000/api/organisations', body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }

@@ -87,7 +87,9 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
         // this.reviewService.createReview(event);    
             this._eventsServiceProvider.create(event).subscribe((event) => {
               console.log(event);
-               this.events.push(event);
+              
+            },(err) => {
+              console.log(err);
             })
       }
     });

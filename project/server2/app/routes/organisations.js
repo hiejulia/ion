@@ -9,9 +9,10 @@ const response = require('../helpers/response');
 
 router.post(
   '/organisations',
-  auth.ensured,
+  // auth.ensured,
   // organisationCtrl.checkUserOrganisation,
-  organisationCtrl.create
+  organisationCtrl.create,
+  response.toJSON('organisations')
 );
 //get
 router.get(
