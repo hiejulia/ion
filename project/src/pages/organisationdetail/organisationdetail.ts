@@ -35,11 +35,11 @@ export class OrganisationdetailPage {
  this._organisationServiceProvider = organisationServiceProvider;
 
  this.organisation = new OrganisationModel();
-      // const organisationId = this.navParams.get('organisationId');
-      // this._organisationServiceProvider.findById(organisationId)
-      //   .subscribe((organisation) => {
-      //       this.organisation= organisation;
-      //   })
+      const organisationId = this.navParams.get('organisationId');
+      this._organisationServiceProvider.findById(organisationId)
+        .subscribe((organisation) => {
+            this.organisation= organisation;
+        })
     
   }
 

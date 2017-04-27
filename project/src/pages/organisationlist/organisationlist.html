@@ -40,7 +40,7 @@
 
 <ion-content>
  
-  <ion-list no-lines>
+  <ion-list no-lines >
  
     <ion-item-group>
       <ion-item-divider sticky>
@@ -49,7 +49,10 @@
         </ion-label>
       </ion-item-divider>
  
-      <ion-item-sliding class="card">
+   
+
+
+      <ion-item-sliding class="card" *ngFor="let organisation of organisations">
  
        
  
@@ -57,9 +60,9 @@
           <ion-avatar item-left>
           <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
         </ion-avatar>
-          <h3>Google</h3>
+          <h3>{{organisation.name}}</h3>
           <p>
-           Technology Company - We hold tech meetups and conference every year
+           {{organisation.description}}
           </p>
         </button>
        
@@ -81,74 +84,8 @@
         </ion-item-options>
 
       </ion-item-sliding>
+      <!--1-->
 
-
-      <ion-item-sliding class="card">
- 
-       
- 
-       <button ion-item (click)="goToDetail()">
-          <ion-avatar item-left>
-          <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
-        </ion-avatar>
-          <h3>Google</h3>
-          <p>
-           Technology Company - We hold tech meetups and conference every year
-          </p>
-        </button>
-       
-
-  
-
-        <button ion-button (click)="goToDetail()" ion-button round outline>
-      <ion-icon name="md-navigate"></ion-icon>
-          View
-        </button>
-
-        <ion-item-options>
-          <button ion-button color="favorite">
-            Favorite
-          </button>
-          <button ion-button color="danger">
-            Remove
-          </button>
-        </ion-item-options>
-
-      </ion-item-sliding>
-
-      <ion-item-sliding class="card">
- 
-       
- 
-       <button ion-item (click)="goToDetail()">
-          <ion-avatar item-left>
-          <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
-        </ion-avatar>
-          <h3>Google</h3>
-          <p>
-           Technology Company - We hold tech meetups and conference every year
-          </p>
-        </button>
-       
-
-  
-
-        <button ion-button (click)="goToDetail()" ion-button round outline>
-      <ion-icon name="md-navigate"></ion-icon>
-          View
-        </button>
-
-        <ion-item-options>
-          <button ion-button color="favorite">
-            Favorite
-          </button>
-          <button ion-button color="danger">
-            Remove
-          </button>
-        </ion-item-options>
-
-      </ion-item-sliding>
- 
       
       
          
@@ -156,84 +93,7 @@
     </ion-item-group>
 
 
-    <ion-item-group>
-      <ion-item-divider sticky>
-        <ion-label>
-          Science
-        </ion-label>
-      </ion-item-divider>
- 
-      <ion-item-sliding class="card">
- 
-       
- 
-       <button ion-item>
-          <ion-avatar item-left>
-          <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
-        </ion-avatar>
-          <h3>Microsoft</h3>
-          <p>
-           Technology Company - We hold tech meetups and conference every year
-          </p>
-        </button>
-       
-
-  
-
-        <button ion-button ion-button round outline>
-      <ion-icon name="md-navigate"></ion-icon>
-          View
-        </button>
-
-        <ion-item-options>
-          <button ion-button color="favorite">
-            Favorite
-          </button>
-          <button ion-button color="danger">
-            Remove
-          </button>
-        </ion-item-options>
-
-      </ion-item-sliding>
-
-      <ion-item-sliding class="card">
- 
-       
- 
-       <button ion-item (click)="goToSessionDetail(session)">
-          <ion-avatar item-left>
-          <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
-        </ion-avatar>
-          <h3>Google</h3>
-          <p>
-           Technology Company - We hold tech meetups and conference every year
-          </p>
-        </button>
-       
-
-  
-
-        <button ion-button (click)="goToDetail(organisation)" ion-button round outline>
-      <ion-icon name="md-navigate"></ion-icon>
-          View
-        </button>
-
-        <ion-item-options>
-          <button ion-button color="favorite">
-            Favorite
-          </button>
-          <button ion-button color="danger">
-            Remove
-          </button>
-        </ion-item-options>
-
-      </ion-item-sliding>
- 
-      
-      
-         
-      
-    </ion-item-group>
+    
  
   </ion-list>
   <ion-fab bottom right #fab>

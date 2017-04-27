@@ -53,11 +53,11 @@ function checkUserOrganisation(req, res, next) {
 }
 //find one organistion
 function findOrganisationById(req, res, next) {
-  if (!ObjectId.isValid(req.params.organistionId)) {
+  if (!ObjectId.isValid(req.params.organisationId)) {
     return res.status(404).send({ message: 'Not found.'});
   }
 
-  Organisation.findById(req.params.organistionId, (err, organisation) => {
+  Organisation.findById(req.params.organisationId, (err, organisation) => {
     if (err) {
       return next(err);
     }
