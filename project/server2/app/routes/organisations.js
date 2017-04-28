@@ -10,7 +10,7 @@ const userCtrl = require('../controllers/user');
 //create new organisation 
 router.post(
   '/organisations',
-  //auth.ensured,
+  auth.ensured,
   
 
   //organisationCtrl.checkUserOrganisation,
@@ -23,6 +23,7 @@ router.get(
   organisationCtrl.getAll,
   response.toJSON('organisations')
 );
+
 //get one organisation
 router.get(
   '/organisations/:organisationId',

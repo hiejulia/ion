@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { App, NavController, ModalController, ViewController } from 'ionic-angular';
+import {OrganisationsListProfilePage} from '../organisationlistprofile/organisationlistprofile';
 
 
 @Component({
@@ -28,8 +29,8 @@ export class PopoverProfilePage {
     this.viewCtrl.dismiss();
   }
 
-  listUserOrg() {
-      console.log('list user org');
+  listUserOrg(){
+    this.navCtrl.push(OrganisationsListProfilePage);
   }
 
   close(url: string) {

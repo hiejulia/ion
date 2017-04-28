@@ -19,6 +19,13 @@ export class OrganisationServiceProvider {
     .get('http://localhost:3000/api/organisations', { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
+
+  //get all organisations by owner
+  getOrgByOwner(id) {
+    return this._http
+    .get(`http://localhost:3000/api/users/${id}/organisations`, { headers: contentHeaders })
+    .map((res: Response) => res.json())
+  }
 //get one
   findById(id) {
 

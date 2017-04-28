@@ -20,6 +20,7 @@ module.exports.getAll = getAllOrganisations;
 module.exports.update = updateOrganisation;
 module.exports.addMember = addOrganisationMember;
 module.exports.removeMember = removeOrganisationMember;
+module.exports.findByOwner = findOrganisationByOwner;
 //create new organisation 
 function createOrganisation(req, res, next) {
   let data = _.pick(req.body, ['name', 'address','location','description','numberOfEmployees','members','owner','owner']);
@@ -140,6 +141,23 @@ function removeOrganisationMember(req, res, next) {
     }
 
     req.resources.organisation = updatedOrganisation;
+    next();
+  });
+}
+
+
+//find organisation with the owner 
+function findOrganisationByOwner(req, res, next) {
+  if (!ObjectId.isValid(req.params.owner)) {
+    return res.status(404).send({ message: 'Not found.'});
+  }
+
+  Organisation.find({owner:req.params.owner}).exec((err, organisation) => {
+    if (err) {
+      return next(err);
+    }
+
+    req.resources.organisation = organisation;
     next();
   });
 }

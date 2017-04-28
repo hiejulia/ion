@@ -155,6 +155,7 @@ function getUserOrganisations(req, res, next) {
     }
 
     req.resources.organisations = organisations;
+    next();
   });
 }
 //get auth user 

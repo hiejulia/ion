@@ -10,14 +10,14 @@ const response = require('../helpers/response');
 //get all users
 router.get(
   '/users',
-  auth.ensured,
+  // auth.ensured,
   userCtrl.getAll,
   mainCtrl.toJSON('users')
 );
 //get one user
 router.get(
   '/users/:userId',
- auth.ensured,
+//  auth.ensured,
   userCtrl.findById,
   mainCtrl.toJSON('user')
 );
@@ -65,7 +65,7 @@ router.put(
 
 router.get(
   '/users/:userId/organisations',
-   auth.ensured,
+  //  auth.ensured,
   userCtrl.getUserOrganisations,
   response.toJSON('organisations')
 );

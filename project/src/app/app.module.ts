@@ -11,6 +11,7 @@ import {EventdetailPage} from '../pages/eventdetail/eventdetail';
 import {RegisterPage} from '../pages/register/register';
 import {GeolocationPage } from '../pages/geolocation/geolocation';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import {OrganisationsListProfilePage} from '../pages/organisationlistprofile/organisationlistprofile';
 
 import {TutorialPage} from '../pages/tutorial/tutorial';
 import { Storage } from '@ionic/storage';
@@ -59,6 +60,7 @@ import {EventServiceProvider} from '../providers/eventService';
     UsersListPage,
     EventdetailPage,
     GeolocationPage,
+    OrganisationsListProfilePage,
     ProfilePage,
     UserProfilePage,
     OrganisationsListPage,
@@ -91,6 +93,7 @@ import {EventServiceProvider} from '../providers/eventService';
     TabsPage,
     TutorialPage,
     LoginPage,
+    OrganisationsListProfilePage,
     UsersListPage,
     RegisterPage,
     GeolocationPage,
