@@ -10,21 +10,21 @@ const response = require('../helpers/response');
 //get all users
 router.get(
   '/users',
-  // auth.ensured,
+  auth.ensured,
   userCtrl.getAll,
   mainCtrl.toJSON('users')
 );
 //get one user
 router.get(
   '/users/:userId',
-  // auth.ensured,
+ auth.ensured,
   userCtrl.findById,
   mainCtrl.toJSON('user')
 );
 //edit user
 router.put(
   '/users/:userId',
-  // auth.ensured,
+   auth.ensured,
   userCtrl.findById,
   // authorize.onlySelf,
   userCtrl.update,
@@ -33,13 +33,13 @@ router.put(
 
 router.delete(
   '/users/:userId',
-  // auth.ensured,
+   auth.ensured,
   userCtrl.delete
 );
 
 router.get(
   '/users/:userId/profile',
-  // auth.ensured,
+   auth.ensured,
   userCtrl.getProfile,
   response.toJSON('user')
 );
@@ -65,7 +65,7 @@ router.put(
 
 router.get(
   '/users/:userId/organisations',
-  // auth.ensured,
+   auth.ensured,
   userCtrl.getUserOrganisations,
   response.toJSON('organisations')
 );

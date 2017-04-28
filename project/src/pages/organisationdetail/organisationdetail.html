@@ -19,32 +19,36 @@
             <ion-card-content>
              
                 <img src="../../assets/user.png"/>
-                <h2>Google </h2>
-                <h3>Google Corp</h3>
+                <h2>{{organisation?.name}} </h2>
+                <h3>{{organisation?.description}}</h3>
             </ion-card-content>
 
             <ion-list>
                 <a href="#" ion-item>
                     <ion-icon name="call" item-left></ion-icon>
                     <p>Call Office</p>
-                    <h2>014 454 65654</h2>
+                    <h2>{{organisation?.location}}</h2>
                 </a>
                 <a href="#" ion-item>
                     <ion-icon name="call" item-left></ion-icon>
-                    <p>Call Mobile</p>
-                    <h2>+358 545345454</h2>
+                    <p>Office</p>
+                    <h2>{{organisation?.office}}</h2>
                 </a>
                 <a href="#" ion-item>
                     <ion-icon name="text" item-left></ion-icon>
                     <p>Description</p>
-                    <h2>We hold tech events every year</h2>
+                    <h2>{{organisation?.numberOfEmployees}}</h2>
                 </a>
                 <a href="#" ion-item>
                     <ion-icon name="mail" item-left></ion-icon>
-                    <p>Email</p>
-                    <h2>Google gmail</h2>
+                    <p>Country</p>
+                    <h2>{{organisation?.country}}</h2>
                 </a>
             </ion-list>
+             <ion-fab bottom right #fab>
+    <button ion-fab (click)="editOrganisation(organisation)"><ion-icon name="md-settings"></ion-icon></button>
+    
+  </ion-fab>
 
         </ion-card>
     </div>

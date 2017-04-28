@@ -21,7 +21,7 @@ let OrganisationSchema = new Schema({
   },
   owner: {
     type: ObjectId,
-    
+    required:true,
     ref: 'User'
   },
   members: {

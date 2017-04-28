@@ -10,7 +10,7 @@ import { EventModel } from '../../providers/event.model';
 import {AuthServiceProvider} from '../../providers/authService';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { ActionSheet, ActionSheetController, Config } from 'ionic-angular';
-
+import {AuthHttpProvider} from '../../providers/auth-http';
 
 /*
   Generated class for the Myevents page.
@@ -30,14 +30,23 @@ export class MyEvents {
   // reviews: Array<Object>;
     public organisation: any;
     actionSheet: ActionSheet;
-
+currentUser:any;
  public events: Array<EventModel>;
   private _eventsServiceProvider: EventServiceProvider;
+  private _authHttpProvider;
+  private _authServiceProvider;
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
 eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServiceProvider,
  public actionSheetCtrl: ActionSheetController, public config: Config,
-    public inAppBrowser: InAppBrowser) {
+ public authHttpProvider:AuthHttpProvider,
+    public inAppBrowser: InAppBrowser) 
+    
+    
+    {
     this._eventsServiceProvider = eventsServiceProvider;
+    this._authHttpProvider= authHttpProvider;
+    this._authServiceProvider = authServiceProvider;
+    
      let query :any ={};
     if(this.organisation){
       query.organisation = this.organisation;
@@ -45,6 +54,21 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
     this._eventsServiceProvider.getAll(query).subscribe((events) => {
       this.events = events;
     })
+
+//========
+
+    this.currentUser = {};
+    this._authHttpProvider.unauthorized.subscribe((res) => {
+      if (res) {
+        this.navCtrl.push(LoginPage);
+      }
+    });
+
+
+    this._authServiceProvider.currentUser.subscribe((user) => {
+      this.currentUser = user;
+    });
+  
  
   }
  

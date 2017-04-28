@@ -22,9 +22,9 @@ module.exports.addMember = addOrganisationMember;
 module.exports.removeMember = removeOrganisationMember;
 //create new organisation 
 function createOrganisation(req, res, next) {
-  let data = _.pick(req.body, ['name', 'address','location','description','numberOfEmployees','members','owner']);
-  //data.owner = req.user._id;
-  //data.members = [req.user._id];
+  let data = _.pick(req.body, ['name', 'address','location','description','numberOfEmployees','members','owner','owner']);
+  // data.owner = req.resources.user._id;
+  //data.members = [req.resources.user._id];
 
   Organisation.create(data, (err, organisation) => {
     if (err) {

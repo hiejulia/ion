@@ -38,7 +38,7 @@ function initExpress(app) {
   app.use(session(sessionOpts));
   app.use(passport.initialize());
   app.use(passport.session());
-
+//req.resources
   app.use(function(req, res, next) {
     req.resources = req.resources || {};
     res.locals.app = config.app;

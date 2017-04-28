@@ -25,8 +25,8 @@ function registerUser(req, res, next) {
     // we are going to need a session after the user signs up
     req.logIn(user, (err) => {
      
-      // delete user.password;
-      // delete user.passwordSalt;
+      delete user.password;
+      delete user.passwordSalt;
 
       res.json(user);//send user json
     });

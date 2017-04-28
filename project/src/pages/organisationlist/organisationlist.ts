@@ -43,6 +43,9 @@ export class OrganisationsListPage {
         .subscribe((organisations) => {
             this.organisations = organisations;
         });
+
+
+        //console.log('the user token is' + window.localStorage.getItem('token'));
  
   }
  

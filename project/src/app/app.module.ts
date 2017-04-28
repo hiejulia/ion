@@ -29,7 +29,8 @@ import {UserProfilePage} from '../pages/userprofile/userprofile';
 import {OrganisationsListPage} from '../pages/organisationlist/organisationlist';
 import {OrganisationdetailPage} from '../pages/organisationdetail/organisationdetail';
 import {OrganisationCreatePage} from '../pages/organisationcreate/organisationcreate';
-
+import {OrganisationEditPage} from '../pages/organisationedit/organisationedit';
+import {PopoverProfilePage} from '../pages/profile-popover/profile-popover';
 import {AuthHttpProvider} from '../providers/auth-http';
 import {AuthServiceProvider} from '../providers/authService';
 import {OrganisationServiceProvider} from '../providers/organisationService';
@@ -65,7 +66,9 @@ import {EventServiceProvider} from '../providers/eventService';
     OrganisationCreatePage,
     AboutPage,
     PopoverPage,
-    OrganisationFilterPage
+    OrganisationFilterPage,
+    OrganisationEditPage,
+    PopoverProfilePage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -92,8 +95,10 @@ import {EventServiceProvider} from '../providers/eventService';
     RegisterPage,
     GeolocationPage,
     ProfilePage,
+    PopoverProfilePage,
     EventdetailPage,
     UserProfilePage,
+    OrganisationEditPage,
     OrganisationsListPage,
     OrganisationdetailPage,
     OrganisationCreatePage,

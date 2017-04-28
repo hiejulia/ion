@@ -42,4 +42,6 @@ export class OrganisationServiceProvider {
     .put(`http://localhost:3000/api/organisations/${organisation._id}`, body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
+
+
 }

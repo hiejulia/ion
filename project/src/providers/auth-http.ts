@@ -42,7 +42,7 @@ export class AuthHttpProvider {
     return this._http.request(req).catch((err: any) => {
       if (err.status === 409) {
         this.unauthorized.next(err);//unauthorized 
-      }
+      } 
 
       return Observable.throw(err);
     });

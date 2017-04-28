@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-
+import { PopoverPage } from '../about-popover/about-popover';
+import { PopoverController } from 'ionic-angular';
+import {PopoverProfilePage} from '../profile-popover/profile-popover';
 import { TechEvents } from '../techevents/techevents';
 import { AddEvent } from '../addevent/addevent';
 import { MyEvents } from '../myevents/myevents';
@@ -23,8 +25,13 @@ MENU = {
     AVATAR: "menu-avatar",
   }
 
-  constructor(public navCtrl: NavController,public authServiceProvider:AuthServiceProvider,public alertCtrl: AlertController,public menuCtrl: MenuController) {
+  constructor(public navCtrl: NavController,public popoverCtrl: PopoverController,public authServiceProvider:AuthServiceProvider,public alertCtrl: AlertController,public menuCtrl: MenuController) {
 
+  }
+
+  presentPopover(event: Event) {
+    let popover = this.popoverCtrl.create(PopoverProfilePage);
+    popover.present({ ev: event });
   }
 
   updatePicture(){
@@ -74,7 +81,9 @@ onViewWillEnter() {
   logout(){
     console.log('log out');
     // this.userData.logout();
+    localStorage.removeItem('user_Id');
      this.authServiceProvider.logout();
+
     this.navCtrl.setRoot(LoginPage);
 
   }

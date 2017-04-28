@@ -15,6 +15,7 @@ export class AuthServiceProvider {
   }
 
   public login(user: any) {
+     //localStorage.setItem('userId',user._id);
     let body = this._serialize(user);
     let basic = btoa(`${user.email}:${user.password}`);
     let headers = new Headers(contentHeaders);
@@ -28,17 +29,19 @@ export class AuthServiceProvider {
 
 public logout(){
   console.log('log out');
+   localStorage.setItem('userId',null);
 }
 //register
   public register(user: any) {
     let body = this._serialize(user);
-
+     //localStorage.setItem('userId',user._id);
     return this._http
     .post('http://localhost:3000/auth/register', body, { headers: contentHeaders })
     .map((res: Response) => res.json());//return json of user
   }
 //get the current user 
   public setCurrentUser(user: any) {
+    
     this.currentUser.next(user);
   }
 

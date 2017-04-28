@@ -6,15 +6,18 @@ const organisationCtrl = require('../controllers/organisation');
 const auth = require('../middlewares/authentication');
 const authorize = require('../middlewares/authorization');
 const response = require('../helpers/response');
-
+const userCtrl = require('../controllers/user');
+//create new organisation 
 router.post(
   '/organisations',
-  // auth.ensured,
-  // organisationCtrl.checkUserOrganisation,
+  //auth.ensured,
+  
+
+  //organisationCtrl.checkUserOrganisation,
   organisationCtrl.create,
   response.toJSON('organisations')
 );
-//get
+//get all organisations
 router.get(
   '/organisations',
   organisationCtrl.getAll,
@@ -29,7 +32,7 @@ router.get(
 //edit one organisation
 router.put(
   '/organisations/:organisationId',
-  auth.ensured,
+  // auth.ensured,
   organisationCtrl.findById,
   // authorize.onlyOwner,
   organisationCtrl.update,

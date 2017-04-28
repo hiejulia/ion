@@ -7,13 +7,16 @@ import 'rxjs/Rx';
  
 
 import { NavController, NavParams,ModalController } from 'ionic-angular';
-
+import {OrganisationEditPage} from '../organisationedit/organisationedit';
 
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
 import {GeolocationPage} from '../geolocation/geolocation';
 import { OrganisationModel } from '../../providers/organisation.model';
 import { OrganisationServiceProvider } from '../../providers/organisationService';
+import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
+
+
 
 /*
   Generated class for the Eventdetail page.
@@ -30,7 +33,7 @@ export class OrganisationdetailPage {
  public organisation: OrganisationModel;
   private _organisationServiceProvider: OrganisationServiceProvider;
   constructor(public navCtrl: NavController,  public modalCtrl: ModalController,
-   public params:NavParams,organisationServiceProvider: OrganisationServiceProvider,
+  public organisationServiceProvider: OrganisationServiceProvider,
   public navParams:NavParams) {
  this._organisationServiceProvider = organisationServiceProvider;
 
@@ -58,6 +61,14 @@ export class OrganisationdetailPage {
   close(){
   
     this.navCtrl.pop();
+  
+
+
+  }
+
+  editOrganisation(o){
+    console.log(o);
+   this.navCtrl.push(OrganisationEditPage, {organisationId: o._id}); 
   
 
 

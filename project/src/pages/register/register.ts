@@ -64,7 +64,13 @@ loading:any;
     .subscribe((user) => {
       this.loading.dismiss();
       console.log('the registered user is / the current user is '+user);
-      console.log(user);
+     
+     
+      localStorage.setItem('user_Id',user._id);
+                console.log(localStorage.getItem('user_Id'));                
+               
+      this._authServiceProvider.setCurrentUser(user);
+
       this.navCtrl.setRoot(TabsPage);
       
     },(err) => {

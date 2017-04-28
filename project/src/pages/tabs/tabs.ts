@@ -23,7 +23,7 @@ export class TabsPage {
   tab1Root: any = MyEvents;
   tab2Root: any = OrganisationsListPage;
   tab3Root: any = ProfilePage;
- tab4Root:any = TutorialPage;
+ tab4Root:any =  AboutPage ;
   constructor() {
 
   }

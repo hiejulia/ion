@@ -23,14 +23,11 @@ export class OrganisationCreatePage {
   constructor(public viewCtrl: ViewController, organisationServiceProvider:OrganisationServiceProvider) {
       this._organisationServiceProvider = organisationServiceProvider;
       this.organisation= new OrganisationModel();
+
+      
  
   }
  
- ionViewDidLoad(){
-     
-
- }
-
 
 
  
@@ -42,7 +39,8 @@ save(): void {
         description:this.description,
         country:this.country,
         address:this.address,
-        numberOfEmployees:this.numberOfEmployees
+        numberOfEmployees:this.numberOfEmployees,
+        owner:localStorage.getItem('user_Id')
       
     };
  

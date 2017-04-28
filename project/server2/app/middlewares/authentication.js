@@ -25,7 +25,7 @@ function ensureAuthenticated(req, res, next) {
       res.redirect('/login');
     },
     json: function() {//send back json unauthorized user 
-      res.status(401).json({ message: 'Unauthorized' });
+      res.status(401).json({ message: 'User is not authorized' });
     }
   });
 };

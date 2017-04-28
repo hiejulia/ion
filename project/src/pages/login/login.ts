@@ -79,6 +79,10 @@ login(){
                 this.loading.dismiss();
                 
                 this._authServiceProvider.setCurrentUser(user);//set current user 
+                console.log(user._id);
+                localStorage.setItem('user_Id',user._id);
+                console.log(localStorage.getItem('user_Id'));                
+               
                 this.navCtrl.setRoot(TabsPage);
             },(err) => {
                 console.log('not authenticated');
