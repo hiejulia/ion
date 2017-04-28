@@ -10,7 +10,7 @@ const userCtrl = require('../controllers/user');
 //create new organisation 
 router.post(
   '/organisations',
-  auth.ensured,
+  //auth.ensured,
   
 
   //organisationCtrl.checkUserOrganisation,

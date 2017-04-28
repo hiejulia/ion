@@ -23,19 +23,18 @@ let EventSchema = new Schema({
     type: String
   },
  location:{
-   type:String,
-   required:true
+   type:String
  },
   description: {
     type: String
   },
   office:{
     type:String,
-    required:true
+   
   },
   address:{
     type:String,
-    required:true
+    
   },
   typeOfEvent: {
     type: String,
@@ -43,24 +42,21 @@ let EventSchema = new Schema({
     enum: eventEnum
   },
   numberOfParticipantsEstimated:{
-    type:Number,
-    required:true
+    type:Number
   },
   isActive: {
-    type:Boolean,
-    required:true
+    type:Boolean
   },
   userCreated:{
     type:ObjectId,
     ref:'User'
   },
   timeStart:{
-    type:String,
-    required:true
+    type:String
+   
   },
   timeEnd:{
-    type:String,
-    required:true
+    type:String
   },
   organisation: {
     type: ObjectId,

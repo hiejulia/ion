@@ -28,7 +28,7 @@ router.get(
 
 router.post(
   '/organisations/:organisationId/events',
-  auth.ensured,
+  //auth.ensured,
   organisationCtrl.findById,
   // authorize.onlyMembers,
   eventCtrl.create
@@ -36,7 +36,7 @@ router.post(
 
 router.put(
   '/organisations/:organisationId/events/:eventId',
-  auth.ensured,
+  //auth.ensured,
   organisationCtrl.findById,
   // authorize.onlyMembers,
   eventCtrl.findById,
@@ -45,7 +45,7 @@ router.put(
 
 router.delete(
   '/organisations/:organisationId/events/:eventId',
-  auth.ensured,
+  //auth.ensured,
   organisationCtrl.findById,
   // authorize.onlyMembers,
   eventCtrl.findById,
