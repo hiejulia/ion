@@ -30,6 +30,14 @@ router.get(
   organisationCtrl.findById,
   response.toJSON('organisation')
 );
+
+
+//get one organisation by name
+router.get(
+  '/organisations/:organisationName',
+  organisationCtrl.findByName,
+  response.toJSON('organisation')
+);
 //edit one organisation
 router.put(
   '/organisations/:organisationId',

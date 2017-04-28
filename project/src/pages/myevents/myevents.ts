@@ -47,27 +47,29 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
     this._authHttpProvider= authHttpProvider;
     this._authServiceProvider = authServiceProvider;
     
-     let query :any ={};
-    if(this.organisation){
-      query.organisation = this.organisation;
-    }
-    this._eventsServiceProvider.getAll(query).subscribe((events) => {
+    //  let query :any ={};
+    // if(this.organisation){
+    //   query.organisation = this.organisation;
+    //}
+
+    this._eventsServiceProvider.getAll().subscribe((events) => {
       this.events = events;
+      console.log(this.events);
     })
 
 //========
 
-    this.currentUser = {};
-    this._authHttpProvider.unauthorized.subscribe((res) => {
-      if (res) {
-        this.navCtrl.push(LoginPage);
-      }
-    });
+    // this.currentUser = {};
+    // this._authHttpProvider.unauthorized.subscribe((res) => {
+    //   if (res) {
+    //     this.navCtrl.push(LoginPage);
+    //   }
+    // });
 
 
-    this._authServiceProvider.currentUser.subscribe((user) => {
-      this.currentUser = user;
-    });
+    // this._authServiceProvider.currentUser.subscribe((user) => {
+    //   this.currentUser = user;
+    // });
   
  
   }
@@ -81,25 +83,18 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
     // this.reviewService.getReviews().subscribe(data => {
     //     this.reviews = data;
     // });
-    let query :any ={};
-    if(this.organisation){
-      query.organisation = this.organisation;
-    }
-  this._eventsServiceProvider.getAll(query).subscribe((events) => {
+    // let query :any ={};
+    // if(this.organisation){
+    //   query.organisation = this.organisation;
+    // }
+
+  this._eventsServiceProvider.getAll().subscribe((events) => {
       this.events = events;
     })
  
   }
 
-  ionViewWillEnter() {
-    let query :any ={};
-    if(this.organisation){
-      query.organisation = this.organisation;
-    }
-    this._eventsServiceProvider.getAll(query).subscribe((events) => {
-      this.events = events;
-    })
-  }
+  
  
   addEvent(){
  
@@ -107,7 +102,8 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
  
     modal.onDidDismiss(event => {
       if(event){
-        this.events.push(event);
+        console.log(event);
+        this.events.push(event);  
         // this.reviewService.createReview(event);    
             this._eventsServiceProvider.create(event).subscribe((event) => {
               console.log(event);
@@ -143,11 +139,11 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
  
   }
 
-  goToDetail(){
+  goToDetail(e){
     console.log('go to the detail page');
-    // this.navCtrl.push(EventdetailPage);
-        this.navCtrl.push(EventdetailPage); 
-        //  this.navCtrl.push(EventdetailPage, {eventId: event._id}); 
+    
+       
+         this.navCtrl.push(EventdetailPage, {eventId: e._id}); 
 
 
   // speakerDetail(speaker) { 

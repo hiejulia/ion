@@ -14,16 +14,16 @@ export class EventServiceProvider {
     this._authHttpProvider = authHttpProvider;
   }
 //get all events
-  getAll(criteria) {
-    let query = '';
-    let str = serializeQuery(criteria);
+  getAll() {
+    // let query = '';
+    // let str = serializeQuery(criteria);
 
-    if (str) {
-      query = `?${str}`;
-    }
+    // if (str) {
+    //   query = `?${str}`;
+    //}
 
     return this._http
-    .get(`http://localhost:3000/api/events${query}`, { headers: contentHeaders })
+    .get(`http://localhost:3000/api/events`, { headers: contentHeaders })
     .map((res: Response) => res.json())//get the list of events json
   }
 //get one by id get one event by the id 
@@ -33,11 +33,11 @@ export class EventServiceProvider {
     .map((res: Response) => res.json())
   }
 //create new 
-  create(event) {
+  create(orgId) {
     let body = JSON.stringify(event);
 
-    return this._authHttpProvider
-    .post('http://localhost:3000/api/events', body, { headers: contentHeaders })
+    return this._http
+    .post('http://localhost:3000/api/organisations/${orgId}/events', body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 }

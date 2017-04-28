@@ -33,6 +33,14 @@ export class OrganisationServiceProvider {
     .get(`http://localhost:3000/api/organisations/${id}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
+
+//find org by name
+  findByName(name) {
+
+    return this._http
+    .get(`http://localhost:3000/api/organisations/${name}`, { headers: contentHeaders })
+    .map((res: Response) => res.json())
+  }
 //create new 
   create(organisation) {
        let body = JSON.stringify(organisation);

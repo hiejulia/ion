@@ -32,7 +32,7 @@
 <ion-content class="outer-content event-list">
  
 
-  <!--<ion-list no-lines *ngFor="let event of events " [virtualScroll]="events">-->
+  <ion-list no-lines *ngFor="let event of events">
    
      <ion-grid fixed>
       <ion-row align-items-stretch>
@@ -48,7 +48,7 @@
       <!--<ion-icon name="md-navigate"></ion-icon>-->
        
 
-              <button ion-item detail-none (click)="goToDetail()">
+              <button ion-item detail-none (click)="goToDetail(event)">
                 <ion-avatar item-left>
                   
                   <img src="https://api.adorable.io/avatars/75/a" alt="Event pic">
@@ -114,7 +114,13 @@
       </ion-row>
     </ion-grid>
 
-<!--</ion-list>-->
+
+
+
+
+  </ion-list>
+
+  <!--</ion-list>-->
 <ion-fab right bottom>
     <button ion-fab class="pop-in" color="danger" (click)="addEvent()">
         <ion-icon name='search'></ion-icon>

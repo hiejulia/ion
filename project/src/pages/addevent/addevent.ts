@@ -33,7 +33,7 @@ export class AddEvent {
   title: any;
   description: any;
   location:any;
-  organization:any;
+  
   office:any;
   address:any;
   isActive:boolean;
@@ -67,6 +67,7 @@ export class AddEvent {
       endDate:this.endDate
     };
  
+
     this.viewCtrl.dismiss(event);
  
   }

@@ -25,7 +25,7 @@ router.get(
   eventCtrl.getAll,
   response.toJSON('events')
 );
-
+//create on event
 router.post(
   '/organisations/:organisationId/events',
   //auth.ensured,
@@ -33,7 +33,7 @@ router.post(
   // authorize.onlyMembers,
   eventCtrl.create
 );
-
+//get one event by id base on org id
 router.put(
   '/organisations/:organisationId/events/:eventId',
   //auth.ensured,

@@ -10,7 +10,8 @@ const cntEnum = Countries.map(item => item.code);
 let OrganisationSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    unique:true
    },
   slug: {
     type: String

@@ -16,6 +16,7 @@ const ObjectId = mongoose.Types.ObjectId;
 module.exports.create = createOrganisation;
 module.exports.checkUserOrganisation = checkUserOrganisation;
 module.exports.findById = findOrganisationById;
+module.exports.findByName = findOrganisationByName;
 module.exports.getAll = getAllOrganisations;
 module.exports.update = updateOrganisation;
 module.exports.addMember = addOrganisationMember;
@@ -67,14 +68,27 @@ function findOrganisationById(req, res, next) {
     next();
   });
 }
+
+//find org by name => id
+function findOrganisationByName(req, res, next) {
+  if (!ObjectId.isValid(req.params.name)) {
+    return res.status(404).send({ message: 'Not found.'});
+  }
+
+  Organisation.findOne({name:req.params.name}).exec((err, organisation) => {
+    if (err) {
+      return next(err);
+    }
+
+    req.resources.organisation = organisation;
+    next();
+  });
+}
 //get all organisations
 function getAllOrganisations(req, res, next) {
   const limit = +req.query.limit || MAX_LIMIT;
   const skip = +req.query.skip || 0;
-  // let query = _.pick(req.query, ['name']);
-/**
- * THEM MUC TIM KIEM CONG TY THEO TEN 
- */
+
   Organisation
   .find()
   .limit(limit)
