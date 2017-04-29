@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 import { App, NavController, ModalController, ViewController } from 'ionic-angular';
-
+import {TutorialPage} from '../tutorial/tutorial';
 
 @Component({
   template: `
     <ion-list>
-      <button ion-item (click)="(click)="listUserOrg()">Tutorial</button>
+      <button ion-item (click)="listUserOrg()">Tutorial</button>
       <button ion-item (click)="close('http://ionicframework.com/docs/v2')">Documentation</button>
       <button ion-item (click)="close('http://showcase.ionicframework.com')">Showcase</button>
       <button ion-item (click)="close('https://github.com/driftyco/ionic')">GitHub Repo</button>

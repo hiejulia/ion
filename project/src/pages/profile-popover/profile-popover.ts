@@ -8,7 +8,7 @@ import {TutorialPage} from '../tutorial/tutorial';
   template: `
     <ion-list>
       <button ion-item (click)="listUserOrg()">User's organisations</button>
-      <button ion-item >User's events</button>
+      <button ion-item>User's events</button>
       <button ion-item (click)="close('http://showcase.ionicframework.com')">Showcase</button>
       <button ion-item (click)="openTutorial()">Tutorial</button>
       <button ion-item (click)="support()">Support</button>
