@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar transparent>
     <ion-navbar>
-      <ion-title>ReactJSConf 2017</ion-title>
+      <ion-title>{{event?.title}}</ion-title>
     </ion-navbar>
    
   </ion-toolbar>
@@ -49,10 +49,10 @@
       </ion-row>
     <ion-card-content text-center>
       <h2 class="card-title">
-        ReactJSConf 2017
+        {{event?.title}}
       </h2>
       <p>
-       Biggest conf of ReactJS community
+       {{event?.description}}
       </p>
     </ion-card-content>
 
@@ -61,17 +61,17 @@
         <ion-item>
           <ion-icon item-left name="md-navigate"></ion-icon>
           <h3>Location</h3>
-          <ion-note item-right>Helsinki</ion-note>
+          <ion-note item-right>{{event?.location}}</ion-note>
         </ion-item>
         <ion-item>
           <ion-icon item-left name="ios-time"></ion-icon>
           <h3>Start</h3>
-          <ion-note item-right>9:00 - 3.5.2017</ion-note>
+          <ion-note item-right>{{event?.startDate | date}}</ion-note>
         </ion-item>
         <ion-item>
           <ion-icon item-left name="md-send"></ion-icon>
           <h3>End</h3>
-          <ion-note item-right>9:00 - 10.5.2017</ion-note>
+          <ion-note item-right>{{event?.endDate | date}}</ion-note>
         </ion-item>
         <button ion-item (click)="showBroker()">
                     <ion-avatar item-left>
@@ -84,13 +84,13 @@
     <ion-row no-padding>
       <ion-col>
         <button ion-button clear small color="danger" icon-left (click)="favorite()">
-          <ion-icon name='star'></ion-icon>
+          <ion-icon name='ios-happy-outline'></ion-icon>
           Participate
         </button>
       </ion-col>
       <ion-col text-center>
         <button ion-button clear small color="danger" icon-left (click)="showMap()">
-          <ion-icon name='musical-notes'></ion-icon>
+          <ion-icon name='md-map'></ion-icon>
           Show map
         </button>
       </ion-col>

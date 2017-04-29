@@ -145,7 +145,8 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
     console.log('go to the detail page');
     
        
-         this.navCtrl.push(EventdetailPage, {eventId: e._id}); 
+  this.navCtrl.push(EventdetailPage, {eventId: e._id}); 
+  
 
 
   // speakerDetail(speaker) { 
@@ -211,5 +212,14 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
 
 //     actionSheet.present();
 //   }
+
+
+
+ionViewDidEnter() {
+    this._eventsServiceProvider.getAll().subscribe((events) => {
+      this.events = events;
+      console.log('when the page load again '+this.events);
+  });
+}
 
 }

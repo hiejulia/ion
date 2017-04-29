@@ -36,18 +36,17 @@ export class EventdetailPage {
    public params:NavParams,
   eventServiceProvider:EventServiceProvider) {
     this._eventServiceProvider= eventServiceProvider;
-    //  this.review = this.params.get('review'); 
+     
 
-//     var eventId = this.params.get('eventId'); 
+    var eventId = this.params.get('eventId'); 
     
-//      console.log(eventId);  
-//      this.event = new EventModel();
-// //  console.log(typeof(this.review));
-// //       console.log(this.review["location"]);
+     console.log(eventId);  
+     this.event = new EventModel();
 
-//       this._eventServiceProvider.findById(eventId).subscribe((event) => {
-//         this.event = event;
-//       })
+
+      this._eventServiceProvider.findById(eventId).subscribe((event) => {
+        this.event = event;
+      })
 
   
   }
@@ -82,17 +81,17 @@ goBack() {
 
 // }
 
-  // ionViewWillEnter(){
+  ionViewWillEnter(){
     
-  // let reviewId = this.params.get('reviewId');   
+  let reviewId = this.params.get('reviewId');   
 
-  //   this.reviewService.getReviewById(reviewId).subscribe((data) => {
-  //     this.review = data;
-  //     // console.log(this.review);
+    this._eventServiceProvider.findById(reviewId).subscribe((data) => {
+      this.event = data;
+      // console.log(this.review);
 
-  //   });
+    });
 
-  // }
+  }
 
   }
  

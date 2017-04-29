@@ -39,16 +39,25 @@ export class OrganisationsListPage {
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController) {
        this._organisationServiceProvider = organisationServiceProdiver;
-        this._organisationServiceProvider.getAll()
-        .subscribe((organisations) => {
-            this.organisations = organisations;
-        });
+        this.load();
 
 
         //console.log('the user token is' + window.localStorage.getItem('token'));
  
   }
+
+  load(){
+this._organisationServiceProvider.getAll()
+        .subscribe((organisations) => {
+            this.organisations = organisations;
+            console.log('the org when page load again is '+this.organisations);
+        });
+  }
  
+ onViewDidEnter() {
+   this.load();
+     
+}
   ionViewDidLoad(){
     // this.todoService.load()
     //     .subscribe(data => {

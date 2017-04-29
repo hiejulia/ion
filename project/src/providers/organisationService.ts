@@ -3,21 +3,22 @@ import { Http, Response, Headers } from '@angular/http';
 import { AuthHttpProvider } from './auth-http';
 import { contentHeaders } from '../common/index';
 import { OrganisationModel } from './organisation.model';
-
+import { Storage } from '@ionic/storage';
+import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class OrganisationServiceProvider {
   private _http: Http;
   private _authHttpProvider: AuthHttpProvider;
 
-  constructor(http: Http, authHttpProvider: AuthHttpProvider) {
+  constructor(http: Http, authHttpProvider: AuthHttpProvider,public storage: Storage) {
     this._http = http;
     this._authHttpProvider = authHttpProvider;
   }
 //get all organisations
-  getAll() {
+  getAll():Observable<OrganisationModel[]> {
     return this._http
     .get('http://localhost:3000/api/organisations', { headers: contentHeaders })
-    .map((res: Response) => res.json())
+    .map((res: Response) => <OrganisationModel[]>res.json())
   }
 
   //get all organisations by owner
@@ -40,6 +41,7 @@ export class OrganisationServiceProvider {
     return this._http
     .get(`http://localhost:3000/api/organisations/${name}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
+   
   }
 //create new 
   create(organisation) {
@@ -57,6 +59,14 @@ export class OrganisationServiceProvider {
     .put(`http://localhost:3000/api/organisations/${organisation._id}`, body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
+
+
+
+
+  //  handleError(error) {
+  //       console.error(error);
+  //       return Observable.throw(error.json().error || 'Server error');
+  //   }
 
 
 }
