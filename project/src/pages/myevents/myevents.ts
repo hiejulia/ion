@@ -74,49 +74,51 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
  
   }
  
-  ionViewDidLoad(){
-    // this.todoService.load()
-    //     .subscribe(data => {
-    //       this.todos = data;
-    //     })
- //get all
-    // this.reviewService.getReviews().subscribe(data => {
-    //     this.reviews = data;
-    // });
-    // let query :any ={};
-    // if(this.organisation){
-    //   query.organisation = this.organisation;
-    // }
+ // ionViewDidLoad(){
+//     // this.todoService.load()
+//     //     .subscribe(data => {
+//     //       this.todos = data;
+//     //     })
+//  //get all
+//     // this.reviewService.getReviews().subscribe(data => {
+//     //     this.reviews = data;
+//     // });
+//     // let query :any ={};
+//     // if(this.organisation){
+//     //   query.organisation = this.organisation;
+//     // }
 
-  this._eventsServiceProvider.getAll().subscribe((events) => {
-      this.events = events;
-    })
+//   this._eventsServiceProvider.getAll().subscribe((events) => {
+//       this.events = events;
+//     })
+
+//     console.log(this.events);
  
-  }
+//   }
 
   
  
-  addEvent(){
+  // addEvent(){
  
-    let modal = this.modalCtrl.create(AddEvent);
+  //   let modal = this.modalCtrl.create(AddEvent);
  
-    modal.onDidDismiss(event => {
-      if(event){
-        console.log(event);
-        this.events.push(event);  
-        // this.reviewService.createReview(event);    
-            this._eventsServiceProvider.create(event).subscribe((event) => {
-              console.log(event);
+  //   modal.onDidDismiss(event => {
+  //     if(event){
+  //       console.log(event);
+  //       this.events.push(event);  
+  //       // this.reviewService.createReview(event);    
+  //           this._eventsServiceProvider.create(event).subscribe((event) => {
+  //             console.log(event);
               
-            },(err) => {
-              console.log(err);
-            })
-      }
-    });
+  //           },(err) => {
+  //             console.log(err);
+  //           })
+  //     }
+  //   });
  
-    modal.present();
+  //   modal.present();
  
-  }
+  // }
  
   // deleteReview(review){
  

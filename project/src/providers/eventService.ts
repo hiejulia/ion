@@ -33,11 +33,11 @@ export class EventServiceProvider {
     .map((res: Response) => res.json())
   }
 //create new 
-  create(orgId) {
+  create(orgId,event) {
     let body = JSON.stringify(event);
 
-    return this._http
-    .post('http://localhost:3000/api/organisations/${orgId}/events', body, { headers: contentHeaders })
+    return this._authHttpProvider
+    .post(`http://localhost:3000/api/organisations/${orgId}/events`, body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 }

@@ -124,7 +124,7 @@ ionViewDidLoad(){
         console.log(event);
         this.events.push(event);  
         // this.reviewService.createReview(event);    
-            this._eventsServiceProvider.create(this.orgId).subscribe((event) => {
+            this._eventsServiceProvider.create(this.orgId,event).subscribe((event) => {
               console.log(event);
               
             },(err) => {
