@@ -11,6 +11,7 @@ import {OrganisationsListPage} from '../organisationlist/organisationlist';
 import {AboutPage} from '../about/about';
 import {UserProfilePage} from '../userprofile/userprofile';
 import {TutorialPage} from '../tutorial/tutorial';
+import {MainEventPage} from '../mainevent/mainevent';
 
 @Component({
   selector:'Tabspage',
@@ -20,7 +21,7 @@ export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   menu_is_open = false;
-  tab1Root: any = MyEvents;
+  tab1Root: any = MainEventPage;
   tab2Root: any = OrganisationsListPage;
   tab3Root: any = ProfilePage;
  tab4Root:any =  AboutPage ;

@@ -28,8 +28,9 @@ import {OrganisationFilterPage} from '../organisation-filter/organisation-filter
 export class OrganisationsListPage {
 //   reviews: Array<Object>;
 
-  public organisations: Array<OrganisationModel>;
+  public organisations: Array<any>;
     private _organisationServiceProvider: OrganisationServiceProvider;
+    public orgLength:number;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
 
@@ -51,7 +52,9 @@ this._organisationServiceProvider.getAll()
         .subscribe((organisations) => {
             this.organisations = organisations;
             console.log('the org when page load again is '+this.organisations);
-        });
+        }); 
+        
+
   }
  
  onViewDidEnter() {
@@ -117,5 +120,7 @@ presentFilter() {
     });
 
   }
+
+
 
 }

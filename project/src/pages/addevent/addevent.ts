@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { EventServiceProvider } from '../../providers/eventService';
 import { EventModel } from '../../providers/event.model';
-
+import {  LoadingController,ToastController } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 /*
   Generated class for the Addevent page.
@@ -33,7 +33,8 @@ export class AddEvent {
   title: any;
   description: any;
   location:any;
-  
+  typeOfEvent:any;
+  industry:any;
   office:any;
   address:any;
   isActive:boolean;
@@ -46,7 +47,8 @@ export class AddEvent {
   private _eventServiceProvider: EventServiceProvider;
 
  
-  constructor(public viewCtrl: ViewController,eventServiceProvider: EventServiceProvider ) {
+  constructor(public viewCtrl: ViewController,eventServiceProvider: EventServiceProvider ,
+  private toastCtrl: ToastController) {
  this._eventServiceProvider = eventServiceProvider;
  this.event= new EventModel();
   }
@@ -64,10 +66,12 @@ export class AddEvent {
       isActive:this.isActive,
       numberOfParticipantsEstimated: this.numberOfParticipantsEstimated,
       startDate:this.startDate,
-      endDate:this.endDate
+      endDate:this.endDate,
+      typeOfEvent:this.typeOfEvent,
+      industry:this.industry
     };
  
-
+this.presentToast();
     this.viewCtrl.dismiss(event);
  
   }
@@ -75,5 +79,17 @@ export class AddEvent {
   close(): void {
     this.viewCtrl.dismiss();
   }
+presentToast() {
+  let toast = this.toastCtrl.create({
+    message: 'Event added successfully',
+    duration: 2000,
+    position: 'bottom'
+  });
 
+  toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+
+  toast.present();
+}
 }

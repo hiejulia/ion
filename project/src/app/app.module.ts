@@ -24,7 +24,7 @@ import {UsersListPage} from '../pages/userslist/userslist';
 
 import {OrganisationFilterPage} from '../pages/organisation-filter/organisation-filter';
 import {Geolocation} from '@ionic-native/geolocation'
-
+import {MainEventPage} from '../pages/mainevent/mainevent';
 
 import {ProfilePage} from '../pages/profile/profile';
 import {UserProfilePage} from '../pages/userprofile/userprofile';
@@ -71,7 +71,8 @@ import {EventServiceProvider} from '../providers/eventService';
     PopoverPage,
     OrganisationFilterPage,
     OrganisationEditPage,
-    PopoverProfilePage
+    PopoverProfilePage,
+    MainEventPage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -89,6 +90,7 @@ import {EventServiceProvider} from '../providers/eventService';
   entryComponents: [
     MyApp,
     MyEvents,
+    MainEventPage,
     TechEvents,
     AddEvent,
     TabsPage,

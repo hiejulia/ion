@@ -83,7 +83,7 @@ loading:any;
   showLoader(){
  
     this.loading = this.loadingCtrl.create({
-      content: 'Authenticating...'
+      content: 'Please wait...'
     });
  
     this.loading.present();

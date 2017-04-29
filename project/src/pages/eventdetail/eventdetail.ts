@@ -64,7 +64,9 @@ export class EventdetailPage {
 goBack() {
     this.navCtrl.pop();
   }
-
+participate(){
+  console.log('part');
+}
 
   //participant
 //   participant(n){

@@ -10,17 +10,14 @@ const Eventtypes = require('../../config/variables/eventtypes');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
-const indEnum = Industries.map(item => item.slug);
-const cntEnum = Countries.map(item => item.code);
-const eventEnum = Eventtypes.map(item => item.slug);
+// const indEnum = Industries.map(item => item.slug);
+// const cntEnum = Countries.map(item => item.code);
+// const eventEnum = Eventtypes.map(item => item.slug);
 
 let EventSchema = new Schema({
   title: {
     type: String,
     required: true
-  },
-  slug: {
-    type: String
   },
  location:{
    type:String
@@ -38,8 +35,7 @@ let EventSchema = new Schema({
   },
   typeOfEvent: {
     type: String,
-    
-    enum: eventEnum
+    enum:['Event','Workshop','Meetup','Conference','Other','Seminar','Meeting','Fair']
   },
   numberOfParticipantsEstimated:{
     type:Number
@@ -64,19 +60,21 @@ let EventSchema = new Schema({
     ref: 'Organisation'
   },
   industry: {
-    type: String,
+    type:String,
+    enum:['Technology','Business','Science','Engineer','Tourism','Physics','Chemistry','Biomedical','Industrial','Other']
     
-    enum: indEnum
   },
   country: {
-    type: String,
-    
-    enum: cntEnum
+    type: String
   },
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+    participants: {
+    type: Array,
+    default: []
+  },
 });
 
 EventSchema.pre('save', function(next) {

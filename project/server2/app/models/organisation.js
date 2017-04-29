@@ -13,9 +13,7 @@ let OrganisationSchema = new Schema({
     required: true,
     unique:true
    },
-  slug: {
-    type: String
-  },
+ 
   location: {
     type: String,
     required:true
@@ -33,10 +31,14 @@ let OrganisationSchema = new Schema({
     type: String,
     required:true
   },
+ industry: {
+    type:String,
+    enum:['Technology','Business','Science','Engineer','Tourism','Physics','Chemistry','Biomedical','Industrial','Other']
+    
+  },
 
   country: {
-    type: String,
-    enum: cntEnum
+    type: String
   },
   address: {
     type: String,

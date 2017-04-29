@@ -19,6 +19,7 @@ export class OrganisationCreatePage {
   country:any;
   address:any;
   numberOfEmployees:any;
+  industry:any;
  
   constructor(public viewCtrl: ViewController, organisationServiceProvider:OrganisationServiceProvider) {
       this._organisationServiceProvider = organisationServiceProvider;
@@ -40,6 +41,7 @@ save(): void {
         country:this.country,
         address:this.address,
         numberOfEmployees:this.numberOfEmployees,
+        industry:this.industry,
         owner:localStorage.getItem('user_Id')
       
     };

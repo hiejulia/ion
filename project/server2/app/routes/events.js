@@ -14,17 +14,34 @@ router.get(
   response.toJSON('events')
 );
 
+
+
 router.get(
   '/events/:eventId',
   eventCtrl.findById,
   response.toJSON('event')
 );
 
+
+
+
+router.get(
+  '/events/:eventIndustry',
+  eventCtrl.findByIndustry,
+  response.toJSON('event')
+);
+
+
+
+
+
 router.get(
   '/organisations/:organisationId/events',
   eventCtrl.getAll,
   response.toJSON('events')
 );
+
+
 //create on event
 router.post(
   '/organisations/:organisationId/events',
@@ -33,6 +50,9 @@ router.post(
   // authorize.onlyMembers,
   eventCtrl.create
 );
+
+
+
 //get one event by id base on org id
 router.put(
   '/organisations/:organisationId/events/:eventId',
@@ -43,6 +63,9 @@ router.put(
   eventCtrl.update
 );
 
+
+
+
 router.delete(
   '/organisations/:organisationId/events/:eventId',
   //auth.ensured,
@@ -51,5 +74,8 @@ router.delete(
   eventCtrl.findById,
   eventCtrl.remove
 );
+
+
+
 
 module.exports = router;

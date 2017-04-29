@@ -32,6 +32,14 @@ export class EventServiceProvider {
     .get(`http://localhost:3000/api/events/${id}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
+
+
+  //get  by industry
+  findByIndustry(industry) {
+    return this._authHttpProvider
+    .get(`http://localhost:3000/api/events/${industry}`, { headers: contentHeaders })
+    .map((res: Response) => res.json())
+  }
 //create new 
   create(orgId,event) {
     let body = JSON.stringify(event);

@@ -1,7 +1,7 @@
 'use strict';
 
 const MAX_LIMIT = 50;
-const EVENT_FIELDS = ['title','location', 'description','office','address','numberOfParticipantsEstimated','isActive','endDate','startDate'];
+const EVENT_FIELDS = ['title','location', 'description','office','address','numberOfParticipantsEstimated','isActive','endDate','startDate','industry','typeOfEvent'];
 
 /**
  *  Module dependencies
@@ -19,6 +19,7 @@ module.exports.findById = findEventById;
 module.exports.getAll = getAllEvents;
 module.exports.update = updateEvent;
 module.exports.remove = removeEvent;
+module.exports.findByIndustry = findEventByIndustry;
 //create new event 
 function createEvent(req, res, next) {
   let data = _.pick(req.body, EVENT_FIELDS);
@@ -38,6 +39,22 @@ function findEventById(req, res, next) {
   }
 
   Event.findById(req.params.eventId, (err, event) => {
+    if (err) {
+      return next(err);
+    }
+
+    req.resources.event = event;//req.resources.event
+    next();
+  });
+}
+
+//find event by industry find one event
+function findEventByIndustry(req, res, next) {
+  if (!ObjectId.isValid(req.params.eventIndustry)) {
+    res.status(404).send({ message: 'Event not found'});
+  }
+
+  Event.find({industry:req.params.eventIndustry}).exec((err, event) => {
     if (err) {
       return next(err);
     }
