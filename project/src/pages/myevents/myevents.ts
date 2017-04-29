@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {EventdetailPage} from '../eventdetail/eventdetail';
-
+import { Toast } from '@ionic-native/toast';
 
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
@@ -35,14 +35,16 @@ currentUser:any;
   private _eventsServiceProvider: EventServiceProvider;
   private _authHttpProvider;
   private _authServiceProvider;
+ 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
 eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServiceProvider,
  public actionSheetCtrl: ActionSheetController, public config: Config,
  public authHttpProvider:AuthHttpProvider,
-    public inAppBrowser: InAppBrowser) 
+    public inAppBrowser: InAppBrowser,private toast: Toast) 
     
     
     {
+      
     this._eventsServiceProvider = eventsServiceProvider;
     this._authHttpProvider= authHttpProvider;
     this._authServiceProvider = authServiceProvider;
@@ -146,12 +148,8 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
     
        
   this.navCtrl.push(EventdetailPage, {eventId: e._id}); 
-  
+  console.log(e._id);
 
-
-  // speakerDetail(speaker) { 
-  //   this.nav.push(SpeakerDetail, {speaker: speaker}); 
-  // } 
 
 }
 
@@ -218,8 +216,15 @@ eventsServiceProvider: EventServiceProvider,public authServiceProvider:AuthServi
 ionViewDidEnter() {
     this._eventsServiceProvider.getAll().subscribe((events) => {
       this.events = events;
-      console.log('when the page load again '+this.events);
+      //console.log('when the page load again '+this.events);
   });
+//   this.toast.show("I'm a toast", '5000', 'center').subscribe(
+//   toast => {
+//     console.log(toast);
+//   }
+// );
 }
+
+
 
 }

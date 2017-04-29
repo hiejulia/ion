@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+
+import { Events, MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+import { ModalController } from 'ionic-angular';
 
 
-
+import {TutorialPage} from '../pages/tutorial/tutorial';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { LoginPage } from '../pages/login/login';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild(Nav) nav: Nav;
   rootPage = LoginPage;
 
 
@@ -22,11 +24,13 @@ export class MyApp {
  
 
   constructor(platform: Platform) {
+    
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+      // this.navCtrl.setRoot(TutorialPage);
 
       
     });
@@ -34,6 +38,7 @@ export class MyApp {
      
 
   }
+
 
 
 

@@ -12,7 +12,7 @@ import {RegisterPage} from '../pages/register/register';
 import {GeolocationPage } from '../pages/geolocation/geolocation';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {OrganisationsListProfilePage} from '../pages/organisationlistprofile/organisationlistprofile';
-
+import { Toast } from '@ionic-native/toast';
 import {TutorialPage} from '../pages/tutorial/tutorial';
 import { Storage } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage';
@@ -24,6 +24,7 @@ import {UsersListPage} from '../pages/userslist/userslist';
 
 import {OrganisationFilterPage} from '../pages/organisation-filter/organisation-filter';
 import {Geolocation} from '@ionic-native/geolocation'
+
 
 import {ProfilePage} from '../pages/profile/profile';
 import {UserProfilePage} from '../pages/userprofile/userprofile';
@@ -116,9 +117,12 @@ import {EventServiceProvider} from '../providers/eventService';
   EventServiceProvider,
   OrganisationServiceProvider,
   AuthHttpProvider,
+   Toast,
   AuthServiceProvider,
   InAppBrowser,
-  Geolocation
+  
+  Geolocation,
+ 
   
    ]
 })

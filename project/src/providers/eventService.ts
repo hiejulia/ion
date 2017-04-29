@@ -28,7 +28,7 @@ export class EventServiceProvider {
   }
 //get one by id get one event by the id 
   findById(id) {
-    return this._http
+    return this._authHttpProvider
     .get(`http://localhost:3000/api/events/${id}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }

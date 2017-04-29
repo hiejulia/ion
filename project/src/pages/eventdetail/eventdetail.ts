@@ -38,14 +38,16 @@ export class EventdetailPage {
     this._eventServiceProvider= eventServiceProvider;
      
 
-    var eventId = this.params.get('eventId'); 
+   
     
-     console.log(eventId);  
+    
      this.event = new EventModel();
+      var eventId = this.params.get('eventId'); 
 
 
       this._eventServiceProvider.findById(eventId).subscribe((event) => {
         this.event = event;
+        console.log(this.event);
       })
 
   
@@ -81,44 +83,17 @@ goBack() {
 
 // }
 
-  ionViewWillEnter(){
+  // ionViewWillEnter(){
     
-  let reviewId = this.params.get('reviewId');   
+  // let reviewId = this.params.get('reviewId');   
 
-    this._eventServiceProvider.findById(reviewId).subscribe((data) => {
-      this.event = data;
-      // console.log(this.review);
-
-    });
-
-  }
-
-  }
- 
-  // ionViewDidLoad(){
- 
-  //   // this.reviewService.getReviews().then((data) => {
-  //   //   console.log(data);
-  //   //   this.reviews = data;
-  //   // });
-
-   
- 
-  // }
-
-
-
-  // getReviewById(){
-  //   this.review = this.reviewService.getReviewById("58fa0f5e43cc35cbdbbbd6cf").then((data) => {
-  //     this.review = data;
-  //     console.log(this.review);
+  //   this._eventServiceProvider.findById(reviewId).subscribe((data) => {
+  //     this.event = data;
+  //      console.log(this.event);
 
   //   });
 
-  
- 
-  
- 
-  
+  // }
 
-
+  }
+ 

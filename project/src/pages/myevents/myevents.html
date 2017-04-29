@@ -1,14 +1,42 @@
-<ion-header color="primary">
- <ion-navbar color="primary">
-    <button ion-button menuToggle>
+<ion-header>
+ <ion-navbar no-border-bottom>
+   <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-  <ion-title>
-    Events List
-  </ion-title>
-  
+
+  <!--<ion-buttons end>
+    <button ion-button icon-only (click)="addOrganisation()"><ion-icon name="add"></ion-icon></button>
+  </ion-buttons>-->
+
+
+    <ion-segment >
+      <ion-segment-button value="all">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="favorites">
+        Favorites
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
+      </button>
+    </ion-buttons>
  </ion-navbar>
+
+
+
+
+
+  
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary" placeholder="Search">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
+
 
 <!--
 <ion-menu class="side-menu" type="overlay">
@@ -53,7 +81,7 @@
                   
                   <img src="https://api.adorable.io/avatars/75/a" alt="Event pic">
                 </ion-avatar>
-                {{event.title}}
+                {{event?.title}}
               </button>
             </ion-card-header>
 

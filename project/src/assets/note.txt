@@ -15,8 +15,7 @@ Cordova plugin to use:
 
 
 
-## Add more to the project 
-+ theming in ionic
+
 + validation for the form
 
 
@@ -35,12 +34,8 @@ Cordova plugin to use:
 ## How to test app in real device:
 
 
-## Other back end service 
-+ Check with Firebase and Parse.com
 
-## stylesheet
-+ add scss 
-+ add theming from ionic 2
+
 
 
 ## Error of this point of time
@@ -53,3 +48,11 @@ import { Chart } from 'chart.js';
 
 = check sort in the server?
 = check pagination in the server : http://ezproxy.haaga-helia.fi:2188/book/web-design-and-development/9781786469137/firstchapter#X2ludGVybmFsX0h0bWxWaWV3P3htbGlkPTk3ODE3ODY0NjkxMzclMkZjaDA1czA0X2h0bWwmcXVlcnk9
+
+
+
+## Expand functionality
++ list all participants of an event
++ user follow a company => list events of the company user follow => favorite
++ list org user follow => favorite
++ list other user profile 

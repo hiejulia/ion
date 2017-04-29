@@ -1,7 +1,7 @@
 'use strict';
 
 const MAX_LIMIT = 50;
-const EVENT_FIELDS = ['title','location', 'description','office','address','numberOfParticipantsEstimated','isActive','timeEnd','timeStart','organisation'];
+const EVENT_FIELDS = ['title','location', 'description','office','address','numberOfParticipantsEstimated','isActive','endDate','startDate'];
 
 /**
  *  Module dependencies
