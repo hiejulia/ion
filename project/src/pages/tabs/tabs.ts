@@ -12,6 +12,8 @@ import {AboutPage} from '../about/about';
 import {UserProfilePage} from '../userprofile/userprofile';
 import {TutorialPage} from '../tutorial/tutorial';
 import {MainEventPage} from '../mainevent/mainevent';
+import { NavController } from 'ionic-angular';
+
 
 @Component({
   selector:'Tabspage',
@@ -25,7 +27,7 @@ export class TabsPage {
   tab2Root: any = OrganisationsListPage;
   tab3Root: any = ProfilePage;
  tab4Root:any =  AboutPage ;
-  constructor() {
+  constructor(public navCtrl: NavController) {
 
   }
 
@@ -33,33 +35,41 @@ export class TabsPage {
     return this.menu_is_open = !this.menu_is_open;
   };
 
-  goToAccount() {
-    alert('Account clicked.');
-    this.togglePopupMenu();
+  getAllOrg(){
+this.navCtrl.push(OrganisationsListPage);
   }
+getAllEvents(){
+  this.navCtrl.push(MainEventPage);
+}
 
-  goToHome() {
-    alert('Home clicked.');
-    this.togglePopupMenu();
-  }
+getAllRegisterEvents() {
+this.navCtrl.push(MainEventPage);
+}
 
-  goToCups() {
-    alert('Cups clicked.');
-    this.togglePopupMenu();
-  }
+getFavoriteOrg(){
 
-  goToLeaderboard() {
-    alert('Leaderboard clicked.');
-    this.togglePopupMenu();
-  }
 
-  goToHelp() {
-    alert('Help clicked.');
-    this.togglePopupMenu();
-  }
+}
+goToAccount(){
 
-  goToShop() {
-    alert('Shop clicked.');
-    this.togglePopupMenu();
-  }
+  this.navCtrl.push(ProfilePage);
+
+}
+
+
+goTutorial(){
+  this.navCtrl.push(TutorialPage);
+
+}
+
+
+
+
+
+
+
+
+
+
+
 }

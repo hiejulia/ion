@@ -8,29 +8,29 @@
 		<div class="popup-menu-overlay" [ngClass]="{'in': menu_is_open}" (click)="togglePopupMenu()"></div>
 		<div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': menu_is_open}"></div>
 		<div class="popup-menu-panel" [ngClass]="{'in': menu_is_open}">
-			<div class="popup-menu-item" (click)="goToHome()">
-				<ion-icon name="home"></ion-icon>
-				<span>HOME</span>
+			<div class="popup-menu-item" (click)="getAllEvents()">
+				<ion-icon name="ios-home"></ion-icon>
+				<span>All Events</span>
 			</div>
-			<div class="popup-menu-item" (click)="goToCups()">
-				<ion-icon name="trophy"></ion-icon>
-				<span>CUPS</span>
+			<div class="popup-menu-item" (click)="getAllOrg()">
+				<ion-icon name="ios-people"></ion-icon>
+				<span>All Organisations</span>
 			</div>
-			<div class="popup-menu-item" (click)="goToLeaderboard()">
-				<ion-icon name="podium"></ion-icon>
-				<span>LEADERBOARD</span>
+			<div class="popup-menu-item" (click)="getAllRegisterEvents()">
+				<ion-icon name="ios-happy"></ion-icon>
+				<span>Register Events</span>
 			</div>
-			<div class="popup-menu-item" (click)="goToHelp()">
-				<ion-icon name="help"></ion-icon>
-				<span>HELP</span>
+			<div class="popup-menu-item" (click)="getFavoriteOrg()">
+				<ion-icon name="md-star-half"></ion-icon>
+				<span>Favorite Organisations</span>
 			</div>
 			<div class="popup-menu-item" (click)="goToAccount()">
 				<ion-icon name="person"></ion-icon>
-				<span>ACCOUNT</span>
+				<span>Profile</span>
 			</div>
-			<div class="popup-menu-item" (click)="goToShop()">
-				<ion-icon name="cart"></ion-icon>
-				<span>SHOP</span>
+			<div class="popup-menu-item" (click)="goTutorial()">
+				<ion-icon name="md-help-circle"></ion-icon>
+				<span>Tutorial</span>
 			</div>
 		</div>
 	</div>
