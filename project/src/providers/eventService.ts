@@ -3,6 +3,8 @@ import { Http, Response, Headers } from '@angular/http';
 import { AuthHttpProvider } from './auth-http';
 import { contentHeaders, serializeQuery } from '../common/index';
 import { EventModel } from './event.model';
+import {Observable} from 'rxjs/Observable';
+  import 'rxjs/Rx';
 
 @Injectable()
 export class EventServiceProvider {
@@ -67,6 +69,21 @@ getAllEventsByOrg(orgId){
     .map((res: Response) => res.json())
 
 }
+//delete one event 
+deleteEvent(orgId, eventId){
 
+   return this._http
+    .delete(`http://localhost:3000/api/organisations/${orgId}/events/:eventId`)
+    .catch(this.handleError);
+   
+}
+
+handleError(error) {
+      console.error(error);
+      return Observable.throw(error.json().error || 'Server error');
+  }
+
+  //edit event
+  
 
 }

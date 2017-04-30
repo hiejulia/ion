@@ -171,7 +171,13 @@ this._eventServiceProvider= eventServiceProvider;
 //     this.navCtrl.setRoot(LoginPage);
  
 //   }
-delete(item) {
+deleteEvent(event) {
+  var orgId = this.event.organisation;
+console.log('delte');
+  // this._eventServiceProvider.deleteEvent(orgId, event._id).subscribe(() => {
+  //   console.log('delete');
+
+  // })
     
   }
 
@@ -179,9 +185,6 @@ delete(item) {
     this.navCtrl.push(EventdetailPage,{eventId:item._id});
   }
 
-  viewPlayers(item) {
-    alert("Viewing players of " + item.title);
-  }
 
 
 

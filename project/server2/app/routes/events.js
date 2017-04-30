@@ -65,7 +65,7 @@ router.put(
 
 
 
-
+//delete one event
 router.delete(
   '/organisations/:organisationId/events/:eventId',
   //auth.ensured,

@@ -151,14 +151,15 @@ function updateEvent(req, res, next) {
 
 
 
-
+//delete one event
 function removeEvent(req, res, next) {
   req.resources.event.remove((err) => {
     if (err) {
       return next(err);
     }
+res.status(204).end();
 
-    res.json(req.resources.event);
+   // res.json(req.resources.event);
   });
 }
 

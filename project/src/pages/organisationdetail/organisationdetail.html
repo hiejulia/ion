@@ -74,18 +74,33 @@
     </ion-card-content>
   
 <h1>Organisations'Events</h1>
-  <div *ngFor="let event of events">
-		<figure class="snip1574">
-			<img src="https://raw.githubusercontent.com/yannbf/ionic3-components/master/src/assets/img/misc/testimonial-1.jpg" alt="profile-sample2" />
-			<figcaption>
-				<blockquote>
-					<p>{{event?.title}}</p>
-				</blockquote>
-				<h3>{{event?.description}}</h3>
-				<h5>{{event?.location}}</h5>
-			</figcaption>
-		</figure>
-	</div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let event of events">
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="http://www.claruscommerce.com/wp-content/uploads/2013/04/hackathon-graphic.png">
+        </ion-thumbnail>
+        <h2>{{event?.title}}</h2>
+        <p>{{event?.location}} • {{event?.startDate}} - {{event?.endDate}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="viewComments(event)">
+        <ion-icon name="ios-arrow-dropright-circle-outline"></ion-icon>
+        View
+      </button>
+        <button ion-button color="light" (click)="editThisEvent(event)">
+        <ion-icon name="md-settings"></ion-icon>
+        Edit
+      </button>
+        <button ion-button color="danger" (click)="deleteThisEvent(event)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 
 
 

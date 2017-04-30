@@ -8,7 +8,7 @@ import 'rxjs/Rx';
 import Chart from 'chart.js';
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {OrganisationEditPage} from '../organisationedit/organisationedit';
-
+import {EventdetailPage} from '../eventdetail/eventdetail';
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
 import {GeolocationPage} from '../geolocation/geolocation';
@@ -16,11 +16,11 @@ import { OrganisationModel } from '../../providers/organisation.model';
 import { OrganisationServiceProvider } from '../../providers/organisationService';
 import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 import { ActionSheet, ActionSheetController, Config } from 'ionic-angular';
-import { EventServiceProvider } from '../../providers/eventService';
+
 
 import {AuthServiceProvider} from '../../providers/authService';
 import {AuthHttpProvider} from '../../providers/auth-http';
-
+import { EventServiceProvider } from '../../providers/eventService';
 import { EventModel } from '../../providers/event.model';
 
 /*
@@ -43,6 +43,7 @@ currentUser:any;
  public events: Array<EventModel>;
   private _eventsServiceProvider: EventServiceProvider;
   private _authHttpProvider;
+  private _eventServiceProvider:EventServiceProvider;
   private _authServiceProvider;
 public orgId;
  public organisation: OrganisationModel;
@@ -52,7 +53,7 @@ public orgId;
   public navParams:NavParams,
   public eventsServiceProvider: EventServiceProvider,
   public authServiceProvider:AuthServiceProvider,
-  public authHttpProvider:AuthHttpProvider) {
+  public authHttpProvider:AuthHttpProvider,eventServiceProvider:EventServiceProvider) {
         this._eventsServiceProvider = eventsServiceProvider;
     this._authHttpProvider= authHttpProvider;
     this._authServiceProvider = authServiceProvider;
@@ -62,17 +63,20 @@ public orgId;
  this.organisation = new OrganisationModel();
       var organisationId = this.navParams.get('organisationId');
       this.orgId = organisationId;
-      this._organisationServiceProvider.findById(organisationId)
-        .subscribe((organisation) => {
-            this.organisation= organisation;
-        })
-
 
 
         this._eventsServiceProvider.getAllEventsByOrg(organisationId).subscribe((events) => {
       this.events = events;
       console.log(this.events);
     })
+
+
+      this._organisationServiceProvider.findById(organisationId)
+        .subscribe((organisation) => {
+            this.organisation= organisation;
+        })
+
+
     
   }
 
@@ -113,6 +117,11 @@ ionViewDidLoad(){
   ionViewDidEnter(){
      var organisationId = this.navParams.get('organisationId');
       this.orgId = organisationId;
+
+        this._eventsServiceProvider.getAllEventsByOrg(this.orgId).subscribe((events) => {
+      this.events = events;
+      console.log(this.events);
+    })
       this._organisationServiceProvider.findById(organisationId)
         .subscribe((organisation) => {
             this.organisation= organisation;
@@ -120,10 +129,6 @@ ionViewDidLoad(){
 
 
 
-        this._eventsServiceProvider.getAllEventsByOrg(this.orgId).subscribe((events) => {
-      this.events = events;
-      console.log(this.events);
-    })
 
 
   }
@@ -216,7 +221,25 @@ ionViewDidLoad(){
     return this.getChart(this.barCanvas.nativeElement, "bar", data, options);
   }
 
+  viewComments(item) {
+    this.navCtrl.push(EventdetailPage,{eventId:item._id});
+  }
 
+
+deleteThisEvent(event) {
+  var orgId = event.organisation;
+console.log(event._id +' '+orgId);
+this.events.splice
+
+  this._eventServiceProvider.deleteEvent(orgId, event._id).subscribe(() => {
+    console.log('delete');
+
+  })
+    
+
+
+
+  }
 
   }
  

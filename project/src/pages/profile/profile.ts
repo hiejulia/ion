@@ -14,8 +14,9 @@ import { MenuController } from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {AuthServiceProvider} from '../../providers/authService';
 import {OrganisationServiceProvider} from '../../providers/organisationService';
-
-
+import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
+import { ModalController } from 'ionic-angular';
+import {OrganisationsListProfilePage} from '../organisationlistprofile/organisationlistprofile';
 
 @Component({
   selector:'profile',
@@ -32,7 +33,7 @@ MENU = {
 
     private _organisationServiceProvider: OrganisationServiceProvider;
 
-  constructor(public navCtrl: NavController,
+  constructor(public navCtrl: NavController,public modalCtrl: ModalController,
   organisationServiceProdiver: OrganisationServiceProvider,public popoverCtrl: PopoverController,public authServiceProvider:AuthServiceProvider,public alertCtrl: AlertController,public menuCtrl: MenuController) {
  this._organisationServiceProvider = organisationServiceProdiver;
 
@@ -115,5 +116,32 @@ changeMenu(menu) {
     this.menuCtrl.enable(true, menu);
     this.menuCtrl.open(menu);
   }
+addOrg(){
+  console.log('owner add orga');
+  let modal = this.modalCtrl.create(OrganisationCreatePage);
+ 
+    modal.onDidDismiss(organisation => {
+      if(organisation){
+        
+        //this.organisations.push(organisation);
+       
+        // this.reviewService.createReview(event);    
+            this._organisationServiceProvider.create(organisation).subscribe((organisation) => {
+             
+              console.log('success'+organisation.name);
+             
+            },(err) => {
+              console.log('the error is '+err);
+            })
+      }
+    });
+ 
+    modal.present();
+}
 
+
+showOwnerOrg(){
+  console.log('show owner org');
+   this.navCtrl.push(OrganisationsListProfilePage);
+}
 }

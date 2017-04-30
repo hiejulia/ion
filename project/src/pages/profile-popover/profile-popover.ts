@@ -7,11 +7,11 @@ import {TutorialPage} from '../tutorial/tutorial';
 @Component({
   template: `
     <ion-list>
-      <button ion-item (click)="listUserOrg()">User's organisations</button>
-      <button ion-item>User's events</button>
-      <button ion-item (click)="close('http://showcase.ionicframework.com')">Showcase</button>
-      <button ion-item (click)="openTutorial()">Tutorial</button>
-      <button ion-item (click)="support()">Support</button>
+      <button ion-item (click)="listUserOrg()">Update Picture</button>
+      <button ion-item>Change Username</button>
+      <button ion-item (click)="close('http://showcase.ionicframework.com')">Support</button>
+      <button ion-item (click)="openTutorial()"></button>
+      <button ion-item (click)="support()">Logout</button>
     </ion-list>
   `
 })
