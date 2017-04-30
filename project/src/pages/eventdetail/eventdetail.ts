@@ -85,12 +85,12 @@ participate(){
   console.log('part');
   //console.log(this.cloneEvent);
 
-  this._eventServiceProvider.putParticipant(this.cloneEvent.organisation,this.event._id).subscribe((event) => {
-    console.log(event);
-    this.event.participants = event.participants;
+  // this._eventServiceProvider.putParticipant(this.cloneEvent.organisation,this.event._id).subscribe((event) => {
+  //   console.log(event);
+  //   this.event.participants = event.participants;
     
 
-  });
+  // });
 
 
 

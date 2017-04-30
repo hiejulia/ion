@@ -1,14 +1,14 @@
 <ion-header>
- <ion-navbar color="secondary">
+ <ion-navbar color="primary">
   <ion-title>
-    Technology events 
+    {{industry}} events 
   </ion-title>
   
  
  </ion-navbar>
 </ion-header>
  
-<ion-content>
+<!--<ion-content>
   <ion-list>
     <ion-item-sliding *ngFor="let event of events">
       <ion-item>
@@ -34,4 +34,30 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+</ion-content>-->
+
+
+
+<ion-content>
+  <ion-card *ngFor="let event of events">
+    <img src="http://edinburghopendata.info/wp-content/uploads/2015/05/141107-hackathon_18_d893499f2c13fe1fa05bd46252246b1e.jpg" (click)="viewComments(event)" />
+    <ion-card-content>
+      <h2 class="card-title">
+        {{event?.title}}
+      </h2>
+      <p>
+        {{event?.description}}
+      </p>
+    </ion-card-content>
+    <ion-item (click)="viewComments(event)">
+      <ion-icon name='md-map' item-left class="albums-icon"></ion-icon>
+      Location
+      <ion-badge item-right>{{event?.location}} </ion-badge>
+    </ion-item>
+    <ion-item (click)="viewComments(event)">
+      <ion-icon name='ios-time' item-left class="twitter-icon"></ion-icon>
+      Event Type 
+      <ion-badge item-right>{{event?.typeOfEvent}}</ion-badge>
+    </ion-item>
+  </ion-card>
 </ion-content>

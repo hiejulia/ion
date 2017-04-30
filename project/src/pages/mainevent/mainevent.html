@@ -13,6 +13,6 @@
   <ion-card *ngFor="let card of cards" (click)="goToEventsList(card)">
     <img [src]="card.imageUrl" />
     <div class="card-title">{{card.industry}}</div>
-    <div class="card-subtitle">{{card.subtitle}}</div>
+    <div class="card-subtitle">{{card.subindustry}}</div>
   </ion-card>
 </ion-content>

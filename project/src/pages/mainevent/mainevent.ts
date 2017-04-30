@@ -3,7 +3,7 @@ import { PopoverController } from 'ionic-angular';
 import {MyEvents} from '../myevents/myevents';
 import { PopoverPage } from '../about-popover/about-popover';
 import { AlertController } from 'ionic-angular';
-import { NavController } from 'ionic-angular';
+import { NavController,NavParams } from 'ionic-angular';
 import {TechEvents} from '../techevents/techevents';
 @Component({
   selector: 'page-card-background',
@@ -64,8 +64,8 @@ export class MainEventPage {
     industries=['Technology','Business','Science','Engineer','Tourism','Physics','Chemistry','Biomedical','Industrial','Other'];
 
 
-
-  constructor(public navCtrl: NavController) {
+public industry:any;
+  constructor(public navCtrl: NavController, public params:NavParams) {
 
   }
 
@@ -73,6 +73,7 @@ export class MainEventPage {
 
     console.log(card.industry + " was tapped.");
     this.navCtrl.push(TechEvents,{eventIndustry:card.industry});
+    
     
   }
 

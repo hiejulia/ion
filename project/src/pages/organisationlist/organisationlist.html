@@ -24,11 +24,6 @@
       </button>
     </ion-buttons>
  </ion-navbar>
-
-
-
-
-
   
 
   <ion-toolbar no-border-top>
@@ -40,7 +35,8 @@
 
 <ion-content>
  
-  <ion-list no-lines [virtualScroll]="organisations">
+  <ion-list no-lines >
+    
  
     <ion-item-group>
       <ion-item-divider sticky class="dividehere">
@@ -52,7 +48,7 @@
    
 
 
-      <ion-item-sliding class="card" *virtualItem="let organisation ">
+      <ion-item-sliding class="card" *ngFor="let organisation of organisations">
  
        
  
@@ -60,7 +56,7 @@
           <ion-avatar item-left>
           <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
         </ion-avatar>
-          <h3>{{organisation?.name}}</h3>
+        <p class="name"> {{organisation?.name}} </p>
           <p>
            {{organisation?.description}}
           </p>
@@ -69,19 +65,8 @@
 
   
 
-        <button ion-button (click)="goToDetail()" ion-button round outline>
-      <ion-icon name="md-navigate"></ion-icon>
-          View
-        </button>
 
-        <ion-item-options>
-          <button ion-button color="favorite">
-            Favorite
-          </button>
-          <button ion-button color="danger">
-            Remove
-          </button>
-        </ion-item-options>
+       
 
       </ion-item-sliding>
       <!--1-->

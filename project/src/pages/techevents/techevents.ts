@@ -33,7 +33,7 @@ export class TechEvents {
   loading: any;
   public event:EventModel;
   private _eventServiceProvider:EventServiceProvider;
-
+public industry:any;
   constructor(public navCtrl: NavController,
   public modalCtrl: ModalController, 
     public alertCtrl: AlertController,
@@ -50,7 +50,7 @@ this._eventServiceProvider= eventServiceProvider;
      this.event = new EventModel();
       var eventIndustry = this.params.get('eventIndustry'); 
       console.log('eventidus is '+eventIndustry );
-
+this.industry = eventIndustry;
 
       this._eventServiceProvider.findByIndustry(eventIndustry).subscribe((events) => {
         this.events = events;
