@@ -39,7 +39,7 @@ export class OrganisationServiceProvider {
   findByName(name) {
 
     return this._http
-    .get(`http://localhost:3000/api/organisations/${name}`, { headers: contentHeaders })
+    .get(`http://localhost:3000/api/organisations/name/${name}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
    
   }
@@ -61,7 +61,12 @@ export class OrganisationServiceProvider {
   }
 
 
+findUserById(id) {
 
+    return this._http
+    .get(`http://localhost:3000/api/users/${id}`, { headers: contentHeaders })
+    .map((res: Response) => res.json())
+  }
 
   //  handleError(error) {
   //       console.error(error);
@@ -70,3 +75,6 @@ export class OrganisationServiceProvider {
 
 
 }
+
+
+///user_Id

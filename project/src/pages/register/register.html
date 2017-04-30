@@ -1,12 +1,15 @@
 
  
 <ion-content padding class="transparent-header">
+      <div class="fullscreen-bg">
+    <video class="fullscreen-bg__video" autoplay loop muted webkit-playsinline>
+      <source src="../../assets/video.mp4" type='video/mp4; codecs="h.264"' >
+      <source src="../../assets/video.webm" type="video/webm">
+    </video>
+  </div>
  
-  <ion-header>
-    <ion-navbar>
-    </ion-navbar>
-  </ion-header>
-   
+
+   <div class="center animated zoomIn"> 
 		<img src="https://secure.meetupstatic.com/s/img/041003812446967856280/logo/svg/logo--script.svg" alt="Ionic logo">
 
  		
@@ -49,11 +52,13 @@
 <button ion-button block outline (click)="register()" color="light" class="login-button">Register</button>
   
 
-           
+      <div (click)="login()" class="footer">
+      <span>Already have an account <strong>Login here</strong>.</span>
+    </div>
  
            
 </div>
  
   
- 
+  </div>
 </ion-content>

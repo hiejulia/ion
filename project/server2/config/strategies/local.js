@@ -1,7 +1,7 @@
 'use strict';
 
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;//init local strategy
 const User = require('mongoose').model('User');
 
 module.exports.init = initLocalStrategy;

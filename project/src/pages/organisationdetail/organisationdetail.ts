@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
  
-
+import Chart from 'chart.js';
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {OrganisationEditPage} from '../organisationedit/organisationedit';
 
@@ -34,6 +34,8 @@ import { EventModel } from '../../providers/event.model';
   templateUrl: 'organisationdetail.html'
 })
 export class OrganisationdetailPage {
+  @ViewChild('barCanvas') barCanvas;
+  barChart: any;
 
   
     actionSheet: ActionSheet;
@@ -67,7 +69,7 @@ public orgId;
 
 
 
-        this._eventsServiceProvider.getAll().subscribe((events) => {
+        this._eventsServiceProvider.getAllEventsByOrg(organisationId).subscribe((events) => {
       this.events = events;
       console.log(this.events);
     })
@@ -83,28 +85,48 @@ public orgId;
   //     //       this.organisation= organisation;
   //     //   })
   // }
-
-
 ionViewDidLoad(){
-    // this.todoService.load()
-    //     .subscribe(data => {
-    //       this.todos = data;
-    //     })
- //get all
-    // this.reviewService.getReviews().subscribe(data => {
-    //     this.reviews = data;
-    // });
-    // let query :any ={};
-    // if(this.organisation){
-    //   query.organisation = this.organisation;
-    // }
+  this.barChart = this.getBarChart();
+}
 
-  this._eventsServiceProvider.getAll().subscribe((events) => {
-      this.events = events;
-    })
+// ionViewDidLoad(){
+//     // this.todoService.load()
+//     //     .subscribe(data => {
+//     //       this.todos = data;
+//     //     })
+//  //get all
+//     // this.reviewService.getReviews().subscribe(data => {
+//     //     this.reviews = data;
+//     // });
+//     // let query :any ={};
+//     // if(this.organisation){
+//     //   query.organisation = this.organisation;
+//     // }
+
+//   this._eventsServiceProvider.getAllEventsByOrg(this.navParams.get('organisationId')).subscribe((events) => {
+//       this.events = events;
+//       console.log(this.events);
+//     })
  
-  }
+//   }
   
+  ionViewDidEnter(){
+     var organisationId = this.navParams.get('organisationId');
+      this.orgId = organisationId;
+      this._organisationServiceProvider.findById(organisationId)
+        .subscribe((organisation) => {
+            this.organisation= organisation;
+        })
+
+
+
+        this._eventsServiceProvider.getAllEventsByOrg(this.orgId).subscribe((events) => {
+      this.events = events;
+      console.log(this.events);
+    })
+
+
+  }
   
   close(){
   
@@ -143,6 +165,58 @@ ionViewDidLoad(){
 
 
   }
+
+  getChart(context, chartType, data, options?) {
+    return new Chart(context, {
+      type: chartType,
+      data: data,
+      options: options
+    });
+  }
+//labels = title of event
+
+  getBarChart() {
+    let data = {
+      labels: ["US","Finland", "UK", "Germany", "Sweden", "Norway", "Canada"],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3,4],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 206, 86, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 206, 86, 1)'
+        ],
+        borderWidth: 1
+      }]
+    };
+
+    let options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+
+    return this.getChart(this.barCanvas.nativeElement, "bar", data, options);
+  }
+
+
 
   }
  

@@ -1,15 +1,17 @@
 'use strict';
 
 const path = require('path');
+const fs = require('fs');
+   
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const serveStatic = require('serve-static');
 const session = require('express-session');
-const passport = require('passport');
+const passport = require('passport');//passport
 const cors = require('cors');
 const MongoStore = require('connect-mongo')(session);
 const config = require('./index');
-
+const morgan = require('morgan');
 module.exports.init = initExpress;
 
 function initExpress(app) {
@@ -22,6 +24,13 @@ function initExpress(app) {
   };
 
   //common express configs
+  if (process.env.NODE_ENV === 'development') {
+		// Enable logger (morgan)
+		app.use(morgan('dev'));
+
+		// // Disable views cache
+		// app.set('view cache', false);
+	}
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());

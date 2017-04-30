@@ -1,7 +1,7 @@
 'use strict';
 
 const MAX_LIMIT = 50;
-const EVENT_FIELDS = ['title','location', 'description','office','address','numberOfParticipantsEstimated','isActive','endDate','startDate','industry','typeOfEvent'];
+const EVENT_FIELDS = ['title','location', 'description','office','address','numberOfParticipantsEstimated','isActive','endDate','startDate','industry','typeOfEvent','organisation'];
 
 /**
  *  Module dependencies
@@ -20,6 +20,7 @@ module.exports.getAll = getAllEvents;
 module.exports.update = updateEvent;
 module.exports.remove = removeEvent;
 module.exports.findByIndustry = findEventByIndustry;
+module.exports.findEventByOrg = findEventByOrg;
 //create new event 
 function createEvent(req, res, next) {
   let data = _.pick(req.body, EVENT_FIELDS);
@@ -50,17 +51,36 @@ function findEventById(req, res, next) {
 
 //find event by industry find one event
 function findEventByIndustry(req, res, next) {
-  if (!ObjectId.isValid(req.params.eventIndustry)) {
-    res.status(404).send({ message: 'Event not found'});
-  }
+  // if (!String.isValid(req.params.eventIndustry)) {
+  //   res.status(404).send({ message: 'Event not found'});
+  // }
 
-  Event.find({industry:req.params.eventIndustry}).exec((err, event) => {
+  Event.find({industry:req.params.eventIndustry}).exec((err, events) => {
     if (err) {
       return next(err);
+    } else{
+   res.json(events);
     }
+    // req.resources.events = events;
+    // next();
+  });
+}
 
-    req.resources.event = event;//req.resources.event
-    next();
+
+//find event by event id
+function findEventByOrg(req, res, next) {
+  // if (!String.isValid(req.params.eventIndustry)) {
+  //   res.status(404).send({ message: 'Event not found'});
+  // }
+
+  Event.find({organisation:req.params.organisationId}).exec((err, events) => {
+    if (err) {
+      return next(err);
+    } else{
+   res.json(events);
+    }
+    // req.resources.events = events;
+    // next();
   });
 }
 //get all events
@@ -86,19 +106,51 @@ function getAllEvents(req, res, next) {
 
 
 
-//update event 
+//update one event
 function updateEvent(req, res, next) {
-  let data = _.pick(req.body, ['title', 'description','location','office','address','numberOfParticipantsEstimated','isActive','timeStart','timeEnd']);
+  let data = _.pick(req.body, ['title', 'description','location','office','address','numberOfParticipantsEstimated','isActive','timeStart','timeEnd','participants']);
   _.assign(req.resources.event, data);
+
+
+
 
   req.resources.event.save((err, updatedEvent) => {
     if (err) {
       return next(err);
     }
 
-    res.json(event);
+    // res.json(event);
+
+    //next()
+
+    req.resources.event = updatedEvent;
+    next();
   });
+
+
 }
+// ContactSchema.findOne({phone: request.phone}, function(err, contact) {
+//     if(!err) {
+//         if(!contact) {
+//             contact = new ContactSchema();
+//             contact.phone = request.phone;
+//         }
+//         contact.status = request.status;
+//         contact.save(function(err) {
+//             if(!err) {
+//                 console.log("contact " + contact.phone + " created at " + contact.createdAt + " updated at " + contact.updatedAt);
+//             }
+//             else {
+//                 console.log("Error: could not save contact " + contact.phone);
+//             }
+//         });
+//     }
+// });
+
+
+
+
+
 
 function removeEvent(req, res, next) {
   req.resources.event.remove((err) => {
@@ -121,7 +173,7 @@ function removeEvent(req, res, next) {
 
 
 
-// //get all events
+//get all events
 // function getAllEvents(req, res, next) {
 //   const limit = +req.query.limit || MAX_LIMIT;
 //   const skip = +req.query.skip || 0;

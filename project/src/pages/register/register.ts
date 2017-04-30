@@ -6,7 +6,7 @@ import {TabsPage} from '../tabs/tabs';
 
 import { AuthServiceProvider } from '../../providers/authService';
 
-
+import {LoginPage} from '../login/login';
 
 /*
   Generated class for the Register page.
@@ -90,7 +90,9 @@ loading:any;
  
   }
 
-
+login(){
+  this.navCtrl.push(LoginPage);
+}
 
 
 

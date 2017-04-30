@@ -3,33 +3,35 @@
   <ion-title>
     Technology events 
   </ion-title>
-  <ion-buttons end>
-    <button ion-button icon-only (click)="addEvent()"><ion-icon name="add"></ion-icon></button>
-  </ion-buttons>
-  <ion-buttons start>
-    <button ion-button icon-only (click)="logout()"><ion-icon name="power">Log out</ion-icon></button>
-  </ion-buttons>
+  
+ 
  </ion-navbar>
 </ion-header>
  
 <ion-content>
- 
-  <ion-list no-lines>
- 
+  <ion-list>
     <ion-item-sliding *ngFor="let event of events">
- 
       <ion-item>
-        {{event.title}}
+        <ion-thumbnail item-left>
+          <img src="http://www.claruscommerce.com/wp-content/uploads/2013/04/hackathon-graphic.png">
+        </ion-thumbnail>
+        <h2>{{event?.title}}</h2>
+        <p>{{event?.location}} • {{event?.startDate}} - {{event?.endDate}}</p>
       </ion-item>
- 
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteEvent(event)">
-          <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="viewComments(event)">
+        <ion-icon name="chatbubbles"></ion-icon>
+        View
+      </button>
+        <button ion-button color="primary" (click)="viewPlayers(event)">
+        <ion-icon name="contacts"></ion-icon>
+        Players
+      </button>
+        <button ion-button color="danger" (click)="delete(event)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
       </ion-item-options>
     </ion-item-sliding>
- 
   </ion-list>
- 
 </ion-content>

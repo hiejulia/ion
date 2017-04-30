@@ -71,17 +71,16 @@ function findOrganisationById(req, res, next) {
 
 //find org by name => id
 function findOrganisationByName(req, res, next) {
-  if (!ObjectId.isValid(req.params.name)) {
-    return res.status(404).send({ message: 'Not found.'});
-  }
+  // if (!ObjectId.isValid(req.params.name)) {
+  //   return res.status(404).send({ message: 'Not found.'});
+  // }
 
-  Organisation.findOne({name:req.params.name}).exec((err, organisation) => {
+  Organisation.findOne({name:req.params.organisationName}).exec((err, organisation) => {
     if (err) {
       return next(err);
     }
 
-    req.resources.organisation = organisation;
-    next();
+    res.json(organisation);
   });
 }
 //get all organisations

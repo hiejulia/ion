@@ -1,24 +1,24 @@
 <ion-header>
- <ion-toolbar transparent>
-  <ion-title>Organisation Detail</ion-title>
-  <ion-buttons end>
-    <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
-  </ion-buttons>
- </ion-toolbar>
+    <ion-toolbar transparent>
+        <ion-title>Organisation Detail</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-     <!--this is an array => find way to fetch it let organisation.event in ..events-->
-       
-   
- 
+<!--this is an array => find way to fetch it let organisation.event in ..events-->
+
+
+
 
 
 <ion-content class="broker">
     <div class="selection">
         <ion-card>
             <ion-card-content>
-             
-                <img src="../../assets/user.png"/>
+
+                <img src="../../assets/user.png" />
                 <h2>{{organisation?.name}} </h2>
                 <h3>{{organisation?.description}}</h3>
             </ion-card-content>
@@ -48,23 +48,45 @@
 
 
 
-             <!--<ion-fab bottom right #fab>
+            <!--<ion-fab bottom right #fab>
     <button ion-fab "></button>
     
   </ion-fab>-->
 
-  <ion-fab bottom right #fab>
-    <button ion-fab><ion-icon name="share"></ion-icon></button>
-    <ion-fab-list side="top">
-      <button ion-fab color="vimeo" (click)="editOrganisation(organisation)"><ion-icon name="md-settings"></ion-icon></button>
-      <button ion-fab color="google" (click)="addEvent()"><ion-icon name="logo-googleplus"></ion-icon></button>
-      <button ion-fab color="twitter" (click)="openSocial('Twitter', fab)"><ion-icon name="logo-twitter"></ion-icon></button>
-      <button ion-fab color="facebook" (click)="openSocial('Facebook', fab)"><ion-icon name="logo-facebook"></ion-icon></button>
-    </ion-fab-list>
-  </ion-fab>
+            <ion-fab bottom right #fab>
+                <button ion-fab><ion-icon name="share"></ion-icon></button>
+                <ion-fab-list side="top">
+                    <button ion-fab color="vimeo" (click)="editOrganisation(organisation)"><ion-icon name="md-settings"></ion-icon></button>
+                    <button ion-fab color="google" (click)="addEvent()"><ion-icon name="logo-googleplus"></ion-icon></button>
+                    <button ion-fab color="twitter" (click)="openSocial('Twitter', fab)"><ion-icon name="logo-twitter"></ion-icon></button>
+                    <button ion-fab color="facebook" (click)="openSocial('Facebook', fab)"><ion-icon name="logo-facebook"></ion-icon></button>
+                </ion-fab-list>
+            </ion-fab>
 
         </ion-card>
     </div>
-      
+
+    <ion-card-header>
+        Organisation's offices and number of employees
+    </ion-card-header>
+    <ion-card-content>
+        <canvas #barCanvas></canvas>
+    </ion-card-content>
+  
+<h1>Organisations'Events</h1>
+  <div *ngFor="let event of events">
+		<figure class="snip1574">
+			<img src="https://raw.githubusercontent.com/yannbf/ionic3-components/master/src/assets/img/misc/testimonial-1.jpg" alt="profile-sample2" />
+			<figcaption>
+				<blockquote>
+					<p>{{event?.title}}</p>
+				</blockquote>
+				<h3>{{event?.description}}</h3>
+				<h5>{{event?.location}}</h5>
+			</figcaption>
+		</figure>
+	</div>
+
+
 
 </ion-content>

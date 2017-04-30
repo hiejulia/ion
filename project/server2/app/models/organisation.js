@@ -11,12 +11,14 @@ let OrganisationSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique:true
+    unique:true,
+    trim:true
    },
  
   location: {
     type: String,
-    required:true
+    required:true,
+    trim:true
   },
   owner: {
     type: ObjectId,

@@ -37,7 +37,7 @@ export class EventServiceProvider {
   //get  by industry
   findByIndustry(industry) {
     return this._authHttpProvider
-    .get(`http://localhost:3000/api/events/${industry}`, { headers: contentHeaders })
+    .get(`http://localhost:3000/api/events/industry/${industry}`, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
 //create new 
@@ -48,4 +48,25 @@ export class EventServiceProvider {
     .post(`http://localhost:3000/api/organisations/${orgId}/events`, body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
+
+
+ // put participants 
+  putParticipant(orgId,eventId) {
+    let body = JSON.stringify(event);
+
+    return this._authHttpProvider
+    .put(`http://localhost:3000/api/organisations/${orgId}/events/${eventId}`, body, { headers: contentHeaders })
+    .map((res: Response) => res.json())
+  }
+//get all events of an org
+
+getAllEventsByOrg(orgId){
+
+  return this._authHttpProvider
+    .get(`http://localhost:3000/api/organisations/${orgId}/events`, { headers: contentHeaders })
+    .map((res: Response) => res.json())
+
+}
+
+
 }

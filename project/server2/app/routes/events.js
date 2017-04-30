@@ -26,7 +26,7 @@ router.get(
 
 
 router.get(
-  '/events/:eventIndustry',
+  '/events/industry/:eventIndustry',
   eventCtrl.findByIndustry,
   response.toJSON('event')
 );
@@ -37,7 +37,7 @@ router.get(
 
 router.get(
   '/organisations/:organisationId/events',
-  eventCtrl.getAll,
+  eventCtrl.findEventByOrg,
   response.toJSON('events')
 );
 
@@ -52,7 +52,7 @@ router.post(
 );
 
 
-
+//update the event 
 //get one event by id base on org id
 router.put(
   '/organisations/:organisationId/events/:eventId',

@@ -34,7 +34,7 @@ router.get(
 
 //get one organisation by name
 router.get(
-  '/organisations/:organisationName',
+  '/organisations/name/:organisationName',
   organisationCtrl.findByName,
   response.toJSON('organisation')
 );

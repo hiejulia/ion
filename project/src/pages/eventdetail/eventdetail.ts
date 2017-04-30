@@ -13,6 +13,7 @@ import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
 import {GeolocationPage} from '../geolocation/geolocation';
 import { EventServiceProvider } from '../../providers/eventService';
+import {OrganisationServiceProvider} from '../../providers/organisationService';
 
 import { EventModel } from '../../providers/event.model';
 
@@ -30,12 +31,15 @@ export class EventdetailPage {
 
   public event:EventModel;
   private _eventServiceProvider:EventServiceProvider;
- 
+  private _organisationServiceProvider:OrganisationServiceProvider;
+ public cloneEvent;
+ public cloneOrganisation;
 //  review:any;
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
    public params:NavParams,
-  eventServiceProvider:EventServiceProvider) {
+  eventServiceProvider:EventServiceProvider,organisationServiceProvider:OrganisationServiceProvider) {
     this._eventServiceProvider= eventServiceProvider;
+      this._organisationServiceProvider= organisationServiceProvider;
      
 
    
@@ -47,8 +51,21 @@ export class EventdetailPage {
 
       this._eventServiceProvider.findById(eventId).subscribe((event) => {
         this.event = event;
+        this.cloneEvent = event;
         console.log(this.event);
+        this._organisationServiceProvider.findById(this.event.organisation).subscribe((organisation) => {
+          //this.event.organisation = organisation.name;
+
+this.cloneOrganisation = organisation.name;
+          console.log(this.event.organisation);
+        })
       })
+
+
+
+
+
+
 
   
   }
@@ -66,6 +83,17 @@ goBack() {
   }
 participate(){
   console.log('part');
+  //console.log(this.cloneEvent);
+
+  this._eventServiceProvider.putParticipant(this.cloneEvent.organisation,this.event._id).subscribe((event) => {
+    console.log(event);
+    this.event.participants = event.participants;
+    
+
+  });
+
+
+
 }
 
   //participant

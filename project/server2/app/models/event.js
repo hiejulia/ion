@@ -20,7 +20,8 @@ let EventSchema = new Schema({
     required: true
   },
  location:{
-   type:String
+   type:String,
+   trim:true
  },
   description: {
     type: String
@@ -47,11 +48,11 @@ let EventSchema = new Schema({
     type:ObjectId,
     ref:'User'
   },
-  timeStart:{
+  startDate:{
     type:String
    
   },
-  timeEnd:{
+  endDate:{
     type:String
   },
   organisation: {

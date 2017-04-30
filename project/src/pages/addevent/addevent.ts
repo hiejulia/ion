@@ -41,6 +41,7 @@ export class AddEvent {
   numberOfParticipantsEstimated:number;
   startDate:any;
   endDate:any;
+ 
 
  public event: EventModel;
   
@@ -62,7 +63,7 @@ export class AddEvent {
       office:this.office,
       address:this.address,
       location:this.location,
-    
+   
       isActive:this.isActive,
       numberOfParticipantsEstimated: this.numberOfParticipantsEstimated,
       startDate:this.startDate,

@@ -66,24 +66,24 @@
         <ion-item>
           <ion-icon item-left name="ios-time"></ion-icon>
           <h3>Start</h3>
-          <ion-note item-right>{{event?.startDate | date}}</ion-note>
+          <ion-note item-right>{{event?.startDate}}</ion-note>
         </ion-item>
         <ion-item>
           <ion-icon item-left name="md-send"></ion-icon>
           <h3>End</h3>
-          <ion-note item-right>{{event?.endDate | date}}</ion-note>
+          <ion-note item-right>{{event?.endDate }}</ion-note>
         </ion-item>
         <button ion-item (click)="showBroker()">
                     <ion-avatar item-left>
                         <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png"/>
                     </ion-avatar>
-                    <h2>Googel</h2>
-                    <p>ReactJS Conf 2017</p>
+                    <h2>{{cloneOrganisation}}</h2>
+                    <p>{{event?.numberOfParticipantsEstimated}}</p>
                 </button>
       </ion-list>
     <ion-row no-padding>
       <ion-col>
-        <button ion-button clear small color="danger" icon-left (click)="participate()">
+        <button ion-button clear small color="danger" icon-left (click)="participate(event)">
           <ion-icon name='md-happy'></ion-icon>
           Participate
         </button>

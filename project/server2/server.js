@@ -4,7 +4,7 @@
 const ENV = process.env.NODE_ENV || 'development';
 const DEFAULT_PORT = 3000;
 const DEFAULT_HOSTNAME = '127.0.0.1';
-
+const chalk = require('chalk');
 const http = require('http');
 const express = require('express');
 const config = require('./config');
@@ -24,10 +24,10 @@ require('./config/express').init(app);
 require('./config/routes').init(app);
 
 //Set global error handler
-// app.use(function(err, req, res, next) {
-//   console.log(err);
-//   res.status(500).json(err);
-// });
+app.use(function(err, req, res, next) {
+  console.log(chalk.red(err));
+  res.status(500).json(err);
+});
 
 // Start the app if not loaded by another module
 if (!module.parent) {
@@ -36,7 +36,7 @@ if (!module.parent) {
     config.port || DEFAULT_PORT,
     config.hostname || DEFAULT_HOSTNAME,
     () => {
-      console.log(`${config.app.name} is running`);
+      console.log(chalk.blue(`${config.app.name} is running`));
       console.log(`   listening on port: ${config.port}`);
       console.log(`   environment: ${ENV.toLowerCase()}`);
     }

@@ -13,6 +13,10 @@ import {UsersListPage} from '../userslist/userslist';
 import { MenuController } from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {AuthServiceProvider} from '../../providers/authService';
+import {OrganisationServiceProvider} from '../../providers/organisationService';
+
+
+
 @Component({
   selector:'profile',
   templateUrl: 'profile.html'
@@ -24,9 +28,19 @@ MENU = {
     MATERIAL: "menu-material",
     AVATAR: "menu-avatar",
   }
+  public user:any;
 
-  constructor(public navCtrl: NavController,public popoverCtrl: PopoverController,public authServiceProvider:AuthServiceProvider,public alertCtrl: AlertController,public menuCtrl: MenuController) {
+    private _organisationServiceProvider: OrganisationServiceProvider;
 
+  constructor(public navCtrl: NavController,
+  organisationServiceProdiver: OrganisationServiceProvider,public popoverCtrl: PopoverController,public authServiceProvider:AuthServiceProvider,public alertCtrl: AlertController,public menuCtrl: MenuController) {
+ this._organisationServiceProvider = organisationServiceProdiver;
+
+
+ this._organisationServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
+this.user = user;
+console.log(this.user.name);
+ })
   }
 
   presentPopover(event: Event) {

@@ -16,6 +16,7 @@ export class EventModel {
   country: string;
   createdAt: string;
   userCreated:string;
+  participants:any;
 
   constructor(
     _id?: string,
@@ -33,7 +34,8 @@ export class EventModel {
   organisation?: string,
   industry?: string,
   country?: string,
-  createdAt?: string
+  createdAt?: string,
+  participants?:any
   ) {
     this._id = _id;
     this.title = title;
@@ -51,5 +53,6 @@ export class EventModel {
     this.industry = industry;
     this.country = country;
     this.createdAt = createdAt;
+    this.participants = participants;
   }
 }

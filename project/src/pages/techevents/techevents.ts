@@ -8,7 +8,15 @@ import { NavController, NavParams,ModalController, AlertController, LoadingContr
 import {EventdetailPage} from '../eventdetail/eventdetail';
 
 
+import { ViewController } from 'ionic-angular';
+
+import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/Rx';
 import { LoginPage } from '../login/login';
+import { EventServiceProvider } from '../../providers/eventService';
+
+import { EventModel } from '../../providers/event.model';
 
 /*
   Generated class for the Techevents page.
@@ -23,18 +31,40 @@ import { LoginPage } from '../login/login';
 export class TechEvents {
   events: any;
   loading: any;
-
+  public event:EventModel;
+  private _eventServiceProvider:EventServiceProvider;
 
   constructor(public navCtrl: NavController,
   public modalCtrl: ModalController, 
-    public alertCtrl: AlertController,  public loadingCtrl: LoadingController) {
+    public alertCtrl: AlertController,
+     public params:NavParams,
+  eventServiceProvider:EventServiceProvider) {
 
-     console.log('Start with Tech event');
+    
+this._eventServiceProvider= eventServiceProvider;
+     
+
+   
+    
+    
+     this.event = new EventModel();
+      var eventIndustry = this.params.get('eventIndustry'); 
+      console.log('eventidus is '+eventIndustry );
+
+
+      this._eventServiceProvider.findByIndustry(eventIndustry).subscribe((events) => {
+        this.events = events;
+        console.log(this.events);
+      })
 
 
 
 
   }
+
+
+
+
 
 //   ionViewDidLoad() {
 //     this.eventService.getEvents().then((data) => {
@@ -141,4 +171,19 @@ export class TechEvents {
 //     this.navCtrl.setRoot(LoginPage);
  
 //   }
+delete(item) {
+    
+  }
+
+  viewComments(item) {
+    this.navCtrl.push(EventdetailPage,{eventId:item._id});
+  }
+
+  viewPlayers(item) {
+    alert("Viewing players of " + item.title);
+  }
+
+
+
+
 }

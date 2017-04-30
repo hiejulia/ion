@@ -10,9 +10,9 @@
 
 
 <ion-content>
-  <ion-card *ngFor="let card of cards" (click)="cardTapped(card)">
+  <ion-card *ngFor="let card of cards" (click)="goToEventsList(card)">
     <img [src]="card.imageUrl" />
-    <div class="card-title">{{card.title}}</div>
+    <div class="card-title">{{card.industry}}</div>
     <div class="card-subtitle">{{card.subtitle}}</div>
   </ion-card>
 </ion-content>
