@@ -85,11 +85,11 @@
         <p>{{event?.location}} • {{event?.startDate}} - {{event?.endDate}}</p>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary" (click)="viewComments(event)">
+        <button ion-button color="primary" (click)="viewThisEvent(event)">
         <ion-icon name="ios-arrow-dropright-circle-outline"></ion-icon>
         View
       </button>
-        <button ion-button color="light" (click)="editThisEvent(event)">
+        <button ion-button color="light" (click)="updateThisEvent(event)">
         <ion-icon name="md-settings"></ion-icon>
         Edit
       </button>

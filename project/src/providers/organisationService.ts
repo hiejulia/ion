@@ -51,7 +51,8 @@ export class OrganisationServiceProvider {
     .post('http://localhost:3000/api/organisations', body, { headers: contentHeaders })
     .map((res: Response) => res.json())
   }
-//update
+//update one org
+
   update(organisation) {
     let body = JSON.stringify(organisation);
 

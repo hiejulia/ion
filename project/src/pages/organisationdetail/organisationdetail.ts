@@ -22,7 +22,7 @@ import {AuthServiceProvider} from '../../providers/authService';
 import {AuthHttpProvider} from '../../providers/auth-http';
 import { EventServiceProvider } from '../../providers/eventService';
 import { EventModel } from '../../providers/event.model';
-
+import {EventEditPage} from '../eventedit/eventedit';
 /*
   Generated class for the Eventdetail page.
 
@@ -221,25 +221,34 @@ ionViewDidLoad(){
     return this.getChart(this.barCanvas.nativeElement, "bar", data, options);
   }
 
-  viewComments(item) {
+  viewThisEvent(item) {
     this.navCtrl.push(EventdetailPage,{eventId:item._id});
   }
 
 
-deleteThisEvent(event) {
+deleteThisEvent(event) {  
   var orgId = event.organisation;
 console.log(event._id +' '+orgId);
-this.events.splice
+
 
   this._eventServiceProvider.deleteEvent(orgId, event._id).subscribe(() => {
-    console.log('delete');
+  
+    // this.events.splice(0, 1); // remove the todo
+        this.navCtrl.pop(); //go back to todo list
 
   })
     
 
 
 
-  }
+}
+
+
+updateThisEvent(event){
+  console.log('update event');
+  this.navCtrl.push(EventEditPage,{eventId:event._id});
+
+}
 
   }
  

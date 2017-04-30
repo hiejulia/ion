@@ -25,7 +25,7 @@ import {UsersListPage} from '../pages/userslist/userslist';
 import {OrganisationFilterPage} from '../pages/organisation-filter/organisation-filter';
 import {Geolocation} from '@ionic-native/geolocation'
 import {MainEventPage} from '../pages/mainevent/mainevent';
-
+import {EventEditPage} from '../pages/eventedit/eventedit';
 import {ProfilePage} from '../pages/profile/profile';
 import {UserProfilePage} from '../pages/userprofile/userprofile';
 import {OrganisationsListPage} from '../pages/organisationlist/organisationlist';
@@ -72,7 +72,8 @@ import {EventServiceProvider} from '../providers/eventService';
     OrganisationFilterPage,
     OrganisationEditPage,
     PopoverProfilePage,
-    MainEventPage
+    MainEventPage,
+    EventEditPage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -110,7 +111,8 @@ import {EventServiceProvider} from '../providers/eventService';
     OrganisationCreatePage,
     PopoverPage,
     AboutPage,
-    OrganisationFilterPage
+    OrganisationFilterPage,
+    EventEditPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
   

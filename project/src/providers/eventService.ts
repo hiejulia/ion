@@ -15,6 +15,13 @@ export class EventServiceProvider {
     this._http = http;
     this._authHttpProvider = authHttpProvider;
   }
+
+
+  handleError(error) {
+      console.error(error);
+      return Observable.throw(error.json().error || 'Server error');
+  }
+
 //get all events
   getAll() {
     // let query = '';
@@ -73,17 +80,36 @@ getAllEventsByOrg(orgId){
 deleteEvent(orgId, eventId){
 
    return this._http
-    .delete(`http://localhost:3000/api/organisations/${orgId}/events/:eventId`)
-    .catch(this.handleError);
-   
+    .delete(`http://localhost:3000/api/organisations/${orgId}/events/:eventId`,{ headers: contentHeaders })
+    
+  
 }
 
-handleError(error) {
-      console.error(error);
-      return Observable.throw(error.json().error || 'Server error');
-  }
 
   //edit event
-  
+// Update a todo
+  // update(todo: Todo) {
+  //   let url = `${this.todosUrl}/${todo._id}`;
+  //   let body = JSON.stringify(todo)
+  //   let headers = new Headers({'Content-Type': 'application/json'});
+
+  //   return this.http.put(url, body, {headers: headers})
+  //                   .map(() => todo) //See mdn.io/arrowfunctions
+  //                   .catch(this.handleError);
+  // }
+
+
+
+
+update(event){
+   let body = JSON.stringify(event);
+
+    return this._authHttpProvider
+    .post(`http://localhost:3000/api/organisations/${event.organisation}/events/${event._id}`, body, { headers: contentHeaders })
+    .map((res: Response) => res.json())
+
+}
+
+
 
 }

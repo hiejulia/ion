@@ -103,13 +103,14 @@ function getAllEvents(req, res, next) {
     next();
   });
 }
+//update event participants here
 
 
 
 //update one event
 function updateEvent(req, res, next) {
-  let data = _.pick(req.body, ['title', 'description','location','office','address','numberOfParticipantsEstimated','isActive','timeStart','timeEnd','participants']);
-  _.assign(req.resources.event, data);
+  let data = _.pick(req.body, ['title', 'description','location','office','address','numberOfParticipantsEstimated','isActive','timeStart','timeEnd']);
+  _.assign(req.resources.event, req.body);
 
 
 
@@ -157,7 +158,7 @@ function removeEvent(req, res, next) {
     if (err) {
       return next(err);
     }
-res.status(204).end();
+res.json(req.resources.events);
 
    // res.json(req.resources.event);
   });
