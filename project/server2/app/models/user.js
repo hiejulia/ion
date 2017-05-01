@@ -31,12 +31,10 @@ let UserSchema = new Schema({
     select: false
   },
   roles: {
-    type: [
-      {
+   
         type: String,
-        enum: ['user', 'participant', 'member', 'owner']
-      }
-    ]
+        enum: ['user', 'admin']
+     
   },
   createdAt: {
     type: Date,

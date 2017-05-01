@@ -67,7 +67,7 @@ this._organisationServiceProvider.getAll()
                //console.log('the user token is' + window.localStorage.getItem('token'));
  this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
    this.favoriteOrgs  = user.favoriteOrg;
-   console.log(this.favoriteOrgs[1].name);
+   console.log(this.favoriteOrgs[0]);
  }) 
 
   }
@@ -152,6 +152,7 @@ favorite(org){
 
 this._organisationServiceProvider.updateUserFavoriteOrg(body,userID).subscribe((user) => {
 console.log('fav org');
+this.load();
  
 });
 
