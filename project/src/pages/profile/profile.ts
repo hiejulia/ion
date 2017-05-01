@@ -48,6 +48,14 @@ MENU = {
 this.user = user;
 console.log(this.user.name);
  })
+
+    // this.tts.speak('hello world',(() => {
+    //   console.log('ok');
+
+    // },(err) => {
+    //   console
+    // })
+    
   }
 
   presentPopover(event: Event) {
@@ -55,9 +63,10 @@ console.log(this.user.name);
     popover.present({ ev: event });
   }
 
-  ionicDidEnter(){
-    
-  }
+  // ionicDidEnter(){
+  //   this.tts.speak('hello world');
+  //   console.log('speeak');
+  // }
 
   updatePicture(){
     console.log('update picture');

@@ -70,4 +70,17 @@ router.get(
   response.toJSON('organisations')
 );
 
+
+router.patch(
+  '/users/:userId/registerevents',
+  // auth.ensured,
+  userCtrl.findById,
+  // authorize.onlySelf,
+  userCtrl.updateRegisterEvents,
+  response.toJSON('user')
+  
+);
+
+
+
 module.exports = router;

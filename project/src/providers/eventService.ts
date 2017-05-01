@@ -127,5 +127,19 @@ getParticipants(eventId){
 }
 
 
+//update participants
+  updateUserRegisterEvents(eventId,userId) {
+    let body = JSON.stringify(eventId);
+
+    return this._authHttpProvider
+    .patch(`http://localhost:3000/api/users/${userId}/registerevents`, body, { headers: contentHeaders })
+    .map((res: Response) => res.json())//event updated dc tra ve => co the truy cap participants = event.id.participants=> list ra 
+  }
+
+
+
+
+
+
 
 }

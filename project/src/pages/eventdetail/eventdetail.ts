@@ -87,24 +87,31 @@ goBack() {
   }
 participate(event){
   console.log('part');
- var participant=localStorage.getItem('user_Id');
- 
-this._eventServiceProvider.updateParticipants(participant,event._id).subscribe((event) => {
-  this.participants = event.participants;
-  console.log(this.participants);
+ var userID=localStorage.getItem('user_Id');
 
- 
-})
-this.listParticipants();
 
-this.participants.forEach(function(participant, index){
-    this._organisationServiceProvider.findUserById(participant.participants[0]).subscribe((user) => {
-this.users.push(user);
-console.log('user lsit is');
-console.log(this.users);
-  });
+this._eventServiceProvider.updateUserRegisterEvents(event._id,userID).subscribe((user) => {
+  console.log('register event is saved in user profile');
 });
 
+ 
+// this._eventServiceProvider.updateParticipants(participant,event._id).subscribe((event) => {
+//   this.participants = event.participants;
+//   console.log(this.participants);
+
+ 
+// })
+
+
+// this.listParticipants();
+
+// this.participants.forEach(function(participant, index){
+//     this._organisationServiceProvider.findUserById(participant.participants[0]).subscribe((user) => {
+// this.users.push(user);
+// console.log('user lsit is');
+// console.log(this.users);
+//   });
+// });
 
 
 
@@ -115,22 +122,7 @@ console.log(this.users);
 ionViewWillEnter(){
   this.listParticipants();
 }
-  //participant
-//   participant(n){
 
-//   // n.numberOfParticipants++;
-//   console.log(n.numberOfParticipants ); 
-//   var reviewId = n._id;
-//   var numberOfParticipants = n.numberOfParticipants;
-
-
-//   // this.reviewService.getReviewById(reviewId).subscribe((data) => {
-//   //     this.review = data;
-//     this.reviewService.updateReviewById(reviewId,numberOfParticipants).subscribe((result) => {
-//       this.review.numberOfParticipants = result.numberOfParticipants;
-//     })
-
-// }
 
   // ionViewWillEnter(){
     
@@ -153,16 +145,4 @@ this.participants = participants;
   })
 }
 
-
-
-//user unregister 
-/**
- * backend : delete 
- * front-end : check if user da register => thuc thi unregister 
- * if user chua register => register
- */
-
-
-
-  }
- 
+}
