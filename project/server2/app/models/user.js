@@ -44,9 +44,13 @@ let UserSchema = new Schema({
   },
   registerEvents:{
     type:Array,
-    
+    default:[]
+
   },
   favoriteOrg:{
+       type:Array,
+    default:[]
+
 
   }
 });

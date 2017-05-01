@@ -66,4 +66,18 @@ router.delete(
   response.toJSON('organisation')
 );
 
+
+
+router.patch(
+  '/organisations/:organisationId/favorites',
+  //auth.ensured,
+  organisationCtrl.findById,
+  // authorize.onlyMembers,
+ 
+  
+organisationCtrl.updateFavorites,
+  response.toJSON('organisation')
+);
+
+
 module.exports = router;

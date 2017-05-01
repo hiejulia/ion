@@ -57,7 +57,7 @@ this._organisationServiceProvider.getAll()
 
   }
  
- onViewDidEnter() {
+ onViewWillEnter() {
    this.load();
      
 }

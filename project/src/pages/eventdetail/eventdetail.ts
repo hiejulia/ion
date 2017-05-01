@@ -88,25 +88,14 @@ goBack() {
 participate(event){
   console.log('part');
  var participant=localStorage.getItem('user_Id');
- let body = {
-   participants:[participant]
- };
-this._eventServiceProvider.updateParticipants(body,event._id).subscribe((event) => {
+ 
+this._eventServiceProvider.updateParticipants(participant,event._id).subscribe((event) => {
   this.participants = event.participants;
+  console.log(this.participants);
 
  
 })
-
-//fetch user name list 
-// this._organisationServiceProvider.findUserById()
-// for(let i =0; i<this.participants;i++){
-//   console.log('start the loop');
-//   this._organisationServiceProvider.findUserById(this.participants[i].participants[0]).subscribe((user) => {
-// this.users.push(user);
-// console.log('user lsit is');
-// console.log(this.users);
-//   })
-// }
+this.listParticipants();
 
 this.participants.forEach(function(participant, index){
     this._organisationServiceProvider.findUserById(participant.participants[0]).subscribe((user) => {

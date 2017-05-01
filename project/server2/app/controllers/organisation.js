@@ -22,6 +22,7 @@ module.exports.update = updateOrganisation;
 module.exports.addMember = addOrganisationMember;
 module.exports.removeMember = removeOrganisationMember;
 module.exports.findByOwner = findOrganisationByOwner;
+module.exports.updateFavorites=updateFavorites;
 //create new organisation 
 function createOrganisation(req, res, next) {
   let data = _.pick(req.body, ['name', 'address','location','description','numberOfEmployees','members','owner','owner']);
@@ -173,4 +174,24 @@ function findOrganisationByOwner(req, res, next) {
     req.resources.organisation = organisation;
     next();
   });
+}
+
+
+function updateFavorites(req, res, next){
+  req.resources.organisation.favorites.push(req.body);
+
+
+  req.resources.organisation.save((err, updatedOrg) => {
+    if (err) {
+      return next(err);
+    }
+
+    // res.json(event);
+
+    //next()
+
+    req.resources.organisation = updatedOrg;
+    next();
+  });
+
 }
