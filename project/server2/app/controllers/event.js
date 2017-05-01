@@ -21,7 +21,8 @@ module.exports.update = updateEvent;
 module.exports.remove = removeEvent;
 module.exports.findByIndustry = findEventByIndustry;
 module.exports.findEventByOrg = findEventByOrg;
-module.exports.findParticipants=getAllParticipants
+module.exports.findParticipants=getAllParticipants;
+module.exports.updateParticipants=updateParticipants;
 
 
 
@@ -231,3 +232,31 @@ res.json(req.resources.events);
 //     next();
 //   });
 // }
+
+
+
+//update participants
+function updateParticipants(req, res, next) {
+  //let data = _.pick(req.body, ['participants']);
+  //_.assign(req.resources.event, req.body);
+
+req.resources.event.participants =[req.body];
+
+
+  req.resources.event.save((err, updatedEvent) => {
+    if (err) {
+      return next(err);
+    }
+
+    // res.json(event);
+
+    //next()
+
+    req.resources.event = updatedEvent;
+    next();
+  });
+
+
+}
+
+// '/events/:eventId/participants',

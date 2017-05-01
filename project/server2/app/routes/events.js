@@ -76,6 +76,18 @@ router.get(
 );
 
 
+router.patch(
+  '/events/:eventId/participants',
+  //auth.ensured,
+  eventCtrl.findById,
+  // authorize.onlyMembers,
+ 
+  
+eventCtrl.updateParticipants,
+  response.toJSON('event')
+);
+
+
 
 //delete one event
 router.delete(
