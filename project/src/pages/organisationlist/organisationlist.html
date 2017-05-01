@@ -9,7 +9,7 @@
   </ion-buttons>-->
 
 
-    <ion-segment >
+    <ion-segment color="primary" [(ngModel)]="cat">
       <ion-segment-button value="all">
         All
       </ion-segment-button>
@@ -33,9 +33,9 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content  [ngSwitch]="cat">>
  
-  <ion-list no-lines >
+  <ion-list no-lines  *ngSwitchCase="'all'" >
     
  
     <ion-item-group>
@@ -82,6 +82,31 @@
     
  
   </ion-list>
+
+
+
+
+<!--start here-->
+<ion-list *ngSwitchCase="'favorites'">
+   <ion-item>
+      <ion-thumbnail item-left>
+        <img src="img/women-image1.png">
+      </ion-thumbnail>
+      <h2>Cothing</h2>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="img/women-image1.png">
+      </ion-thumbnail>
+      <h2>Watches</h2>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="/img/women-image1.png">
+      </ion-thumbnail>
+      <h2>Footwear</h2>
+    </ion-item>
+ </ion-list>
 
 
 
