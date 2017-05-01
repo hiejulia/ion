@@ -1,11 +1,11 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-buttons left>
       <button ion-button icon-only menuToggle="left">
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>My Profile</ion-title>
+    <ion-title text-center>My Profile</ion-title>
    <ion-buttons end>
             <button ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="more"></ion-icon>
@@ -74,11 +74,11 @@
       <div class="stats-holder">
         <div class="user-stats">
           <strong>Register Events</strong>
-           <span><button  color="dark" ion-fab>10</button></span>
+           <span><button  color="dark" ion-fab (click)="getRegEvents()">10</button></span>
         </div>
         <div class="user-stats">
           <strong>Favorite Organisations</strong>
-          <span><button color="dark" ion-fab>20</button></span>
+          <span><button color="dark" ion-fab (click)="getFavOrgs()">20</button></span>
         </div>
         
       </div>

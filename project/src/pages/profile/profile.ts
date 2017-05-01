@@ -170,4 +170,13 @@ showOwnerOrg(){
   console.log('show owner org');
    this.navCtrl.push(OrganisationsListProfilePage);
 }
+getRegEvents(){
+  console.log('get reg eve');
+}
+
+
+getFavOrgs(){
+  console.log('get fav org');
+}
+
 }
