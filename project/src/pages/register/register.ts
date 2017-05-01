@@ -5,7 +5,7 @@ import { NavController, LoadingController,NavParams } from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
 
 import { AuthServiceProvider } from '../../providers/authService';
-
+import { AlertController } from 'ionic-angular';
 import {LoginPage} from '../login/login';
 
 /*
@@ -30,7 +30,7 @@ loading:any;
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController,
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public loadingCtrl: LoadingController,
   authServiceProvider:AuthServiceProvider) {
     this.loading = loadingCtrl;
     this._authServiceProvider = authServiceProvider;
@@ -76,6 +76,13 @@ loading:any;
     },(err) => {
       console.log('error while register');
       this.loading.dismiss();
+      let alert = this.alertCtrl.create({
+      title: 'Register failed',
+      subTitle: 'Please check your email, name ,role, and password again',
+      buttons: ['OK']
+    });
+
+    alert.present();
     })
  
   }

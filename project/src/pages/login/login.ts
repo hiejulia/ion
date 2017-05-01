@@ -4,7 +4,7 @@ import { NavController, NavParams,LoadingController } from 'ionic-angular';
 import {RegisterPage} from '../register/register';
 import {TabsPage} from '../tabs/tabs';
 
-
+import { AlertController } from 'ionic-angular';
 
 import { AuthServiceProvider } from '../../providers/authService';
 
@@ -30,7 +30,7 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
   
-  authServiceProvider: AuthServiceProvider) {
+  authServiceProvider: AuthServiceProvider,public alertCtrl: AlertController) {
     this.loading= loadingCtrl;
     this._authServiceProvider = authServiceProvider;
       
@@ -87,6 +87,13 @@ login(){
             },(err) => {
                 console.log('not authenticated');
                 this.loading.dismiss();
+                let alert = this.alertCtrl.create({
+      title: 'Login failed',
+      subTitle: 'Please check your email and password',
+      buttons: ['OK']
+    });
+
+    alert.present();
             })
 
 }
