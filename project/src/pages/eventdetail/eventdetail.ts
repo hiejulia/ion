@@ -93,10 +93,12 @@ participate(event){
  };
 this._eventServiceProvider.updateParticipants(body,event._id).subscribe((event) => {
   this.participants = event.participants;
+  console.log('part');
+ 
 
 //fetch user name list 
 // this._organisationServiceProvider.findUserById()
-for(var i =0; i<this.participants;i++){
+for(let i =0; i<this.participants;i++){
   this._organisationServiceProvider.findUserById(this.participants[i].participants[0]).subscribe((user) => {
 this.users.push(user);
 console.log('user lsit is');
