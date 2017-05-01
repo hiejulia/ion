@@ -80,24 +80,25 @@
     <ion-item>
       <ion-avatar item-left>
           <!--this is avt of org-->
-        <img src="" (click)="avatarTapped(event)">
+        <img src="https://www.hackinthenorth.com/2016/images/logo.png" (click)="viewThisEvent(event)">
       </ion-avatar>
       <h2>{{event?.title}}</h2>
       <p>{{event?.location}}•{{event?.startDate}} - {{event?.endDate}}</p>
     </ion-item>
-    <img src="" (click)="imageTapped(event)">
-    <ion-card-content>
-      <p>{{event?.description}}</p>
-    </ion-card-content>
+    
+    
+
+    
     <ion-row>
       <ion-col>
-        <button ion-button color="primary" clear small icon-left (click)="like(card)">
+          <p>{{event?.description}}</p>
+        <button ion-button color="primary" clear small icon-left (click)="like(event)">
         <ion-icon name='ios-people'></ion-icon>
         {{event?.numberOfParticipantsEstimated}} estimated participants
       </button>
       </ion-col>
       <ion-col>
-        <button ion-button color="primary" clear small icon-left (click)="comment(card)">
+        <button ion-button color="primary" clear small icon-left (click)="comment(event)">
         <ion-icon name='text'></ion-icon>
         {{event?.industry}} 
       </button>

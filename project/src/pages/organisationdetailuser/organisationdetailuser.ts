@@ -31,7 +31,7 @@ import {EventEditPage} from '../eventedit/eventedit';
 */
 @Component({
   selector: 'page-organisationdetailuser',
-  templateUrl: 'organisationdetail.html'
+  templateUrl: 'organisationdetailuser.html'
 })
 export class OrganisationdetailUserPage {
   @ViewChild('barCanvas') barCanvas;

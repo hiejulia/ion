@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {EventdetailPage} from '../eventdetail/eventdetail';
-
+import {OrganisationdetailUserPage} from '../organisationdetailuser/organisationdetailuser';
 import {AddEvent} from '../addevent/addevent';
 import { OrganisationModel } from '../../providers/organisation.model';
 import { OrganisationServiceProvider } from '../../providers/organisationService';
@@ -83,12 +83,12 @@ this._organisationServiceProvider.getAll()
     console.log(organisation._id);
     // this.navCtrl.push(EventdetailPage);
        
-        this.navCtrl.push(OrganisationdetailPage, {organisationId: organisation._id}); 
+        this.navCtrl.push(OrganisationdetailUserPage, {organisationId: organisation._id}); 
 
 
 }
 addOrganisation(){
-  let modal = this.modalCtrl.create(OrganisationCreatePage);
+  let modal = this.modalCtrl.create(OrganisationdetailPage);
  
     modal.onDidDismiss(organisation => {
       if(organisation){
