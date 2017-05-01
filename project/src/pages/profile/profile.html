@@ -53,7 +53,7 @@
     <div class="card-profile_user-infos">
       <span class="infos_name">{{user?.name}}</span>
       <span class="infos_nick">{{user?.email}}</span>
-     <ion-fab center middle class="fabhere">
+     <ion-fab center middle class="fabhere" *ngIf="checkAdmin">
     <button ion-fab color="danger"><ion-icon name="md-share"></ion-icon></button>
     <ion-fab-list side="top">
       <button ion-fab color="primary" (click)="addOrg()"><ion-icon name="md-add-circle"></ion-icon></button>
@@ -74,19 +74,13 @@
       <div class="stats-holder">
         <div class="user-stats">
           <strong>Register Events</strong>
-          <span>10</span>
+           <span><button  color="dark" ion-fab>10</button></span>
         </div>
         <div class="user-stats">
           <strong>Favorite Organisations</strong>
-          <span>20</span>
+          <span><button color="dark" ion-fab>20</button></span>
         </div>
-        <div class="user-stats">
-          <strong>Admin Settings</strong>
-          <button ion-button color="dark" round icon-left>
-      <ion-icon name='construct' is-active="false"></ion-icon>
-      Go to admin
-    </button>
-        </div>
+        
       </div>
     </div>
     <!--<div id="posts">

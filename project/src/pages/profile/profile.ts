@@ -36,6 +36,7 @@ MENU = {
     AVATAR: "menu-avatar",
   }
   public user:any;
+  public checkAdmin:boolean;
 
     private _organisationServiceProvider: OrganisationServiceProvider;
 
@@ -47,6 +48,12 @@ MENU = {
  this._organisationServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
 this.user = user;
 console.log(this.user.name);
+if(localStorage.getItem('user_Roles') === 'admin'){
+  this.checkAdmin = true;
+}
+
+
+
  })
 
     // this.tts.speak('hello world',(() => {
