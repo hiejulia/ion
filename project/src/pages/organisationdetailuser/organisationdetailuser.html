@@ -75,33 +75,45 @@
   
 <h1>Organisations'Events</h1>
 
-  <ion-list>
-    <ion-item-sliding *ngFor="let event of events">
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="http://www.claruscommerce.com/wp-content/uploads/2013/04/hackathon-graphic.png">
-        </ion-thumbnail>
-        <h2>{{event?.title}}</h2>
-        <p>{{event?.location}} • {{event?.startDate}} - {{event?.endDate}}</p>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="primary" (click)="viewThisEvent(event)">
-        <ion-icon name="ios-arrow-dropright-circle-outline"></ion-icon>
-        View
+  
+  <ion-card *ngFor="let event of events">
+    <ion-item>
+      <ion-avatar item-left>
+          <!--this is avt of org-->
+        <img src="" (click)="avatarTapped(event)">
+      </ion-avatar>
+      <h2>{{event?.title}}</h2>
+      <p>{{event?.location}}•{{event?.startDate}} - {{event?.endDate}}</p>
+    </ion-item>
+    <img src="" (click)="imageTapped(event)">
+    <ion-card-content>
+      <p>{{event?.description}}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button color="primary" clear small icon-left (click)="like(card)">
+        <ion-icon name='ios-people'></ion-icon>
+        {{event?.numberOfParticipantsEstimated}} estimated participants
       </button>
-        <button ion-button color="light" (click)="updateThisEvent(event)">
-        <ion-icon name="md-settings"></ion-icon>
-        Edit
+      </ion-col>
+      <ion-col>
+        <button ion-button color="primary" clear small icon-left (click)="comment(card)">
+        <ion-icon name='text'></ion-icon>
+        {{event?.industry}} 
       </button>
-        <button ion-button color="danger" (click)="deleteThisEvent(event)">
-        <ion-icon name="trash"></ion-icon>
-        Delete
-      </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-
-
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          {{event?.typeOfEvent}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 
 
 </ion-content>
+
+
+
+
+
