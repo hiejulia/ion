@@ -8,7 +8,7 @@ import 'rxjs/Rx';
 
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 
-
+import { AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import {AddEvent} from '../addevent/addevent';
 import {GeolocationPage} from '../geolocation/geolocation';
@@ -37,8 +37,9 @@ export class EventdetailPage {
  public thisEventId:any;
  public participants:any;
  public users:any;
+ public checkRegister:boolean;
 //  review:any;
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
+  constructor(public alertCtrl: AlertController,public navCtrl: NavController, public modalCtrl: ModalController,
    public params:NavParams,
   eventServiceProvider:EventServiceProvider,organisationServiceProvider:OrganisationServiceProvider) {
     this._eventServiceProvider= eventServiceProvider;
@@ -66,7 +67,7 @@ this.cloneOrganisation = organisation.name;
       })
 
 
-this.listParticipants();
+// this.listParticipants();
 
 
 
@@ -85,14 +86,59 @@ this.listParticipants();
 goBack() {
     this.navCtrl.pop();
   }
+// unparticipate(event){
+//   console.log('unparticipate');
+//   var userID=localStorage.getItem('user_Id');
+//  let body ={
+//   registerEvents:event._id,
+//   isActive:false
+//  }
+
+
+// this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user) => {
+//   console.log('register event is saved in user profile');
+// });
+
+// this.checkRegister = true;
+
+// }
+doParticipate(event){
+  let alert = this.alertCtrl.create({
+      title: 'Confirm',
+      message: 'Do you want to register for the event?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.participate(event);
+          }
+        }
+      ]
+    });
+
+    alert.present();
+}
+
 participate(event){
-  console.log('part');
+  
+  console.log('participate event');
  var userID=localStorage.getItem('user_Id');
+ let body ={
+  registerEvents:event._id
+ }
 
 
-this._eventServiceProvider.updateUserRegisterEvents(event._id,userID).subscribe((user) => {
+this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user) => {
   console.log('register event is saved in user profile');
 });
+
+this.checkRegister = true;
 
  
 // this._eventServiceProvider.updateParticipants(participant,event._id).subscribe((event) => {
@@ -139,10 +185,10 @@ ionViewWillEnter(){
 
 listParticipants(){
   console.log('list part');
-  this._eventServiceProvider.getParticipants(this.thisEventId).subscribe((participants) => {
-    console.log('list of par is '+participants);
-this.participants = participants;
-  })
+//   this._eventServiceProvider.getParticipants(this.thisEventId).subscribe((participants) => {
+//     console.log('list of par is '+participants);
+// this.participants = participants;
+//   })
 }
 
 }

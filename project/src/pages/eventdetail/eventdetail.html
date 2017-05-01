@@ -82,12 +82,13 @@
                 </button>
       </ion-list>
     <ion-row no-padding>
-      <ion-col>
-        <button ion-button clear small color="danger" icon-left (click)="participate(event)">
+      <ion-col *ngIf="checkRegister">
+        <button ion-button clear small color="danger" icon-left (click)="doParticipate(event)">
           <ion-icon name='md-happy'></ion-icon>
-          Participate
+          {{checkRegister?'Thanks for register':'Register'}}
         </button>
       </ion-col>
+      
       <ion-col text-center>
         <button ion-button clear small color="danger" icon-left (click)="showMap()">
           <ion-icon name='md-map'></ion-icon>
