@@ -34,6 +34,8 @@ export class EventdetailPage {
   private _organisationServiceProvider:OrganisationServiceProvider;
  public cloneEvent;
  public cloneOrganisation;
+ public thisEventId:any;
+ public participants:any;
 //  review:any;
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
    public params:NavParams,
@@ -46,7 +48,8 @@ export class EventdetailPage {
     
     
      this.event = new EventModel();
-      var eventId = this.params.get('eventId'); 
+      var eventId = this.params.get('eventId');
+      this.thisEventId = eventId; 
 
 
       this._eventServiceProvider.findById(eventId).subscribe((event) => {
@@ -62,7 +65,7 @@ this.cloneOrganisation = organisation.name;
       })
 
 
-
+this.listParticipants();
 
 
 
@@ -81,21 +84,25 @@ this.cloneOrganisation = organisation.name;
 goBack() {
     this.navCtrl.pop();
   }
-participate(){
+participate(event){
   console.log('part');
-  //console.log(this.cloneEvent);
+ var participant=localStorage.getItem('user_Id');
+this._eventServiceProvider.updateParticipants(participant,event._id).subscribe((event) => {
+  this.participants = event.participants;
+  console.log(event);
+})
 
-  // this._eventServiceProvider.putParticipant(this.cloneEvent.organisation,this.event._id).subscribe((event) => {
-  //   console.log(event);
-  //   this.event.participants = event.participants;
-    
 
-  // });
+
 
 
 
 }
 
+
+ionViewWillEnter(){
+  this.listParticipants();
+}
   //participant
 //   participant(n){
 
@@ -124,6 +131,18 @@ participate(){
   //   });
 
   // }
+
+
+listParticipants(){
+  console.log('list part');
+  this._eventServiceProvider.getParticipants(this.thisEventId).subscribe((participants) => {
+    console.log('list of par is '+participants);
+this.participants = participants;
+  })
+}
+
+
+
 
   }
  

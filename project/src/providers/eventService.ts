@@ -101,12 +101,28 @@ deleteEvent(orgId, eventId){
 
 
 
-update(event){
+updateEvent(event){
    let body = JSON.stringify(event);
 
     return this._authHttpProvider
     .post(`http://localhost:3000/api/organisations/${event.organisation}/events/${event._id}`, body, { headers: contentHeaders })
     .map((res: Response) => res.json())
+
+}
+//update participants
+  updateParticipants(participant,eventId) {
+    let body = JSON.stringify(participant);
+
+    return this._authHttpProvider
+    .put(`http://localhost:3000/api/events/${eventId}/participants`, body, { headers: contentHeaders })
+    .map((res: Response) => res.json())//event updated dc tra ve => co the truy cap participants = event.id.participants=> list ra 
+  }
+
+//list participants
+getParticipants(eventId){
+  return this._authHttpProvider
+    .get(`http://localhost:3000/api/events/${eventId}/participants`, { headers: contentHeaders })
+    .map((res: Response) => res.json())//get all participants 
 
 }
 

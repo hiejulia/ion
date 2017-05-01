@@ -101,7 +101,27 @@
         </button>
       </ion-col>
     </ion-row>
+
+<h1>Participants</h1>
+
+<ion-list *ngFor="let participant of participants">
+  <ion-item>
+    <ion-list-header>
+      <ion-avatar item-left>
+        <img src="https://s-media-cache-ak0.pinimg.com/originals/75/9a/4a/759a4a572434a169136c76444e2afde1.jpg">
+      </ion-avatar>
+      <p class="username">{{participant}}</p>
+      <p>Member</p>
+    </ion-list-header>
+ </ion-item>
+
+
+    
+  </ion-list>
   </ion-card>
+
+
+
 </ion-content>
 
 

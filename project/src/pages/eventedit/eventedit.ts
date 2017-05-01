@@ -94,7 +94,7 @@ save(): void {
     // this.viewCtrl.dismiss(event);
     // console.log(event);
     // console.log('save edited org');
- this._eventServiceProvider.update(editevent)
+ this._eventServiceProvider.updateEvent(editevent)
         .subscribe(response => {
           this.navCtrl.pop(); // go back to todo list
         });

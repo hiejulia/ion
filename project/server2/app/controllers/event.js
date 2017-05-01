@@ -239,8 +239,10 @@ res.json(req.resources.events);
 function updateParticipants(req, res, next) {
   //let data = _.pick(req.body, ['participants']);
   //_.assign(req.resources.event, req.body);
+//_.assign(req.resources.event, req.body);
 
-req.resources.event.participants =[req.body];
+
+req.resources.event.participants.push(req.body);
 
 
   req.resources.event.save((err, updatedEvent) => {
