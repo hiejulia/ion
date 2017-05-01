@@ -67,6 +67,7 @@ loading:any;
      
      
       localStorage.setItem('user_Id',user._id);
+       localStorage.setItem('user_Roles',user.roles);
                 console.log(localStorage.getItem('user_Id'));                
                
       this._authServiceProvider.setCurrentUser(user);

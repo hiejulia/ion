@@ -81,6 +81,7 @@ login(){
                 this._authServiceProvider.setCurrentUser(user);//set current user 
                 console.log(user._id);
                 localStorage.setItem('user_Id',user._id);
+                 localStorage.setItem('user_Roles',user.roles);
                 console.log(localStorage.getItem('user_Id'));                
                
                 this.navCtrl.setRoot(TabsPage);
