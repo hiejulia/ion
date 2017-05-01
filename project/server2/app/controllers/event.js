@@ -21,6 +21,10 @@ module.exports.update = updateEvent;
 module.exports.remove = removeEvent;
 module.exports.findByIndustry = findEventByIndustry;
 module.exports.findEventByOrg = findEventByOrg;
+module.exports.findParticipants=getAllParticipants
+
+
+
 //create new event 
 function createEvent(req, res, next) {
   let data = _.pick(req.body, EVENT_FIELDS);
@@ -105,7 +109,35 @@ function getAllEvents(req, res, next) {
 }
 //update event participants here
 
+//get all participants of an event
+function getAllParticipants(req, res, next) {
 
+
+
+  // Event
+  // .find()
+  
+  // // .populate('organisation')
+  // .exec((err, events) => {
+  //   if (err) {
+  //     return next(err);
+  //   }
+
+  //   req.resources.events = events;
+  //   next();
+  // });
+
+
+  Event.find({organisation:req.params.organisationId}).select('participants').exec((err, participants) => {
+    if (err) {
+      return next(err);
+    } else{
+   res.json(participants);
+    }
+    // req.resources.events = events;
+    // next();
+  });
+}
 
 //update one event
 function updateEvent(req, res, next) {

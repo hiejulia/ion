@@ -63,6 +63,18 @@ router.put(
   eventCtrl.update
 );
 
+//update participants 
+router.get(
+  '/events/:eventId/participants',
+  //auth.ensured,
+  eventCtrl.findById,
+  // authorize.onlyMembers,
+ 
+  eventCtrl.findParticipants,
+
+  response.toJSON('participants')
+);
+
 
 
 //delete one event
