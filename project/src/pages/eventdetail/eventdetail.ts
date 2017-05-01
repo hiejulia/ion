@@ -36,6 +36,7 @@ export class EventdetailPage {
  public cloneOrganisation;
  public thisEventId:any;
  public participants:any;
+ public users:any;
 //  review:any;
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
    public params:NavParams,
@@ -92,7 +93,19 @@ participate(event){
  };
 this._eventServiceProvider.updateParticipants(body,event._id).subscribe((event) => {
   this.participants = event.participants;
-  console.log(this.participants);
+
+//fetch user name list 
+// this._organisationServiceProvider.findUserById()
+for(var i =0; i<this.participants;i++){
+  this._organisationServiceProvider.findUserById(this.participants[i].participants[0]).subscribe((user) => {
+this.users.push(user);
+console.log('user lsit is');
+console.log(this.users);
+  })
+}
+
+
+  // console.log(this.participants.participants[0]);
 })
 
 
