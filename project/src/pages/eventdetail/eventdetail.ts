@@ -38,6 +38,7 @@ export class EventdetailPage {
  public participants:any;
  public users:any;
  public checkRegister:boolean;
+
 //  review:any;
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public modalCtrl: ModalController,
    public params:NavParams,
@@ -136,9 +137,11 @@ participate(event){
 
 this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user) => {
   console.log('register event is saved in user profile');
+  this.checkRegister = true;
 });
 
-this.checkRegister = true;
+
+
 
  
 // this._eventServiceProvider.updateParticipants(participant,event._id).subscribe((event) => {
