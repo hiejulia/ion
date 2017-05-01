@@ -163,23 +163,7 @@ function updateEvent(req, res, next) {
 
 
 }
-// ContactSchema.findOne({phone: request.phone}, function(err, contact) {
-//     if(!err) {
-//         if(!contact) {
-//             contact = new ContactSchema();
-//             contact.phone = request.phone;
-//         }
-//         contact.status = request.status;
-//         contact.save(function(err) {
-//             if(!err) {
-//                 console.log("contact " + contact.phone + " created at " + contact.createdAt + " updated at " + contact.updatedAt);
-//             }
-//             else {
-//                 console.log("Error: could not save contact " + contact.phone);
-//             }
-//         });
-//     }
-// });
+
 
 
 

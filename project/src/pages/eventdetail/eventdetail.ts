@@ -87,9 +87,12 @@ goBack() {
 participate(event){
   console.log('part');
  var participant=localStorage.getItem('user_Id');
-this._eventServiceProvider.updateParticipants(participant,event._id).subscribe((event) => {
+ let body = {
+   participants:[participant]
+ };
+this._eventServiceProvider.updateParticipants(body,event._id).subscribe((event) => {
   this.participants = event.participants;
-  console.log(event);
+  console.log(this.participants);
 })
 
 

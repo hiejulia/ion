@@ -114,7 +114,7 @@ updateEvent(event){
     let body = JSON.stringify(participant);
 
     return this._authHttpProvider
-    .put(`http://localhost:3000/api/events/${eventId}/participants`, body, { headers: contentHeaders })
+    .patch(`http://localhost:3000/api/events/${eventId}/participants`, body, { headers: contentHeaders })
     .map((res: Response) => res.json())//event updated dc tra ve => co the truy cap participants = event.id.participants=> list ra 
   }
 
