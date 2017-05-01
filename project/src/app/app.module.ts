@@ -16,7 +16,7 @@ import { Toast } from '@ionic-native/toast';
 import {TutorialPage} from '../pages/tutorial/tutorial';
 import { Storage } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage';
-
+import {OrganisationdetailUserPage} from '../pages/organisationdetailuser/organisationdetailuser';
 import {AboutPage} from '../pages/about/about';
 import {PopoverPage} from '../pages/about-popover/about-popover';
 // import {UsersProvider} from '../providers/users';
@@ -67,6 +67,7 @@ import {EventServiceProvider} from '../providers/eventService';
     OrganisationsListPage,
     OrganisationdetailPage,
     OrganisationCreatePage,
+    OrganisationdetailUserPage,
     AboutPage,
     PopoverPage,
     OrganisationFilterPage,
@@ -105,6 +106,7 @@ import {EventServiceProvider} from '../providers/eventService';
     PopoverProfilePage,
     EventdetailPage,
     UserProfilePage,
+    OrganisationdetailUserPage,
     OrganisationEditPage,
     OrganisationsListPage,
     OrganisationdetailPage,
