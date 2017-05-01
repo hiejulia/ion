@@ -121,6 +121,23 @@ presentFilter() {
 
   }
 
+favorite(org){
+  console.log('favorit '+org.name);
+   let body ={
+  favoriteOrg:org._id
+ }
+ let body11 = {
+  participantId:userID
 
+}
+
+ var userID=localStorage.getItem('user_Id');
+
+this._organisationServiceProvider.updateUserFavoriteOrg(body,userID).subscribe((user) => {
+console.log('fav org');
+ 
+});
+
+}
 
 }

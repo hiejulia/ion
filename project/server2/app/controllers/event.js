@@ -26,6 +26,7 @@ module.exports.updateParticipants=updateParticipants;
 
 
 
+
 //create new event 
 function createEvent(req, res, next) {
   let data = _.pick(req.body, EVENT_FIELDS);
@@ -242,5 +243,6 @@ req.resources.event.participants.push(req.body);
 
 
 }
+
 
 // '/events/:eventId/participants',

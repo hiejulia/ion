@@ -52,14 +52,16 @@
  
        
  
-       <button ion-item (click)="goToDetail(organisation)">
-          <ion-avatar item-left>
+       <button ion-item >
+          <ion-avatar item-left (click)="goToDetail(organisation)">
           <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
         </ion-avatar>
         <p class="name"> {{organisation?.name}} </p>
           <p>
            {{organisation?.description}}
           </p>
+
+          <button ion-button round item-right (click)="favorite(organisation)">Favorite</button>
         </button>
        
 
@@ -69,8 +71,7 @@
        
 
       </ion-item-sliding>
-      <!--1-->
-
+   
       
       
          

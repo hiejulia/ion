@@ -72,7 +72,7 @@ router.get(
  
   eventCtrl.findParticipants,
 
-  response.toJSON('participants')
+  response.toJSON('participants')//tra ve list participants 
 );
 
 

@@ -23,6 +23,7 @@ module.exports.createProfileBlock = createUserProfileBlock;
 module.exports.getUserOrganisations = getUserOrganisations;
 module.exports.getAuthUser = getAuthUser;
 module.exports.updateRegisterEvents = updateRegisterEvents;
+module.exports.updateFavoriteOrg = updateFavoriteOrg;
 
 
 //find user by id
@@ -184,6 +185,25 @@ function getAuthUser(req, res, next) {
 
 function updateRegisterEvents(req,res,next){
   req.resources.user.registerEvents.push(req.body);
+  req.resources.user.save((err, updatedUser) => {
+    if (err) {
+      return next(err);
+    }
+
+    // res.json(event);
+
+    //next()
+
+    req.resources.user = updatedUser;
+    next();
+  });
+
+}
+
+
+
+function updateFavoriteOrg(req,res,next){
+  req.resources.user.favoriteOrg.push(req.body);
   req.resources.user.save((err, updatedUser) => {
     if (err) {
       return next(err);

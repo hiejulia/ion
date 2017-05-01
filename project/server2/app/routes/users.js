@@ -83,4 +83,25 @@ router.patch(
 
 
 
+router.patch(
+  '/users/:userId/favoriteOrg',
+  // auth.ensured,
+  userCtrl.findById,
+  // authorize.onlySelf,
+  userCtrl.updateFavoriteOrg,
+  response.toJSON('user')
+  
+);
+
+
+
+// router.get(
+//   '/users/:userId/registerevents',
+//   //  auth.ensured,
+//   userCtrl.findById,
+//   userCtrl.getUserRegisterEvents
+// );
+
+
+
 module.exports = router;

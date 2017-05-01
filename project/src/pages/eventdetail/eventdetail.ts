@@ -129,11 +129,11 @@ doParticipate(event){
 participate(event){
   
   console.log('participate event');
- var userID=localStorage.getItem('user_Id');
+ 
  let body ={
   registerEvents:event._id
  }
-
+var userID=localStorage.getItem('user_Id');
 
 this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user) => {
   console.log('register event is saved in user profile');
@@ -141,15 +141,18 @@ this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user
 });
 
 
+let body11 = {
+  participantId:userID
 
-
- 
-// this._eventServiceProvider.updateParticipants(participant,event._id).subscribe((event) => {
-//   this.participants = event.participants;
-//   console.log(this.participants);
+}
 
  
-// })
+this._eventServiceProvider.updateParticipants(body11,event._id).subscribe((event) => {
+  this.participants = event.participants;
+  console.log(this.participants);
+
+ 
+})
 
 
 // this.listParticipants();
@@ -168,8 +171,10 @@ this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user
 }
 
 
-ionViewWillEnter(){
-  this.listParticipants();
+ionViewDidEnter(){
+ 
+console.log('participant ion view will enter'+this.participants);
+
 }
 
 
@@ -186,12 +191,12 @@ ionViewWillEnter(){
   // }
 
 
-listParticipants(){
-  console.log('list part');
-//   this._eventServiceProvider.getParticipants(this.thisEventId).subscribe((participants) => {
-//     console.log('list of par is '+participants);
-// this.participants = participants;
-//   })
-}
+// listParticipants(){
+//   console.log('list part');
+// //   this._eventServiceProvider.getParticipants(this.thisEventId).subscribe((participants) => {
+// //     console.log('list of par is '+participants);
+// // this.participants = participants;
+// //   })
+// }
 
 }

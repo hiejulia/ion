@@ -75,7 +75,21 @@ findUserById(id) {
   //   }
 
 
+
+//update favorite events
+  updateUserFavoriteOrg(orgId,userId) {
+    let body = JSON.stringify(orgId);
+
+    return this._authHttpProvider
+    .patch(`http://localhost:3000/api/users/${userId}/favoriteOrg`, body, { headers: contentHeaders })
+    .map((res: Response) => res.json())//event updated dc tra ve => co the truy cap participants = event.id.participants=> list ra 
+  }
+
+
+
 }
 
 
 ///user_Id
+
+
