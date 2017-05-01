@@ -29,6 +29,7 @@ let OrganisationSchema = new Schema({
     type: Array,
     default: []
   },
+
   description: {
     type: String,
     required:true
@@ -53,7 +54,11 @@ let OrganisationSchema = new Schema({
   numberOfEmployees:{
     type:Number,
     required:true
-    }
+  },
+    favorites:{
+    type:Array,
+    default:[]
+  }
 });
 
 OrganisationSchema.pre('save', function(next) {

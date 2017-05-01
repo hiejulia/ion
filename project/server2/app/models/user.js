@@ -41,6 +41,13 @@ let UserSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  registerEvents:{
+    type:Array,
+    
+  },
+  favoriteOrg:{
+
   }
 });
 

@@ -250,5 +250,13 @@ updateThisEvent(event){
 
 }
 
+//favorite 
+/**chi can luu vao profile cua user  
+ * Backend API: get /user/id/organisationsFavorite
+ * + 
+ * 1.user => click favorite => post 
+ * user : them 
+ */
+
   }
  
