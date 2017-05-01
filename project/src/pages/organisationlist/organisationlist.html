@@ -33,7 +33,7 @@
 </ion-header>
 
 
-<ion-content  [ngSwitch]="cat">>
+<ion-content  [ngSwitch]="cat">
  
   <ion-list no-lines  *ngSwitchCase="'all'" >
     
@@ -88,24 +88,46 @@
 
 <!--start here-->
 <ion-list *ngSwitchCase="'favorites'">
-   <ion-item>
-      <ion-thumbnail item-left>
-        <img src="img/women-image1.png">
-      </ion-thumbnail>
-      <h2>Cothing</h2>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail item-left>
-        <img src="img/women-image1.png">
-      </ion-thumbnail>
-      <h2>Watches</h2>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail item-left>
-        <img src="/img/women-image1.png">
-      </ion-thumbnail>
-      <h2>Footwear</h2>
-    </ion-item>
+    <ion-item-group>
+      <ion-item-divider sticky class="dividehere">
+        <ion-label>
+          Technology
+        </ion-label>
+      </ion-item-divider>
+ 
+   
+
+
+      <ion-item-sliding class="card" *ngFor="let favoriteOrg of favoriteOrgs">
+ 
+       
+ 
+       <button ion-item >
+          <ion-avatar item-left (click)="goToDetail(favoriteOrg)">
+          <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
+        </ion-avatar>
+        <p class="name"> {{favoriteOrg?.name}} </p>
+          <p>
+           {{favoriteOrg?.description}}
+          </p>
+
+          <button ion-button round item-right (click)="favorite(organisation)">Favorited!!!</button>
+        </button>
+       
+
+  
+
+
+       
+
+      </ion-item-sliding>
+   
+      
+      
+         
+      
+    </ion-item-group>
+
  </ion-list>
 
 

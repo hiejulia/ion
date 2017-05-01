@@ -138,7 +138,11 @@ getParticipants(eventId){
 
 
 
-
+findUserById(userid) {
+    return this._authHttpProvider
+    .get(`http://localhost:3000/api/users/${userid}`, { headers: contentHeaders })
+    .map((res: Response) => res.json())
+  }
 
 
 

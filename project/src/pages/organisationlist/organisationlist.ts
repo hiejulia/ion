@@ -7,11 +7,17 @@ import {OrganisationdetailUserPage} from '../organisationdetailuser/organisation
 import {AddEvent} from '../addevent/addevent';
 import { OrganisationModel } from '../../providers/organisation.model';
 import { OrganisationServiceProvider } from '../../providers/organisationService';
+import { EventServiceProvider } from '../../providers/eventService';
 import {OrganisationdetailPage} from '../organisationdetail/organisationdetail';
 import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 import { AlertController, App, FabContainer, ItemSliding, List, ToastController, LoadingController, Refresher } from 'ionic-angular';
 import {OrganisationFilterPage} from '../organisation-filter/organisation-filter';
+
+
+
+
 /*
+
   Generated class for the Myevents page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
@@ -27,24 +33,29 @@ import {OrganisationFilterPage} from '../organisation-filter/organisation-filter
 })
 export class OrganisationsListPage {
 //   reviews: Array<Object>;
-
+cat: string = "all";
   public organisations: Array<any>;
     private _organisationServiceProvider: OrganisationServiceProvider;
+    private _eventServiceProvider: EventServiceProvider;
     public orgLength:number;
+
+    public favoriteOrgs:any;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
 
-  organisationServiceProdiver: OrganisationServiceProvider,
+  organisationServiceProdiver: OrganisationServiceProvider,eventServiceProvider:EventServiceProvider,
   public alertCtrl: AlertController,
     public app: App,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController) {
        this._organisationServiceProvider = organisationServiceProdiver;
+       this._eventServiceProvider= eventServiceProvider;
         this.load();
 
 
-        //console.log('the user token is' + window.localStorage.getItem('token'));
- 
+
+
+
   }
 
   load(){
@@ -53,7 +64,11 @@ this._organisationServiceProvider.getAll()
             this.organisations = organisations;
             console.log('the org when page load again is '+this.organisations);
         }); 
-        
+               //console.log('the user token is' + window.localStorage.getItem('token'));
+ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
+   this.favoriteOrgs  = user.favoriteOrg;
+   console.log(this.favoriteOrgs[1].name);
+ }) 
 
   }
  
@@ -124,7 +139,9 @@ presentFilter() {
 favorite(org){
   console.log('favorit '+org.name);
    let body ={
-  favoriteOrg:org._id
+  favoriteOrgId:org._id,
+  favoriteOrgName:org.name,
+  favoriteOrgDes:org.description
  }
  let body11 = {
   participantId:userID
