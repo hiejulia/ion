@@ -8,10 +8,105 @@
 </ion-header>
  
 <ion-content>
+ <ion-list no-lines>
  
-  c
-  <button ion-button full color="secondary" (click)="save()">Save</button>
+    <ion-item>
+      <ion-label floating class="item item-input">Title</ion-label>
+      <ion-input [(ngModel)]="title" type="text" name="title" required  ></ion-input>
+    </ion-item>
  
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea [(ngModel)]="description" required ></ion-textarea>
+    </ion-item>
+
+
+     <ion-item>
+      <ion-label floating>Location</ion-label>
+      <ion-textarea [(ngModel)]="location" required ></ion-textarea>
+    </ion-item>
+
+   
+      <ion-item>
+      <ion-label floating>Office</ion-label>
+      <ion-textarea [(ngModel)]="office" required ></ion-textarea>
+    </ion-item>
+
+      <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-textarea [(ngModel)]="address" required ></ion-textarea>
+    </ion-item>
+
+
+
+       <ion-item>
+      <ion-label floating>Start Date</ion-label>
+  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="startDate" required ></ion-datetime>
+    </ion-item>
+
+
+   <ion-item>
+      <ion-label floating>End Date</ion-label>
+  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="endDate" required ></ion-datetime>
+    </ion-item>
+
+
+
+
+ <ion-item>
+      <ion-label floating>Is Active</ion-label>
+       <ion-toggle [(ngModel)]="isActive" (change)="onChange()" item-right required></ion-toggle>
+
+    </ion-item>
+   
+ <ion-item>
+      <ion-label floating>Number of participants Estimated</ion-label>
+      <ion-input type="number"  [(ngModel)]="numberOfParticipantsEstimated" required></ion-input>
+    </ion-item>
+ 
+
+ <ion-item>
+   <ion-label floating>Industry</ion-label>
+                   
+                    <ion-select [(ngModel)]="industry" >
+                        <ion-option value="Technology">Technology</ion-option>
+                        <ion-option value="Business">Business</ion-option>
+                        <ion-option value="Science">Science</ion-option>
+                        <ion-option value="Engineer">Engineer</ion-option>
+                        <ion-option value="Tourism">Tourism</ion-option>
+                        <ion-option value="Physics">Physics</ion-option>
+                        <ion-option value="Chemistry">Chemistry</ion-option>
+                        <ion-option value="Biomedical">Biomedical</ion-option>
+                        <ion-option value="Industrial">Industrial</ion-option>
+                        <ion-option value="Other">Other</ion-option>
+                    </ion-select>
+                </ion-item>
+
+
+ <ion-item>
+
+
+          <ion-label floating>Type of event</ion-label>         
+                    <ion-select [(ngModel)]="typeOfEvent" >
+                        <ion-option value="Event">Event</ion-option>
+                        <ion-option value="Workshop">Workshop</ion-option>
+                        <ion-option value="Meetup">Meetup</ion-option>
+                        <ion-option value="Conference">Conference</ion-option>
+                        <ion-option value="Seminar">Seminar</ion-option>
+                        <ion-option value="Meeting">Meeting</ion-option>
+                        <ion-option value="Fair">Fair</ion-option>
+                          <ion-option value="Other">Other</ion-option>
+                    </ion-select>
+                </ion-item>
+
+
+
+                
+
+ 
+  </ion-list>
+ 
+  <button ion-button full color="secondary" (click)="save(event)">Save</button>
 </ion-content>
 
 
