@@ -17,6 +17,12 @@ import {OrganisationServiceProvider} from '../../providers/organisationService';
 import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 import { ModalController } from 'ionic-angular';
 import {OrganisationsListProfilePage} from '../organisationlistprofile/organisationlistprofile';
+import {TextToSpeech} from '@ionic-native/text-to-speech';
+
+
+
+
+
 
 @Component({
   selector:'profile',
@@ -33,7 +39,7 @@ MENU = {
 
     private _organisationServiceProvider: OrganisationServiceProvider;
 
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController,
+  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public tts:TextToSpeech,
   organisationServiceProdiver: OrganisationServiceProvider,public popoverCtrl: PopoverController,public authServiceProvider:AuthServiceProvider,public alertCtrl: AlertController,public menuCtrl: MenuController) {
  this._organisationServiceProvider = organisationServiceProdiver;
 
@@ -49,10 +55,14 @@ console.log(this.user.name);
     popover.present({ ev: event });
   }
 
+  ionicDidEnter(){
+    
+  }
+
   updatePicture(){
     console.log('update picture');
   }
-onViewWillEnter() {
+ionViewWillEnter() {
     this.menuCtrl.enable(true, "menu-right");
   }
 

@@ -37,6 +37,7 @@ import {AuthHttpProvider} from '../providers/auth-http';
 import {AuthServiceProvider} from '../providers/authService';
 import {OrganisationServiceProvider} from '../providers/organisationService';
 import {EventServiceProvider} from '../providers/eventService';
+import {TextToSpeech} from '@ionic-native/text-to-speech';
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
 
@@ -124,6 +125,7 @@ import {EventServiceProvider} from '../providers/eventService';
   OrganisationServiceProvider,
   AuthHttpProvider,
    Toast,
+   TextToSpeech,
   AuthServiceProvider,
   InAppBrowser,
   
