@@ -41,6 +41,8 @@ export class EventdetailPage {
  public users:any;
  public checkRegister:boolean;
  public user:any;
+ public usersParticipants:any;
+ 
 
 //  review:any;
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public modalCtrl: ModalController,
@@ -55,6 +57,7 @@ export class EventdetailPage {
     
      this.event = new EventModel();
       var eventId = this.params.get('eventId');//we have event id here
+
       this.thisEventId = eventId; 
 
 
@@ -78,7 +81,7 @@ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscri
   //user.registerEvents = []
   _.forEach(this.user.registerEvents,(regevent) => {
    if(eventId == regevent.registerEvents){
-     this.checkRegister == true;
+     this.checkRegister = true;
 
    } else {
      this.checkRegister  = false;
@@ -89,8 +92,17 @@ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscri
 
 
 
+this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
+  this.participants = event.participants;
 
-  
+_.forEach(this.participants,(part) => {
+  this._eventServiceProvider.findUserById(part.participantId).subscribe((user) => {
+    this.usersParticipants.push(user);
+  })
+        
+    });//end for each
+});
+   
   }
 
   
@@ -211,6 +223,42 @@ this._eventServiceProvider.updateParticipants(body11,event._id).subscribe((event
 ionViewDidEnter(){
  
 console.log('participant ion view will enter'+this.participants);
+
+}
+
+
+ionViewWillEnter(){
+
+this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
+  this.user = user;
+  //user.registerEvents = []
+  _.forEach(this.user.registerEvents,(regevent) => {
+   if(this.thisEventId == regevent.registerEvents){
+     this.checkRegister = true;
+     
+
+   } else {
+     this.checkRegister  = false;
+   }   
+   console.log(this.checkRegister);
+        
+    });//end for each
+});//end find user by id
+
+
+
+
+this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
+  this.participants = event.participants;
+
+_.forEach(this.participants,(part) => {
+  this._eventServiceProvider.findUserById(part.participantId).subscribe((user) => {
+    this.usersParticipants.push(user);
+  })
+        
+    });//end for each
+  
+})
 
 }
 
