@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {EventdetailPage} from '../eventdetail/eventdetail';
-
+import {EventServiceProvider} from '../../providers/eventService';
 import {AddEvent} from '../addevent/addevent';
 import { OrganisationModel } from '../../providers/organisation.model';
 import { OrganisationServiceProvider } from '../../providers/organisationService';
@@ -30,15 +30,18 @@ export class OrganisationsListProfilePage {
 
   public organisations: Array<OrganisationModel>;
     private _organisationServiceProvider: OrganisationServiceProvider;
+    private _eventServiceProvider: EventServiceProvider;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
 
   organisationServiceProdiver: OrganisationServiceProvider,
+  eventServiceProdiver: EventServiceProvider,
   public alertCtrl: AlertController,
     public app: App,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController) {
        this._organisationServiceProvider = organisationServiceProdiver;
+       this._eventServiceProvider = eventServiceProdiver;
 
 
        //change this one
@@ -100,6 +103,14 @@ addOrganisation(){
  
     modal.present();
 }
+
+//delete
+deleteOrg(org){
+  console.log(org);
+  this._organisationServiceProvider.
+}
+
+
 
 
 

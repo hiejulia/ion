@@ -6,6 +6,10 @@ import {TutorialPage} from '../tutorial/tutorial';
 import {AuthServiceProvider} from '../../providers/authService';
 import {LoginPage} from '../login/login';
 import { Dialogs } from '@ionic-native/dialogs';
+import {RegisterPage} from '../register/register';
+
+
+
 
 @Component({
   template: `
@@ -62,7 +66,8 @@ public authServiceProvider:any;
      this.authServiceProvider.logout();
 
     this.navCtrl.setRoot(LoginPage);
-     console.log('log out');
+    this.navCtrl.setRoot(RegisterPage);
+     
 
   }
 

@@ -30,6 +30,13 @@ router.get(
   organisationCtrl.findById,
   response.toJSON('organisation')
 );
+//delete event by id
+router.delete(
+  '/organisations/:organisationId',
+  organisationCtrl.findById,
+  organisationCtrl.deleteById,
+  response.toJSON('organisation')
+);
 
 
 //get one organisation by name

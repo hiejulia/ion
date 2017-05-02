@@ -23,6 +23,7 @@ module.exports.addMember = addOrganisationMember;
 module.exports.removeMember = removeOrganisationMember;
 module.exports.findByOwner = findOrganisationByOwner;
 module.exports.updateFavorites=updateFavorites;
+module.exports.deleteById = deleteById;
 //create new organisation 
 function createOrganisation(req, res, next) {
   let data = _.pick(req.body, ['name', 'address','location','description','numberOfEmployees','members','owner','owner']);
@@ -193,5 +194,21 @@ function updateFavorites(req, res, next){
     req.resources.organisation = updatedOrg;
     next();
   });
+
+}
+
+
+
+function deleteById(req,res,next){
+  req.resources.organisation.remove((err) => {
+    if (err) {
+      return next(err);
+    }
+res.json(req.resources.organisations);
+
+   // res.json(req.resources.event);
+  });
+
+
 
 }
