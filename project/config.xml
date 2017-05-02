@@ -40,4 +40,10 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-x-toast" spec="~2.6.0" />
     <plugin name="cordova-plugin-tts" spec="~0.2.3" />
+    <plugin name="phonegap-plugin-barcodescanner" spec="~6.0.6">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
+    </plugin>
+    <plugin name="cordova-plugin-calendar" spec="~4.5.5">
+        <variable name="CALENDAR_USAGE_DESCRIPTION" value=" " />
+    </plugin>
 </widget>

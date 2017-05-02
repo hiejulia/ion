@@ -9,8 +9,8 @@ export class EventModel {
   typeOfEvent: string;
   numberOfParticipantsEstimated:number;
   isActive:boolean;
-  timeStart:string;
-  timeEnd:string;
+  startDate:string;
+  endDate:string;
   organisation: string;
   industry: string;
   country: string;
@@ -29,8 +29,8 @@ export class EventModel {
   typeOfEvent?: string,
   numberOfParticipantsEstimated?:number,
   isActive?:boolean,
-  timeStart?:string,
-  timeEnd?:string,
+  startDate?:string,
+  endDate?:string,
   organisation?: string,
   industry?: string,
   country?: string,
@@ -47,8 +47,8 @@ export class EventModel {
     this.typeOfEvent = typeOfEvent;
     this.numberOfParticipantsEstimated = numberOfParticipantsEstimated;
     this.isActive = isActive;
-    this.timeStart= timeStart;
-    this.timeEnd = timeEnd;
+    this.startDate= startDate;
+    this.endDate = endDate;
     this.organisation = organisation;
     this.industry = industry;
     this.country = country;

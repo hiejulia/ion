@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
  import {  LoadingController,ToastController } from 'ionic-angular';  
 import * as _ from 'lodash';
-
+import { Calendar } from '@ionic-native/calendar';
 
 import { NavController, NavParams,ModalController } from 'ionic-angular'; 
 
@@ -18,6 +18,7 @@ import { EventServiceProvider } from '../../providers/eventService';
 import {OrganisationServiceProvider} from '../../providers/organisationService';
 
 import { EventModel } from '../../providers/event.model';
+import {Toast} from 'ionic-angular';
 
 /*
   Generated class for the Eventdetail page.
@@ -41,12 +42,13 @@ export class EventdetailPage {
  public users:any;
  public checkRegister:boolean;
  public user:any;
- public usersParticipants:any;
+ public usersParticipants:any=[];
  
 
 //  review:any;
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public modalCtrl: ModalController,
-   public params:NavParams,private toastCtrl: ToastController,
+   public params:NavParams,private toastCtrl: ToastController,private calendar: Calendar,
+   public toast:Toast,
   eventServiceProvider:EventServiceProvider,organisationServiceProvider:OrganisationServiceProvider) {
     this._eventServiceProvider= eventServiceProvider;
       this._organisationServiceProvider= organisationServiceProvider;
@@ -97,6 +99,7 @@ this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
 
 _.forEach(this.participants,(part) => {
   this._eventServiceProvider.findUserById(part.participantId).subscribe((user) => {
+    console.log(user);
     this.usersParticipants.push(user);
   })
         
@@ -201,6 +204,11 @@ this._eventServiceProvider.updateParticipants(body11,event._id).subscribe((event
   console.log(this.participants);
 
  
+
+
+
+
+
 })
 
 
@@ -215,6 +223,11 @@ this._eventServiceProvider.updateParticipants(body11,event._id).subscribe((event
 // });
 
 
+
+//cordova plugin for calendar goes here
+this.calendar.createEventWithOptions(this.event.title, this.event.location, this.event.description, new Date(this.event.startDate), new Date(this.event.endDate), null).then(() => {
+      this.getToast();
+    });
 
 
 }

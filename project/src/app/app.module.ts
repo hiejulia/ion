@@ -21,6 +21,7 @@ import {AboutPage} from '../pages/about/about';
 import {PopoverPage} from '../pages/about-popover/about-popover';
 // import {UsersProvider} from '../providers/users';
 import {UsersListPage} from '../pages/userslist/userslist';
+import { Camera } from '@ionic-native/camera';
 
 import {OrganisationFilterPage} from '../pages/organisation-filter/organisation-filter';
 import {Geolocation} from '@ionic-native/geolocation'
@@ -38,6 +39,7 @@ import {AuthServiceProvider} from '../providers/authService';
 import {OrganisationServiceProvider} from '../providers/organisationService';
 import {EventServiceProvider} from '../providers/eventService';
 import {TextToSpeech} from '@ionic-native/text-to-speech';
+import {Calendar} from ' @ionic-native/calendar';
 import {RegisterEventsPage} from '../pages/registerevents/registerevents';
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
@@ -130,8 +132,9 @@ import {RegisterEventsPage} from '../pages/registerevents/registerevents';
    Toast,
    TextToSpeech,
   AuthServiceProvider,
+  Camera,
   InAppBrowser,
-  
+  Calendar,
   Geolocation,
  
   
