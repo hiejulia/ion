@@ -10,6 +10,8 @@ import { LoginPage } from '../pages/login/login';
 import {EventdetailPage} from '../pages/eventdetail/eventdetail';
 import {RegisterPage} from '../pages/register/register';
 import {GeolocationPage } from '../pages/geolocation/geolocation';
+
+import { Dialogs } from '@ionic-native/dialogs';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {OrganisationsListProfilePage} from '../pages/organisationlistprofile/organisationlistprofile';
 import { Toast } from '@ionic-native/toast';
@@ -39,6 +41,7 @@ import {AuthServiceProvider} from '../providers/authService';
 import {OrganisationServiceProvider} from '../providers/organisationService';
 import {EventServiceProvider} from '../providers/eventService';
 import {TextToSpeech} from '@ionic-native/text-to-speech';
+import {  CameraOptions } from '@ionic-native/camera';
 // import {Calendar} from ' @ionic-native/calendar';
 import {RegisterEventsPage} from '../pages/registerevents/registerevents';
 //import service to provider concerning with data from server call
@@ -133,9 +136,12 @@ import {RegisterEventsPage} from '../pages/registerevents/registerevents';
    TextToSpeech,
   AuthServiceProvider,
   Camera,
+  Dialogs,
+  
   InAppBrowser,
   // Calendar,
   Geolocation,
+
  SocialSharing
   
    ]

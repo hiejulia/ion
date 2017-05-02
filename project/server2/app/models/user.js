@@ -25,6 +25,10 @@ let UserSchema = new Schema({
     required: true,
     select: false
   },
+  picture:{
+    type:String,
+    default:'https://s-media-cache-ak0.pinimg.com/originals/75/9a/4a/759a4a572434a169136c76444e2afde1.jpg'
+  },
  
   profile: {
     type: [ProfileBlockSchema],

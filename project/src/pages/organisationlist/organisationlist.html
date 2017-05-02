@@ -27,7 +27,7 @@
   
 
   <ion-toolbar no-border-top>
-    <ion-searchbar color="primary" placeholder="Search">
+    <ion-searchbar color="primary" placeholder="Search" (input)="searchOrgs($event)">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -35,10 +35,10 @@
 
 <ion-content  [ngSwitch]="cat">
  
-  <ion-list no-lines  *ngSwitchCase="'all'" >
+  <ion-list no-lines  *ngSwitchCase="'all'" [virtualScroll]="organisations">
     
  
-    <ion-item-group>
+    <ion-item-group *virtualItem="let organisation">
       <ion-item-divider sticky class="dividehere">
         <ion-label>
           Technology

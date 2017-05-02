@@ -13,6 +13,8 @@ import {UsersListPage} from '../userslist/userslist';
 import { MenuController } from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {AuthServiceProvider} from '../../providers/authService';
+import { Geolocation } from '@ionic-native/geolocation';
+
 import {OrganisationServiceProvider} from '../../providers/organisationService';
 import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 import { ModalController } from 'ionic-angular';
@@ -42,7 +44,7 @@ private _eventServiceProvider:EventServiceProvider;
     private _organisationServiceProvider: OrganisationServiceProvider;
 public regeventlength:any;
 public favorglength:any;
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public tts:TextToSpeech,
+  constructor(public geo:Geolocation,public navCtrl: NavController,public modalCtrl: ModalController,public tts:TextToSpeech,
   organisationServiceProdiver: OrganisationServiceProvider,public popoverCtrl: PopoverController,public authServiceProvider:AuthServiceProvider,
   eventServiceprovider:EventServiceProvider,
   public alertCtrl: AlertController,public menuCtrl: MenuController) {
@@ -76,7 +78,9 @@ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscri
   this.favorglength = user.favoriteOrg.length;
 })
 
-    
+    geo.getCurrentPosition().then(pos => {
+  console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+});
     
   }
 

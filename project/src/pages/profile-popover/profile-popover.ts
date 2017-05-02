@@ -5,6 +5,7 @@ import {OrganisationsListProfilePage} from '../organisationlistprofile/organisat
 import {TutorialPage} from '../tutorial/tutorial';
 import {AuthServiceProvider} from '../../providers/authService';
 import {LoginPage} from '../login/login';
+import { Dialogs } from '@ionic-native/dialogs';
 
 @Component({
   template: `
@@ -26,7 +27,8 @@ public authServiceProvider:any;
     public navCtrl: NavController,
     public app: App,
     public modalCtrl: ModalController,
-    public authServiceprovider:AuthServiceProvider
+    public authServiceprovider:AuthServiceProvider,
+    public dialogs: Dialogs
   ) { 
     this.authServiceProvider = authServiceprovider;
   }
@@ -36,6 +38,13 @@ public authServiceProvider:any;
   }
   changeFullName(){
     console.log('change full name');
+    this.dialogs.prompt('Please type the new name', 'Change user name', ['Save', 'Cancel'], '').then(
+  theResult => {
+    if ((theResult.buttonIndex == 1) && (theResult.input1 !== '')) {
+      // this.tasks.push({ title: theResult.input1, status: 'open' });
+    }
+  }
+)
   }
 
   close(url: string) {
@@ -56,4 +65,7 @@ public authServiceProvider:any;
      console.log('log out');
 
   }
+
+
+
 }
