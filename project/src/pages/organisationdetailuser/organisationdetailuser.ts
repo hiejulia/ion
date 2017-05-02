@@ -4,7 +4,7 @@ import { ViewController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
- 
+ import {  LoadingController,ToastController } from 'ionic-angular';
 import Chart from 'chart.js';
 import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {OrganisationEditPage} from '../organisationedit/organisationedit';
@@ -51,6 +51,7 @@ public orgId;
   constructor(public navCtrl: NavController,  public modalCtrl: ModalController,
   public organisationServiceProvider: OrganisationServiceProvider,
   public navParams:NavParams,
+  private toastCtrl: ToastController,
   public eventsServiceProvider: EventServiceProvider,
   public authServiceProvider:AuthServiceProvider,
   public authHttpProvider:AuthHttpProvider,eventServiceProvider:EventServiceProvider) {
@@ -249,6 +250,9 @@ updateThisEvent(event){
   this.navCtrl.push(EventEditPage,{eventId:event._id});
 
 }
+
+
+
 
   }
  

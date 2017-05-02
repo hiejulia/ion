@@ -72,7 +72,7 @@ export class AddEvent {
       industry:this.industry
     };
  
-this.presentToast();
+this.presentToast();//present toast 
     this.viewCtrl.dismiss(event);
  
   }

@@ -4,9 +4,11 @@ import { ViewController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
- 
+ import {  LoadingController,ToastController } from 'ionic-angular';  
 
-import { NavController, NavParams,ModalController } from 'ionic-angular';
+
+
+import { NavController, NavParams,ModalController } from 'ionic-angular'; 
 
 import { AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
@@ -41,7 +43,7 @@ export class EventdetailPage {
 
 //  review:any;
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public modalCtrl: ModalController,
-   public params:NavParams,
+   public params:NavParams,private toastCtrl: ToastController,
   eventServiceProvider:EventServiceProvider,organisationServiceProvider:OrganisationServiceProvider) {
     this._eventServiceProvider= eventServiceProvider;
       this._organisationServiceProvider= organisationServiceProvider;
@@ -118,12 +120,32 @@ doParticipate(event){
           text: 'Yes',
           handler: () => {
             this.participate(event);
+            this.getToast();
           }
         }
       ]
     });
 
     alert.present();
+
+
+
+
+}
+
+
+getToast(){
+   let toast = this.toastCtrl.create({
+    message: 'Thank you. You have registered for the event',
+    duration: 2000,
+    position: 'bottom'
+  });
+
+  toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+
+  toast.present();
 }
 
 participate(event){

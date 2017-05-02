@@ -19,7 +19,7 @@ import { ModalController } from 'ionic-angular';
 import {OrganisationsListProfilePage} from '../organisationlistprofile/organisationlistprofile';
 import {TextToSpeech} from '@ionic-native/text-to-speech';
 
-
+import {RegisterEventsPage} from '../registerevents/registerevents';
 
 
 
@@ -172,6 +172,7 @@ showOwnerOrg(){
 }
 getRegEvents(){
   console.log('get reg eve');
+  this.navCtrl.push(RegisterEventsPage);
 }
 
 

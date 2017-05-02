@@ -153,9 +153,24 @@ favorite(org){
 this._organisationServiceProvider.updateUserFavoriteOrg(body,userID).subscribe((user) => {
 console.log('fav org');
 this.load();
+this.getToast();
  
 });
 
+}
+
+getToast(){
+     let toast = this.toastCtrl.create({
+    message: 'Thank you. You have registered for the event',
+    duration: 2000,
+    position: 'bottom'
+  });
+
+  toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+
+  toast.present();
 }
 
 }

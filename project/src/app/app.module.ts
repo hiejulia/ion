@@ -38,6 +38,7 @@ import {AuthServiceProvider} from '../providers/authService';
 import {OrganisationServiceProvider} from '../providers/organisationService';
 import {EventServiceProvider} from '../providers/eventService';
 import {TextToSpeech} from '@ionic-native/text-to-speech';
+import {RegisterEventsPage} from '../pages/registerevents/registerevents';
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
 
@@ -75,7 +76,8 @@ import {TextToSpeech} from '@ionic-native/text-to-speech';
     OrganisationEditPage,
     PopoverProfilePage,
     MainEventPage,
-    EventEditPage
+    EventEditPage,
+    RegisterEventsPage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -98,6 +100,7 @@ import {TextToSpeech} from '@ionic-native/text-to-speech';
     AddEvent,
     TabsPage,
     TutorialPage,
+    RegisterEventsPage,
     LoginPage,
     OrganisationsListProfilePage,
     UsersListPage,
