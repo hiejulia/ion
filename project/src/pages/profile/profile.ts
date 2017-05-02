@@ -41,6 +41,7 @@ MENU = {
 private _eventServiceProvider:EventServiceProvider;
     private _organisationServiceProvider: OrganisationServiceProvider;
 public regeventlength:any;
+public favorglength:any;
   constructor(public navCtrl: NavController,public modalCtrl: ModalController,public tts:TextToSpeech,
   organisationServiceProdiver: OrganisationServiceProvider,public popoverCtrl: PopoverController,public authServiceProvider:AuthServiceProvider,
   eventServiceprovider:EventServiceProvider,
@@ -72,6 +73,7 @@ if(localStorage.getItem('user_Roles') === 'admin'){
 this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
   this.regeventlength = user.registerEvents.length;
   console.log(this.regeventlength);
+  this.favorglength = user.favoriteOrg.length;
 })
 
     
@@ -93,6 +95,11 @@ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscri
   }
 ionViewWillEnter() {
     this.menuCtrl.enable(true, "menu-right");
+    this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
+  this.regeventlength = user.registerEvents.length;
+  console.log(this.regeventlength);
+  this.favorglength = user.favoriteOrg.length;
+})
   }
 
     ionViewWillLeave() {
@@ -131,6 +138,8 @@ ionViewWillEnter() {
      //this.nav.push('SupportPage');
 
   }
+
+
 
   logout(){
     console.log('log out');

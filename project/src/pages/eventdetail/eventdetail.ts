@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
  import {  LoadingController,ToastController } from 'ionic-angular';  
-
+import * as _ from 'lodash';
 
 
 import { NavController, NavParams,ModalController } from 'ionic-angular'; 
@@ -40,6 +40,7 @@ export class EventdetailPage {
  public participants:any;
  public users:any;
  public checkRegister:boolean;
+ public user:any;
 
 //  review:any;
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public modalCtrl: ModalController,
@@ -53,7 +54,7 @@ export class EventdetailPage {
     
     
      this.event = new EventModel();
-      var eventId = this.params.get('eventId');
+      var eventId = this.params.get('eventId');//we have event id here
       this.thisEventId = eventId; 
 
 
@@ -71,6 +72,20 @@ this.cloneOrganisation = organisation.name;
 
 
 // this.listParticipants();
+
+this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
+  this.user = user;
+  //user.registerEvents = []
+  _.forEach(this.user.registerEvents,(regevent) => {
+   if(eventId == regevent.registerEvents){
+     this.checkRegister == true;
+
+   } else {
+     this.checkRegister  = false;
+   }   
+        
+    });//end for each
+});//end find user by id
 
 
 
