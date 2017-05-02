@@ -35,7 +35,7 @@ public event:EventModel;
   public organisations: Array<OrganisationModel>;
     private _organisationServiceProvider: OrganisationServiceProvider;
     private user:any;
-public events:any;
+public events:any=[];
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
    eventServiceProvider:EventServiceProvider,
 
@@ -56,6 +56,7 @@ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscri
     this._eventServiceProvider.findById(regevent.registerEvents).subscribe((event) => {
         console.log(event);
         this.events.push(event);
+        console.log(this.events);
         
         
     });//end for each
