@@ -99,13 +99,7 @@ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscri
 this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
   this.participants = event.participants;
 
-_.forEach(this.participants,(part) => {
-  this._eventServiceProvider.findUserById(part.participantId).subscribe((user) => {
-    console.log(user);
-    this.usersParticipants.push(user);
-  })
-        
-    });//end for each
+         
 });
    
   }
@@ -180,17 +174,10 @@ getToast(){
   toast.present();
 }
 load(){
-this.usersParticipants = [];
+
   this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
   this.participants = event.participants;
 
-_.forEach(this.participants,(part) => {
-  this._eventServiceProvider.findUserById(part.participantId).subscribe((user) => {
-    console.log(user);
-    this.usersParticipants.push(user);
-  })
-        
-    });//end for each
 });
 
 }
@@ -203,6 +190,7 @@ participate(event){
   registerEvents:event._id
  }
 var userID=localStorage.getItem('user_Id');
+var useremail = this.user.email;
 
 this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user) => {
   console.log('register event is saved in user profile');
@@ -212,7 +200,8 @@ this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user
 
 
 let body11 = {
-  participantId:userID
+  participantId:userID,
+  participantEmail:useremail
 
 }
 
@@ -264,13 +253,6 @@ ionViewDidLoad(){
   this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
   this.participants = event.participants;
 
-_.forEach(this.participants,(part) => {
-  this._eventServiceProvider.findUserById(part.participantId).subscribe((user) => {
-    this.usersParticipants = [];
-    this.usersParticipants.push(user);
-  })
-        
-    });//end for each
   
 });
 
@@ -299,16 +281,10 @@ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscri
 this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
   this.participants = event.participants;
 
-_.forEach(this.participants,(part) => {
-  this._eventServiceProvider.findUserById(part.participantId).subscribe((user) => {
-    this.usersParticipants.push(user);
-  })
-        
-    });//end for each
   
 })
 
-this.participantsList = this.usersParticipants;
+
 
 
 }
