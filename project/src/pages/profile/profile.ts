@@ -21,6 +21,7 @@ import {TextToSpeech} from '@ionic-native/text-to-speech';
 
 import {RegisterEventsPage} from '../registerevents/registerevents';
 
+import {OrganisationsListPage} from '../organisationlist/organisationlist';
 
 
 
@@ -178,6 +179,7 @@ getRegEvents(){
 
 getFavOrgs(){
   console.log('get fav org');
+  this.navCtrl.push(OrganisationsListPage);
 }
 
 }

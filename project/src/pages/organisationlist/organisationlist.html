@@ -106,9 +106,9 @@
           <ion-avatar item-left (click)="goToDetail(favoriteOrg)">
           <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
         </ion-avatar>
-        <p class="name"> {{favoriteOrg?.favoriteOrgName}} </p>
+        <p class="name"> {{favoriteOrg?.name}} </p>
           <p>
-           {{favoriteOrg?.favoriteOrgDes}}
+           {{favoriteOrg?.description}}
           </p>
 
           <button ion-button round item-right (click)="favorite(organisation)">Favorited!!!</button>

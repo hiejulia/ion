@@ -34,17 +34,17 @@
       
 
 
-      <ion-item-sliding class="card" *ngFor="let organisation of organisations">
+      <ion-item-sliding class="card" *ngFor="let event of events">
  
        
  
-       <button ion-item (click)="goToDetail(organisation)">
+       <button ion-item (click)="goToDetail(event)">
           <ion-avatar item-left>
           <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
         </ion-avatar>
-          <h3>{{organisation.name}}</h3>
+          <h3>{{event?.title}}</h3>
           <p>
-           {{organisation.description}}
+           {{event?.description}}
           </p>
         </button>
        
@@ -78,10 +78,7 @@
     
  
   </ion-list>
-  <ion-fab bottom right #fab>
-    <button ion-fab (click)="addOrganisation()"><ion-icon name="md-add"></ion-icon></button>
-    
-  </ion-fab>
+  
 
  
 </ion-content>

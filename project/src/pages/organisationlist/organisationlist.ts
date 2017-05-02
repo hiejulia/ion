@@ -12,7 +12,7 @@ import {OrganisationdetailPage} from '../organisationdetail/organisationdetail';
 import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 import { AlertController, App, FabContainer, ItemSliding, List, ToastController, LoadingController, Refresher } from 'ionic-angular';
 import {OrganisationFilterPage} from '../organisation-filter/organisation-filter';
-
+import * as _ from 'lodash';
 
 
 
@@ -38,8 +38,8 @@ cat: string = "all";
     private _organisationServiceProvider: OrganisationServiceProvider;
     private _eventServiceProvider: EventServiceProvider;
     public orgLength:number;
-
-    public favoriteOrgs:any;
+public user:any;
+    public favoriteOrgs:any=[];
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
 
@@ -66,8 +66,20 @@ this._organisationServiceProvider.getAll()
         }); 
                //console.log('the user token is' + window.localStorage.getItem('token'));
  this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
-   this.favoriteOrgs  = user.favoriteOrg;
-   console.log(this.favoriteOrgs[0]);
+   this.user = user;
+   
+
+   //user.registerEvents
+ _.forEach(this.user.favoriteOrg,(favorg) => {
+    this._organisationServiceProvider.findById(favorg.favoriteOrgId).subscribe((org) => {
+        console.log(org);
+        this.favoriteOrgs.push(org);
+        console.log(this.favoriteOrgs);
+        
+        
+    });//end for each
+});//end find user by id
+
  }) 
 
   }
@@ -139,9 +151,7 @@ presentFilter() {
 favorite(org){
   console.log('favorit '+org.name);
    let body ={
-  favoriteOrgId:org._id,
-  favoriteOrgName:org.name,
-  favoriteOrgDes:org.description
+  favoriteOrgId:org._id
  }
  let body11 = {
   participantId:userID
