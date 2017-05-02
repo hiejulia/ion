@@ -72,7 +72,7 @@ this._organisationServiceProvider.getAll()
 
   }
  
- onViewWillEnter() {
+ ionViewWillEnter() {
    this.load();
      
 }
