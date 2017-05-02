@@ -71,10 +71,10 @@
         </button>
 
         <ion-item-options>
-          <button ion-button color="favorite">
-            Favorite
+          <button ion-button color="favorite" (click)="editOrg(organisation)">
+            Edit
           </button>
-          <button ion-button color="danger">
+          <button ion-button color="danger" (click)="deleteOrg(organisation)">
             Remove
           </button>
         </ion-item-options>

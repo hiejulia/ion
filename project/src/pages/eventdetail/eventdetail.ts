@@ -44,6 +44,7 @@ export class EventdetailPage {
  public checkRegister:boolean;
  public user:any;
  public usersParticipants:any=[];
+ public participantsList:any=[];
  
 
 //  review:any;
@@ -178,6 +179,21 @@ getToast(){
 
   toast.present();
 }
+load(){
+this.usersParticipants = [];
+  this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
+  this.participants = event.participants;
+
+_.forEach(this.participants,(part) => {
+  this._eventServiceProvider.findUserById(part.participantId).subscribe((user) => {
+    console.log(user);
+    this.usersParticipants.push(user);
+  })
+        
+    });//end for each
+});
+
+}
 
 participate(event){
   
@@ -191,6 +207,7 @@ var userID=localStorage.getItem('user_Id');
 this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user) => {
   console.log('register event is saved in user profile');
   this.checkRegister = true;
+  this.load();
 });
 
 
@@ -201,8 +218,8 @@ let body11 = {
 
  
 this._eventServiceProvider.updateParticipants(body11,event._id).subscribe((event) => {
-  this.participants = event.participants;
-  console.log(this.participants);
+ // this.participants = event.participants;
+  
 
  
 
@@ -238,11 +255,28 @@ ionViewDidEnter(){
  
 console.log('participant ion view will enter'+this.participants);
 
+
+
 }
 
+ionViewDidLoad(){
+  this.usersParticipants = [];
+  this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
+  this.participants = event.participants;
 
+_.forEach(this.participants,(part) => {
+  this._eventServiceProvider.findUserById(part.participantId).subscribe((user) => {
+    this.usersParticipants = [];
+    this.usersParticipants.push(user);
+  })
+        
+    });//end for each
+  
+});
+
+}
 ionViewWillEnter(){
-
+this.usersParticipants = [];
 this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
   this.user = user;
   //user.registerEvents = []
@@ -273,6 +307,9 @@ _.forEach(this.participants,(part) => {
     });//end for each
   
 })
+
+this.participantsList = this.usersParticipants;
+
 
 }
 
