@@ -5,6 +5,8 @@ import { PopoverPage } from '../about-popover/about-popover';
 import { AlertController } from 'ionic-angular';
 import { NavController,NavParams } from 'ionic-angular';
 import {TechEvents} from '../techevents/techevents';
+import {EventServiceProvider} from '../../providers/eventService';
+import {  LoadingController,ToastController } from 'ionic-angular';
 @Component({
   selector: 'page-card-background',
   templateUrl: 'mainevent.html'
@@ -63,11 +65,22 @@ export class MainEventPage {
 
     industries=['Technology','Business','Science','Engineer','Tourism','Physics','Chemistry','Biomedical','Industrial','Other'];
 
-
+public name:any;
 public industry:any;
-  constructor(public navCtrl: NavController, public params:NavParams) {
+  constructor(public navCtrl: NavController,
+  public _eventServiceProvider:EventServiceProvider,
+   public params:NavParams,private toastCtrl: ToastController) {
+     this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
+          this.name = user.name;
+           console.log(user);
+     }) ;
+
+    
+
 
   }
+
+  
 
   goToEventsList(card) {
 

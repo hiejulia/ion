@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 import { OrganisationServiceProvider } from '../../providers/organisationService';
 import { OrganisationModel } from '../../providers/organisation.model';
-
+import {  LoadingController,ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'OrganisationCreate',
@@ -21,7 +21,8 @@ export class OrganisationCreatePage {
   numberOfEmployees:any;
   industry:any;
  
-  constructor(public viewCtrl: ViewController, organisationServiceProvider:OrganisationServiceProvider) {
+  constructor(public viewCtrl: ViewController, organisationServiceProvider:OrganisationServiceProvider,
+  private toastCtrl: ToastController) {
       this._organisationServiceProvider = organisationServiceProvider;
       this.organisation= new OrganisationModel();
 
@@ -48,10 +49,27 @@ save(): void {
  
     this.viewCtrl.dismiss(organisation);
     console.log(organisation);
+   let toast = this.toastCtrl.create({
+    message: 'Organisation added successfully',
+    duration: 2000,
+    position: 'bottom'
+  });
+
+  toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+
+  toast.present();
+    
  
   } 
+
+
+  
 close():void {
     this.viewCtrl.dismiss();
+ 
+
 }
 
 }
