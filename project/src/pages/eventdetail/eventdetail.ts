@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
  import {  LoadingController,ToastController } from 'ionic-angular';  
 import * as _ from 'lodash';
-import { Calendar } from '@ionic-native/calendar';
+// import { Calendar } from '@ionic-native/calendar';
 
 import { NavController, NavParams,ModalController } from 'ionic-angular'; 
 
@@ -18,7 +18,8 @@ import { EventServiceProvider } from '../../providers/eventService';
 import {OrganisationServiceProvider} from '../../providers/organisationService';
 
 import { EventModel } from '../../providers/event.model';
-import {Toast} from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 
 /*
   Generated class for the Eventdetail page.
@@ -46,9 +47,9 @@ export class EventdetailPage {
  
 
 //  review:any;
-  constructor(public alertCtrl: AlertController,public navCtrl: NavController, public modalCtrl: ModalController,
-   public params:NavParams,private toastCtrl: ToastController,private calendar: Calendar,
-   public toast:Toast,
+  constructor(private socialSharing: SocialSharing,public alertCtrl: AlertController,public navCtrl: NavController, public modalCtrl: ModalController,
+   public params:NavParams,private toastCtrl: ToastController,
+   
   eventServiceProvider:EventServiceProvider,organisationServiceProvider:OrganisationServiceProvider) {
     this._eventServiceProvider= eventServiceProvider;
       this._organisationServiceProvider= organisationServiceProvider;
@@ -225,9 +226,9 @@ this._eventServiceProvider.updateParticipants(body11,event._id).subscribe((event
 
 
 //cordova plugin for calendar goes here
-this.calendar.createEventWithOptions(this.event.title, this.event.location, this.event.description, new Date(this.event.startDate), new Date(this.event.endDate), null).then(() => {
-      this.getToast();
-    });
+// this.calendar.createEventWithOptions(this.event.title, this.event.location, this.event.description, new Date(this.event.startDate), new Date(this.event.endDate), null).then(() => {
+//       this.getToast();
+//     });
 
 
 }
@@ -296,5 +297,30 @@ _.forEach(this.participants,(part) => {
 // // this.participants = participants;
 // //   })
 // }
+
+share(){
+  this.socialSharing.canShareViaEmail().then(() => {
+  // Sharing via email is possible
+  console.log('share email ok');
+}).catch((err) => {
+  // Sharing via email is not possible
+  console.log(err);
+});
+
+// Share via email
+this.socialSharing.shareViaEmail('Body', 'Subject', ['recipient@example.org']).then(() => {
+  // Success!
+console.log('share email ok');
+
+}).catch((err) => {
+  // Error!
+
+  console.log(err);
+});
+}
+
+
+
+
 
 }

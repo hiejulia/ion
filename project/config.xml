@@ -46,4 +46,5 @@
     <plugin name="cordova-plugin-calendar" spec="~4.5.5">
         <variable name="CALENDAR_USAGE_DESCRIPTION" value=" " />
     </plugin>
+    <plugin name="cordova-plugin-x-socialsharing" spec="~5.1.7" />
 </widget>
