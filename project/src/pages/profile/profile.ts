@@ -22,7 +22,7 @@ import {TextToSpeech} from '@ionic-native/text-to-speech';
 import {RegisterEventsPage} from '../registerevents/registerevents';
 
 import {OrganisationsListPage} from '../organisationlist/organisationlist';
-
+import {EventServiceProvider} from '../../providers/eventService';
 
 
 @Component({
@@ -38,20 +38,25 @@ MENU = {
   }
   public user:any;
   public checkAdmin:boolean;
-
+private _eventServiceProvider:EventServiceProvider;
     private _organisationServiceProvider: OrganisationServiceProvider;
-
+public regeventlength:any;
   constructor(public navCtrl: NavController,public modalCtrl: ModalController,public tts:TextToSpeech,
-  organisationServiceProdiver: OrganisationServiceProvider,public popoverCtrl: PopoverController,public authServiceProvider:AuthServiceProvider,public alertCtrl: AlertController,public menuCtrl: MenuController) {
+  organisationServiceProdiver: OrganisationServiceProvider,public popoverCtrl: PopoverController,public authServiceProvider:AuthServiceProvider,
+  eventServiceprovider:EventServiceProvider,
+  public alertCtrl: AlertController,public menuCtrl: MenuController) {
  this._organisationServiceProvider = organisationServiceProdiver;
 
-
+this._eventServiceProvider = eventServiceprovider;
  this._organisationServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
 this.user = user;
 console.log(this.user.name);
 if(localStorage.getItem('user_Roles') === 'admin'){
   this.checkAdmin = true;
 }
+
+
+
 
 
 
@@ -63,6 +68,13 @@ if(localStorage.getItem('user_Roles') === 'admin'){
     // },(err) => {
     //   console
     // })
+
+this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
+  this.regeventlength = user.registerEvents.length;
+  console.log(this.regeventlength);
+})
+
+    
     
   }
 

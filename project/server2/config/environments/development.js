@@ -5,7 +5,7 @@ module.exports = {
   hostname: '127.0.0.1',
   baseUrl: 'http://localhost:3000',
   mongodb: {
-    uri: 'mongodb://localhost/meetup17'
+    uri: 'mongodb://localhost/meetup18'
   },
   app: {
     name: 'Meet up'

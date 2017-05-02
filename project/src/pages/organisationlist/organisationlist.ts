@@ -171,7 +171,7 @@ this.getToast();
 
 getToast(){
      let toast = this.toastCtrl.create({
-    message: 'Thank you. You have registered for the event',
+    message: 'You have favorited this organisation ',
     duration: 2000,
     position: 'bottom'
   });
