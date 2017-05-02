@@ -59,33 +59,7 @@ page-account img {
     background: #fff;
     z-index: 1;
     box-shadow: 0 0 5px rgba(black, 0.1);
-    &_visual {
-      height: $visual-height;
-      overflow: hidden;
-      position: relative;
-      background: linear-gradient(to bottom, darken(#545559, 10%), saturate(darken(#3A4A7B, 2%), 20%), saturate(darken(#3A4A7B, 15%), 20%));
-      &:before,
-      &:after {
-        display: block;
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 0;
-        background: url('https://vietnhatnews.files.wordpress.com/2015/12/ma1.jpg?w=640')no-repeat center center/cover;
-        opacity: 0.5;
-        mix-blend-mode: lighten;
-      }
-      &:before {
-        filter: grayscale(100%);
-      }
-      &:after {
-        z-index: 2;
-        mix-blend-mode: lighten;
-        background: url('https://vietnhatnews.files.wordpress.com/2015/12/ma1.jpg?w=640');
-        opacity: 1;
-      }
-    }
+    
     &_user-infos {
       position: absolute;
       z-index: 3;

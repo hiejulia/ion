@@ -34,6 +34,7 @@ import * as _ from 'lodash';
 export class OrganisationsListPage {
 //   reviews: Array<Object>;
 cat: string = "all";
+ searchTerm: string = '';
   public organisations: Array<any>;
     private _organisationServiceProvider: OrganisationServiceProvider;
     private _eventServiceProvider: EventServiceProvider;
@@ -182,5 +183,17 @@ getToast(){
 
   toast.present();
 }
+
+///implement search function 
+ filterOrgs(searchTerm){
+ 
+        return this.organisations.filter((item) => {
+            return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        });     
+ 
+    }
+
+
+
 
 }

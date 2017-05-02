@@ -78,9 +78,9 @@ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscri
   this.favorglength = user.favoriteOrg.length;
 })
 
-    geo.getCurrentPosition().then(pos => {
-  console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
-});
+//     geo.getCurrentPosition().then(pos => {
+//   console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+// });
     
   }
 
