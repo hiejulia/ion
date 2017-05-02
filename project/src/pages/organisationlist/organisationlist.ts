@@ -64,6 +64,8 @@ public user:any;
   }
 
   load(){
+
+    this.favoriteOrgs = [];//set to null
 this._organisationServiceProvider.getAll()
         .subscribe((organisations) => {
             this.organisations = organisations;
@@ -77,8 +79,9 @@ this._organisationServiceProvider.getAll()
    //user.registerEvents
  _.forEach(this.user.favoriteOrg,(favorg) => {
     this._organisationServiceProvider.findById(favorg.favoriteOrgId).subscribe((org) => {
-        console.log(org);
-        this.favoriteOrgs.push(org);
+        console.log(org);//o day org la org = 
+        this.favoriteOrgs.push(org);//ko nen push 
+        this.favoriteOrgs;//this.favorite org 
         console.log(this.favoriteOrgs);
         
         
@@ -90,7 +93,9 @@ this._organisationServiceProvider.getAll()
   }
  
  ionViewWillEnter() {
+   this.favoriteOrgs = [];
    this.load();
+   console.log(this.favoriteOrgs);
      
 }
   ionViewDidLoad(){
@@ -109,22 +114,24 @@ this._organisationServiceProvider.getAll()
         });
 
 
-this.setFilteredItems();
- 
-        this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
- 
-            this.searching = false;
-            this.setFilteredItems();
- 
-        });
 
+  //  this.setFilteredItems();
+  //       this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
  
+  //           this.searching = false;
+  //           this.setFilteredItems();
+ 
+  //       });
+this.load();
+ console.log(this.favoriteOrgs);
+
+ this.favoriteOrgs=[];//ko nen dung push 
   }
 
-  onSearchInput(){
+  
+ onSearchInput(){
         this.searching = true;
     }
- 
  
   
   goToDetail(organisation){
@@ -183,7 +190,7 @@ favorite(org){
 
 this._organisationServiceProvider.updateUserFavoriteOrg(body,userID).subscribe((user) => {
 console.log('fav org');
-this.load();
+// this.load();
 this.getToast();
  
 });

@@ -31,26 +31,26 @@
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
+
 <div *ngIf="searching" class="spinner-container">
         <ion-spinner></ion-spinner>
     </div>
-
 <ion-content  [ngSwitch]="cat">
  
   <ion-list no-lines  *ngSwitchCase="'all'">
     
  
-    <ion-item-group  [virtualScroll]="organisations">
-      <ion-item-divider sticky class="dividehere">
+    <ion-item-group >
+      <!--<ion-item-divider sticky class="dividehere">
         <ion-label>
           Technology
         </ion-label>
-      </ion-item-divider>
+      </ion-item-divider>-->
  
    
 
 
-      <ion-item-sliding class="card" *virtualItem="let organisation">
+      <ion-item-sliding class="card" *ngFor="let organisation of organisations">
  
        
  
@@ -91,11 +91,7 @@
 <!--start here-->
 <ion-list *ngSwitchCase="'favorites'">
     <ion-item-group>
-      <ion-item-divider sticky class="dividehere">
-        <ion-label>
-          Technology
-        </ion-label>
-      </ion-item-divider>
+     
  
    
 
