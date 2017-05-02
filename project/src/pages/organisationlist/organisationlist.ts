@@ -13,7 +13,8 @@ import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 import { AlertController, App, FabContainer, ItemSliding, List, ToastController, LoadingController, Refresher } from 'ionic-angular';
 import {OrganisationFilterPage} from '../organisation-filter/organisation-filter';
 import * as _ from 'lodash';
-
+import 'rxjs/add/operator/debounceTime';
+import { FormControl } from '@angular/forms';
 
 
 /*
@@ -34,7 +35,9 @@ import * as _ from 'lodash';
 export class OrganisationsListPage {
 //   reviews: Array<Object>;
 cat: string = "all";
+searching: any = false;
  searchTerm: string = '';
+ searchControl: FormControl;
   public organisations: Array<any>;
     private _organisationServiceProvider: OrganisationServiceProvider;
     private _eventServiceProvider: EventServiceProvider;
@@ -49,6 +52,7 @@ public user:any;
     public app: App,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController) {
+      this.searchControl = new FormControl();
        this._organisationServiceProvider = organisationServiceProdiver;
        this._eventServiceProvider= eventServiceProvider;
         this.load();
@@ -103,8 +107,24 @@ this._organisationServiceProvider.getAll()
         .subscribe((organisations) => {
             this.organisations = organisations;
         });
+
+
+this.setFilteredItems();
+ 
+        this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
+ 
+            this.searching = false;
+            this.setFilteredItems();
+ 
+        });
+
  
   }
+
+  onSearchInput(){
+        this.searching = true;
+    }
+ 
  
   
   goToDetail(organisation){
@@ -185,7 +205,7 @@ getToast(){
 }
 
 ///implement search function 
- filterOrgs(searchTerm){
+ filterItems(searchTerm){
  
         return this.organisations.filter((item) => {
             return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
@@ -193,6 +213,12 @@ getToast(){
  
     }
 
+
+setFilteredItems() {
+ 
+        this.organisations = this.filterItems(this.searchTerm);
+ 
+    }
 
 
 

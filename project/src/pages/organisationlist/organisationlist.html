@@ -27,18 +27,20 @@
   
 
   <ion-toolbar no-border-top>
-    <ion-searchbar color="primary" placeholder="Search organisation..." (input)="searchOrgs($event)">
+    <ion-searchbar color="primary" placeholder="Search organisation..." [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
+<div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+    </div>
 
 <ion-content  [ngSwitch]="cat">
  
-  <ion-list no-lines  *ngSwitchCase="'all'" [virtualScroll]="organisations">
+  <ion-list no-lines  *ngSwitchCase="'all'">
     
  
-    <ion-item-group *virtualItem="let organisation">
+    <ion-item-group  [virtualScroll]="organisations">
       <ion-item-divider sticky class="dividehere">
         <ion-label>
           Technology
@@ -48,7 +50,7 @@
    
 
 
-      <ion-item-sliding class="card" *ngFor="let organisation of organisations">
+      <ion-item-sliding class="card" *virtualItem="let organisation">
  
        
  
