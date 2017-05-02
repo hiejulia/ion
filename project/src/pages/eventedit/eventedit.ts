@@ -50,8 +50,8 @@ export class EventEditPage {
             this.numberOfParticipantsEstimated= this.event.numberOfParticipantsEstimated;
             this.office = this.event.office;
             this.isActive = this.event.isActive;
-            this.startDate = this.event.timeStart;
-            this.endDate = this.event.timeEnd;
+            this.startDate = this.event.startDate;
+            this.endDate = this.event.endDate;
             this.typeOfEvent = this.event.typeOfEvent;
             this.industry = this.event.industry;
 
