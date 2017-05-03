@@ -12,6 +12,10 @@ const cors = require('cors');
 const MongoStore = require('connect-mongo')(session);
 const config = require('./index');
 const morgan = require('morgan');
+const compress = require('compression');
+const helmet = require('helmet');
+const flash = require('connect-flash');
+
 module.exports.init = initExpress;
 
 function initExpress(app) {
@@ -31,6 +35,16 @@ function initExpress(app) {
 		// // Disable views cache
 		// app.set('view cache', false);
 	}
+
+
+  // Setting application local variables
+	app.locals.title = config.app.name;
+	app.locals.description = config.app.description;
+	app.locals.keywords = config.app.keywords;
+	
+
+
+
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());

@@ -8,7 +8,9 @@ module.exports = {
     uri: 'mongodb://localhost/meetup21'
   },
   app: {
-    name: 'Meet up'
+    name: 'Meet up',
+    description:'Meetup app',
+    keywords:'Ionic2, Angular2, NodeJS, ExpressJS, MongoDB'
   },
   serveStatic: true,
   session: {
