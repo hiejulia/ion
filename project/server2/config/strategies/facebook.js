@@ -5,16 +5,16 @@
  */
 var passport = require('passport'),
 	url = require('url'),
-	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
+	FacebookStrategy = require('passport-facebook').Strategy,
 	config = require('../config'),
 	users = require('../../app/controllers/users.server.controller');
 
 module.exports = function() {
-	// Use google strategy
-	passport.use(new GoogleStrategy({
-			clientID: config.google.clientID,
-			clientSecret: config.google.clientSecret,
-			callbackURL: config.google.callbackURL,
+	// Use facebook strategy
+	passport.use(new FacebookStrategy({
+			clientID: config.facebook.clientID,
+			clientSecret: config.facebook.clientSecret,
+			callbackURL: config.facebook.callbackURL,
 			passReqToCallback: true
 		},
 		function(req, accessToken, refreshToken, profile, done) {
@@ -30,7 +30,7 @@ module.exports = function() {
 				displayName: profile.displayName,
 				email: profile.emails[0].value,
 				username: profile.username,
-				provider: 'google',
+				provider: 'facebook',
 				providerIdentifierField: 'id',
 				providerData: providerData
 			};
