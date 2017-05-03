@@ -96,6 +96,13 @@ ionViewDidLoad(){
       console.log(this.events);
     })
 
+this._eventsServiceProvider.getAllEventsByOrg(this.orgId).subscribe((events) => {
+      this.events = events;
+      console.log(this.events);
+    })
+
+
+
 }
 
 // ionViewDidLoad(){
@@ -166,6 +173,10 @@ ionViewDidLoad(){
     });
  
     modal.present();
+    this._eventsServiceProvider.getAllEventsByOrg(this.orgId).subscribe((events) => {
+      this.events = events;
+      console.log(this.events);
+    })
   }
 
   editOrganisation(o){
