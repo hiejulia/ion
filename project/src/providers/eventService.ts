@@ -101,11 +101,11 @@ deleteEvent(orgId, eventId){
 
 
 
-updateEvent(event){
-   let body = JSON.stringify(event);
+updateEvent(orgId, eventId,event){
+   let body = JSON.stringify(event);//event chinh la 
 
     return this._authHttpProvider
-    .post(`http://localhost:3000/api/organisations/${event.organisation}/events/${event._id}`, body, { headers: contentHeaders })
+    .put(`http://localhost:3000/api/organisations/${orgId}/events/${eventId}`, body, { headers: contentHeaders })
     .map((res: Response) => res.json())
 
 }

@@ -245,7 +245,7 @@ console.log(event._id +' '+orgId);
 
 
 updateThisEvent(event){
-  console.log('update event');
+  console.log(event);
   this.navCtrl.push(EventEditPage,{eventId:event._id});
 
 }

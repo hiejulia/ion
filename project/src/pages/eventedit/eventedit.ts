@@ -11,8 +11,9 @@ import { EventModel } from '../../providers/event.model';
 })
 export class EventEditPage {
   public event: EventModel;
+  public eventId:any;
   private _eventServiceProvider: EventServiceProvider;
-
+public orgId:any;
   title:any;
   location:any;
   description:any;
@@ -38,8 +39,10 @@ export class EventEditPage {
       if(this.navParams.get('eventId').length > 1){
           this.event = new EventModel();
         event_id = this.navParams.get('eventId');
+        this.eventId = event_id;
         this._eventServiceProvider.findById(event_id)
         .subscribe((event) => {
+            this.orgId = event.organisation;
             console.log(event+'edit org');
             this.event= event;
             this.title = this.event.title;
@@ -94,7 +97,7 @@ save(): void {
     // this.viewCtrl.dismiss(event);
     // console.log(event);
     // console.log('save edited org');
- this._eventServiceProvider.updateEvent(editevent)
+ this._eventServiceProvider.updateEvent(this.orgId,this.eventId,editevent)
         .subscribe(response => {
           this.navCtrl.pop(); // go back to todo list
         });
