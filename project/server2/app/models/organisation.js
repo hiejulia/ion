@@ -7,6 +7,21 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 const cntEnum = Countries.map(item => item.code);
 
+/**
+ * A Validation function for local strategy properties
+ */
+const validateLocalStrategyProperty = function(property) {
+	return ((this.provider !== 'local' && !this.updated) || property.length);
+};
+
+/**
+ * A Validation function for local strategy password
+ */
+const validateLocalStrategyPassword = function(password) {
+	return (this.provider !== 'local' || (password && password.length > 6));
+};
+
+
 let OrganisationSchema = new Schema({
   name: {
     type: String,

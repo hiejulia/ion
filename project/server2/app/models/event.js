@@ -24,7 +24,8 @@ let EventSchema = new Schema({
    trim:true
  },
   description: {
-    type: String
+    type: String,
+    required: 'Description cannot be blank'
   },
   office:{
     type:String,
