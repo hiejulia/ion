@@ -61,26 +61,14 @@ public authServiceProvider:any;
     this.navCtrl.push(TutorialPage);
   }
   logout(){
-let alert = this.alertCtrl.create({
-      title: 'Confirm',
-      message: 'Do you want to register for the event?',
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: () => {
-            console.log('Disagree clicked');
-          }
-        },
-        {
-          text: 'Yes',
-          handler: () => {
-            this.logmeout();
-          }
-        }
-      ]
-    });
+console.log('log out');
+    // this.userData.logout();
+    localStorage.removeItem('user_Id');
+     this.authServiceProvider.logout();
 
-    alert.present();
+    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.setRoot(RegisterPage);
+     
 
 
     
