@@ -1,2 +1,0 @@
-https://webcake.co/using-firebase-3-in-angular-2-and-ionic-2/
-https://www.pluralsight.com/guides/front-end-javascript/ionic-2-and-firebase
