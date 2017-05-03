@@ -5,25 +5,6 @@ import { EventServiceProvider } from '../../providers/eventService';
 import { EventModel } from '../../providers/event.model';
 import {  LoadingController,ToastController } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
-/*
-  Generated class for the Addevent page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
-// class TechEvent {
-//   // title:string;
-//   // description:string;
-//   // place:string;
-
-//   constructor(){}
-
-
-// }
-
-
-
-
 
 @Component({
   selector: 'AddEvent',
