@@ -6,14 +6,28 @@ const Schema = mongoose.Schema;
 const _ = require('lodash');
 const ProfileBlockSchema = mongoose.model('ProfileBlock').schema;
 
+
+/**
+ * A Validation function for local strategy properties
+ */
+const validateLocalStrategyProperty = function(property) {
+	return ((this.provider !== 'local' && !this.updated) || property.length);
+};
+
+
+
+
 let UserSchema = new Schema({
   email:  {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    validate: [validateLocalStrategyProperty, 'Please fill in your email'],
+		match: [/.+\@.+\..+/, 'Please fill a valid email address']
   },
   name: {
-    type: String
+    type: String,
+    validate: [validateLocalStrategyProperty, 'Please fill in your name']
   },
   password: {
     type: String,

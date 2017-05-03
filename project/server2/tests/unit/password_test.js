@@ -10,6 +10,8 @@ var passwordHelper = require('../../app/helpers/password');
 
 describe('Password Helper', function() {
   describe('#hash() - password hashing', function() {
+
+    //test hash pass
     it('should return a hash and a salt from a plain string', function(done) {
       passwordHelper.hash('P@ssw0rd!', function(err, hash, salt) {
         if (err) throw err;

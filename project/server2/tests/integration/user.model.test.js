@@ -18,13 +18,13 @@ describe('User model', function() {
     password: 'user_password',
     name: 'New Test User'
   };
-
+//before the test
   before(function(done) {
     mongoose = require('../../config/mongoose').init();
     User = require('../../app/models/user');
     done();
   });
-
+//after the test
   after(function(done) {
     User.remove({}).exec(function(err) {
       if (err) throw err;
@@ -35,14 +35,18 @@ describe('User model', function() {
     });
   });
 
+
+
+
+//register a user test
   it('should register a user', function(done) {//register user 
     User.register(newUserData, function(err, user) {
       if (err) throw err;
 
       should.exist(user);
-      user.email.should.equal(newUserData.email);
+      user.email.should.equal(newUserData.email);//email
       should.not.exist(user.password);
-      should.not.exist(user.passwordSalt);
+      should.not.exist(user.passwordSalt);//hass pass
       should.exist(user.createdAt);
       user.active.should.equal(true);
 

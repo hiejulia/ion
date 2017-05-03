@@ -18,12 +18,14 @@ describe('Authentication', function() {
   var config;
   var baseUrl;
   var User;
-
+///before test
   before(function(done) {
     app = require('../../server');
     config = app.get('config');
     baseUrl = config.baseUrl;
-    appServer = http.createServer(app);
+
+
+    appServer = http.createServer(app);//mock
 
     appServer.on('listening', function() {
       mongoose = app.get('mongoose');
@@ -37,7 +39,7 @@ describe('Authentication', function() {
 
     appServer.listen(config.port);
   });
-
+//close server
   after(function(done) {
     appServer.on('close', function() {
       setTimeout(function() { done(); }, 1000);
@@ -52,6 +54,9 @@ describe('Authentication', function() {
     });
   });
 
+
+
+//sign in user with cre mock
   it('should sign in a user with valid credentials', function(done) {
     request({
       method: 'POST',
