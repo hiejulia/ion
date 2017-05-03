@@ -1,22 +1,23 @@
 <ion-header>
- <ion-navbar no-border-bottom>
+ <ion-navbar color="primary">
    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-title text-center>Organisations List </ion-title>
 
   <!--<ion-buttons end>
     <button ion-button icon-only (click)="addOrganisation()"><ion-icon name="add"></ion-icon></button>
   </ion-buttons>-->
 
 
-    <ion-segment color="primary" [(ngModel)]="cat">
+    <!--<ion-segment color="primary" [(ngModel)]="cat">
       <ion-segment-button value="all">
         All
       </ion-segment-button>
       <ion-segment-button value="favorites">
         Favorites
       </ion-segment-button>
-    </ion-segment>
+    </ion-segment>-->
 
     <ion-buttons end>
       <button ion-button icon-only (click)="presentFilter()">
@@ -35,9 +36,9 @@
 <div *ngIf="searching" class="spinner-container">
         <ion-spinner></ion-spinner>
     </div>
-<ion-content  [ngSwitch]="cat">
+<ion-content>
  
-  <ion-list no-lines  *ngSwitchCase="'all'">
+  <ion-list no-lines>
     
  
     <ion-item-group >
@@ -89,7 +90,7 @@
 
 
 <!--start here-->
-<ion-list *ngSwitchCase="'favorites'">
+<!--<ion-list>
     <ion-item-group>
      
  
@@ -126,7 +127,7 @@
       
     </ion-item-group>
 
- </ion-list>
+ </ion-list>-->
 
 
 

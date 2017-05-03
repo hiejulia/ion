@@ -102,7 +102,11 @@ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscri
   }
  
   
+  goToDetail(event){
+    this.navCtrl.push(EventdetailPage, {eventId: event._id}); 
   
+
+  }
 
 
 }

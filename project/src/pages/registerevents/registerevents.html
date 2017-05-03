@@ -51,18 +51,16 @@
 
   
 
-        <button ion-button (click)="goToDetail()" ion-button round outline>
+        <!--<button ion-button (click)="goToDetail(event)" ion-button round outline>
       <ion-icon name="md-navigate"></ion-icon>
           View
-        </button>
+        </button>-->
 
         <ion-item-options>
-          <button ion-button color="favorite">
-            Favorite
+          <button ion-button color="favorite" (click)="goToDetail(event)">
+            View
           </button>
-          <button ion-button color="danger">
-            Remove
-          </button>
+         
         </ion-item-options>
 
       </ion-item-sliding>

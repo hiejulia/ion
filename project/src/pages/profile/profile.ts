@@ -204,7 +204,7 @@ getRegEvents(){
 
 getFavOrgs(){
   console.log('get fav org');
-  this.navCtrl.push(OrganisationsListPage);
+  this.navCtrl.push(OrganisationsListProfilePage);
 }
 
 }

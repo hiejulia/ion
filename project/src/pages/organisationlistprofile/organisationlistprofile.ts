@@ -12,7 +12,7 @@ import { OrganisationCreatePage } from '../organisationcreate/organisationcreate
 import { AlertController, App, FabContainer, ItemSliding, List, ToastController, LoadingController, Refresher } from 'ionic-angular';
 import { OrganisationFilterPage } from '../organisation-filter/organisation-filter';
 import {OrganisationEditPage} from '../organisationedit/organisationedit';
-
+import * as _ from 'lodash';
 
 
 /*
@@ -33,9 +33,13 @@ export class OrganisationsListProfilePage {
   //   reviews: Array<Object>;
 
   public organisations: Array<OrganisationModel>;
-  private _organisationServiceProvider: OrganisationServiceProvider;
-  private _eventServiceProvider: EventServiceProvider;
-
+    
+    private _organisationServiceProvider: OrganisationServiceProvider;
+    private _eventServiceProvider: EventServiceProvider;
+    public orgLength:number;
+ 
+  public user:any;
+public favoriteOrgs:any=[];
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
 
     organisationServiceProdiver: OrganisationServiceProvider,
@@ -54,11 +58,39 @@ export class OrganisationsListProfilePage {
         this.organisations = organisations;
         console.log(this.organisations);
       });
-
+this.load();
 
     //console.log('the user token is' + window.localStorage.getItem('token'));
 
   }
+
+//load
+
+  load(){
+
+    this.favoriteOrgs = [];//set to null
+
+               //console.log('the user token is' + window.localStorage.getItem('token'));
+ this._eventServiceProvider.findUserById(localStorage.getItem('user_Id')).subscribe((user) => {
+   this.user = user;
+   
+
+   //user.registerEvents
+ _.forEach(this.user.favoriteOrg,(favorg) => {
+    this._organisationServiceProvider.findById(favorg.favoriteOrgId).subscribe((org) => {
+        console.log(org);//o day org la org = 
+        this.favoriteOrgs.push(org);//ko nen push 
+        this.favoriteOrgs;//this.favorite org 
+        console.log(this.favoriteOrgs);
+        
+        
+    });//end for each
+});//end find user by id
+
+ }) 
+
+  }
+
 
   ionViewDidLoad() {
     // this.todoService.load()
@@ -75,6 +107,9 @@ export class OrganisationsListProfilePage {
         this.organisations = organisations;
         console.log(this.organisations);
       });
+
+      this.load();
+      this.favoriteOrgs=[];
   }
 
   
@@ -122,6 +157,11 @@ editOrg(org){
   this.navCtrl.push(OrganisationEditPage, {organisationId: org._id}); 
 
 }
-
+ ionViewWillEnter() {
+   this.favoriteOrgs = [];
+   this.load();
+   console.log(this.favoriteOrgs);
+     
+}
 
 }

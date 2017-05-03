@@ -10,7 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import {EventdetailPage} from '../pages/eventdetail/eventdetail';
 import {RegisterPage} from '../pages/register/register';
 import {GeolocationPage } from '../pages/geolocation/geolocation';
-
+import {FavoriteOrgsPage} from '../pages/favoriteorgs/favoriteorgs';
 import { Dialogs } from '@ionic-native/dialogs';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {OrganisationsListProfilePage} from '../pages/organisationlistprofile/organisationlistprofile';
@@ -82,7 +82,8 @@ import {RegisterEventsPage} from '../pages/registerevents/registerevents';
     PopoverProfilePage,
     MainEventPage,
     EventEditPage,
-    RegisterEventsPage
+    RegisterEventsPage,
+    FavoriteOrgsPage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -123,7 +124,8 @@ import {RegisterEventsPage} from '../pages/registerevents/registerevents';
     PopoverPage,
     AboutPage,
     OrganisationFilterPage,
-    EventEditPage
+    EventEditPage,
+    FavoriteOrgsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
   
