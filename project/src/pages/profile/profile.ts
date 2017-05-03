@@ -25,7 +25,7 @@ import {RegisterEventsPage} from '../registerevents/registerevents';
 
 import {OrganisationsListPage} from '../organisationlist/organisationlist';
 import {EventServiceProvider} from '../../providers/eventService';
-
+import {FavoriteOrgsPage} from '../favoriteorgs/favoriteorgs';
 
 @Component({
   selector:'profile',
@@ -204,7 +204,7 @@ getRegEvents(){
 
 getFavOrgs(){
   console.log('get fav org');
-  this.navCtrl.push(OrganisationsListProfilePage);
+  this.navCtrl.push(FavoriteOrgsPage);
 }
 
 }

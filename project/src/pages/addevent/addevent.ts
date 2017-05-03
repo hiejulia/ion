@@ -83,7 +83,7 @@ this.presentToast();//present toast
 presentToast() {
   let toast = this.toastCtrl.create({
     message: 'Event added successfully',
-    duration: 2000,
+    duration: 4000,
     position: 'bottom'
   });
 
