@@ -11,7 +11,8 @@ export class OrganisationServiceProvider {
   private _authHttpProvider: AuthHttpProvider;
 
   constructor(http: Http, authHttpProvider: AuthHttpProvider,public storage: Storage) {
-    this._http = http;
+    this._http = http;    
+    
     this._authHttpProvider = authHttpProvider;
   }
 //get all organisations
