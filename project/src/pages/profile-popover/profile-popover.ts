@@ -7,7 +7,7 @@ import {AuthServiceProvider} from '../../providers/authService';
 import {LoginPage} from '../login/login';
 import { Dialogs } from '@ionic-native/dialogs';
 import {RegisterPage} from '../register/register';
-
+import { AlertController } from 'ionic-angular';
 
 
 
@@ -32,7 +32,8 @@ public authServiceProvider:any;
     public app: App,
     public modalCtrl: ModalController,
     public authServiceprovider:AuthServiceProvider,
-    public dialogs: Dialogs
+    public dialogs: Dialogs,
+    public alertCtrl: AlertController
   ) { 
     this.authServiceProvider = authServiceprovider;
   }
@@ -60,7 +61,33 @@ public authServiceProvider:any;
     this.navCtrl.push(TutorialPage);
   }
   logout(){
-    console.log('log out');
+let alert = this.alertCtrl.create({
+      title: 'Confirm',
+      message: 'Do you want to register for the event?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.logmeout();
+          }
+        }
+      ]
+    });
+
+    alert.present();
+
+
+    
+
+  }
+logmeout(){
+console.log('log out');
     // this.userData.logout();
     localStorage.removeItem('user_Id');
      this.authServiceProvider.logout();
@@ -68,9 +95,7 @@ public authServiceProvider:any;
     this.navCtrl.setRoot(LoginPage);
     this.navCtrl.setRoot(RegisterPage);
      
-
-  }
-
+}
 
 
 }
