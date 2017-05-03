@@ -17,7 +17,7 @@ import { OrganisationServiceProvider } from '../../providers/organisationService
 import {OrganisationCreatePage} from '../organisationcreate/organisationcreate';
 import { ActionSheet, ActionSheetController, Config } from 'ionic-angular';
 
-
+import { AlertController } from 'ionic-angular';
 import {AuthServiceProvider} from '../../providers/authService';
 import {AuthHttpProvider} from '../../providers/auth-http';
 import { EventServiceProvider } from '../../providers/eventService';
@@ -43,17 +43,17 @@ currentUser:any;
  public events: Array<EventModel>;
   private _eventsServiceProvider: EventServiceProvider;
   private _authHttpProvider;
-  private _eventServiceProvider:EventServiceProvider;
+  
   private _authServiceProvider;
 public orgId;
  public organisation: OrganisationModel;
   private _organisationServiceProvider: OrganisationServiceProvider;
   constructor(public navCtrl: NavController,  public modalCtrl: ModalController,
   public organisationServiceProvider: OrganisationServiceProvider,
-  public navParams:NavParams,
+  public navParams:NavParams, public alertCtrl: AlertController,
   public eventsServiceProvider: EventServiceProvider,
   public authServiceProvider:AuthServiceProvider,
-  public authHttpProvider:AuthHttpProvider,eventServiceProvider:EventServiceProvider) {
+  public authHttpProvider:AuthHttpProvider) {
         this._eventsServiceProvider = eventsServiceProvider;
     this._authHttpProvider= authHttpProvider;
     this._authServiceProvider = authServiceProvider;
@@ -91,6 +91,11 @@ public orgId;
   // }
 ionViewDidLoad(){
   this.barChart = this.getBarChart();
+    this._eventsServiceProvider.getAllEventsByOrg(this.orgId).subscribe((events) => {
+      this.events = events;
+      console.log(this.events);
+    })
+
 }
 
 // ionViewDidLoad(){
@@ -227,27 +232,59 @@ ionViewDidLoad(){
 
 
 deleteThisEvent(event) {  
-  var orgId = event.organisation;
-console.log(event._id +' '+orgId);
+ let alert = this.alertCtrl.create({
+      title: 'Delete event?',
+      message: 'Do you want to delete event ?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Go',
+          handler: () => {
+            this.deleteIt(event);
+          }
+        }
+      ]
+    });
+
+    alert.present();
+  }
 
 
-  this._eventServiceProvider.deleteEvent(orgId, event._id).subscribe(() => {
-  
-    // this.events.splice(0, 1); // remove the todo
-        this.navCtrl.pop(); //go back to todo list
-
-  })
-    
 
 
 
-}
 
 
 updateThisEvent(event){
   console.log(event);
   this.navCtrl.push(EventEditPage,{eventId:event._id});
 
+}
+
+deleteIt(event){
+  
+  var orgId = event.organisation;
+console.log(event._id +' '+orgId);
+
+
+  this._eventsServiceProvider.deleteEvent(orgId, event._id).subscribe(() => {
+  
+    // this.events.splice(0, 1); // remove the todo
+ this._eventsServiceProvider.getAllEventsByOrg(this.orgId).subscribe((events) => {
+      this.events = events;
+      
+    })
+        console.log('ok');
+        
+  })
+
+   
+    
 }
 
 //favorite 

@@ -80,7 +80,7 @@ getAllEventsByOrg(orgId){
 deleteEvent(orgId, eventId){
 
    return this._http
-    .delete(`http://localhost:3000/api/organisations/${orgId}/events/:eventId`,{ headers: contentHeaders })
+    .delete(`http://localhost:3000/api/organisations/${orgId}/events/${eventId}`,{ headers: contentHeaders })
     
   
 }

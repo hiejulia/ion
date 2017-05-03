@@ -70,8 +70,8 @@ public get(url: string, opts?: RequestOptionsArgs) {
     return this.request({ url: url, method: RequestMethod.Patch, body: body}, opts);
   }
 //delete
-  public delete(url: string, body?: string, opts?: RequestOptionsArgs) {
-    return this.request({ url: url, method: RequestMethod.Delete, body: body}, opts);
+  public delete(url: string,  opts?: RequestOptionsArgs) {
+    return this.request({ url: url, method: RequestMethod.Delete}, opts);
   }
 
 }
