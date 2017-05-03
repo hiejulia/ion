@@ -98,6 +98,7 @@ router.delete(
   // authorize.onlyMembers,
   eventCtrl.findById,
   eventCtrl.remove
+
 );
 
 

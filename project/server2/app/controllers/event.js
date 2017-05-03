@@ -178,7 +178,7 @@ function removeEvent(req, res, next) {
     }
 res.json(req.resources.events);
 
-   // res.json(req.resources.event);
+   
   });
 }
 
