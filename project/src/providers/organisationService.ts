@@ -85,9 +85,6 @@ findUserById(id) {
     .map((res: Response) => res.json())//event updated dc tra ve => co the truy cap participants = event.id.participants=> list ra 
   }
 
-deleteOrg(){
-  
-}
 
 }
 

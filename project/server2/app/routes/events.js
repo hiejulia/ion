@@ -60,7 +60,8 @@ router.put(
   organisationCtrl.findById,
   // authorize.onlyMembers,
   eventCtrl.findById,
-  eventCtrl.update
+  eventCtrl.update,
+  response.toJSON('event')
 );
 
 //update participants 

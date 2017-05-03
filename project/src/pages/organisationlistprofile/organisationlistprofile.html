@@ -1,15 +1,15 @@
 <ion-header>
- <ion-navbar no-border-bottom color="primary">
-   <button ion-button menuToggle>
+  <ion-navbar no-border-bottom color="primary">
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
 
-  <!--<ion-buttons end>
+    <!--<ion-buttons end>
     <button ion-button icon-only (click)="addOrganisation()"><ion-icon name="add"></ion-icon></button>
   </ion-buttons>-->
 
 
-    <ion-segment >
+    <ion-segment>
       <ion-segment-button value="all">
         All
       </ion-segment-button>
@@ -18,14 +18,14 @@
       </ion-segment-button>
     </ion-segment>
 
-    
- </ion-navbar>
+
+  </ion-navbar>
 
 
 
 
 
-  
+
 
   <ion-toolbar no-border-top>
     <ion-searchbar color="primary" placeholder="Search">
@@ -35,24 +35,24 @@
 
 
 <ion-content>
- 
-  <ion-list no-lines >
- 
+
+  <ion-list no-lines>
+
     <ion-item-group>
       <ion-item-divider sticky>
         <ion-label>
           Technology
         </ion-label>
       </ion-item-divider>
- 
-   
+
+
 
 
       <ion-item-sliding class="card" *ngFor="let organisation of organisations">
- 
-       
- 
-       <button ion-item (click)="goToDetail(organisation)">
+
+
+
+        <button ion-item (click)="goToDetail(organisation)">
           <ion-avatar item-left>
           <img src="https://www.seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png">
         </ion-avatar>
@@ -61,41 +61,41 @@
            {{organisation.description}}
           </p>
         </button>
-       
 
-  
 
-        <button ion-button (click)="goToDetail()" ion-button round outline>
+
+
+        <button ion-button (click)="goToDetail(org)" ion-button round outline>
       <ion-icon name="md-navigate"></ion-icon>
-          View
+        
         </button>
 
         <ion-item-options>
           <button ion-button color="favorite" (click)="editOrg(organisation)">
             Edit
           </button>
-          <button ion-button color="danger" (click)="deleteOrg(organisation)">
-            Remove
+          <button ion-button color="danger" (click)="goToDetail(organisation)">
+            View
           </button>
         </ion-item-options>
 
       </ion-item-sliding>
       <!--1-->
 
-      
-      
-         
-      
+
+
+
+
     </ion-item-group>
 
 
-    
- 
+
+
   </ion-list>
   <ion-fab bottom right #fab>
     <button ion-fab (click)="addOrganisation()"><ion-icon name="md-add"></ion-icon></button>
-    
+
   </ion-fab>
 
- 
+
 </ion-content>
