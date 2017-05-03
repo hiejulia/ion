@@ -15,6 +15,8 @@ const morgan = require('morgan');
 const compress = require('compression');
 const helmet = require('helmet');
 const flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
+
 
 module.exports.init = initExpress;
 
@@ -31,10 +33,16 @@ function initExpress(app) {
   if (process.env.NODE_ENV === 'development') {
 		// Enable logger (morgan)
 		app.use(morgan('dev'));
+    //Disable views cache
+		app.set('view cache', false);
+	} else if (process.env.NODE_ENV === 'production') {
+		app.locals.cache = 'memory';
+	}
+
 
 		// // Disable views cache
 		// app.set('view cache', false);
-	}
+	
 
 
   // Setting application local variables
@@ -43,7 +51,8 @@ function initExpress(app) {
 	app.locals.keywords = config.app.keywords;
 	
 
-
+// Showing stack errors
+	app.set('showStackError', true);
 
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -58,9 +67,22 @@ function initExpress(app) {
     });
   }
 
+  // CookieParser should be above session
+	app.use(cookieParser());
+
+
   app.use(session(sessionOpts));
   app.use(passport.initialize());
   app.use(passport.session());
+
+  // connect flash for flash messages
+	app.use(flash());
+
+	// Use helmet to secure Express headers
+	app.use(helmet.xframe());
+	app.use(helmet.xssFilter());
+	app.use(helmet.nosniff());
+	app.use(helmet.ienoopen());
 //req.resources
   app.use(function(req, res, next) {
     req.resources = req.resources || {};
