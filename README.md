@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/HienNguyen711/JS-dev-env.svg?branch=master)](https://travis-ci.org/HienNguyen711/JS-dev-env)
 # ion
 
 ## Prototype/ mock up 
