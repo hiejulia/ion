@@ -44,7 +44,7 @@ This is the Meetup mobile app project in mobile programming course at Haaga-Heli
 ## Plan for further development
 + Testing for front-end (Angular2 and Ionic2)
 + Cordova plugins 
-+ Validation in the front-end
+
 
 
 
