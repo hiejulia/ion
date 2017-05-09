@@ -75,7 +75,7 @@ ionViewDidLoad(){
 
 initMap(){
   console.log('before fetch map' + this.latt + " " + this.long);
-    let latLong1 = new google.maps.LatLng(this.latt,this.long);
+    let latLong1 = new google.maps.LatLng(localStorage.getItem('lat'),localStorage.getItem('long'));
     // let latLong1 = new google.maps.LatLng(this.latt, this.long);
     console.log('now fetch it ' + this.latt + " " + this.long);
 

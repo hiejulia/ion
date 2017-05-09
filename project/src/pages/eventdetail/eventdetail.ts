@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
  import {  LoadingController,ToastController } from 'ionic-angular';  
 import * as _ from 'lodash';
+import * as async from 'async';
 // import { Calendar } from '@ionic-native/calendar';
 
 import { NavController, NavParams,ModalController } from 'ionic-angular'; 
@@ -133,8 +134,10 @@ this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
     });
 
     
-
-  console.log('end of constructor' +this.latt);
+setTimeout(function(){
+   console.log('end of constructor' +this.latt);
+},3000);
+ 
 
    
   }
@@ -143,12 +146,12 @@ this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
 
   //show map
 
-  showMap(){
-    // this._findLongLat();
-    console.log('========= start go to map');
-      console.log('=======');
-    console.log('eventdetail'+this.latt);
-    // this.navCtrl.push(GeolocationPage,{eventID:this.thisEventId,lattttt:this.latt,longgggg:this.long});
+   showMap(){
+    
+    
+    
+    
+   this.navCtrl.push(GeolocationPage,{eventID:this.thisEventId}); 
   
   }
 goBack() {
@@ -372,6 +375,7 @@ ionViewDidLoad(){
   
 });
 //  console.log('eventdetail latt'+this.latt);
+this._findLongLat();
 
 }
 ionViewWillEnter(){
@@ -401,7 +405,7 @@ this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
   
 })
 
-
+// this._findLongLat();
 
 
 }
@@ -452,7 +456,7 @@ console.log('share email ok');
 
 
 //find log lat
-_findLongLat() {
+async _findLongLat() {
 
     console.log('start find long lat');
 
@@ -469,8 +473,11 @@ _findLongLat() {
 
         this.latt = results[0].geometry.location.lat();
         this.long = results[0].geometry.location.lng();
+        localStorage.setItem('lat',this.latt);
+        localStorage.setItem('long',this.long);
     
     console.log('end find long lat in the findlonglast functi' + this.latt);
+    return results[0].geometry.location.lat();
 
       } else {
     //     // alert("Something got wrong " + status);
