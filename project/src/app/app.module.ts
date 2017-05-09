@@ -44,6 +44,7 @@ import {TextToSpeech} from '@ionic-native/text-to-speech';
 import {  CameraOptions } from '@ionic-native/camera';
 // import {Calendar} from ' @ionic-native/calendar';
 import {RegisterEventsPage} from '../pages/registerevents/registerevents';
+
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
 

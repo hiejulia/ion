@@ -110,7 +110,7 @@ this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
 
   showMap(){
     console.log();
-    this.navCtrl.push(GeolocationPage);
+    this.navCtrl.push(GeolocationPage,{eventID:this.thisEventId});
   }
 goBack() {
     this.navCtrl.pop();

@@ -1,40 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Map</ion-title>
+    <ion-title>
+      Location
+    </ion-title>
+   
   </ion-navbar>
 </ion-header>
-
+ 
 <ion-content>
-  <div id="map_canvas"></div>
-  
+  <div #map id="map"></div>  
 </ion-content>
-
-<!--<ion-content>
-  <ion-card class="adv-map">
-    <div class="map-image">
-      <img src="https://s3-torquehhvm-wpengine.netdna-ssl.com/uploads/2014/04/shutterstock_147558014.jpg">
-      <ion-fab right top>
-        <button ion-fab class="fab-map pop-in" (click)="a()">
-        <ion-icon name='pin'></ion-icon>
-      </button>
-      </ion-fab>
-    </div>
-    <ion-item  (click)="b()">
-      <ion-icon color="subtle" large item-left name="ios-navigate"></ion-icon>
-      <h2>Helsinki</h2>
-      <p>Rapahantie 1</p>
-    </ion-item>
-    <ion-item actions>
-      <span item-left ion-text color="secondary" class="item-bold">30min</span>
-      <span item-left ion-text color="subtle">2.6</span>
-      <button ion-button color="primary" clear item-right icon-left (click)="getDirections(card)">
-      <ion-icon name='navigate'></ion-icon>
-      Start
-    </button>
-    </ion-item>
-  </ion-card>
-</ion-content>-->
-
