@@ -83,9 +83,14 @@
       </ion-list>
     <ion-row no-padding>
       <ion-col>
-        <button ion-button clear small color="danger" icon-left (click)="doParticipate(event)">
+        <button ion-button clear small color="danger" icon-left (click)="doUnParticipate(event)" *ngIf="checkRegister">
           <ion-icon name='md-happy'></ion-icon>
-          {{checkRegister?'Thanks for register':'Register'}}
+          <!--{{checkRegister?'Thanks for register':'Register'}}-->
+          Thanks for register
+        </button>
+         <button ion-button clear small color="danger" icon-left (click)="doParticipate(event)" *ngIf="!checkRegister">
+          <ion-icon name='md-happy'></ion-icon>
+          Register
         </button>
       </ion-col>
       

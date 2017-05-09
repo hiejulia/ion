@@ -159,6 +159,79 @@ doParticipate(event){
 
 }
 
+doUnParticipant(event){
+  let alert = this.alertCtrl.create({
+      title: 'Confirm',
+      message: 'Do you want to unregister for the event?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+           
+             this.unparticipate(event);
+            this.getToast();
+          }
+        },
+        {
+          text: 'No',
+          handler: () => {
+             console.log('Disagree clicked');
+           
+          }
+        }
+      ]
+    });
+
+    alert.present();
+
+}
+unparticipate(event){
+  console.log('unparticipate event');
+ 
+ let body ={
+  registerEvents:event._id
+ }
+var userID=localStorage.getItem('user_Id');//get user id from localstorage
+var useremail = this.user.email;
+
+this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user) => {
+  console.log('register event is saved in user profile');
+  this.checkRegister = true;
+  this.load();
+});
+
+
+let body11 = {
+  participantId:userID,
+  participantEmail:useremail
+
+}
+
+ 
+this._eventServiceProvider.updateParticipants(body11,event._id).subscribe((event) => {
+ // this.participants = event.participants;
+  
+
+ 
+
+
+
+
+
+})
+
+
+// this.listParticipants();
+
+// this.participants.forEach(function(participant, index){
+//     this._organisationServiceProvider.findUserById(participant.participants[0]).subscribe((user) => {
+// this.users.push(user);
+// console.log('user lsit is');
+// console.log(this.users);
+//   });
+// });
+
+}
 
 getToast(){
    let toast = this.toastCtrl.create({
