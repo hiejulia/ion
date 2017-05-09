@@ -1,16 +1,16 @@
+[![Build Status](https://travis-ci.org/HienNguyen711/JS-dev-env.svg?branch=master)](https://travis-ci.org/HienNguyen711/JS-dev-env)
+
 # ion
 
 ## Prototype/ mock up 
 https://creator.ionic.io/share/7e96a5da6c90
 
 
-
 ## Mobile Programming project
 
 
 ## Check it out 
-+ 
-
++ https://www.youtube.com/watch?v=3NvVbp2Dml0&feature=youtu.be
 
 
 ## Mobile App with Hybrid Technologies
@@ -44,6 +44,7 @@ This is the Meetup mobile app project in mobile programming course at Haaga-Heli
 ## Plan for further development
 + Testing for front-end (Angular2 and Ionic2)
 + Cordova plugins 
+
 
 
 
