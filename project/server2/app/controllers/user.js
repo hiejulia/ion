@@ -184,7 +184,21 @@ function getAuthUser(req, res, next) {
 
 
 function updateRegisterEvents(req,res,next){
+
+
+if(_.findIndex(req.resources.user.registerEvents,req.body) <0){
   req.resources.user.registerEvents.push(req.body);
+} else if (_.findIndex(req.resources.user.registerEvents,req.body) >-1){
+  req.resources.user.registerEvents.splice(_.findIndex(req.resources.user.registerEvents,req.body),1);
+  // req.resources.event.participants.pop();
+}
+
+
+
+  
+
+
+
   req.resources.user.save((err, updatedUser) => {
     if (err) {
       return next(err);

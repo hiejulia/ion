@@ -7,6 +7,7 @@ const EVENT_FIELDS = ['title','location', 'description','office','address','numb
  *  Module dependencies
  */
 const _ = require('lodash');
+const us = require('underscore');
 const mongoose = require('mongoose');
 const Event = mongoose.model('Event');
 const ObjectId = mongoose.Types.ObjectId;
@@ -223,9 +224,18 @@ res.json(req.resources.events);
 //update participants
 function updateParticipants(req, res, next) {
 
-
-
+//check the req.body > da co trong event.participants chua 
+if(_.findIndex(req.resources.event.participants, req.body) < 0){
 req.resources.event.participants.push(req.body);
+
+} else if (_.findIndex(req.resources.event.participants, req.body) > -1){
+  req.resources.event.participants.splice(_.findIndex(req.resources.event.participants, req.body),1);
+  // req.resources.event.participants.pop();
+
+}
+
+
+
 
 
   req.resources.event.save((err, updatedEvent) => {

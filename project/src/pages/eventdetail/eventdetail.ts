@@ -159,7 +159,7 @@ doParticipate(event){
 
 }
 
-doUnParticipant(event){
+doUnParticipate(event){
   let alert = this.alertCtrl.create({
       title: 'Confirm',
       message: 'Do you want to unregister for the event?',
@@ -169,7 +169,7 @@ doUnParticipant(event){
           handler: () => {
            
              this.unparticipate(event);
-            this.getToast();
+            
           }
         },
         {
@@ -196,7 +196,7 @@ var useremail = this.user.email;
 
 this._eventServiceProvider.updateUserRegisterEvents(body,userID).subscribe((user) => {
   console.log('register event is saved in user profile');
-  this.checkRegister = true;
+  this.checkRegister = false;
   this.load();
 });
 
@@ -221,15 +221,17 @@ this._eventServiceProvider.updateParticipants(body11,event._id).subscribe((event
 })
 
 
-// this.listParticipants();
+ let toast = this.toastCtrl.create({
+    message: 'Ok. You have unregistered event',
+    duration: 2000,
+    position: 'bottom'
+  });
 
-// this.participants.forEach(function(participant, index){
-//     this._organisationServiceProvider.findUserById(participant.participants[0]).subscribe((user) => {
-// this.users.push(user);
-// console.log('user lsit is');
-// console.log(this.users);
-//   });
-// });
+  toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+
+  toast.present();
 
 }
 
@@ -250,6 +252,7 @@ load(){
 
   this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
   this.participants = event.participants;
+  console.log(this.participants);
 
 });
 
