@@ -12,6 +12,9 @@ https://creator.ionic.io/share/7e96a5da6c90
 ## Check it out 
 + https://www.youtube.com/watch?v=3NvVbp2Dml0&feature=youtu.be
 
+## Note...
++ New function is added for unregister the event
+
 
 ## Mobile App with Hybrid Technologies
 This is the Meetup mobile app project in mobile programming course at Haaga-Helia UAS
