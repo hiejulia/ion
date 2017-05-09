@@ -27,8 +27,11 @@ This is the Meetup mobile app project in mobile programming course at Haaga-Heli
 ## Cordova plugins using 
 
 +Geolocation => fetch map of the event location
+
 +Camera => user is able to capture picture and update in their account
+
 +Other components native plugin from Cordova 
+
 +Weather API => view Weather forecast of the event location of the start date of event(if the event within one week)
 
 ## Tech use in the project
@@ -45,6 +48,10 @@ This is the Meetup mobile app project in mobile programming course at Haaga-Heli
 + Testing for front-end (Angular2 and Ionic2)
 + Cordova plugins 
 
+
+
+### Updated functionalities 
++ Unregister the event > Now you can register the event and undo it 
 
 
 
