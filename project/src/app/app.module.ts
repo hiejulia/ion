@@ -44,6 +44,15 @@ import {TextToSpeech} from '@ionic-native/text-to-speech';
 import {  CameraOptions } from '@ionic-native/camera';
 // import {Calendar} from ' @ionic-native/calendar';
 import {RegisterEventsPage} from '../pages/registerevents/registerevents';
+import {
+ GoogleMaps,
+ GoogleMap,
+ GoogleMapsEvent,
+ LatLng,
+ CameraPosition,
+ MarkerOptions,
+ Marker
+} from '@ionic-native/google-maps';
 
 //import service to provider concerning with data from server call
 // export const firebaseConfig= {
@@ -144,8 +153,9 @@ import {RegisterEventsPage} from '../pages/registerevents/registerevents';
   InAppBrowser,
   // Calendar,
   Geolocation,
-
- SocialSharing
+  
+ SocialSharing,
+ 
   
    ]
 })

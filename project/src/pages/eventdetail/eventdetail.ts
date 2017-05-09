@@ -19,8 +19,8 @@ import {OrganisationServiceProvider} from '../../providers/organisationService';
 
 import { EventModel } from '../../providers/event.model';
 import { SocialSharing } from '@ionic-native/social-sharing';
-
-
+import {Geolocation} from '@ionic-native/geolocation';
+declare var google;
 /*
   Generated class for the Eventdetail page.
 
@@ -45,6 +45,9 @@ export class EventdetailPage {
  public user:any;
  public usersParticipants:any=[];
  public participantsList:any=[];
+ public latt:any;
+ public long:any;
+ public location:any;
  
 
 //  review:any;
@@ -69,6 +72,8 @@ export class EventdetailPage {
         this.event = event;
         this.cloneEvent = event;
         console.log(this.event);
+        this.location = this.event.location;
+        this._findLongLat();
         this._organisationServiceProvider.findById(this.event.organisation).subscribe((organisation) => {
           //this.event.organisation = organisation.name;
 
@@ -101,6 +106,36 @@ this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
 
          
 });
+
+// this._findLongLat();
+ console.log('start find long lat');
+
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+      'address': this.location
+    }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        // alert("location : " + results[0].geometry.location.lat() + " "
+        // +results[0].geometry.location.lng()); console.log('long and lat is '+
+        // results[0].geometry.location.lat() + " " +results[0].geometry.location.lng())
+        // ; lattlong =
+        // {results[0].geometry.location.lat(),results[0].geometry.location.lng()};
+
+        this.latt = results[0].geometry.location.lat();
+        this.long = results[0].geometry.location.lng();
+    
+    console.log('end find long lat in the findlonglast functi' + this.latt);
+
+      } else {
+    //     // alert("Something got wrong " + status);
+        console.log('something went wrong ' + status);
+      }
+    });
+
+    
+
+  console.log('end of constructor' +this.latt);
+
    
   }
 
@@ -109,8 +144,12 @@ this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
   //show map
 
   showMap(){
-    console.log();
-    this.navCtrl.push(GeolocationPage,{eventID:this.thisEventId});
+    // this._findLongLat();
+    console.log('========= start go to map');
+      console.log('=======');
+    console.log('eventdetail'+this.latt);
+    // this.navCtrl.push(GeolocationPage,{eventID:this.thisEventId,lattttt:this.latt,longgggg:this.long});
+  
   }
 goBack() {
     this.navCtrl.pop();
@@ -318,7 +357,7 @@ this._eventServiceProvider.updateParticipants(body11,event._id).subscribe((event
 
 ionViewDidEnter(){
  
-console.log('participant ion view will enter'+this.participants);
+// console.log('participant ion view will enter'+this.participants);
 
 
 
@@ -328,9 +367,11 @@ ionViewDidLoad(){
   this.usersParticipants = [];
   this._eventServiceProvider.findById(this.thisEventId).subscribe((event) => {
   this.participants = event.participants;
+  
 
   
 });
+//  console.log('eventdetail latt'+this.latt);
 
 }
 ionViewWillEnter(){
@@ -410,6 +451,35 @@ console.log('share email ok');
 
 
 
+//find log lat
+_findLongLat() {
 
+    console.log('start find long lat');
+
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+      'address': this.location
+    }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        // alert("location : " + results[0].geometry.location.lat() + " "
+        // +results[0].geometry.location.lng()); console.log('long and lat is '+
+        // results[0].geometry.location.lat() + " " +results[0].geometry.location.lng())
+        // ; lattlong =
+        // {results[0].geometry.location.lat(),results[0].geometry.location.lng()};
+
+        this.latt = results[0].geometry.location.lat();
+        this.long = results[0].geometry.location.lng();
+    
+    console.log('end find long lat in the findlonglast functi' + this.latt);
+
+      } else {
+    //     // alert("Something got wrong " + status);
+        console.log('something went wrong ' + status);
+      }
+    });
+
+    
+
+  }
 
 }
