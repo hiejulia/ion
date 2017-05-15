@@ -7,7 +7,7 @@ https://creator.ionic.io/share/7e96a5da6c90
 
 
 ## Demo
-[![Demo Doccou alpha](https://drive.google.com/file/d/0B_T8DB6KuOjYRlJTQXFLLXhPc3c/view)](https://www.youtube.com/watch?v=ek1j272iAmc)
+[![Demo Doccou alpha](https://drive.google.com/file/d/0B_T8DB6KuOjYRlJTQXFLLXhPc3c/view)](https://drive.google.com/file/d/0B_T8DB6KuOjYRlJTQXFLLXhPc3c/view)
 
 
 ## Mobile Programming project
