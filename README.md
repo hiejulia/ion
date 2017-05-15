@@ -7,7 +7,7 @@ https://creator.ionic.io/share/7e96a5da6c90
 
 
 ## Demo
-![](http://i.imgur.com/60bts.gif)
+![](https://media.giphy.com/media/xUPGcD0PukOdsSf8C4/giphy.gif)
 
 
 ## Mobile Programming project
