@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/HienNguyen711/JS-dev-env.svg?branch=master)](https://travis-ci.org/HienNguyen711/JS-dev-env)
 
 # ion
+Hybrid mobile application, installed in android, ios, window phone :) 
 
 ## Prototype/ mock up 
 https://creator.ionic.io/share/7e96a5da6c90
@@ -59,6 +60,7 @@ This is the Meetup mobile app project in mobile programming course at Haaga-Heli
 
 ### Updated functionalities 
 + Unregister the event > Now you can register the event and undo it 
++ Migration to native ios/ android.
 
 
 
